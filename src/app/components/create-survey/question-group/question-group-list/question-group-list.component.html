@@ -8,7 +8,7 @@
     <div id="questionGroupListing" class="row card card-body mb-3"
          *ngFor="let questionGroup of survey.questionGroups; index as indexQuestionGroup">
       <div class="d-flex justify-content-between">
-        <h4 class="d-inline">{{ questionGroup.title }}</h4>
+        <h3 class="d-inline">{{ questionGroup.title }}</h3>
         <div id="updateDeleteButton" class="d-inline">
           <button class="btn btn-primary me-1" type="button" title="Ändern" data-bs-toggle="modal"
                   [attr.data-bs-target]="'#confirmUpdate' + indexQuestionGroup">
@@ -39,19 +39,27 @@
               <h5 class="modal-title" id="confirmUpdateLabel">Frageblock ändern</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form #questionGroupUpdateForm="ngForm" (ngSubmit)="updateQuestionGroup(indexQuestionGroup)">
+            <form #questionGroupUpdateForm="ngForm"
+                  (ngSubmit)="updateQuestionGroup(indexQuestionGroup); questionGroupUpdateForm.resetForm()">
               <div class="modal-body">
                 <label [attr.for]="'group' + indexQuestionGroup" class="form-label">
                   Name/Beschreibung/Frage/... :
                 </label>
                 <input [attr.id]="'group' + indexQuestionGroup" class="form-control" name="title" type="text"
-                       [(ngModel)]="newTitle" required>
+                       [(ngModel)]="newTitle" #newTitleInput="ngModel" required>
+                <div *ngIf="newTitleInput.invalid && (newTitleInput.dirty || newTitleInput.touched)"
+                     class="alert alert-danger p-2 m-0 mt-2">
+                  <div class="errorMessage" *ngIf="newTitleInput.errors?.required">
+                    Ein Frageblock benötigt einen Titel.
+                  </div>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
                   Abbrechen
                 </button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                        [disabled]="questionGroupUpdateForm.invalid">
                   Ändern
                 </button>
               </div>
