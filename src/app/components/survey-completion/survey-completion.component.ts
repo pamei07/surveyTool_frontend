@@ -9,9 +9,10 @@ import {QuestionGroup} from "../../model/question-group";
 
 export class SurveyCompletionComponent implements OnInit {
 
-  @Input() survey!: Survey;
+  survey: Survey;
 
   constructor() {
+    this.survey = JSON.parse(<string>sessionStorage.getItem('newSurvey'));
   }
 
   ngOnInit() {
