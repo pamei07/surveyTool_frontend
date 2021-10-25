@@ -18,14 +18,16 @@ import {CheckboxFormComponent} from './components/create-survey/checkbox/checkbo
 import {SurveyOverviewComponent} from "./components/create-survey/survey-overview/survey-overview.component";
 import {DateValidatorDirective} from "./directives/validators/date-validator.directive";
 import {AnswerSurveyOverviewComponent} from "./components/answer-survey/answer-survey-overview/answer-survey-overview.component";
-import {AnswerSurveyQuestionGroupComponent} from "./components/answer-survey/answer-survey-question-group/answer-survey-question-group";
+import {AnswerSurveyParticipationComponent} from "./components/answer-survey/answer-survey-participation/answer-survey-participation.component";
+import {AnswerQuestionGroupListComponent} from "./components/answer-survey/answer-question-group-list/answer-question-group-list.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'createSurvey', component: SurveyInitialCreationComponent},
   {path: 'createSurvey/questions', component: SurveyQuestionAddingComponent},
   {path: 'createSurvey/:id/final', component: SurveyOverviewComponent},
-  {path: 'answers', component: AnswerSurveyOverviewComponent}
+  {path: 'answers/overview', component: AnswerSurveyOverviewComponent},
+  {path: 'answers/participate', component: AnswerSurveyParticipationComponent}
 ]
 
 @NgModule({
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     SurveyOverviewComponent,
     DateValidatorDirective,
     AnswerSurveyOverviewComponent,
-    AnswerSurveyQuestionGroupComponent
+    AnswerSurveyParticipationComponent,
+    AnswerQuestionGroupListComponent
   ],
   imports: [
     BrowserModule,
