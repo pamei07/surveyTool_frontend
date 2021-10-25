@@ -1,5 +1,5 @@
 <form id="addCheckbox" class="container"
-      #checkboxForm="ngForm" (ngSubmit)="onSubmit()"
+      #checkboxForm="ngForm" (ngSubmit)="onSubmit(); checkboxForm.resetForm()"
       *ngIf="survey.questionGroups![indexQuestionGroup].questions![indexQuestion].checkboxGroup">
   <div class="input-group mt-2 mb-1">
     <div class="input-group-text">
@@ -9,13 +9,20 @@
         Mit Textfeld:&nbsp;&nbsp;&nbsp;
       </label>
       <input [attr.id]="'hasTextField' + indexQuestion + 'group' + indexQuestionGroup"
-             class="form-check-input mt-0" name="text" type="checkbox"
+             class="form-check-input mt-0" name="text" type="checkbox" #text="ngModel"
              [(ngModel)]="checkbox.hasTextField">
     </div>
     <input id="checkboxText" class="form-control" name="text"
            placeholder="Neue Auswahlmöglichkeit"
            [(ngModel)]="checkbox.text"
            required>
-    <button type="submit" class="btn btn-primary">Hinzufügen</button>
+    <button type="submit" class="btn btn-primary" [disabled]="checkboxForm.invalid">Hinzufügen
+    </button>
+  </div>
+  <div *ngIf="text.invalid && (text.dirty || text.touched)"
+       class="alert alert-danger p-2 m-0">
+    <div class="errorMessage" *ngIf="text.errors?.required">
+      Eine Checkbox benötigt einen Text.
+    </div>
   </div>
 </form>

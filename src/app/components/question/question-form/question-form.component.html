@@ -8,7 +8,7 @@
   <div [attr.id]="'collapseQuestionform' + indexQuestionGroup" class="collapse mt-2">
     <div class="card card-body">
       <form id="addQuestion" class="container"
-            #questionForm="ngForm" (ngSubmit)="onSubmit()">
+            #questionForm="ngForm" (ngSubmit)="onSubmit(); questionForm.resetForm()">
         <div class="row mb-3">
           <div class="col">
             <label for="question" class="form-label">Frage*</label>
@@ -16,7 +16,7 @@
                    [(ngModel)]="question.text" #text="ngModel" required>
             <div *ngIf="text.invalid && (text.dirty || text.touched)"
                  class="alert alert-danger p-2 mt-1 mb-0">
-              <div *ngIf="text.errors?.required">
+              <div class="errorMessage" *ngIf="text.errors?.required">
                 Eine Frage benötigt einen Fragentext.
               </div>
             </div>

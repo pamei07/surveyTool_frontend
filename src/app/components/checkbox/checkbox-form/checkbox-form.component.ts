@@ -22,6 +22,10 @@ export class CheckboxFormComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.checkbox.text == null) {
+      return;
+    }
+
     console.log(this.checkbox);
 
     this.survey
