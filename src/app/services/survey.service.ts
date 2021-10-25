@@ -17,7 +17,11 @@ export class SurveyService {
     return this.http.post(this.surveyUrl + '/createSurvey/save', survey);
   }
 
-  getSurveyOverview(id: string | null) {
+  public getSurveyOverview(id: string | null) {
     return this.http.get(this.surveyUrl + '/createSurvey/' + id + '/final');
+  }
+
+  public getSurveyOverviewByUuid(uuid: string | null) {
+    return this.http.get(this.surveyUrl + '/answers?uuid=' + uuid);
   }
 }
