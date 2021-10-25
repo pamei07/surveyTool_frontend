@@ -1,18 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../model/survey";
 import {QuestionGroup} from "../../model/question-group";
 
 @Component({
-  selector: 'question-adding',
+  selector: 'survey-completion',
   templateUrl: 'survey-completion.component.html'
 })
 
 export class SurveyCompletionComponent implements OnInit {
 
-  survey: Survey;
+  @Input() survey!: Survey;
 
   constructor() {
-    this.survey = JSON.parse(<string>sessionStorage.getItem('newSurvey'));
   }
 
   ngOnInit() {
