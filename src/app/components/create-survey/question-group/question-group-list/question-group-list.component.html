@@ -7,7 +7,83 @@
     </div>
     <div id="questionGroupListing" class="row card card-body mb-3"
          *ngFor="let questionGroup of survey.questionGroups; index as indexQuestionGroup">
-      <h4>{{ questionGroup.title }}</h4>
+      <div class="d-flex justify-content-between">
+        <h4 class="d-inline">{{ questionGroup.title }}</h4>
+        <div id="updateDeleteButton" class="d-inline">
+          <button class="btn btn-primary me-1" type="button" title="Ändern" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#confirmUpdate' + indexQuestionGroup">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wrench"
+                 viewBox="0 0 16 16">
+              <path
+                d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z"/>
+            </svg>
+          </button>
+          <button class="btn btn-danger" type="button" title="Löschen" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#confirmDeletion' + indexQuestionGroup">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                 viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                    d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+              <path fill-rule="evenodd"
+                    d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal: Confirm Update -->
+      <div class="modal fade" [attr.id]="'confirmUpdate' + indexQuestionGroup" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmUpdateLabel">Frageblock ändern</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form #questionGroupUpdateForm="ngForm" (ngSubmit)="updateQuestionGroup(indexQuestionGroup)">
+              <div class="modal-body">
+                <label [attr.for]="'group' + indexQuestionGroup" class="form-label">
+                  Name/Beschreibung/Frage/... :
+                </label>
+                <input [attr.id]="'group' + indexQuestionGroup" class="form-control" name="title" type="text"
+                       [(ngModel)]="newTitle" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                  Abbrechen
+                </button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                  Ändern
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Modal: Confirm deletion -->
+      <div class="modal fade" [attr.id]="'confirmDeletion' + indexQuestionGroup" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmDeletionLabel">Frageblock löschen</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Sind Sie sicher? Sie können den Frageblock nicht wiederherstellen.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                Abbrechen
+              </button>
+              <button type="submit" class="btn btn-danger" data-bs-dismiss="modal"
+                      (click)="deleteQuestionGroup(indexQuestionGroup)">
+                Ja, löschen.
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <question-list [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></question-list>
       <question-form [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></question-form>
@@ -15,3 +91,4 @@
     </div>
   </div>
 </div>
+

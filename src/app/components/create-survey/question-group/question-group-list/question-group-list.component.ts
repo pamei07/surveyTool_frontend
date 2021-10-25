@@ -9,10 +9,26 @@ import {Survey} from "../../../../model/survey";
 export class QuestionGroupListComponent implements OnInit {
 
   @Input() survey!: Survey;
+  newTitle: string;
 
   constructor() {
+    this.newTitle = '';
   }
 
   ngOnInit() {
+  }
+
+  deleteQuestionGroup(indexQuestionGroup: number) {
+    console.log(this.survey.questionGroups);
+    this.survey.questionGroups?.splice(indexQuestionGroup, 1);
+    console.log(this.survey.questionGroups);
+    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
+  }
+
+  updateQuestionGroup(indexQuestionGroup: number) {
+    console.log(this.survey.questionGroups);
+    this.survey.questionGroups![indexQuestionGroup].title = this.newTitle;
+    this.newTitle = '';
+    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
   }
 }
