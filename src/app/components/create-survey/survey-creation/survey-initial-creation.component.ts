@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Survey} from "../../model/survey";
+import {Survey} from "../../../model/survey";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({

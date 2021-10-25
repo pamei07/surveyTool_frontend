@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Survey} from "../../model/survey";
-import {SurveyService} from "../../services/survey.service";
+import {Survey} from "../../../model/survey";
+import {SurveyService} from "../../../services/survey.service";
 import {Router} from "@angular/router";
 
 @Component({

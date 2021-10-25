@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Survey} from "../../model/survey";
-import {QuestionGroup} from "../../model/question-group";
+import {Component, OnInit} from '@angular/core';
+import {Survey} from "../../../model/survey";
+import {QuestionGroup} from "../../../model/question-group";
 
 @Component({
   selector: 'survey-question-adding',
