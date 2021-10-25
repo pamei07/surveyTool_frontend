@@ -3,11 +3,11 @@ import {Survey} from "../../model/survey";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'survey-creation',
-  templateUrl: 'survey-creation.component.html'
+  selector: 'survey-initial-creation',
+  templateUrl: 'survey-initial-creation.component.html'
 })
 
-export class SurveyCreationComponent implements OnInit {
+export class SurveyInitialCreationComponent implements OnInit {
 
   survey!: Survey;
 

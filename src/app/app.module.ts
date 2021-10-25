@@ -4,8 +4,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./components/home/home.component";
-import {SurveyCreationComponent} from "./components/survey-creation/survey-creation.component";
-import {SurveyCompletionComponent} from "./components/survey-completion/survey-completion.component";
+import {SurveyInitialCreationComponent} from "./components/survey-creation/survey-initial-creation.component";
+import {SurveyQuestionAddingComponent} from "./components/survey-completion/survey-question-adding.component";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {QuestionGroupFormComponent} from "./components/question-group/question-group-form/question-group-form.component";
@@ -20,8 +20,8 @@ import {DateValidatorDirective} from "./directives/validators/date-validator.dir
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'createSurvey', component: SurveyCreationComponent},
-  {path: 'createSurvey/questions', component: SurveyCompletionComponent},
+  {path: 'createSurvey', component: SurveyInitialCreationComponent},
+  {path: 'createSurvey/questions', component: SurveyQuestionAddingComponent},
   {path: 'createSurvey/:id/final', component: SurveyOverviewComponent}
 ]
 
@@ -29,8 +29,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    SurveyCreationComponent,
-    SurveyCompletionComponent,
+    SurveyInitialCreationComponent,
+    SurveyQuestionAddingComponent,
     QuestionGroupFormComponent,
     QuestionGroupListComponent,
     QuestionFormComponent,

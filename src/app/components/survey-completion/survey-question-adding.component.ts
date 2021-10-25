@@ -3,11 +3,11 @@ import {Survey} from "../../model/survey";
 import {QuestionGroup} from "../../model/question-group";
 
 @Component({
-  selector: 'survey-completion',
-  templateUrl: 'survey-completion.component.html'
+  selector: 'survey-question-adding',
+  templateUrl: 'survey-question-adding.component.html'
 })
 
-export class SurveyCompletionComponent implements OnInit {
+export class SurveyQuestionAddingComponent implements OnInit {
 
   survey: Survey;
 
