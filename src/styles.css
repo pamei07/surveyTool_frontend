@@ -17,6 +17,10 @@
   color: #2A52CC;
 }
 
+/* Question table column width */
+.questionColumn {
+  width: 80%;
+}
 
 .errorMessage {
   white-space: pre-wrap;
