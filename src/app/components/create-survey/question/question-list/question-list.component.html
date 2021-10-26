@@ -11,10 +11,12 @@
       <th>Typ</th>
       <th class="questionColumn">Frage</th>
       <th class="text-center">*</th>
+      <th class="text-center">Ä/L</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let question of survey.questionGroups![indexQuestionGroup].questions; index as indexQuestion">
+    <tr class="questionTableRow"
+        *ngFor="let question of survey.questionGroups![indexQuestionGroup].questions; index as indexQuestion">
       <td>{{indexQuestion + 1}}</td>
 
       <td *ngIf="question.hasCheckbox">Auswahl</td>
@@ -52,11 +54,109 @@
         <checkbox-form [survey]="survey"
                        [indexQuestionGroup]="indexQuestionGroup"
                        [indexQuestion]="indexQuestion"></checkbox-form>
-
       </td>
 
-      <td *ngIf="question.required" class="text-center">Ja</td>
-      <td *ngIf="!question.required" class="text-center">Nein</td>
+      <td class="text-center">
+        <span *ngIf="question.required">
+          Ja
+        </span>
+        <span *ngIf="!question.required">
+          Nein
+        </span>
+      </td>
+
+      <td>
+        <div id="updateDeleteButton" class="d-flex">
+          <button class="btn btn-primary me-1 p-1" type="button" title="Ändern" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#confirmUpdateQuestion' + indexQuestion + 'Group' + indexQuestionGroup">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wrench"
+                 viewBox="0 0 16 16">
+              <path
+                d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z"/>
+            </svg>
+          </button>
+          <button class="btn btn-danger p-1" type="button" title="Löschen" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#confirmDeletionQuestion' + indexQuestion + 'Group' + indexQuestionGroup">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                 viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                    d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+              <path fill-rule="evenodd"
+                    d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+            </svg>
+          </button>
+
+          <!-- Modal: Confirm Update -->
+          <div class="modal fade" [attr.id]="'confirmUpdateQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+               tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="confirmUpdateLabel">Frage ändern</h5>
+                </div>
+                <form #questionUpdateForm="ngForm"
+                      (ngSubmit)="updateQuestion(indexQuestionGroup)">
+                  <div class="modal-body">
+                    <label [attr.for]="'groupQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+                           class="form-label">
+                      Fragentext:
+                    </label>
+                    <input [attr.id]="'groupQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+                           class="form-control" name="title" type="text"
+                           [(ngModel)]="question.text" #newQuestionText="ngModel" required>
+                    <div *ngIf="newQuestionText.invalid && (newQuestionText.dirty || newQuestionText.touched)"
+                         class="alert alert-danger p-2 m-0 mt-2">
+                      <div class="errorMessage" *ngIf="newQuestionText.errors?.required">
+                        Ein Frageblock benötigt einen Titel.
+                      </div>
+                    </div>
+                    <div class="mt-2">
+                      <label [attr.for]="'requiredQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+                             class="form-check-label">
+                        Erforderlich?&nbsp;&nbsp;
+                      </label>
+                      <input [attr.id]="'requiredQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+                             class="form-check-input" name="required"
+                             type="checkbox" [value]="1" [(ngModel)]="question.required" #required="ngModel">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                            [disabled]="questionUpdateForm.invalid">
+                      Änderungen Speichern
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal: Confirm deletion -->
+          <div class="modal fade" [attr.id]="'confirmDeletionQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+               tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="confirmDeletionLabel">Frage löschen</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Sind Sie sicher? Sie können die Frage nicht wiederherstellen.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                    Abbrechen
+                  </button>
+                  <button type="submit" class="btn btn-danger" data-bs-dismiss="modal"
+                          (click)="deleteQuestion(indexQuestion)">
+                    Ja, löschen.
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
     </tr>
     </tbody>
   </table>

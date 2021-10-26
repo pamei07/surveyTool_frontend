@@ -1,14 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 .restrictWidth {
   max-width: 820px;
 }
 
-/* Enter basic information of survey: */
+/* Enter basic information of survey */
 .labelInput {
   font-size: 18px;
 }
 
-/* Preview basic information when adding questions: */
+/* Preview basic information when adding questions */
 .basicInformation {
   font-size: 20px;
 }
@@ -17,11 +16,12 @@
   color: #2A52CC;
 }
 
-/* Question table column width */
+/* Question table */
 .questionColumn {
   width: 80%;
 }
 
+/* */
 .errorMessage {
   white-space: pre-wrap;
 }

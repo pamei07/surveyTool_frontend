@@ -11,7 +11,7 @@
         <h3 class="d-inline">{{ questionGroup.title }}</h3>
         <div id="updateDeleteButton" class="d-inline">
           <button class="btn btn-primary me-1" type="button" title="Ändern" data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#confirmUpdate' + indexQuestionGroup">
+                  [attr.data-bs-target]="'#confirmUpdateGroup' + indexQuestionGroup">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wrench"
                  viewBox="0 0 16 16">
               <path
@@ -19,7 +19,7 @@
             </svg>
           </button>
           <button class="btn btn-danger" type="button" title="Löschen" data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#confirmDeletion' + indexQuestionGroup">
+                  [attr.data-bs-target]="'#confirmDeletionGroup' + indexQuestionGroup">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
                  viewBox="0 0 16 16">
               <path fill-rule="evenodd"
@@ -32,7 +32,7 @@
       </div>
 
       <!-- Modal: Confirm Update -->
-      <div class="modal fade" [attr.id]="'confirmUpdate' + indexQuestionGroup" tabindex="-1" aria-hidden="true">
+      <div class="modal fade" [attr.id]="'confirmUpdateGroup' + indexQuestionGroup" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -68,9 +68,8 @@
         </div>
       </div>
 
-
       <!-- Modal: Confirm deletion -->
-      <div class="modal fade" [attr.id]="'confirmDeletion' + indexQuestionGroup" tabindex="-1" aria-hidden="true">
+      <div class="modal fade" [attr.id]="'confirmDeletionGroup' + indexQuestionGroup" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">

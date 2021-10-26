@@ -16,4 +16,13 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  deleteQuestion(indexQuestion: number) {
+    this.survey.questionGroups![this.indexQuestionGroup].questions!.splice(indexQuestion, 1);
+    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
+  }
+
+  updateQuestion(indexQuestion: number) {
+    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
+  }
 }
