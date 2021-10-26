@@ -12,11 +12,17 @@
   <ul class="list-group mb-2 p-0 container"
       *ngIf="survey.questionGroups![indexQuestionGroup].questions![indexQuestion].checkboxGroup!.checkboxes!.length > 0">
     <li class="list-group-item"
-        *ngFor="let checkbox of survey.questionGroups![indexQuestionGroup].questions![indexQuestion].checkboxGroup!.checkboxes">
+        *ngFor="let checkbox of survey.questionGroups![indexQuestionGroup].questions![indexQuestion].checkboxGroup!.checkboxes;
+        index as indexCheckbox;">
       <span> {{ checkbox.text }} </span>
-      <span *ngIf="checkbox.hasTextField" class="badge bg-secondary float-end mt-1">
-          Textfeld
-      </span>
+      <div class="float-end">
+        <span *ngIf="checkbox.hasTextField" class="badge bg-secondary m-0 me-2">
+            Textfeld
+        </span>
+        <button class="btn-close p-1 smallDeleteBtn" type="button" title="Löschen"
+                (click)="deleteCheckbox(indexCheckbox)">
+        </button>
+      </div>
     </li>
   </ul>
 </div>

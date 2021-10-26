@@ -21,6 +21,11 @@
   width: 80%;
 }
 
+/* List of checkboxes */
+.smallDeleteBtn {
+  height: 15px;
+}
+
 /* */
 .errorMessage {
   white-space: pre-wrap;

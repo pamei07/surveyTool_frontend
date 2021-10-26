@@ -17,4 +17,14 @@ export class CheckboxListComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  deleteCheckbox(indexCheckbox: number) {
+    this.survey
+      .questionGroups![this.indexQuestionGroup]
+      .questions![this.indexQuestion]
+      .checkboxGroup!
+      .checkboxes!.splice(indexCheckbox, 1);
+
+    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
+  }
 }
