@@ -25,4 +25,5 @@ export class QuestionListComponent implements OnInit {
   updateQuestion(indexQuestion: number) {
     sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
   }
+
 }

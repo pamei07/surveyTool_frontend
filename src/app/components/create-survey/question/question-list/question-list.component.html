@@ -107,17 +107,67 @@
                     <div *ngIf="newQuestionText.invalid && (newQuestionText.dirty || newQuestionText.touched)"
                          class="alert alert-danger p-2 m-0 mt-2">
                       <div class="errorMessage" *ngIf="newQuestionText.errors?.required">
-                        Ein Frageblock benötigt einen Titel.
+                        Eine Frage benötigt einen Fragetext.
                       </div>
                     </div>
-                    <div class="mt-2">
+                    <div class="mt-3 ms-2">
                       <label [attr.for]="'requiredQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                              class="form-check-label">
                         Erforderlich?&nbsp;&nbsp;
                       </label>
                       <input [attr.id]="'requiredQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                              class="form-check-input" name="required"
-                             type="checkbox" [value]="1" [(ngModel)]="question.required" #required="ngModel">
+                             type="checkbox" [(ngModel)]="question.required" #required="ngModel">
+                    </div>
+                  </div>
+                  <div *ngIf="question.hasCheckbox">
+                    <hr>
+                    <div class="container">
+                      <div class="row mb-3">
+                        <div class="col">
+                          <label [attr.for]="'multipleSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+                                 class="form-check-label">
+                            Mehrfachauswahl?&nbsp;&nbsp;
+                          </label>
+                          <input [attr.id]="'multipleSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+                                 class="form-check-input" name="multipleSelect" type="checkbox"
+                                 [(ngModel)]="question.checkboxGroup!.multipleSelect" #multipleSelect="ngModel">
+                        </div>
+                        <div class="col">
+                          <label [attr.for]="'minSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+                                 class="form-label">
+                            Minimum:
+                          </label>
+                          <input [attr.id]="'minSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+                                 class="form-control" name="minSelect" type="number" min="0"
+                                 [disabled]="question.checkboxGroup!.multipleSelect == false ||
+                                             question.checkboxGroup!.multipleSelect == null"
+                                 [(ngModel)]="question.checkboxGroup!.minSelect" #minSelect="ngModel">
+                          <div *ngIf="minSelect.invalid && (minSelect.dirty || minSelect.touched)"
+                               class="alert alert-danger p-2 mt-1 mb-0">
+                            <div *ngIf="minSelect.errors?.min">
+                              Das Minimum muss mind. 0 sein.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <label [attr.for]="'maxSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+                                 class="form-label">
+                            Maximal:
+                          </label>
+                          <input [attr.id]="'maxSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+                                 class="form-control" name="maxSelect" type="number" min="2"
+                                 [disabled]="question.checkboxGroup!.multipleSelect == false ||
+                                             question.checkboxGroup!.multipleSelect == null"
+                                 [(ngModel)]="question.checkboxGroup!.maxSelect" #maxSelect="ngModel">
+                          <div *ngIf="maxSelect.invalid && (maxSelect.dirty || maxSelect.touched)"
+                               class="alert alert-danger p-2 mt-1 mb-0">
+                            <div *ngIf="maxSelect.errors?.min">
+                              Das Maximum muss mind. 2 sein.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="modal-footer">

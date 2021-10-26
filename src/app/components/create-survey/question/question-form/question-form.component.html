@@ -61,8 +61,8 @@
                            class="form-label">
                       Minimum:
                     </label>
-                    <input [attr.id]="'minSelect' + indexQuestionGroup" class="form-control" name="maxSelect"
-                           type="number" min="0" [disabled]="!disableInput"
+                    <input [attr.id]="'minSelect' + indexQuestionGroup" class="form-control" name="minSelect"
+                           type="number" min="0" [disabled]="disableInput"
                            [(ngModel)]="checkboxGroup.minSelect" #minSelect="ngModel">
                     <div *ngIf="minSelect.invalid && (minSelect.dirty || minSelect.touched)"
                          class="alert alert-danger p-2 mt-1 mb-0">
