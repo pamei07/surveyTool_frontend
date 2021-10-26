@@ -11,27 +11,42 @@
       <div *ngIf="!question.hasCheckbox">
         <textarea [attr.id]="'question' + questionIndex + 'Group' + questionGroupIndex" class="form-control"></textarea>
       </div>
+
       <div *ngIf="question.hasCheckbox">
         <div class="form-check" *ngIf="question.checkboxGroup?.multipleSelect">
-          <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
-            <input [attr.id]="'checkbox' + checkboxIndex + 'Question' + questionIndex + 'Group' + questionGroupIndex"
-                   class="form-check-input"
-                   type="checkbox" value="checkbox.text">
-            <label [attr.for]="'checkbox' + checkboxIndex + 'Question' + questionIndex + 'Group' + questionGroupIndex"
-                   class="form-check-label">
-              {{ checkbox.text }}
-            </label>
+          <div class="row ms-2 mb-1"
+               *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
+            <div class="col-auto">
+              <input [attr.id]="'checkbox' + checkboxIndex + 'Question' + questionIndex + 'Group' + questionGroupIndex"
+                     class="form-check-input"
+                     type="checkbox" value="checkbox.text">
+              <label [attr.for]="'checkbox' + checkboxIndex + 'Question' + questionIndex + 'Group' + questionGroupIndex"
+                     class="form-check-label">
+                {{ checkbox.text }}
+              </label>
+            </div>
+
+            <input *ngIf="checkbox.hasTextField" type="text" class="form-control col me-3"
+                   [attr.name]="'checkbox' + checkboxIndex + 'Question' + questionIndex + 'Group' + questionGroupIndex">
           </div>
         </div>
+
         <div class="form-check" *ngIf="!question.checkboxGroup?.multipleSelect">
-          <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
-            <input [attr.id]="'checkbox' + checkboxIndex + 'Question' + questionIndex + 'Group' + questionGroupIndex"
-                   class="form-check-input" [attr.name]="'question' + questionIndex + 'Group' + questionGroupIndex"
-                   type="radio" value="checkbox.text">
-            <label [attr.for]="'checkbox' + checkboxIndex + 'Question' + questionIndex + 'Group' + questionGroupIndex"
-                   class="form-check-label">
-              {{ checkbox.text }}
-            </label>
+          <div class="row ms-2 mb-1"
+               *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
+            <div class="col-auto">
+              <input [attr.id]="'checkbox' + checkboxIndex + 'Question' + questionIndex + 'Group' + questionGroupIndex"
+                     class="form-check-input"
+                     [attr.name]="'question' + questionIndex + 'Group' + questionGroupIndex"
+                     type="radio" value="checkbox.text">
+              <label [attr.for]="'checkbox' + checkboxIndex + 'Question' + questionIndex + 'Group' + questionGroupIndex"
+                     class="form-check-label">
+                {{ checkbox.text }}
+              </label>
+            </div>
+
+            <input *ngIf="checkbox.hasTextField" type="text" class="form-control col me-3"
+                   [attr.name]="'checkbox' + checkboxIndex + 'Question' + questionIndex + 'Group' + questionGroupIndex">
           </div>
         </div>
       </div>
@@ -39,6 +54,5 @@
   </div>
   <!--TODO: Add required attribute if questions is required-->
   <!--TODO: min-/max-choices on multiple select questions-->
-  <!--TODO: add text fields to checkboxes if required-->
   <!--TODO: Create answers for each question-->
 </section>
