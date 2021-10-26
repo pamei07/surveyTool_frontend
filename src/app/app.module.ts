@@ -20,6 +20,8 @@ import {DateValidatorDirective} from "./directives/validators/date-validator.dir
 import {AnswerSurveyOverviewComponent} from "./components/answer-survey/answer-survey-overview/answer-survey-overview.component";
 import {AnswerSurveyParticipationComponent} from "./components/answer-survey/answer-survey-participation/answer-survey-participation.component";
 import {AnswerQuestionGroupListComponent} from "./components/answer-survey/answer-question-group-list/answer-question-group-list.component";
+import {AppHeaderComponent} from "./components/header/app-header.component";
+import {AppFooterComponent} from "./components/footer/app-footer.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
     DateValidatorDirective,
     AnswerSurveyOverviewComponent,
     AnswerSurveyParticipationComponent,
-    AnswerQuestionGroupListComponent
+    AnswerQuestionGroupListComponent,
+    AppHeaderComponent,
+    AppFooterComponent
   ],
   imports: [
     BrowserModule,
