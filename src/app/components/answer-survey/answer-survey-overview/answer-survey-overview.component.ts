@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 import {ActivatedRoute, Router} from "@angular/router";
-import {SurveyService} from "../../../services/survey.service";
+import {SurveyService} from "../../../services/survey/survey.service";
 
 @Component({
   selector: 'answer-survey-overview',
