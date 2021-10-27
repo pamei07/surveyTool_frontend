@@ -20,12 +20,13 @@
               <input *ngIf="question.checkboxGroup?.multipleSelect"
                      [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-input me-2" formControlName="checked"
-                     type="checkbox" value="checkbox.text">
+                     type="checkbox" value="true">
+              <!-- TODO: Fix radio button => 'true' stays even after selecting another button -->
               <input *ngIf="!question.checkboxGroup?.multipleSelect"
                      [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-input me-2" formControlName="checked"
                      [attr.name]="'question' + question.id"
-                     type="radio" value="checkbox.text">
+                     type="radio" value="true">
               <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-label">
                 {{ checkbox.text }}

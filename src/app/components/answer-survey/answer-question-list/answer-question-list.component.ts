@@ -4,6 +4,7 @@ import {FormArray, FormBuilder} from "@angular/forms";
 import {Answer} from "../../../model/answer";
 import {Question} from "../../../model/question";
 import {AnswerService} from "../../../services/answer/answer.service";
+import {Checkbox} from "../../../model/checkbox";
 
 @Component({
   selector: 'answer-question-list',
@@ -31,6 +32,15 @@ export class AnswerQuestionListComponent implements OnInit {
     this.insertInputFields();
   }
 
+  /**
+   * Push an answer form for each question into the FormArray 'answers'
+   * There are 2 types of answer forms:
+   * 1. For questions with checkboxes:
+   *    --> another FormArray containing FormGroups with an attribute 'checked' to mark if a checkbox has been checked
+   *        and a 'text' attribute to capture the text input if available
+   * 2. For plain text questions:
+   *    --> a FormControl capturing the text input
+   */
   insertInputFields() {
     this.questionGroup.questions!.forEach((question, index) => {
       if (question.hasCheckbox) {
@@ -38,7 +48,7 @@ export class AnswerQuestionListComponent implements OnInit {
         let checkboxFormArray = this.answers.at(index) as FormArray;
         question.checkboxGroup?.checkboxes?.forEach(checkbox => {
           checkboxFormArray.push(this.fb.group({
-            checked: '',
+            checked: false,
             text: ''
           }))
         })
@@ -50,17 +60,43 @@ export class AnswerQuestionListComponent implements OnInit {
     console.log(this.answerForm);
   }
 
+  /**
+   * Create Answer objects for each question on submit.
+   * 1. For checkboxes:
+   *    --> Create an Answer object only if a checkbox has been checked
+   * 2. For text questions:
+   *    --> Create an Answer object only if a text field is not empty
+   */
   onSubmit() {
+    console.log(this.answerForm)
     let answer: Answer;
     let currentQuestion: Question = new Question();
-    // TODO: Create Answer object for checkboxes
-    this.answers.controls.forEach((input, index) => {
-      if (input.value !== '' && !(input.value instanceof Array)) {
+    let currentCheckbox: Checkbox = new Checkbox();
+    this.answers.controls.forEach((input, questionIndex) => {
+      if (input.value instanceof Array) {
+        input.value.forEach((checkbox, checkboxIndex) => {
+          if (checkbox.checked == true || checkbox.checked == 'true') {
+            answer = new Answer();
+
+            if (checkbox.text !== '') {
+              answer.setText(checkbox.text);
+            }
+
+            currentQuestion = this.questionGroup.questions![questionIndex]
+            answer.setQuestion(currentQuestion);
+
+            currentCheckbox = this.questionGroup.questions![questionIndex].checkboxGroup!.checkboxes![checkboxIndex];
+            answer.setCheckbox(currentCheckbox);
+
+            this.answerArray.push(answer)
+          }
+        })
+      } else if (input.value !== '') {
         answer = new Answer();
 
         answer.setText(input.value);
 
-        currentQuestion = this.questionGroup.questions![index]
+        currentQuestion = this.questionGroup.questions![questionIndex]
         answer.setQuestion(currentQuestion);
 
         this.answerArray.push(answer);

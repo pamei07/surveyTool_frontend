@@ -16,4 +16,8 @@ export class Answer {
   setQuestion(question: Question) {
     this.question = question;
   }
+
+  setCheckbox(checkbox: Checkbox) {
+    this.checkbox = checkbox;
+  }
 }
