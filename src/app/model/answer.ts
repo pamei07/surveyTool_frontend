@@ -7,4 +7,12 @@ export class Answer {
   user: Object | undefined;
   question: Question | undefined;
   checkbox: Checkbox | undefined;
+
+  setText(text: string) {
+    this.text = text;
+  }
+
+  setQuestion(question: Question) {
+    this.question = question;
+  }
 }

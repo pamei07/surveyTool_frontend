@@ -7,7 +7,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {SurveyInitialCreationComponent} from "./components/create-survey/survey-creation/survey-initial-creation.component";
 import {SurveyQuestionAddingComponent} from "./components/create-survey/survey-question-adding/survey-question-adding.component";
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {QuestionGroupFormComponent} from "./components/create-survey/question-group/question-group-form/question-group-form.component";
 import {QuestionGroupListComponent} from "./components/create-survey/question-group/question-group-list/question-group-list.component";
 import {QuestionFormComponent} from "./components/create-survey/question/question-form/question-form.component";
@@ -22,6 +22,8 @@ import {AnswerSurveyParticipationComponent} from "./components/answer-survey/ans
 import {AnswerQuestionGroupListComponent} from "./components/answer-survey/answer-question-group-list/answer-question-group-list.component";
 import {AppHeaderComponent} from "./components/header/app-header.component";
 import {AppFooterComponent} from "./components/footer/app-footer.component";
+import {AnswerQuestionListComponent} from "./components/answer-survey/answer-question-list/answer-question-list.component";
+import {AnswerCheckboxListComponent} from "./components/answer-survey/answer-checkbox-list/answer-checkbox-list.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -50,6 +52,8 @@ const appRoutes: Routes = [
     AnswerSurveyOverviewComponent,
     AnswerSurveyParticipationComponent,
     AnswerQuestionGroupListComponent,
+    AnswerQuestionListComponent,
+    AnswerCheckboxListComponent,
     AppHeaderComponent,
     AppFooterComponent
   ],
@@ -57,7 +61,8 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

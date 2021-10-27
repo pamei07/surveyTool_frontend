@@ -1,0 +1,21 @@
+<form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
+  <div formArrayName="answers">
+    <div *ngFor="let question of questionGroup.questions; index as questionIndex" class="mb-3">
+      <label [attr.for]="'question' + questionIndex + 'GroupID' + questionGroup.id" class="form-label">
+        #{{ questionIndex + 1 }}: {{ question.text }}
+      </label>
+      <span *ngIf="question.required">*</span>
+      <div *ngIf="!question.hasCheckbox">
+        <textarea [attr.id]="'question' + questionIndex + 'GroupID' + questionGroup.id" class="form-control"
+                  [formControlName]="questionIndex"></textarea>
+      </div>
+
+      <div *ngIf="question.hasCheckbox">
+        <!--        <answer-checkbox-list [question]="question"></answer-checkbox-list>-->
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-outline-success float-end" type="submit">
+    Einreichen
+  </button>
+</form>
