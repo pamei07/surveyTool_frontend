@@ -14,7 +14,6 @@ export class AnswerService {
   }
 
   public saveAnswers(answerArray: Answer[]) {
-    console.log(answerArray[0].question);
     return this.http.post(this.surveyUrl + '/postAnswers', answerArray);
   }
 }
