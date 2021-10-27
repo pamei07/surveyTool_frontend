@@ -1,17 +1,43 @@
 <form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
   <div formArrayName="answers">
     <div *ngFor="let question of questionGroup.questions; index as questionIndex" class="mb-3">
-      <label [attr.for]="'question' + questionIndex + 'GroupID' + questionGroup.id" class="form-label">
+      <label [attr.for]="'question' + question.id + 'Group' + questionGroup.id" class="form-label">
         #{{ questionIndex + 1 }}: {{ question.text }}
       </label>
       <span *ngIf="question.required">*</span>
+
       <div *ngIf="!question.hasCheckbox">
-        <textarea [attr.id]="'question' + questionIndex + 'GroupID' + questionGroup.id" class="form-control"
+        <textarea [attr.id]="'question' + question.id + 'Group' + questionGroup.id" class="form-control"
                   [formControlName]="questionIndex"></textarea>
       </div>
 
-      <div *ngIf="question.hasCheckbox">
-        <!--        <answer-checkbox-list [question]="question"></answer-checkbox-list>-->
+      <div *ngIf="question.hasCheckbox" formArrayName="{{questionIndex}}">
+
+        <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
+
+          <div class="row ms-2 mb-1" formGroupName="{{checkboxIndex}}">
+            <div class="col-auto">
+              <input *ngIf="question.checkboxGroup?.multipleSelect"
+                     [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
+                     class="form-check-input me-2" formControlName="checked"
+                     type="checkbox" value="checkbox.text">
+              <input *ngIf="!question.checkboxGroup?.multipleSelect"
+                     [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
+                     class="form-check-input me-2" formControlName="checked"
+                     [attr.name]="'question' + question.id"
+                     type="radio" value="checkbox.text">
+              <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
+                     class="form-check-label">
+                {{ checkbox.text }}
+              </label>
+            </div>
+
+            <input *ngIf="checkbox.hasTextField" type="text" class="form-control col me-3" formControlName="text"
+                   [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
+          </div>
+
+        </div>
+
       </div>
     </div>
   </div>

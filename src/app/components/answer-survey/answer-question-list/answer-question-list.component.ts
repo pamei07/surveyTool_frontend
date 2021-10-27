@@ -28,24 +28,34 @@ export class AnswerQuestionListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.countPossibleAnswersForTextQuestions();
+    this.insertInputFields();
   }
 
-  countPossibleAnswersForTextQuestions() {
-    let counter = 0;
-
-    this.questionGroup.questions!.forEach(question => {
-      this.answers.push(this.fb.control(''));
-      counter++;
+  insertInputFields() {
+    this.questionGroup.questions!.forEach((question, index) => {
+      if (question.hasCheckbox) {
+        this.answers.push(this.fb.array([]));
+        let checkboxFormArray = this.answers.at(index) as FormArray;
+        question.checkboxGroup?.checkboxes?.forEach(checkbox => {
+          checkboxFormArray.push(this.fb.group({
+            checked: '',
+            text: ''
+          }))
+        })
+        this.answers.setControl(index, checkboxFormArray);
+      } else {
+        this.answers.push(this.fb.control(''));
+      }
     })
+    console.log(this.answerForm);
   }
 
   onSubmit() {
     let answer: Answer;
     let currentQuestion: Question = new Question();
-    // TODO: Create answer with each value and post
+    // TODO: Create Answer object for checkboxes
     this.answers.controls.forEach((input, index) => {
-      if (input.value !== '') {
+      if (input.value !== '' && !(input.value instanceof Array)) {
         answer = new Answer();
 
         answer.setText(input.value);

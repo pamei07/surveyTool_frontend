@@ -23,7 +23,6 @@ import {AnswerQuestionGroupListComponent} from "./components/answer-survey/answe
 import {AppHeaderComponent} from "./components/header/app-header.component";
 import {AppFooterComponent} from "./components/footer/app-footer.component";
 import {AnswerQuestionListComponent} from "./components/answer-survey/answer-question-list/answer-question-list.component";
-import {AnswerCheckboxListComponent} from "./components/answer-survey/answer-checkbox-list/answer-checkbox-list.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -53,7 +52,6 @@ const appRoutes: Routes = [
     AnswerSurveyParticipationComponent,
     AnswerQuestionGroupListComponent,
     AnswerQuestionListComponent,
-    AnswerCheckboxListComponent,
     AppHeaderComponent,
     AppFooterComponent
   ],
