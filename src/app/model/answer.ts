@@ -1,10 +1,11 @@
 import {Question} from "./question";
 import {Checkbox} from "./checkbox";
+import {User} from "./user";
 
 export class Answer {
   id: number | undefined;
   text: string | undefined;
-  user: Object | undefined;
+  user: User | undefined;
   question: Question | undefined;
   checkbox: Checkbox | undefined;
 
