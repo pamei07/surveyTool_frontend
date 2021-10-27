@@ -3,6 +3,7 @@ import {QuestionGroup} from "../../../model/question-group";
 import {FormArray, FormBuilder} from "@angular/forms";
 import {Answer} from "../../../model/answer";
 import {Question} from "../../../model/question";
+import {AnswerService} from "../../../services/answer/answer.service";
 
 @Component({
   selector: 'answer-question-list',
@@ -12,6 +13,7 @@ import {Question} from "../../../model/question";
 export class AnswerQuestionListComponent implements OnInit {
 
   @Input() questionGroup!: QuestionGroup;
+  answerArray: Answer[] = [];
 
   answerForm = this.fb.group({
     answers: this.fb.array([])
@@ -21,7 +23,8 @@ export class AnswerQuestionListComponent implements OnInit {
     return this.answerForm.get('answers') as FormArray;
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private answerService: AnswerService) {
   }
 
   ngOnInit() {
@@ -49,8 +52,12 @@ export class AnswerQuestionListComponent implements OnInit {
 
         currentQuestion = this.questionGroup.questions![index]
         answer.setQuestion(currentQuestion);
-        console.log(answer);
+
+        this.answerArray.push(answer);
       }
     });
+    console.log(this.answerArray);
+    this.answerService.saveAnswers(this.answerArray).subscribe();
+    this.answerArray = [];
   }
 }
