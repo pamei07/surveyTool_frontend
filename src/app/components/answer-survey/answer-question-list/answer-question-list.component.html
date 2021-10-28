@@ -1,48 +1,49 @@
-<form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
-  <div formArrayName="answers">
-    <div *ngFor="let question of questionGroup.questions; index as questionIndex" class="mb-3">
-      <label [attr.for]="'question' + question.id + 'Group' + questionGroup.id" class="form-label">
-        #{{ questionIndex + 1 }}: {{ question.text }}
-      </label>
-      <span *ngIf="question.required">*</span>
+<div [formGroup]="parentForm">
+  <div formArrayName="questionGroupsAnswers">
+    <div formArrayName="{{questionGroupIndex}}">
+      <div *ngFor="let question of questionGroup.questions; index as questionIndex" class="mb-3">
+        <label [attr.for]="'question' + question.id + 'Group' + questionGroup.id" class="form-label">
+          #{{ questionIndex + 1 }}: {{ question.text }}
+        </label>
+        <span *ngIf="question.required">*</span>
 
-      <div *ngIf="!question.hasCheckbox">
+        <div *ngIf="!question.hasCheckbox">
         <textarea [attr.id]="'question' + question.id + 'Group' + questionGroup.id" class="form-control"
                   [formControlName]="questionIndex"></textarea>
-      </div>
+        </div>
 
-      <div *ngIf="question.hasCheckbox" formArrayName="{{questionIndex}}">
+        <div *ngIf="question.hasCheckbox" formArrayName="{{questionIndex}}">
 
-        <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
+          <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
 
-          <div class="row ms-2 mb-1" formGroupName="{{checkboxIndex}}">
-            <div class="col-auto">
-              <input *ngIf="question.checkboxGroup?.multipleSelect"
-                     [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
-                     class="form-check-input me-2" formControlName="checked"
-                     type="checkbox" value="true">
-              <!-- TODO: Fix radio button => 'true' stays even after selecting another button -->
-              <input *ngIf="!question.checkboxGroup?.multipleSelect"
-                     [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
-                     class="form-check-input me-2" formControlName="checked"
-                     [attr.name]="'question' + question.id"
-                     type="radio" value="true">
-              <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
-                     class="form-check-label">
-                {{ checkbox.text }}
-              </label>
+            <div class="row ms-2 mb-1" formGroupName="{{checkboxIndex}}">
+              <div class="col-auto">
+                <input *ngIf="question.checkboxGroup?.multipleSelect"
+                       [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
+                       class="form-check-input me-2" formControlName="checked"
+                       type="checkbox" value="true">
+                <!-- TODO: Fix radio button => 'true' stays even after selecting another button -->
+                <input *ngIf="!question.checkboxGroup?.multipleSelect"
+                       [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
+                       class="form-check-input me-2" formControlName="checked"
+                       [attr.name]="'question' + question.id"
+                       type="radio" value="true">
+                <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
+                       class="form-check-label">
+                  {{ checkbox.text }}
+                </label>
+              </div>
+
+              <input *ngIf="checkbox.hasTextField" type="text" class="form-control col me-3" formControlName="text"
+                     [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
             </div>
 
-            <input *ngIf="checkbox.hasTextField" type="text" class="form-control col me-3" formControlName="text"
-                   [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
           </div>
 
         </div>
-
       </div>
     </div>
+
   </div>
-  <button class="btn btn-outline-success float-end" type="submit">
-    Einreichen
-  </button>
-</form>
+</div>
+

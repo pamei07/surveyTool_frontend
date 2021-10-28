@@ -9,6 +9,17 @@
   </div>
 </section>
 
-<section id="answeringQuestions">
-  <answer-question-group-list [survey]="survey"></answer-question-group-list>
+<section id="questionGroups" class="container restrictWidth" [formGroup]="answerForm" (ngSubmit)="onSubmit()">
+  <div class="card card-body mb-3" *ngFor="let questionGroup of survey.questionGroups; index as questionGroupIndex">
+    <h3 class="card-title">
+      {{ questionGroup.title }}
+    </h3>
+    <answer-question-list [questionGroup]="questionGroup"
+                          [questionGroupIndex]="questionGroupIndex"></answer-question-list>
+  </div>
+  <!--TODO: Add required attribute if questions is required-->
+  <!--TODO: min-/max-choices on multiple select questions-->
+  <button class="btn btn-success float-end mb-3" type="submit">
+    Einreichen
+  </button>
 </section>
