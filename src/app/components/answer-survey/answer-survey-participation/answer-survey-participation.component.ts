@@ -124,6 +124,8 @@ export class AnswerSurveyParticipationComponent implements OnInit {
     let userNameInput = this.userName!.value;
     if (userNameInput !== '') {
       user.setName(userNameInput);
+    } else {
+      user.setName('Anonym');
     }
     return this.userService.saveUser(user);
   }
