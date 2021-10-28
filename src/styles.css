@@ -12,7 +12,7 @@ body {
   min-height: 100vh;
   /* Divides body (header, main, footer) into a grid (Gitter): */
   display: grid;
-  /* Three rows: 1. As big as the header is   2. All remaining space  3. As big as the footer is*/
+  /* Three rows: 1. As big as the header is 2. All remaining space 3. As big as the footer is */
   grid-template-rows: [header] auto [router-outlet] 0 [body] 1fr [footer] auto;
   /* Each row takes up the whole browser horizontally */
   grid-template-columns: 100%;
@@ -22,6 +22,11 @@ body {
   margin: 0;
 }
 
+.restrictWidth {
+  max-width: 820px;
+}
+
+/* Styling for header: */
 header {
   height: 60px;
   background: #4C63A9;
@@ -32,14 +37,11 @@ header {
   font-size: 38px;
 }
 
+/* Styling for footer */
 footer {
   height: 30px;
   border-top: 1px solid #BCBCBC;
   background: #EBEEF2;
-}
-
-.restrictWidth {
-  max-width: 820px;
 }
 
 /* Enter basic information of survey */
@@ -56,27 +58,31 @@ footer {
   color: #2A52CC;
 }
 
+#accessID {
+  font-size: 30px;
+}
+
 /* Question table */
 .questionColumn {
   width: 80%;
 }
 
-/* List of checkboxes */
+/* Buttons */
 .smallDeleteBtn {
   height: 15px;
 }
 
-/* */
-.errorMessage {
-  white-space: pre-wrap;
-}
-
-#accessID {
-  font-size: 30px;
-}
-
 .participateButton {
   font-size: 25px;
+}
+
+.homeButton {
+  width: 150px;
+}
+
+/* Other */
+.errorMessage {
+  white-space: pre-wrap;
 }
 
 #headingAnsweringSurvey {

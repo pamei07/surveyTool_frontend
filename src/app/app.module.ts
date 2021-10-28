@@ -23,6 +23,7 @@ import {AppHeaderComponent} from "./components/header/app-header.component";
 import {AppFooterComponent} from "./components/footer/app-footer.component";
 import {AnswerQuestionListComponent} from "./components/answer-survey/answer-question-list/answer-question-list.component";
 import {ThankYouComponent} from "./components/answer-survey/thank-you/thank-you.component";
+import {ResultsOverviewComponent} from "./components/view-results/results-overview/results-overview.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
   {path: 'createSurvey/:id/final', component: SurveyOverviewComponent},
   {path: 'answers/overview', component: AnswerSurveyOverviewComponent},
   {path: 'answers/participate', component: AnswerSurveyParticipationComponent},
-  {path: 'thanks', component: ThankYouComponent}
+  {path: 'thanks', component: ThankYouComponent},
+  {path: 'viewResults', component: ResultsOverviewComponent}
 ]
 
 @NgModule({
@@ -53,6 +55,7 @@ const appRoutes: Routes = [
     AnswerSurveyParticipationComponent,
     AnswerQuestionListComponent,
     ThankYouComponent,
+    ResultsOverviewComponent,
     AppHeaderComponent,
     AppFooterComponent
   ],
