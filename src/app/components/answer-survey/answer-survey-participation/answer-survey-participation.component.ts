@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Answer} from "../../../model/answer";
 import {FormArray, FormBuilder} from "@angular/forms";
 import {AnswerService} from "../../../services/answer/answer.service";
@@ -34,6 +34,7 @@ export class AnswerSurveyParticipationComponent implements OnInit {
   }
 
   constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
               private fb: FormBuilder,
               private userService: UserService,
               private answerService: AnswerService) {
@@ -152,7 +153,6 @@ export class AnswerSurveyParticipationComponent implements OnInit {
 
               if (checkbox.text !== '') {
                 answer.setText(checkbox.text);
-
               }
 
               currentQuestion = this.survey.questionGroups![questionGroupIndex].questions![questionIndex]
@@ -178,7 +178,10 @@ export class AnswerSurveyParticipationComponent implements OnInit {
       })
     });
     console.log(this.answerArray);
-    this.answerService.saveAnswers(this.answerArray).subscribe();
-    this.answerArray = [];
+    this.answerService.saveAnswers(this.answerArray).subscribe(() => {
+      this.answerArray = [];
+      sessionStorage.removeItem('survey' + this.uuid);
+      this.router.navigate(["thanks"])
+    });
   }
 }
