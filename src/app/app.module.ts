@@ -24,6 +24,8 @@ import {AppFooterComponent} from "./components/footer/app-footer.component";
 import {AnswerQuestionListComponent} from "./components/answer-survey/answer-question-list/answer-question-list.component";
 import {ThankYouComponent} from "./components/answer-survey/thank-you/thank-you.component";
 import {ResultsOverviewComponent} from "./components/view-results/results-overview/results-overview.component";
+import {ResultsSearchComponent} from "./components/view-results/results-search/results-search.component";
+import {ResultsQuestionsWithAnswersComponent} from "./components/view-results/results-questions-with-answers/results-questions-with-answers.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -56,6 +58,8 @@ const appRoutes: Routes = [
     AnswerQuestionListComponent,
     ThankYouComponent,
     ResultsOverviewComponent,
+    ResultsSearchComponent,
+    ResultsQuestionsWithAnswersComponent,
     AppHeaderComponent,
     AppFooterComponent
   ],

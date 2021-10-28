@@ -1,0 +1,13 @@
+<results-search (surveyEventEmitter)="showSurvey($event)"></results-search>
+<hr class="container restrictWidth">
+<section id="viewResults" class="container restrictWidth" *ngIf="survey">
+  <h2>{{ survey.name }}</h2>
+  <div *ngFor="let questionGroup of survey.questionGroups">
+    <h4>
+      {{ questionGroup.title }}
+    </h4>
+    <div *ngFor="let question of questionGroup.questions">
+
+    </div>
+  </div>
+</section>

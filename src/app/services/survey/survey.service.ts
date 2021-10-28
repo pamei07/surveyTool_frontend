@@ -24,4 +24,8 @@ export class SurveyService {
   public getSurveyOverviewByUuid(uuid: string | null) {
     return this.http.get(this.surveyUrl + '/answers?uuid=' + uuid);
   }
+
+  getSurveyByAccessId(accessId: string) {
+    return this.http.get(this.surveyUrl + '/results?accessId=' + accessId);
+  }
 }
