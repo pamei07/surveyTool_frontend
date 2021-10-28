@@ -4,6 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import {Answer} from "../../../model/answer";
 import {FormArray, FormBuilder} from "@angular/forms";
 import {AnswerService} from "../../../services/answer/answer.service";
+import {Question} from "../../../model/question";
+import {Checkbox} from "../../../model/checkbox";
 
 @Component({
   selector: 'answer-survey-participation',
@@ -71,10 +73,54 @@ export class AnswerSurveyParticipationComponent implements OnInit {
       })
 
     })
-    console.log(this.answerForm)
   }
 
+  /**
+   * Create Answer objects for each question on submit.
+   * 1. For checkboxes:
+   *    --> Create an Answer object only if a checkbox has been checked
+   * 2. For text questions:
+   *    --> Create an Answer object only if a text field is not empty
+   */
   onSubmit() {
-    console.log('test');
+    console.log(this.answerForm);
+    let answer: Answer;
+    let currentQuestion: Question = new Question();
+    let currentCheckbox: Checkbox = new Checkbox();
+    this.questionGroupsAnswers.controls.forEach((questionGroupAnswers, questionGroupIndex) => {
+      questionGroupAnswers.value.forEach((questionAnswer: any, questionIndex: number) => {
+        if (questionAnswer instanceof Array) {
+          questionAnswer.forEach((checkbox: any, checkboxIndex: number) => {
+            if (checkbox.checked == true || checkbox.checked == 'true') {
+              answer = new Answer();
+
+              if (checkbox.text !== '') {
+                answer.setText(checkbox.text);
+              }
+
+              currentQuestion = this.survey.questionGroups![questionGroupIndex].questions![questionIndex]
+              answer.setQuestion(currentQuestion);
+
+              currentCheckbox = this.survey.questionGroups![questionGroupIndex].questions![questionIndex].checkboxGroup!.checkboxes![checkboxIndex];
+              answer.setCheckbox(currentCheckbox);
+
+              this.answerArray.push(answer)
+            }
+          })
+        } else if (questionAnswer !== '') {
+          answer = new Answer();
+
+          answer.setText(questionAnswer);
+
+          currentQuestion = this.survey.questionGroups![questionGroupIndex].questions![questionIndex];
+          answer.setQuestion(currentQuestion);
+
+          this.answerArray.push(answer);
+        }
+      })
+    });
+    console.log(this.answerArray);
+    this.answerService.saveAnswers(this.answerArray).subscribe();
+    this.answerArray = [];
   }
 }
