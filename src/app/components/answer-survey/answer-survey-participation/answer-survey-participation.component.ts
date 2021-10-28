@@ -6,6 +6,8 @@ import {FormArray, FormBuilder} from "@angular/forms";
 import {AnswerService} from "../../../services/answer/answer.service";
 import {Question} from "../../../model/question";
 import {Checkbox} from "../../../model/checkbox";
+import {User} from "../../../model/user";
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'answer-survey-participation',
@@ -19,8 +21,13 @@ export class AnswerSurveyParticipationComponent implements OnInit {
   answerArray: Answer[] = [];
 
   answerForm = this.fb.group({
+    userName: this.fb.control(''),
     questionGroupsFormArray: this.fb.array([])
   });
+
+  get userName() {
+    return this.answerForm.get('userName');
+  }
 
   get questionGroupsFormArray() {
     return this.answerForm.get('questionGroupsFormArray') as FormArray;
@@ -28,6 +35,7 @@ export class AnswerSurveyParticipationComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private fb: FormBuilder,
+              private userService: UserService,
               private answerService: AnswerService) {
     this.uuid = activatedRoute.snapshot.queryParamMap.get('surveyUUID');
     this.survey = JSON.parse(<string>sessionStorage.getItem('survey' + this.uuid));
@@ -41,29 +49,30 @@ export class AnswerSurveyParticipationComponent implements OnInit {
   /**
    * Structure of answerForm - example:
    *  answerForm = FormGroup:
-   *                questionGroupsFormArray (FormArray - Containing a FormArray for each questionGroup):
-   *                   0: FormArray (First questionGroup - Array containing the form fields for each question)
-   *                      0: FormControl (if text question)
-   *                      1: FormArray (if question with checkboxes - Array containing FormGroups for each checkbox)
-   *                          0: FormGroup (First checkbox)
-   *                              - 'checked'
-   *                              - 'text
-   *                          1: FormGroup (Second checkbox)
-   *                              - 'checked'
-   *                              - 'text
-   *                          ...
-   *                          X: FormGroup (Xth checkbox)
-   *                              - 'checked'
-   *                              - 'text
-   *                      ...
-   *                      m: FormControl/FormGroup
-   *                   1: FormArray (Second questionGroup)
-   *                      0: FormControl/FormArray
-   *                      1: FormControl/FormArray
-   *                      ...
-   *                      n: FormControl/FormArray
-   *                   ...
-   *                   Z: FormArray (Zth questionGroup)
+   *                - userName
+   *                - questionGroupsFormArray (FormArray - Containing a FormArray for each questionGroup):
+   *                    0: FormArray (First questionGroup - Array containing the form fields for each question)
+   *                       0: FormControl (if text question)
+   *                       1: FormArray (if question with checkboxes - Array containing FormGroups for each checkbox)
+   *                           0: FormGroup (First checkbox)
+   *                               - 'checked'
+   *                               - 'text
+   *                           1: FormGroup (Second checkbox)
+   *                               - 'checked'
+   *                               - 'text
+   *                           ...
+   *                           X: FormGroup (Xth checkbox)
+   *                               - 'checked'
+   *                               - 'text
+   *                       ...
+   *                       m: FormControl/FormGroup
+   *                    1: FormArray (Second questionGroup)
+   *                       0: FormControl/FormArray
+   *                       1: FormControl/FormArray
+   *                       ...
+   *                       n: FormControl/FormArray
+   *                    ...
+   *                    Z: FormArray (Zth questionGroup)
    *
    * insertInputFields():
    *    Push a FormArray for each questionGroup into the FormArray 'questionGroupsFormArray'.
@@ -103,6 +112,22 @@ export class AnswerSurveyParticipationComponent implements OnInit {
     })
   }
 
+  onSubmit() {
+    this.postUser().subscribe(savedUser => {
+      let user = <User>savedUser;
+      this.postAnswers(user);
+    });
+  }
+
+  private postUser() {
+    let user: User = new User();
+    let userNameInput = this.userName!.value;
+    if (userNameInput !== '') {
+      user.setName(userNameInput);
+    }
+    return this.userService.saveUser(user);
+  }
+
   /**
    * Create Answer objects for each question on submit.
    * 1. For checkboxes:
@@ -110,19 +135,22 @@ export class AnswerSurveyParticipationComponent implements OnInit {
    * 2. For text questions:
    *    --> Create an Answer object only if a text field is not empty
    */
-  onSubmit() {
+  private postAnswers(user: User) {
     let answer: Answer;
     let currentQuestion: Question = new Question();
     let currentCheckbox: Checkbox = new Checkbox();
     this.questionGroupsFormArray.controls.forEach((answersToQuestionGroup, questionGroupIndex) => {
       answersToQuestionGroup.value.forEach((answerToQuestion: any, questionIndex: number) => {
+
         if (answerToQuestion instanceof Array) {
           answerToQuestion.forEach((checkbox: any, checkboxIndex: number) => {
             if (checkbox.checked == true || checkbox.checked == 'true') {
               answer = new Answer();
+              answer.setUser(user);
 
               if (checkbox.text !== '') {
                 answer.setText(checkbox.text);
+
               }
 
               currentQuestion = this.survey.questionGroups![questionGroupIndex].questions![questionIndex]
@@ -136,6 +164,7 @@ export class AnswerSurveyParticipationComponent implements OnInit {
           })
         } else if (answerToQuestion !== '') {
           answer = new Answer();
+          answer.setUser(user);
 
           answer.setText(answerToQuestion);
 

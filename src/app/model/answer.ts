@@ -20,4 +20,8 @@ export class Answer {
   setCheckbox(checkbox: Checkbox) {
     this.checkbox = checkbox;
   }
+
+  setUser(user: User) {
+    this.user = user;
+  }
 }
