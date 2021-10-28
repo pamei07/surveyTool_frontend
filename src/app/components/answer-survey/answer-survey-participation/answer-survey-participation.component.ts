@@ -19,11 +19,11 @@ export class AnswerSurveyParticipationComponent implements OnInit {
   answerArray: Answer[] = [];
 
   answerForm = this.fb.group({
-    questionGroupsAnswers: this.fb.array([])
+    questionGroupsFormArray: this.fb.array([])
   });
 
-  get questionGroupsAnswers() {
-    return this.answerForm.get('questionGroupsAnswers') as FormArray;
+  get questionGroupsFormArray() {
+    return this.answerForm.get('questionGroupsFormArray') as FormArray;
   }
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -35,43 +35,71 @@ export class AnswerSurveyParticipationComponent implements OnInit {
 
   ngOnInit() {
     this.insertInputFields();
+    console.log(this.answerForm);
   }
 
   /**
-   * Push an answer form for each question into the FormArray 'answers'
-   * There are 2 types of answer forms:
-   * 1. For questions with checkboxes:
-   *    --> another FormArray containing FormGroups with an attribute 'checked' to mark if a checkbox has been checked
-   *        and a 'text' attribute to capture the text input if available
-   * 2. For plain text questions:
-   *    --> a FormControl capturing the text input
+   * Structure of answerForm - example:
+   *  answerForm = FormGroup:
+   *                questionGroupsFormArray (FormArray - Containing a FormArray for each questionGroup):
+   *                   0: FormArray (First questionGroup - Array containing the form fields for each question)
+   *                      0: FormControl (if text question)
+   *                      1: FormArray (if question with checkboxes - Array containing FormGroups for each checkbox)
+   *                          0: FormGroup (First checkbox)
+   *                              - 'checked'
+   *                              - 'text
+   *                          1: FormGroup (Second checkbox)
+   *                              - 'checked'
+   *                              - 'text
+   *                          ...
+   *                          X: FormGroup (Xth checkbox)
+   *                              - 'checked'
+   *                              - 'text
+   *                      ...
+   *                      m: FormControl/FormGroup
+   *                   1: FormArray (Second questionGroup)
+   *                      0: FormControl/FormArray
+   *                      1: FormControl/FormArray
+   *                      ...
+   *                      n: FormControl/FormArray
+   *                   ...
+   *                   Z: FormArray (Zth questionGroup)
+   *
+   * insertInputFields():
+   *    Push a FormArray for each questionGroup into the FormArray 'questionGroupsFormArray'.
+   *    Each FormArray contains the form fields for each question in the questionGroup.
+   *    There are 2 types of form fields:
+   *    1. For questions with checkboxes:
+   *       --> another FormArray containing FormGroups with an attribute 'checked' to mark if a checkbox has been checked
+   *           and a 'text' attribute to capture the text input if available
+   *    2. For plain text questions:
+   *       --> a FormControl capturing the text input
    */
   insertInputFields() {
     this.survey.questionGroups!.forEach((questionGroup, questionGroupIndex) => {
 
-      this.questionGroupsAnswers.push(this.fb.array([]));
-
-      let questionGroupAnswerFormArray = this.questionGroupsAnswers.at(questionGroupIndex) as FormArray;
+      this.questionGroupsFormArray.push(this.fb.array([]));
+      let questionsFormArray = this.questionGroupsFormArray.at(questionGroupIndex) as FormArray;
 
       questionGroup.questions!.forEach((question, questionIndex) => {
+
         if (question.hasCheckbox) {
-          questionGroupAnswerFormArray.push(this.fb.array([]));
-          let checkboxFormArray = questionGroupAnswerFormArray.at(questionIndex) as FormArray;
+          questionsFormArray.push(this.fb.array([]));
+          let checkboxesFormArray = questionsFormArray.at(questionIndex) as FormArray;
 
           question.checkboxGroup?.checkboxes?.forEach(checkbox => {
-            checkboxFormArray.push(this.fb.group({
+            checkboxesFormArray.push(this.fb.group({
               checked: false,
               text: ''
             }))
           })
 
-          questionGroupAnswerFormArray.setControl(questionIndex, checkboxFormArray);
+          questionsFormArray.setControl(questionIndex, checkboxesFormArray);
         } else {
-          questionGroupAnswerFormArray.push(this.fb.control(''));
+          questionsFormArray.push(this.fb.control(''));
         }
 
       })
-
     })
   }
 
@@ -83,14 +111,13 @@ export class AnswerSurveyParticipationComponent implements OnInit {
    *    --> Create an Answer object only if a text field is not empty
    */
   onSubmit() {
-    console.log(this.answerForm);
     let answer: Answer;
     let currentQuestion: Question = new Question();
     let currentCheckbox: Checkbox = new Checkbox();
-    this.questionGroupsAnswers.controls.forEach((questionGroupAnswers, questionGroupIndex) => {
-      questionGroupAnswers.value.forEach((questionAnswer: any, questionIndex: number) => {
-        if (questionAnswer instanceof Array) {
-          questionAnswer.forEach((checkbox: any, checkboxIndex: number) => {
+    this.questionGroupsFormArray.controls.forEach((answersToQuestionGroup, questionGroupIndex) => {
+      answersToQuestionGroup.value.forEach((answerToQuestion: any, questionIndex: number) => {
+        if (answerToQuestion instanceof Array) {
+          answerToQuestion.forEach((checkbox: any, checkboxIndex: number) => {
             if (checkbox.checked == true || checkbox.checked == 'true') {
               answer = new Answer();
 
@@ -107,10 +134,10 @@ export class AnswerSurveyParticipationComponent implements OnInit {
               this.answerArray.push(answer)
             }
           })
-        } else if (questionAnswer !== '') {
+        } else if (answerToQuestion !== '') {
           answer = new Answer();
 
-          answer.setText(questionAnswer);
+          answer.setText(answerToQuestion);
 
           currentQuestion = this.survey.questionGroups![questionGroupIndex].questions![questionIndex];
           answer.setQuestion(currentQuestion);

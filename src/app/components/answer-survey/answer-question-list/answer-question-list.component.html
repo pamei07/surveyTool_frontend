@@ -1,5 +1,5 @@
 <div [formGroup]="parentForm">
-  <div formArrayName="questionGroupsAnswers">
+  <div formArrayName="questionGroupsFormArray">
     <div formArrayName="{{questionGroupIndex}}">
       <div *ngFor="let question of questionGroup.questions; index as questionIndex" class="mb-3">
         <label [attr.for]="'question' + question.id + 'Group' + questionGroup.id" class="form-label">
@@ -43,7 +43,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
