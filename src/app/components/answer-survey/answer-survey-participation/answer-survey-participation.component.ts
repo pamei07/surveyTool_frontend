@@ -94,17 +94,24 @@ export class AnswerSurveyParticipationComponent implements OnInit {
       questionGroup.questions!.forEach((question, questionIndex) => {
 
         if (question.hasCheckbox) {
-          questionsFormArray.push(this.fb.array([]));
-          let checkboxesFormArray = questionsFormArray.at(questionIndex) as FormArray;
+          if (question.checkboxGroup!.multipleSelect) {
+            questionsFormArray.push(this.fb.array([]));
+            let checkboxesFormArray = questionsFormArray.at(questionIndex) as FormArray;
 
-          question.checkboxGroup?.checkboxes?.forEach(checkbox => {
-            checkboxesFormArray.push(this.fb.group({
-              checked: false,
+            question.checkboxGroup?.checkboxes?.forEach(checkbox => {
+              checkboxesFormArray.push(this.fb.group({
+                checked: false,
+                text: ''
+              }))
+            })
+
+            questionsFormArray.setControl(questionIndex, checkboxesFormArray);
+          } else {
+            questionsFormArray.push(this.fb.group({
+              checkboxId: '',
               text: ''
             }))
-          })
-
-          questionsFormArray.setControl(questionIndex, checkboxesFormArray);
+          }
         } else {
           questionsFormArray.push(this.fb.control(''));
         }
@@ -144,10 +151,9 @@ export class AnswerSurveyParticipationComponent implements OnInit {
     let currentCheckbox: Checkbox = new Checkbox();
     this.questionGroupsFormArray.controls.forEach((answersToQuestionGroup, questionGroupIndex) => {
       answersToQuestionGroup.value.forEach((answerToQuestion: any, questionIndex: number) => {
-
         if (answerToQuestion instanceof Array) {
           answerToQuestion.forEach((checkbox: any, checkboxIndex: number) => {
-            if (checkbox.checked == true || checkbox.checked == 'true') {
+            if (checkbox.checked == true) {
               answer = new Answer();
               answer.setUser(user);
 
@@ -164,6 +170,26 @@ export class AnswerSurveyParticipationComponent implements OnInit {
               this.answerArray.push(answer)
             }
           })
+        } else if (typeof answerToQuestion !== 'string') {
+          if (answerToQuestion.checkboxId !== '') {
+            answer = new Answer();
+            answer.setUser(user);
+
+            if (answerToQuestion.text !== '') {
+              answer.setText(answerToQuestion.text);
+            }
+            currentQuestion = this.survey.questionGroups![questionGroupIndex].questions![questionIndex]
+            answer.setQuestion(currentQuestion);
+
+            currentCheckbox = this.survey
+              .questionGroups![questionGroupIndex]
+              .questions![questionIndex]
+              .checkboxGroup!
+              .checkboxes![answerToQuestion.checkboxId];
+            answer.setCheckbox(currentCheckbox);
+
+            this.answerArray.push(answer);
+          }
         } else if (answerToQuestion !== '') {
           answer = new Answer();
           answer.setUser(user);
