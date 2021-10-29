@@ -9,7 +9,7 @@ import {Survey} from "../../../../model/survey";
 export class QuestionGroupListComponent implements OnInit {
 
   @Input() survey!: Survey;
-  newTitle: string;
+  newTitle: string | undefined;
 
   constructor() {
     this.newTitle = '';
@@ -28,7 +28,10 @@ export class QuestionGroupListComponent implements OnInit {
   updateQuestionGroup(indexQuestionGroup: number) {
     console.log(this.survey.questionGroups);
     this.survey.questionGroups![indexQuestionGroup].title = this.newTitle;
-    this.newTitle = '';
     sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
+  }
+
+  openModal(title: string | undefined) {
+    this.newTitle = title;
   }
 }
