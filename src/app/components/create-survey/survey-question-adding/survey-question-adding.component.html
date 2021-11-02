@@ -11,17 +11,17 @@
     <div class="row mt-3 mb-4">
       <div class="col d-flex flex-column">
         <span>Name der Umfrage:</span>
-        <span class="surveyInfo">{{ parentForm.value.name }}</span>
+        <span class="surveyInfo">{{ survey.name }}</span>
       </div>
       <div class="col d-flex flex-column">
         <span>Startdatum:</span>
-        <span class="surveyInfo">{{ parentForm.value.startDate | date: 'dd.MM.yyyy' }}</span>
-        <span class="surveyInfo">{{ parentForm.value.startDate | date: 'HH:mm' }}</span>
+        <span class="surveyInfo">{{ survey.startDate | date: 'dd.MM.yyyy' }}</span>
+        <span class="surveyInfo">{{ survey.startDate | date: 'HH:mm' }}</span>
       </div>
       <div class="col d-flex flex-column">
         <span>Enddatum:</span>
-        <span class="surveyInfo">{{ parentForm.value.endDate | date: 'dd.MM.yyyy' }}</span>
-        <span class="surveyInfo">{{ parentForm.value.endDate | date: 'HH:mm' }}</span>
+        <span class="surveyInfo">{{ survey.endDate | date: 'dd.MM.yyyy' }}</span>
+        <span class="surveyInfo">{{ survey.endDate | date: 'HH:mm' }}</span>
       </div>
     </div>
     <hr>
@@ -29,8 +29,8 @@
 </section>
 
 <section id="questions">
-  <question-group-form></question-group-form>
-  <question-group-list></question-group-list>
+  <question-group-form [survey]="survey"></question-group-form>
+  <question-group-list [survey]="survey"></question-group-list>
 </section>
 
 <section id="submission">

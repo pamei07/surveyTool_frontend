@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormGroup, FormGroupDirective} from "@angular/forms";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Survey} from "../../../model/survey";
 
 @Component({
   selector: 'survey-question-adding',
@@ -8,15 +8,13 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 
 export class SurveyQuestionAddingComponent implements OnInit {
 
-  parentForm!: FormGroup;
+  @Input() survey!: Survey;
   @Output() basicInfoBoolean = new EventEmitter<boolean>();
 
-  constructor(private parentFormGroup: FormGroupDirective) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.parentForm = this.parentFormGroup.control;
-    console.log(this.parentForm)
   }
 
   sendBasicInfoFalse() {

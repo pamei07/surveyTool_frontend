@@ -3,6 +3,7 @@
                  [survey]="survey"
                  (basicInfoBoolean)="setBasicInfoGiven($event)"></survey-basics>
   <survey-question-adding *ngIf="basicInfoGiven"
+                          [survey]="survey"
                           (basicInfoBoolean)="setBasicInfoGiven($event)"></survey-question-adding>
 </section>
 
