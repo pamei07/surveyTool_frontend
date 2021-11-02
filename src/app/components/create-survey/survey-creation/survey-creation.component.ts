@@ -13,30 +13,6 @@ export class SurveyCreationComponent implements OnInit {
   survey!: Survey;
   basicInfoGiven = false;
 
-  surveyForm = this.fb.group({
-    name: [''],
-    description: [''],
-    startDate: [''],
-    endDate: [''],
-    questionGroups: this.fb.array([this.fb.group({
-      title: [''],
-      questions: this.fb.array([this.fb.group({
-        text: [''],
-        required: [false],
-        hasCheckbox: [false],
-        checkboxGroup: this.fb.group({
-          multipleSelect: [false],
-          minSelect: [''],
-          maxSelect: [''],
-          checkboxes: this.fb.array([this.fb.group({
-            hasTextField: [false],
-            text: ['']
-          })])
-        })
-      })])
-    })])
-  })
-
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder) {

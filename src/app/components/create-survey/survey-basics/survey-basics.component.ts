@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormGroup, FormGroupDirective} from "@angular/forms";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormBuilder} from "@angular/forms";
+import {Survey} from "../../../model/survey";
 
 @Component({
   selector: 'survey-basics',
@@ -8,17 +9,28 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 
 export class SurveyBasicsComponent implements OnInit {
 
-  parentForm!: FormGroup;
+  @Input() survey!: Survey;
   @Output() basicInfoBoolean = new EventEmitter<boolean>();
 
-  constructor(private parentFormGroup: FormGroupDirective) {
+  surveyForm = this.fb.group({
+    name: [''],
+    description: [''],
+    startDate: [''],
+    endDate: ['']
+  })
+
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this.parentForm = this.parentFormGroup.control;
   }
 
-  sendBasicInfoTrue() {
+  setBasicInformationOnSurvey() {
+    this.survey.name = this.surveyForm.value.name;
+    this.survey.description = this.surveyForm.value.description;
+    this.survey.startDate = this.surveyForm.value.startDate;
+    this.survey.endDate = this.surveyForm.value.endDate;
+    console.log(this.survey)
     this.basicInfoBoolean.emit(true);
   }
 }

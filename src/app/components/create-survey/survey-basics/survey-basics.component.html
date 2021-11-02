@@ -1,5 +1,5 @@
 <section id="surveyBasics">
-  <div [formGroup]="parentForm">
+  <div [formGroup]="surveyForm">
     <h1 class="my-4">
       Erstellen Sie Ihre Umfrage:
     </h1>
@@ -50,7 +50,7 @@
         <!--              </div>-->
       </div>
     </div>
-    <button type="submit" class="mt-3 btn btn-primary float-end" (click)="sendBasicInfoTrue()">
+    <button type="submit" class="mt-3 btn btn-primary float-end" (click)="setBasicInformationOnSurvey()">
       Weiter
     </button>
   </div>
