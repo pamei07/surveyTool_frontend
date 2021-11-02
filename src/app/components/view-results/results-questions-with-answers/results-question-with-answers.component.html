@@ -46,11 +46,13 @@
                   </div>
                   <div class="modal-body">
                     <div *ngFor="let answer of answers">
-                      <div class="card card-body d-block my-3" *ngIf="answer.text !== null">
+                      <div class="card card-body my-3" *ngIf="answer.text !== null">
                         {{ answer.text }}
-                        <span class="text-muted float-end mt-2">
-                        - {{ answer.user!.name }} (user#{{ answer.user!.id }})
-                      </span>
+                        <div class="container">
+                          <span class="text-muted float-end mt-2">
+                            - {{ answer.user!.name }} (user#{{ answer.user!.id }})
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
