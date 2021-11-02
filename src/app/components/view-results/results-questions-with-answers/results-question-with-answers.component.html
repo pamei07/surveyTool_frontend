@@ -1,0 +1,67 @@
+<div class="container restrictWidth">
+  <h5>{{ question.text }}</h5>
+  <span>{{ numberOfUsersAnswering }} Teilnehmer haben diese Frage beantwortet.</span>
+  <div id="answers" class="my-2">
+    <div *ngIf="!question.hasCheckbox">
+      <div class="card mb-2" *ngFor="let answer of answers">
+        <div class="card-body">
+          {{ answer.text }}
+          <span class="text-muted float-end mt-2">
+          - {{ answer.user!.name }} (user#{{ answer.user!.id }})
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="card card-body" *ngIf="question.hasCheckbox">
+      <table class="table">
+        <thead>
+        <tr>
+          <th></th>
+          <th class="text-center"># Stimmen</th>
+          <th class="text-center">% der Teilnehmer</th>
+          <th class="text-center" *ngIf="checkboxesHaveTextAnswers">Text</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let checkbox of question.checkboxGroup!.checkboxes; index as checkboxIndex">
+          <td>{{ checkbox.text }}:</td>
+          <td class="text-center">{{ this.votesForCheckboxes[checkboxIndex] }}</td>
+          <td class="text-center">{{ this.percentagesForCheckboxes[checkboxIndex] | percent }}</td>
+          <td *ngIf="checkbox.hasTextField && checkboxesHaveTextAnswers">
+            <div class="w-100 h-100 text-center">
+              <button class="btn btn-primary" data-bs-toggle="modal"
+                      [attr.data-bs-target]="'#viewTextAnswers' + checkbox.id">
+                Ansehen
+              </button>
+            </div>
+
+            <!-- Modal: View text answers -->
+            <div class="modal fade" [attr.id]="'viewTextAnswers' + checkbox.id" tabindex="-1"
+                 aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="confirmUpdateLabel">{{ checkbox.text }}:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div *ngFor="let answer of answers">
+                      <div class="card card-body d-block my-3" *ngIf="answer.text !== null">
+                        {{ answer.text }}
+                        <span class="text-muted float-end mt-2">
+                        - {{ answer.user!.name }} (user#{{ answer.user!.id }})
+                      </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="text-center" *ngIf="!checkbox.hasTextField && checkboxesHaveTextAnswers"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,21 @@
 <results-search (surveyEventEmitter)="showSurvey($event)"></results-search>
-<hr class="container restrictWidth">
+<section id="infoText" class="container restrictWidth text-center" *ngIf="!survey">
+  <hr>
+  <span>Um die Ergebnisse Ihrer Umfrage einzusehen, geben Sie bitte oben die dazugehörige Zugangs-ID ein.</span>
+</section>
 <section id="viewResults" class="container restrictWidth" *ngIf="survey">
-  <h2>{{ survey.name }}</h2>
+  <hr>
+  <div class="container restrictWidth w-100 text-center text-muted mb-2">
+    <span>http://localhost:4200/answers/overview?surveyUUID={{ survey.uuid }}</span>
+  </div>
+  <hr>
+  <h2 class="text-center">{{ survey.name }}</h2>
+  <hr>
   <div *ngFor="let questionGroup of survey.questionGroups">
-    <h4>
-      {{ questionGroup.title }}
-    </h4>
-    <div *ngFor="let question of questionGroup.questions">
-
+    <h3 class="text-center surveyInfo">{{ questionGroup.title }}</h3>
+    <div class="mb-4" *ngFor="let question of questionGroup.questions">
+      <results-question-with-answers [question]="question"></results-question-with-answers>
     </div>
+    <hr class="my-4">
   </div>
 </section>

@@ -16,4 +16,9 @@ export class AnswerService {
   public saveAnswers(answerArray: Answer[]) {
     return this.http.post(this.surveyUrl + '/postAnswers', answerArray);
   }
+
+  public getAnswersByQuestionId(questionId: number | undefined) {
+    return this.http.get(this.surveyUrl + '/getAnswersByQuestionId?questionId=' + questionId);
+  }
+
 }

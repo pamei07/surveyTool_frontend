@@ -16,7 +16,6 @@ import {CheckboxListComponent} from "./components/create-survey/checkbox/checkbo
 import {SurveySubmissionComponent} from "./components/create-survey/survey-submission/survey-submission.component";
 import {CheckboxFormComponent} from './components/create-survey/checkbox/checkbox-form/checkbox-form.component';
 import {SurveyOverviewComponent} from "./components/create-survey/survey-overview/survey-overview.component";
-import {DateValidatorDirective} from "./directives/validators/date-validator.directive";
 import {AnswerSurveyOverviewComponent} from "./components/answer-survey/answer-survey-overview/answer-survey-overview.component";
 import {AnswerSurveyParticipationComponent} from "./components/answer-survey/answer-survey-participation/answer-survey-participation.component";
 import {AppHeaderComponent} from "./components/header/app-header.component";
@@ -25,7 +24,7 @@ import {AnswerQuestionListComponent} from "./components/answer-survey/answer-que
 import {ThankYouComponent} from "./components/answer-survey/thank-you/thank-you.component";
 import {ResultsOverviewComponent} from "./components/view-results/results-overview/results-overview.component";
 import {ResultsSearchComponent} from "./components/view-results/results-search/results-search.component";
-import {ResultsQuestionsWithAnswersComponent} from "./components/view-results/results-questions-with-answers/results-questions-with-answers.component";
+import {ResultsQuestionWithAnswersComponent} from "./components/view-results/results-questions-with-answers/results-question-with-answers.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -52,14 +51,13 @@ const appRoutes: Routes = [
     CheckboxListComponent,
     SurveySubmissionComponent,
     SurveyOverviewComponent,
-    DateValidatorDirective,
     AnswerSurveyOverviewComponent,
     AnswerSurveyParticipationComponent,
     AnswerQuestionListComponent,
     ThankYouComponent,
     ResultsOverviewComponent,
     ResultsSearchComponent,
-    ResultsQuestionsWithAnswersComponent,
+    ResultsQuestionWithAnswersComponent,
     AppHeaderComponent,
     AppFooterComponent
   ],
