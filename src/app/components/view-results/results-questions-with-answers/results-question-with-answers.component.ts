@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from "../../../model/question";
 import {AnswerService} from "../../../services/answer/answer.service";
 import {Answer} from "../../../model/answer";
@@ -10,6 +10,7 @@ import {Answer} from "../../../model/answer";
 
 export class ResultsQuestionWithAnswersComponent implements OnInit {
   @Input() question!: Question;
+  @Output() userIdsOfParticipants = new EventEmitter<number[]>();
   answers!: Answer[];
   numberOfUsersAnswering: number = 0;
   percentagesForCheckboxes: number[] = [];
@@ -38,6 +39,7 @@ export class ResultsQuestionWithAnswersComponent implements OnInit {
         userIds.push(userId);
       }
     }
+    this.userIdsOfParticipants.emit(userIds);
     this.numberOfUsersAnswering = userIds.length;
   }
 

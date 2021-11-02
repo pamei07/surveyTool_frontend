@@ -9,12 +9,20 @@
     <span>http://localhost:4200/answers/overview?surveyUUID={{ survey.uuid }}</span>
   </div>
   <hr>
-  <h2 class="text-center">{{ survey.name }}</h2>
+  <div id="headerWithNameNoOfParticipants" class="d-block">
+    <h2 class="text-center">{{ survey.name }}</h2>
+    <div class="text-center text-muted">
+      <span>
+        Anzahl der Teilnehmer: {{ uniqueUserIds.length }}
+      </span>
+    </div>
+  </div>
   <hr>
   <div *ngFor="let questionGroup of survey.questionGroups">
     <h3 class="text-center surveyInfo">{{ questionGroup.title }}</h3>
     <div class="mb-4" *ngFor="let question of questionGroup.questions">
-      <results-question-with-answers [question]="question"></results-question-with-answers>
+      <results-question-with-answers [question]="question"
+                                     (userIdsOfParticipants)="countUniqueIds($event)"></results-question-with-answers>
     </div>
     <hr class="my-4">
   </div>

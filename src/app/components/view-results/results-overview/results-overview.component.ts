@@ -8,6 +8,7 @@ import {Survey} from "../../../model/survey";
 
 export class ResultsOverviewComponent implements OnInit {
   survey!: Survey;
+  uniqueUserIds: number[] = [];
 
   constructor() {
   }
@@ -18,5 +19,13 @@ export class ResultsOverviewComponent implements OnInit {
   showSurvey(survey: Survey) {
     this.survey = survey;
     console.log(this.survey);
+  }
+
+  countUniqueIds(userIds: number[]) {
+    userIds.forEach((userId) => {
+      if (!this.uniqueUserIds.includes(userId)) {
+        this.uniqueUserIds.push(userId);
+      }
+    })
   }
 }
