@@ -23,6 +23,12 @@ export class SurveyBasicsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.surveyForm.setValue({
+      name: this.survey.name,
+      description: this.survey.description,
+      startDate: this.survey.startDate,
+      endDate: this.survey.endDate
+    });
   }
 
   setBasicInformationOnSurvey() {
@@ -30,7 +36,6 @@ export class SurveyBasicsComponent implements OnInit {
     this.survey.description = this.surveyForm.value.description;
     this.survey.startDate = this.surveyForm.value.startDate;
     this.survey.endDate = this.surveyForm.value.endDate;
-    console.log(this.survey)
     this.basicInfoBoolean.emit(true);
   }
 }

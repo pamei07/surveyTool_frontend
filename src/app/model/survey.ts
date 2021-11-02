@@ -3,10 +3,10 @@ import {User} from "./user";
 
 export class Survey {
   id: number | undefined;
-  name: string | undefined;
-  description: string | undefined;
-  startDate: string | undefined;
-  endDate: string | undefined;
+  name: string = '';
+  description: string = '';
+  startDate: string = '';
+  endDate: string = '';
   open: boolean | undefined;
   accessID: string | undefined;
   uuid: string | undefined;
