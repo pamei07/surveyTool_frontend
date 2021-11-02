@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../../model/survey";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'question-group-list',
@@ -9,10 +10,12 @@ import {Survey} from "../../../../model/survey";
 export class QuestionGroupListComponent implements OnInit {
 
   @Input() survey!: Survey;
-  newTitle: string | undefined;
 
-  constructor() {
-    this.newTitle = '';
+  updateForm = this.fb.group({
+    title: ['']
+  })
+
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -22,16 +25,14 @@ export class QuestionGroupListComponent implements OnInit {
     console.log(this.survey.questionGroups);
     this.survey.questionGroups?.splice(indexQuestionGroup, 1);
     console.log(this.survey.questionGroups);
-    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
   }
 
   updateQuestionGroup(indexQuestionGroup: number) {
     console.log(this.survey.questionGroups);
-    this.survey.questionGroups![indexQuestionGroup].title = this.newTitle;
-    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
+    this.survey.questionGroups![indexQuestionGroup].title = this.updateForm.value.title;
   }
 
   openModal(title: string | undefined) {
-    this.newTitle = title;
+    this.updateForm.setValue({title: title});
   }
 }

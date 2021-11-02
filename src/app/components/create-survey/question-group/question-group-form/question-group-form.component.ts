@@ -1,4 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormBuilder} from "@angular/forms";
+import {Survey} from "../../../../model/survey";
 import {QuestionGroup} from "../../../../model/question-group";
 
 @Component({
@@ -8,21 +10,24 @@ import {QuestionGroup} from "../../../../model/question-group";
 
 export class QuestionGroupFormComponent implements OnInit {
 
-  questionGroup: QuestionGroup;
-  @Output() questionGroupEventEmitter = new EventEmitter<QuestionGroup>();
+  @Input() survey!: Survey;
 
-  constructor() {
-    this.questionGroup = new QuestionGroup();
-    this.questionGroup.questions = [];
+  questionGroupForm = this.fb.group({
+    title: ''
+  })
+
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
   }
 
-  emitQuestionGroup(newQuestionGroup: QuestionGroup) {
-    this.questionGroupEventEmitter.emit(newQuestionGroup);
+  addNewQuestionGroup() {
+    let questionGroup = new QuestionGroup();
+    questionGroup.title = this.questionGroupForm.value.title;
 
-    this.questionGroup = new QuestionGroup();
-    this.questionGroup.questions = [];
+    this.survey.questionGroups!.push(questionGroup);
+
+    this.questionGroupForm.reset();
   }
 }
