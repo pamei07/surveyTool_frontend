@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Survey} from "../../../../model/survey";
+import {FormBuilder} from "@angular/forms";
 import {Question} from "../../../../model/question";
 import {CheckboxGroup} from "../../../../model/checkbox-group";
-import {Survey} from "../../../../model/survey";
 
 @Component({
   selector: 'question-form',
@@ -10,41 +11,53 @@ import {Survey} from "../../../../model/survey";
 
 export class QuestionFormComponent implements OnInit {
 
-  disableInput: boolean;
-  question: Question;
-  checkboxGroup: CheckboxGroup;
-  @Input() indexQuestionGroup!: number;
   @Input() survey!: Survey;
+  @Input() indexQuestionGroup!: number;
 
-  constructor() {
-    this.disableInput = true;
-    this.question = new Question();
-    this.checkboxGroup = new CheckboxGroup();
-    this.checkboxGroup.checkboxes = [];
+  disableInput: boolean = true;
+
+  questionForm = this.fb.group({
+    text: [''],
+    required: false,
+    hasCheckbox: false,
+    checkboxGroup: this.fb.group({
+      multipleSelect: false,
+      minSelect: [''],
+      maxSelect: ['']
+    })
+  })
+
+  initialFormValues = this.questionForm.value;
+
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
 
   }
 
-  onSubmit() {
-    console.log(this.question);
-    console.log(this.checkboxGroup);
+  addNewQuestion() {
+    let question = new Question();
+    question.text = this.questionForm.value.text;
+    question.required = this.questionForm.value.required;
+    question.hasCheckbox = this.questionForm.value.hasCheckbox;
 
-    if (this.question.hasCheckbox) {
-      this.question.checkboxGroup = this.checkboxGroup;
+    if (question.hasCheckbox) {
+      let checkboxGroup = new CheckboxGroup();
+      checkboxGroup.multipleSelect = this.questionForm.value.checkboxGroup.multipleSelect;
+      checkboxGroup.minSelect = this.questionForm.value.checkboxGroup.minSelect;
+      checkboxGroup.maxSelect = this.questionForm.value.checkboxGroup.maxSelect;
+
+      question.checkboxGroup = checkboxGroup;
     }
-    this.survey.questionGroups![this.indexQuestionGroup].questions!.push(this.question);
 
-    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
+    this.survey.questionGroups![this.indexQuestionGroup].questions!.push(question);
 
     if (!this.disableInput) {
       this.disableInput = true;
     }
 
-    this.checkboxGroup = new CheckboxGroup();
-    this.checkboxGroup.checkboxes = [];
-    this.question = new Question();
+    this.questionForm.reset(this.initialFormValues);
   }
 
   enableDisableMinMaxInput() {
