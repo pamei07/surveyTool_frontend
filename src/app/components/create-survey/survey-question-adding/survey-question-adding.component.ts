@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Survey} from "../../../model/survey";
-import {QuestionGroup} from "../../../model/question-group";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormGroup, FormGroupDirective} from "@angular/forms";
 
 @Component({
   selector: 'survey-question-adding',
@@ -9,20 +8,18 @@ import {QuestionGroup} from "../../../model/question-group";
 
 export class SurveyQuestionAddingComponent implements OnInit {
 
-  survey: Survey;
+  parentForm!: FormGroup;
+  @Output() basicInfoBoolean = new EventEmitter<boolean>();
 
-  constructor() {
-    this.survey = JSON.parse(<string>sessionStorage.getItem('newSurvey'));
+  constructor(private parentFormGroup: FormGroupDirective) {
   }
 
   ngOnInit() {
-    console.log(this.survey);
+    this.parentForm = this.parentFormGroup.control;
+    console.log(this.parentForm)
   }
 
-  addQuestionGroup(newQuestionGroup: QuestionGroup) {
-    console.log(newQuestionGroup);
-    this.survey.questionGroups?.push(newQuestionGroup);
-
-    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
+  sendBasicInfoFalse() {
+    this.basicInfoBoolean.emit(false);
   }
 }

@@ -47,7 +47,7 @@ export class SurveyCreationComponent implements OnInit {
   ngOnInit() {
   }
 
-  setBasicInfoGivenToTrue() {
-    this.basicInfoGiven = true;
+  setBasicInfoGiven(bool: boolean) {
+    this.basicInfoGiven = bool;
   }
 }

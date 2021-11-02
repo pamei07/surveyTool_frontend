@@ -1,6 +1,8 @@
 <section id="surveyForm" class="container restrictWidth">
   <form [formGroup]="surveyForm">
-    <survey-basics *ngIf="!basicInfoGiven" (basicInfoBoolean)="setBasicInfoGivenToTrue()"></survey-basics>
+    <survey-basics *ngIf="!basicInfoGiven" (basicInfoBoolean)="setBasicInfoGiven($event)"></survey-basics>
+    <survey-question-adding *ngIf="basicInfoGiven"
+                            (basicInfoBoolean)="setBasicInfoGiven($event)"></survey-question-adding>
   </form>
 </section>
 
