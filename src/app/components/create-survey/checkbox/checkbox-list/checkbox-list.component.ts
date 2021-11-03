@@ -24,7 +24,5 @@ export class CheckboxListComponent implements OnInit {
       .questions![this.indexQuestion]
       .checkboxGroup!
       .checkboxes!.splice(indexCheckbox, 1);
-
-    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
   }
 }

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 import {Checkbox} from "../../../../model/checkbox";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'checkbox-form',
@@ -9,34 +10,33 @@ import {Checkbox} from "../../../../model/checkbox";
 
 export class CheckboxFormComponent implements OnInit {
 
-  checkbox: Checkbox;
-  @Input() indexQuestion!: number;
-  @Input() indexQuestionGroup!: number;
   @Input() survey!: Survey;
+  @Input() indexQuestionGroup!: number;
+  @Input() indexQuestion!: number;
 
-  constructor() {
-    this.checkbox = new Checkbox();
+  checkboxForm = this.fb.group({
+    text: [''],
+    hasTextField: false
+  })
+
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    if (this.checkbox.text == null) {
-      return;
-    }
-
-    console.log(this.checkbox);
+  addCheckboxToQuestion() {
+    let checkbox = new Checkbox();
+    checkbox.text = this.checkboxForm.value.text;
+    checkbox.hasTextField = this.checkboxForm.value.hasTextField;
 
     this.survey
       .questionGroups![this.indexQuestionGroup]
       .questions![this.indexQuestion]
       .checkboxGroup!
-      .checkboxes!.push(this.checkbox);
+      .checkboxes!.push(checkbox);
 
-    sessionStorage.setItem('newSurvey', JSON.stringify(this.survey));
-
-    this.checkbox = new Checkbox();
+    this.checkboxForm.reset();
   }
 
 }
