@@ -7,5 +7,5 @@ export class CheckboxGroup {
   minSelect: number | undefined;
   maxSelect: number | undefined;
   question: Question | undefined;
-  checkboxes: Checkbox[] | undefined;
+  checkboxes: Checkbox[] = [];
 }

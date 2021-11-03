@@ -11,5 +11,5 @@ export class Survey {
   accessID: string | undefined;
   uuid: string | undefined;
   user: User | undefined;
-  questionGroups: QuestionGroup[] | undefined;
+  questionGroups: QuestionGroup[] = [];
 }

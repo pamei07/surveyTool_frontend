@@ -5,5 +5,5 @@ export class QuestionGroup {
   id: number | undefined;
   title: string | undefined;
   survey: Survey | undefined;
-  questions: Question[] | undefined;
+  questions: Question[] = [];
 }
