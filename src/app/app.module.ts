@@ -33,6 +33,7 @@ import {QuestionDeleteComponent} from "./components/create-survey/question/quest
 import {QuestionUpdateComponent} from "./components/create-survey/question/question-update/question-update.component";
 import {CheckboxDeleteComponent} from "./components/create-survey/checkbox/checkbox-delete/checkbox-delete.component";
 import {DateValidationDirective} from "./directives/date-validation.directive";
+import {MinMaxSelectValidationDirective} from "./directives/min-max-select-validation.directive";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -74,7 +75,8 @@ const appRoutes: Routes = [
     ResultsQuestionWithAnswersComponent,
     AppHeaderComponent,
     AppFooterComponent,
-    DateValidationDirective
+    DateValidationDirective,
+    MinMaxSelectValidationDirective
   ],
   imports: [
     BrowserModule,
