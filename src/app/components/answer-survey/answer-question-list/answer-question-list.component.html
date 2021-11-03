@@ -9,7 +9,7 @@
 
         <div *ngIf="!question.hasCheckbox">
         <textarea [attr.id]="'question' + question.id + 'Group' + questionGroup.id" class="form-control"
-                  [formControlName]="questionIndex"></textarea>
+                  formControlName="{{ questionIndex }}"></textarea>
         </div>
 
         <div *ngIf="question.hasCheckbox">

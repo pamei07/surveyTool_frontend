@@ -22,9 +22,7 @@ export class QuestionGroupListComponent implements OnInit {
   }
 
   deleteQuestionGroup(indexQuestionGroup: number) {
-    console.log(this.survey.questionGroups);
     this.survey.questionGroups?.splice(indexQuestionGroup, 1);
-    console.log(this.survey.questionGroups);
   }
 
   updateQuestionGroup(indexQuestionGroup: number) {

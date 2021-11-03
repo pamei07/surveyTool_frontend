@@ -21,7 +21,7 @@ export class AnswerSurveyParticipationComponent implements OnInit {
   answerArray: Answer[] = [];
 
   answerForm = this.fb.group({
-    userName: this.fb.control(''),
+    userName: [''],
     questionGroupsFormArray: this.fb.array([])
   });
 
@@ -104,15 +104,15 @@ export class AnswerSurveyParticipationComponent implements OnInit {
             question.checkboxGroup?.checkboxes?.forEach(checkbox => {
               checkboxesFormArray.push(this.fb.group({
                 checked: false,
-                text: ''
+                text: ['']
               }))
             })
 
             questionsFormArray.setControl(questionIndex, checkboxesFormArray);
           } else {
             questionsFormArray.push(this.fb.group({
-              checkboxId: '',
-              text: ''
+              checkboxId: [''],
+              text: ['']
             }))
           }
         } else {
