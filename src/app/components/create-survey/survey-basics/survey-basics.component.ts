@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {Survey} from "../../../model/survey";
+import {endDateInFuture, startDateBeforeEndDateValidator} from "../../../directives/date-validation.directive";
 
 @Component({
   selector: 'survey-basics',
@@ -13,11 +14,23 @@ export class SurveyBasicsComponent implements OnInit {
   @Output() basicInfoBoolean = new EventEmitter<boolean>();
 
   surveyForm = this.fb.group({
-    name: [''],
+    name: ['', [Validators.required]],
     description: [''],
-    startDate: [''],
-    endDate: ['']
-  })
+    startDate: ['', [Validators.required]],
+    endDate: ['', [Validators.required, endDateInFuture()]]
+  }, {validators: startDateBeforeEndDateValidator()})
+
+  get name() {
+    return this.surveyForm.get('name');
+  }
+
+  get startDate() {
+    return this.surveyForm.get('startDate');
+  }
+
+  get endDate() {
+    return this.surveyForm.get('endDate');
+  }
 
   constructor(private fb: FormBuilder) {
   }
