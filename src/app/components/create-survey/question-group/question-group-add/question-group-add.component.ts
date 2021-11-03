@@ -4,11 +4,11 @@ import {Survey} from "../../../../model/survey";
 import {QuestionGroup} from "../../../../model/question-group";
 
 @Component({
-  selector: 'question-group-form',
-  templateUrl: 'question-group-form.component.html'
+  selector: 'question-group-add',
+  templateUrl: 'question-group-add.component.html'
 })
 
-export class QuestionGroupFormComponent implements OnInit {
+export class QuestionGroupAddComponent implements OnInit {
 
   @Input() survey!: Survey;
 

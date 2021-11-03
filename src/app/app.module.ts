@@ -8,7 +8,7 @@ import {SurveyBasicsComponent} from "./components/create-survey/survey-basics/su
 import {SurveyQuestionAddingComponent} from "./components/create-survey/survey-question-adding/survey-question-adding.component";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {QuestionGroupFormComponent} from "./components/create-survey/question-group/question-group-form/question-group-form.component";
+import {QuestionGroupAddComponent} from "./components/create-survey/question-group/question-group-add/question-group-add.component";
 import {QuestionGroupListComponent} from "./components/create-survey/question-group/question-group-list/question-group-list.component";
 import {QuestionFormComponent} from "./components/create-survey/question/question-form/question-form.component";
 import {QuestionListComponent} from "./components/create-survey/question/question-list/question-list.component";
@@ -27,6 +27,8 @@ import {ResultsSearchComponent} from "./components/view-results/results-search/r
 import {ResultsQuestionWithAnswersComponent} from "./components/view-results/results-questions-with-answers/results-question-with-answers.component";
 import {SurveyCreationComponent} from "./components/create-survey/survey-creation/survey-creation.component";
 import {AnswerSurveyParentComponent} from "./components/answer-survey/answer-survey-parent/answer-survey-parent.component";
+import {QuestionGroupDeleteComponent} from "./components/create-survey/question-group/question-group-delete/question-group-delete.component";
+import {QuestionGroupUpdateComponent} from "./components/create-survey/question-group/question-group-update/question-group-update.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -45,8 +47,10 @@ const appRoutes: Routes = [
     SurveyCreationComponent,
     SurveyBasicsComponent,
     SurveyQuestionAddingComponent,
-    QuestionGroupFormComponent,
+    QuestionGroupAddComponent,
     QuestionGroupListComponent,
+    QuestionGroupUpdateComponent,
+    QuestionGroupDeleteComponent,
     QuestionFormComponent,
     QuestionListComponent,
     CheckboxFormComponent,

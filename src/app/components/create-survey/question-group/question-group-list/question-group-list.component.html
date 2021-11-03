@@ -11,8 +11,7 @@
         <h3 class="d-inline">{{ questionGroup.title }}</h3>
         <div id="updateDeleteButton" class="d-inline">
           <button class="btn btn-primary me-1" type="button" title="Ändern" data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#confirmUpdateGroup' + indexQuestionGroup"
-                  (click)="openModal(questionGroup.title)">
+                  [attr.data-bs-target]="'#confirmUpdateGroup' + indexQuestionGroup">
             <img src="assets/svgs/wrench.svg" alt="Ändern">
           </button>
           <button class="btn btn-danger" type="button" title="Löschen" data-bs-toggle="modal"
@@ -22,64 +21,8 @@
         </div>
       </div>
 
-      <!-- Modal: Confirm Update -->
-      <div class="modal fade" [attr.id]="'confirmUpdateGroup' + indexQuestionGroup" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="confirmUpdateLabel">Frageblock ändern</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form [formGroup]="updateForm" (ngSubmit)="updateQuestionGroup(indexQuestionGroup)">
-              <div class="modal-body">
-                <label [attr.for]="'group' + indexQuestionGroup" class="form-label">
-                  Name/Beschreibung/Frage/... :
-                </label>
-                <input [attr.id]="'group' + indexQuestionGroup" class="form-control" name="title" type="text"
-                       formControlName="title" required>
-                <!--                <div *ngIf="newTitleInput.invalid && (newTitleInput.dirty || newTitleInput.touched)"-->
-                <!--                     class="alert alert-danger p-2 m-0 mt-2">-->
-                <!--                  <div class="errorMessage" *ngIf="newTitleInput.errors?.required">-->
-                <!--                    Ein Frageblock benötigt einen Titel.-->
-                <!--                  </div>-->
-                <!--                </div>-->
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-                  Abbrechen
-                </button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
-                  Ändern
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal: Confirm deletion -->
-      <div class="modal fade" [attr.id]="'confirmDeletionGroup' + indexQuestionGroup" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="confirmDeletionLabel">Frageblock löschen</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              Sind Sie sicher? Sie können den Frageblock nicht wiederherstellen.
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-                Abbrechen
-              </button>
-              <button type="submit" class="btn btn-danger" data-bs-dismiss="modal"
-                      (click)="deleteQuestionGroup(indexQuestionGroup)">
-                Ja, löschen.
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <question-group-update [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></question-group-update>
+      <question-group-delete [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></question-group-delete>
 
       <question-list [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></question-list>
       <question-form [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></question-form>
