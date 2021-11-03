@@ -5,11 +5,11 @@ import {Question} from "../../../../model/question";
 import {CheckboxGroup} from "../../../../model/checkbox-group";
 
 @Component({
-  selector: 'question-form',
-  templateUrl: 'question-form.component.html'
+  selector: 'question-add',
+  templateUrl: 'question-add.component.html'
 })
 
-export class QuestionFormComponent implements OnInit {
+export class QuestionAddComponent implements OnInit {
 
   @Input() survey!: Survey;
   @Input() indexQuestionGroup!: number;
