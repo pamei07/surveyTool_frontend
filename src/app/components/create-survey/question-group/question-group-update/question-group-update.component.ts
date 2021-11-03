@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../../model/survey";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'question-group-update',
@@ -13,8 +13,12 @@ export class QuestionGroupUpdateComponent implements OnInit {
   @Input() indexQuestionGroup!: number;
 
   updateForm = this.fb.group({
-    title: ['']
+    title: ['', Validators.required]
   })
+
+  get title() {
+    return this.updateForm.get('title');
+  }
 
   constructor(private fb: FormBuilder) {
   }
@@ -24,6 +28,10 @@ export class QuestionGroupUpdateComponent implements OnInit {
   }
 
   updateQuestionGroup(indexQuestionGroup: number) {
+    if (this.updateForm.invalid) {
+      return;
+    }
+
     this.survey.questionGroups![indexQuestionGroup].title = this.updateForm.value.title;
   }
 }
