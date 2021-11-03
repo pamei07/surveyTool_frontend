@@ -26,14 +26,14 @@ import {ResultsOverviewComponent} from "./components/view-results/results-overvi
 import {ResultsSearchComponent} from "./components/view-results/results-search/results-search.component";
 import {ResultsQuestionWithAnswersComponent} from "./components/view-results/results-questions-with-answers/results-question-with-answers.component";
 import {SurveyCreationComponent} from "./components/create-survey/survey-creation/survey-creation.component";
+import {AnswerSurveyParentComponent} from "./components/answer-survey/answer-survey-parent/answer-survey-parent.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'createSurvey', component: SurveyCreationComponent},
   {path: 'createSurvey/questions', component: SurveyQuestionAddingComponent},
   {path: 'createSurvey/:id/final', component: SurveyOverviewComponent},
-  {path: 'answers/overview', component: AnswerSurveyOverviewComponent},
-  {path: 'answers/participate', component: AnswerSurveyParticipationComponent},
+  {path: 'answers/overview', component: AnswerSurveyParentComponent},
   {path: 'thanks', component: ThankYouComponent},
   {path: 'viewResults', component: ResultsOverviewComponent}
 ]
@@ -53,6 +53,7 @@ const appRoutes: Routes = [
     CheckboxListComponent,
     SurveySubmissionComponent,
     SurveyOverviewComponent,
+    AnswerSurveyParentComponent,
     AnswerSurveyOverviewComponent,
     AnswerSurveyParticipationComponent,
     AnswerQuestionListComponent,

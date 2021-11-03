@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {Answer} from "../../../model/answer";
 import {FormArray, FormBuilder} from "@angular/forms";
 import {AnswerService} from "../../../services/answer/answer.service";
@@ -16,8 +16,7 @@ import {UserService} from "../../../services/user/user.service";
 
 export class AnswerSurveyParticipationComponent implements OnInit {
 
-  survey!: Survey;
-  uuid: string | null;
+  @Input() survey!: Survey;
   answerArray: Answer[] = [];
 
   answerForm = this.fb.group({
@@ -33,13 +32,10 @@ export class AnswerSurveyParticipationComponent implements OnInit {
     return this.answerForm.get('questionGroupsFormArray') as FormArray;
   }
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private router: Router,
+  constructor(private router: Router,
               private fb: FormBuilder,
               private userService: UserService,
               private answerService: AnswerService) {
-    this.uuid = activatedRoute.snapshot.queryParamMap.get('surveyUUID');
-    this.survey = JSON.parse(<string>sessionStorage.getItem('survey' + this.uuid));
   }
 
   ngOnInit() {
@@ -118,7 +114,6 @@ export class AnswerSurveyParticipationComponent implements OnInit {
         } else {
           questionsFormArray.push(this.fb.control(''));
         }
-
       })
     })
   }
@@ -211,7 +206,6 @@ export class AnswerSurveyParticipationComponent implements OnInit {
     console.log(this.answerArray);
     this.answerService.saveAnswers(this.answerArray).subscribe(() => {
       this.answerArray = [];
-      sessionStorage.removeItem('survey' + this.uuid);
       this.router.navigate(["thanks"])
     });
   }
