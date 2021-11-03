@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {Survey} from "../../../../model/survey";
 import {QuestionGroup} from "../../../../model/question-group";
 
@@ -13,8 +13,12 @@ export class QuestionGroupAddComponent implements OnInit {
   @Input() survey!: Survey;
 
   questionGroupForm = this.fb.group({
-    title: ''
+    title: ['', Validators.required]
   })
+
+  get title() {
+    return this.questionGroupForm.get('title');
+  }
 
   constructor(private fb: FormBuilder) {
   }
