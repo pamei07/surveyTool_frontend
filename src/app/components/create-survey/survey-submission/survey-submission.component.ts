@@ -28,8 +28,6 @@ export class SurveySubmissionComponent implements OnInit {
       surveyID = <number>newSurvey.id;
       console.log(newSurvey);
 
-      sessionStorage.removeItem('newSurvey');
-
       this.router.navigate(["createSurvey", surveyID, "final"]);
     });
   }
