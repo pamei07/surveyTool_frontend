@@ -8,9 +8,9 @@ import {Survey} from "../../../../model/survey";
 
 export class CheckboxListComponent implements OnInit {
 
-  @Input() indexQuestion!: number;
-  @Input() indexQuestionGroup!: number;
   @Input() survey!: Survey;
+  @Input() indexQuestionGroup!: number;
+  @Input() indexQuestion!: number;
 
   constructor() {
   }
@@ -18,11 +18,4 @@ export class CheckboxListComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteCheckbox(indexCheckbox: number) {
-    this.survey
-      .questionGroups![this.indexQuestionGroup]
-      .questions![this.indexQuestion]
-      .checkboxGroup!
-      .checkboxes!.splice(indexCheckbox, 1);
-  }
 }

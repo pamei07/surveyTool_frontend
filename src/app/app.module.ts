@@ -14,7 +14,7 @@ import {QuestionAddComponent} from "./components/create-survey/question/question
 import {QuestionListComponent} from "./components/create-survey/question/question-list/question-list.component";
 import {CheckboxListComponent} from "./components/create-survey/checkbox/checkbox-list/checkbox-list.component";
 import {SurveySubmissionComponent} from "./components/create-survey/survey-submission/survey-submission.component";
-import {CheckboxFormComponent} from './components/create-survey/checkbox/checkbox-form/checkbox-form.component';
+import {CheckboxAddComponent} from './components/create-survey/checkbox/checkbox-add/checkbox-add.component';
 import {SurveyOverviewComponent} from "./components/create-survey/survey-overview/survey-overview.component";
 import {AnswerSurveyOverviewComponent} from "./components/answer-survey/answer-survey-overview/answer-survey-overview.component";
 import {AnswerSurveyParticipationComponent} from "./components/answer-survey/answer-survey-participation/answer-survey-participation.component";
@@ -31,6 +31,7 @@ import {QuestionGroupDeleteComponent} from "./components/create-survey/question-
 import {QuestionGroupUpdateComponent} from "./components/create-survey/question-group/question-group-update/question-group-update.component";
 import {QuestionDeleteComponent} from "./components/create-survey/question/question-delete/question-delete.component";
 import {QuestionUpdateComponent} from "./components/create-survey/question/question-update/question-update.component";
+import {CheckboxDeleteComponent} from "./components/create-survey/checkbox/checkbox-delete/checkbox-delete.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -57,8 +58,9 @@ const appRoutes: Routes = [
     QuestionAddComponent,
     QuestionUpdateComponent,
     QuestionDeleteComponent,
-    CheckboxFormComponent,
     CheckboxListComponent,
+    CheckboxAddComponent,
+    CheckboxDeleteComponent,
     SurveySubmissionComponent,
     SurveyOverviewComponent,
     AnswerSurveyParentComponent,

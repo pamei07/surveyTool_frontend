@@ -4,11 +4,11 @@ import {Checkbox} from "../../../../model/checkbox";
 import {FormBuilder} from "@angular/forms";
 
 @Component({
-  selector: 'checkbox-form',
-  templateUrl: 'checkbox-form.component.html'
+  selector: 'checkbox-add',
+  templateUrl: 'checkbox-add.component.html'
 })
 
-export class CheckboxFormComponent implements OnInit {
+export class CheckboxAddComponent implements OnInit {
 
   @Input() survey!: Survey;
   @Input() indexQuestionGroup!: number;

@@ -19,9 +19,10 @@
         <span *ngIf="checkbox.hasTextField" class="badge bg-secondary m-0 me-2">
             Textfeld
         </span>
-        <button class="btn-close p-1 smallDeleteBtn" type="button" title="Löschen"
-                (click)="deleteCheckbox(indexCheckbox)">
-        </button>
+        <checkbox-delete [survey]="survey"
+                         [indexQuestionGroup]="indexQuestionGroup"
+                         [indexQuestion]="indexQuestion"
+                         [indexCheckbox]="indexCheckbox"></checkbox-delete>
       </div>
     </li>
   </ul>
