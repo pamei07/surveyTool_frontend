@@ -18,6 +18,7 @@ export class ResultsOverviewComponent implements OnInit {
 
   showSurvey(survey: Survey) {
     this.survey = survey;
+    this.uniqueUserIds = [];
     console.log(this.survey);
   }
 

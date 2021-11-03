@@ -1,5 +1,5 @@
 <section id="enterID" class="container restrictWidth d-flex justify-content-center">
-  <form [formGroup]="resultsForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="resultsForm" (ngSubmit)="emitSurvey()">
     <div class="input-group mt-4 mb-2">
       <input class="form-control" name="accessID" type="text" placeholder="Zugangs-ID"
              formControlName="accessId" required>
