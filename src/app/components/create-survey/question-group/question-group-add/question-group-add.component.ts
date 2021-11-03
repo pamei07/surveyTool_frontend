@@ -27,6 +27,10 @@ export class QuestionGroupAddComponent implements OnInit {
   }
 
   addNewQuestionGroup() {
+    if (this.questionGroupForm.invalid) {
+      return;
+    }
+
     let questionGroup = new QuestionGroup();
     questionGroup.title = this.questionGroupForm.value.title;
 
