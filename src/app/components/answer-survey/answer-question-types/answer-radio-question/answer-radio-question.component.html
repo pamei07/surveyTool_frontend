@@ -8,7 +8,7 @@
 
       <div formGroupName="{{ questionIndex }}">
         <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
-          <div class="row ms-2 mb-1">
+          <div class="row align-items-center ms-2 mb-1">
             <div class="col-auto">
               <input [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-input me-2" formControlName="checkboxId"
