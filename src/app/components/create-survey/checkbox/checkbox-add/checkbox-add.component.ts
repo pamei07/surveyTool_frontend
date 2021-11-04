@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 import {Checkbox} from "../../../../model/checkbox";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'checkbox-add',
@@ -15,9 +15,15 @@ export class CheckboxAddComponent implements OnInit {
   @Input() indexQuestion!: number;
 
   checkboxForm = this.fb.group({
-    text: [''],
+    text: ['', [Validators.required]],
     hasTextField: false
   })
+
+  initialFormValues = this.checkboxForm.value;
+
+  get text() {
+    return this.checkboxForm.get('text');
+  }
 
   constructor(private fb: FormBuilder) {
   }
@@ -36,7 +42,7 @@ export class CheckboxAddComponent implements OnInit {
       .checkboxGroup!
       .checkboxes!.push(checkbox);
 
-    this.checkboxForm.reset();
+    this.checkboxForm.reset(this.initialFormValues);
   }
 
 }
