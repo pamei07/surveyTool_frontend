@@ -23,9 +23,11 @@
                    formControlName="text"
                    [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
           </div>
-          <div *ngIf="text(checkboxIndex)?.invalid && (text(checkboxIndex)?.dirty || text(checkboxIndex)?.touched)"
+          <div *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.invalid &&
+                     (getTextFieldByCheckboxIndex(checkboxIndex)?.dirty ||
+                      getTextFieldByCheckboxIndex(checkboxIndex)?.touched)"
                class="alert alert-danger p-2 mt-3 mb-0 mx-4">
-            <div *ngIf="text(checkboxIndex)?.errors?.required">
+            <div *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.required">
               Das Textfeld muss ausgefüllt sein.
             </div>
           </div>

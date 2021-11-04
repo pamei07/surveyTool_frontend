@@ -15,7 +15,7 @@ export class AnswerMultipleSelectQuestionComponent implements OnInit {
   @Input() questionIndex!: number;
   parentForm!: FormGroup;
 
-  checked(checkboxIndex: number): AbstractControl {
+  getCheckedFieldByCheckboxIndex(checkboxIndex: number): AbstractControl {
     return <FormControl>this.parentForm.get('questionGroupsFormArray')
       ?.get(this.questionGroupIndex.toString())
       ?.get(this.questionIndex.toString())
@@ -23,7 +23,7 @@ export class AnswerMultipleSelectQuestionComponent implements OnInit {
       ?.get('checked');
   }
 
-  text(checkboxIndex: number) {
+  getTextFieldByCheckboxIndex(checkboxIndex: number) {
     return this.parentForm.get('questionGroupsFormArray')
       ?.get(this.questionGroupIndex.toString())
       ?.get(this.questionIndex.toString())
