@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {Survey} from "../../../../model/survey";
+import {maxSelectGreaterThanMinSelectValidator} from "../../../../directives/min-max-select-validation.directive";
 
 @Component({
   selector: 'question-update',
@@ -13,22 +14,41 @@ export class QuestionUpdateComponent implements OnInit {
   @Input() indexQuestionGroup!: number;
   @Input() indexQuestion!: number;
 
+  disableInput: boolean = false;
 
   updateForm = this.fb.group({
-    text: [''],
+    text: ['', [Validators.required]],
     required: false,
     checkboxGroup: this.fb.group({
       multipleSelect: false,
-      minSelect: [''],
-      maxSelect: ['']
+      minSelect: [{value: '0', disabled: true}, [Validators.required, Validators.min(0)]],
+      maxSelect: [{value: '2', disabled: true}, [Validators.required, Validators.min(2)]]
     })
-  })
+  }, {validators: maxSelectGreaterThanMinSelectValidator()})
+
+  get text() {
+    return this.updateForm.get('text');
+  }
+
+  get minSelect() {
+    return this.updateForm.get('checkboxGroup')?.get('minSelect');
+  }
+
+  get maxSelect() {
+    return this.updateForm.get('checkboxGroup')?.get('maxSelect');
+  }
 
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
     let questionToUpdate = this.survey.questionGroups![this.indexQuestionGroup].questions![this.indexQuestion];
+
+    // If checkboxGroup.multipleSelect == true -> enable input fields on init
+    if (questionToUpdate.checkboxGroup?.multipleSelect) {
+      this.enableDisableMinMaxInput();
+    }
+
     this.updateForm.patchValue({
       text: questionToUpdate.text,
       required: questionToUpdate.required,
@@ -46,6 +66,11 @@ export class QuestionUpdateComponent implements OnInit {
   }
 
   updateQuestion(indexQuestion: number) {
+    if (this.updateForm.invalid) {
+      console.log('Form invalid!');
+      return;
+    }
+
     let questionToUpdate = this.survey.questionGroups![this.indexQuestionGroup].questions![indexQuestion];
     questionToUpdate.text = this.updateForm.value.text;
     questionToUpdate.required = this.updateForm.value.required;
@@ -61,4 +86,15 @@ export class QuestionUpdateComponent implements OnInit {
     this.survey.questionGroups![this.indexQuestionGroup].questions![indexQuestion] = questionToUpdate;
   }
 
+  enableDisableMinMaxInput() {
+    if (this.disableInput) {
+      this.updateForm.get('checkboxGroup')?.get('minSelect')?.disable();
+      this.updateForm.get('checkboxGroup')?.get('maxSelect')?.disable();
+      this.disableInput = false;
+    } else {
+      this.updateForm.get('checkboxGroup')?.get('minSelect')?.enable();
+      this.updateForm.get('checkboxGroup')?.get('maxSelect')?.enable();
+      this.disableInput = true;
+    }
+  }
 }
