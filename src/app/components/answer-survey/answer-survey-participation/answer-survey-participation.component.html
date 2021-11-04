@@ -11,18 +11,15 @@
 
 <section id="questionGroups" class="container restrictWidth">
   <form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
-    <div class="card card-body mb-3" *ngFor="let questionGroup of survey.questionGroups; index as questionGroupIndex">
-      <h3 class="card-title">
-        {{ questionGroup.title }}
-      </h3>
-      <answer-question-list [questionGroup]="questionGroup"
-                            [questionGroupIndex]="questionGroupIndex"></answer-question-list>
+    <div *ngFor="let questionGroup of survey.questionGroups; index as questionGroupIndex">
+      <answer-question-group [questionGroup]="questionGroup"
+                             [questionGroupIndex]="questionGroupIndex"></answer-question-group>
     </div>
     <!--TODO: Add required attribute if questions is required-->
     <!--TODO: min-/max-choices on multiple select questions-->
 
     <div>
-      <button type="button" class="btn btn-success mb-3 float-end"
+      <button type="button" class="btn btn-success mb-3 float-end" [disabled]="answerForm.invalid"
               data-bs-toggle="modal" data-bs-target="#confirmAnswerSubmission">
         Einreichen
       </button>

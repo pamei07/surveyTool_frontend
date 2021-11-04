@@ -20,7 +20,7 @@ import {AnswerSurveyOverviewComponent} from "./components/answer-survey/answer-s
 import {AnswerSurveyParticipationComponent} from "./components/answer-survey/answer-survey-participation/answer-survey-participation.component";
 import {AppHeaderComponent} from "./components/header/app-header.component";
 import {AppFooterComponent} from "./components/footer/app-footer.component";
-import {AnswerQuestionListComponent} from "./components/answer-survey/answer-question-list/answer-question-list.component";
+import {AnswerQuestionGroupComponent} from "./components/answer-survey/answer-question-group/answer-question-group.component";
 import {ThankYouComponent} from "./components/answer-survey/thank-you/thank-you.component";
 import {ResultsOverviewComponent} from "./components/view-results/results-overview/results-overview.component";
 import {ResultsSearchComponent} from "./components/view-results/results-search/results-search.component";
@@ -34,6 +34,7 @@ import {QuestionUpdateComponent} from "./components/create-survey/question/quest
 import {CheckboxDeleteComponent} from "./components/create-survey/checkbox/checkbox-delete/checkbox-delete.component";
 import {DateValidationDirective} from "./directives/date-validation.directive";
 import {MinMaxSelectValidationDirective} from "./directives/min-max-select-validation.directive";
+import {AnswerQuestionComponent} from "./components/answer-survey/answer-question/answer-question.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
     AnswerSurveyParentComponent,
     AnswerSurveyOverviewComponent,
     AnswerSurveyParticipationComponent,
-    AnswerQuestionListComponent,
+    AnswerQuestionGroupComponent,
+    AnswerQuestionComponent,
     ThankYouComponent,
     ResultsOverviewComponent,
     ResultsSearchComponent,

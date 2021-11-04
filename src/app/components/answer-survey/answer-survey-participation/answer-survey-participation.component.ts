@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 import {Router} from "@angular/router";
 import {Answer} from "../../../model/answer";
-import {FormArray, FormBuilder} from "@angular/forms";
+import {FormArray, FormBuilder, Validators} from "@angular/forms";
 import {AnswerService} from "../../../services/answer/answer.service";
 import {Question} from "../../../model/question";
 import {Checkbox} from "../../../model/checkbox";
@@ -106,13 +106,24 @@ export class AnswerSurveyParticipationComponent implements OnInit {
 
             questionsFormArray.setControl(questionIndex, checkboxesFormArray);
           } else {
-            questionsFormArray.push(this.fb.group({
-              checkboxId: [''],
-              text: ['']
-            }))
+            if (question.required) {
+              questionsFormArray.push(this.fb.group({
+                checkboxId: ['', [Validators.required]],
+                text: ['']
+              }))
+            } else {
+              questionsFormArray.push(this.fb.group({
+                checkboxId: [''],
+                text: ['']
+              }))
+            }
           }
         } else {
-          questionsFormArray.push(this.fb.control(''));
+          if (question.required) {
+            questionsFormArray.push(this.fb.control('', [Validators.required]));
+          } else {
+            questionsFormArray.push(this.fb.control(''));
+          }
         }
       })
     })

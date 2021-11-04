@@ -1,0 +1,11 @@
+<div class="card card-body mb-3">
+  <h3 class="card-title">
+    {{ questionGroup.title }}
+  </h3>
+
+  <div *ngFor="let question of questionGroup.questions; index as questionIndex" class="mb-3">
+    <answer-question [questionGroupIndex]="questionGroupIndex"
+                     [question]="question"
+                     [questionIndex]="questionIndex"></answer-question>
+  </div>
+</div>
