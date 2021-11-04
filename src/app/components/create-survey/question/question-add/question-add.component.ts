@@ -18,7 +18,7 @@ export class QuestionAddComponent implements OnInit {
   disableInput: boolean = false;
 
   questionForm = this.fb.group({
-    text: ['', Validators.required],
+    text: ['', [Validators.required]],
     required: false,
     hasCheckbox: false,
     checkboxGroup: this.fb.group({

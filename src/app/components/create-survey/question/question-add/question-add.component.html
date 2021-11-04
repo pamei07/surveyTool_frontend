@@ -84,10 +84,10 @@
                          formControlName="maxSelect">
                   <div *ngIf="maxSelect?.invalid && (maxSelect?.dirty || maxSelect?.touched)"
                        class="alert alert-danger p-2 mt-1 mb-0">
-                    <div class="errorMessage" *ngIf="maxSelect?.errors?.required">
+                    <div *ngIf="maxSelect?.errors?.required">
                       Das Maximum muss angegeben werden.
                     </div>
-                    <div class="errorMessage" *ngIf="maxSelect?.errors?.min">
+                    <div *ngIf="maxSelect?.errors?.min">
                       Das Maximum muss mind. 2 sein.
                     </div>
                   </div>
