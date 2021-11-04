@@ -19,6 +19,7 @@ export function endDateInFuture(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     // DF => date format
     let endDateDF = Date.parse(control.value);
+    // Get current date and time and parse it for comparing
     let currentDate = new Date();
     let currentDateAsString = currentDate.toString();
     let currentDateDF = Date.parse(currentDateAsString);
