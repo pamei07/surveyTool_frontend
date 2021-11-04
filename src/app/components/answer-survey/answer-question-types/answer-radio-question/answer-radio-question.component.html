@@ -13,18 +13,26 @@
               <input [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-input me-2" formControlName="checkboxId"
                      [attr.name]="'question' + question.id"
-                     type="radio" value="{{ checkboxIndex }}">
+                     type="radio" value="{{ checkboxIndex }}"
+                     (click)="disableEnableInput(checkbox)">
               <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-label">
                 {{ checkbox.text }}
               </label>
             </div>
-            <input *ngIf="checkbox.hasTextField" type="text" class="form-control col me-3"
+            <input [attr.id]="'checkbox' + checkbox.id + 'text'"
+                   *ngIf="checkbox.hasTextField" type="text" class="form-control col me-3"
                    formControlName="text"
                    [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
           </div>
         </div>
-        <div class="alert alert-danger p-2 mt-2 mb-0" *ngIf="checkboxId?.errors?.required">
+        <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
+             class="alert alert-danger p-2 mt-3 mb-0 mx-4">
+          <div *ngIf="text?.errors?.required">
+            Das Textfeld muss ausgefüllt sein.
+          </div>
+        </div>
+        <div class="alert alert-danger p-2 mt-3 mb-0 mx-4" *ngIf="checkboxId?.errors?.required">
           Diese Frage muss beantwortet werden.
         </div>
       </div>
