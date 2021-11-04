@@ -8,19 +8,26 @@
 
       <div formArrayName="{{ questionIndex }}">
         <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
-          <div class="row ms-2 mb-1" formGroupName="{{checkboxIndex}}">
+          <div class="row align-items-center ms-2 mb-1" formGroupName="{{checkboxIndex}}">
             <div class="col-auto">
               <input [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-input me-2" formControlName="checked"
-                     type="checkbox" value="true">
+                     type="checkbox" value="true"
+                     (click)="enableDisableTextFieldIfAvailable(checkbox, checkboxIndex)">
               <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-label">
                 {{ checkbox.text }}
               </label>
             </div>
-            <input *ngIf="checkbox.hasTextField" type="text" class="form-control col me-3"
+            <input *ngIf="checkbox.hasTextField" type="text" class="form-control col me-5"
                    formControlName="text"
                    [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
+          </div>
+          <div *ngIf="text(checkboxIndex)?.invalid && (text(checkboxIndex)?.dirty || text(checkboxIndex)?.touched)"
+               class="alert alert-danger p-2 mt-3 mb-0 mx-4">
+            <div *ngIf="text(checkboxIndex)?.errors?.required">
+              Das Textfeld muss ausgefüllt sein.
+            </div>
           </div>
         </div>
       </div>

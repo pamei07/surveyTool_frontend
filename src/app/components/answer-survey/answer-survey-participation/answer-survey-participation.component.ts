@@ -94,13 +94,13 @@ export class AnswerSurveyParticipationComponent implements OnInit {
 
         if (question.hasCheckbox) {
           if (question.checkboxGroup!.multipleSelect) {
-            questionsFormArray.push(this.fb.array([]));
+            questionsFormArray.push(this.fb.array([], [Validators.required]));
             let checkboxesFormArray = questionsFormArray.at(questionIndex) as FormArray;
 
             question.checkboxGroup?.checkboxes?.forEach(checkbox => {
               checkboxesFormArray.push(this.fb.group({
                 checked: false,
-                text: ['']
+                text: [{value: '', disabled: true}, [Validators.required]]
               }))
             })
 
@@ -109,12 +109,12 @@ export class AnswerSurveyParticipationComponent implements OnInit {
             if (question.required) {
               questionsFormArray.push(this.fb.group({
                 checkboxId: ['', [Validators.required]],
-                text: ['']
+                text: [{value: '', disabled: true}, [Validators.required]]
               }))
             } else {
               questionsFormArray.push(this.fb.group({
                 checkboxId: [''],
-                text: ['']
+                text: [{value: '', disabled: true}, [Validators.required]]
               }))
             }
           }

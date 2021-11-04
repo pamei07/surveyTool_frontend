@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Question} from "../../../../model/question";
-import {FormGroup, FormGroupDirective} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, FormGroupDirective} from "@angular/forms";
+import {Checkbox} from "../../../../model/checkbox";
 
 @Component({
   selector: 'answer-multiple-select-question',
@@ -14,18 +15,26 @@ export class AnswerMultipleSelectQuestionComponent implements OnInit {
   @Input() questionIndex!: number;
   parentForm!: FormGroup;
 
-  get text() {
+  checked(checkboxIndex: number): AbstractControl {
+    return <FormControl>this.parentForm.get('questionGroupsFormArray')
+      ?.get(this.questionGroupIndex.toString())
+      ?.get(this.questionIndex.toString())
+      ?.get(checkboxIndex.toString())
+      ?.get('checked');
+  }
+
+  text(checkboxIndex: number) {
     return this.parentForm.get('questionGroupsFormArray')
       ?.get(this.questionGroupIndex.toString())
       ?.get(this.questionIndex.toString())
+      ?.get(checkboxIndex.toString())
       ?.get('text');
   }
 
-  get checked() {
+  get checkboxArray() {
     return this.parentForm.get('questionGroupsFormArray')
       ?.get(this.questionGroupIndex.toString())
       ?.get(this.questionIndex.toString())
-      ?.get('checked');
   }
 
   constructor(private parentFormGroup: FormGroupDirective) {
@@ -33,5 +42,17 @@ export class AnswerMultipleSelectQuestionComponent implements OnInit {
 
   ngOnInit() {
     this.parentForm = this.parentFormGroup.control;
+  }
+
+  enableDisableTextFieldIfAvailable(checkbox: Checkbox, checkboxIndex: number) {
+    let currentCheckboxTextField = this.checkboxArray?.get(checkboxIndex.toString())?.get('text');
+
+    if (checkbox.hasTextField) {
+      if (currentCheckboxTextField?.disabled) {
+        currentCheckboxTextField?.enable();
+      } else if (currentCheckboxTextField?.enabled) {
+        currentCheckboxTextField?.disable();
+      }
+    }
   }
 }
