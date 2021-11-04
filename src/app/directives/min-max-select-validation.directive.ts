@@ -3,10 +3,15 @@ import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 
 export function maxSelectGreaterThanMinSelectValidator(): ValidatorFn {
   return (group: AbstractControl): ValidationErrors | null => {
-    let minSelect = group.get('checkboxGroup')?.get('minSelect')?.value;
-    let maxSelect = group.get('checkboxGroup')?.get('maxSelect')?.value;
+    let minSelectControl = group.get('checkboxGroup')?.get('minSelect');
+    let maxSelectControl = group.get('checkboxGroup')?.get('maxSelect');
 
-    if (maxSelect < minSelect) {
+    let minSelect = minSelectControl?.value;
+    let maxSelect = maxSelectControl?.value;
+
+    if (minSelectControl?.disabled || maxSelectControl?.disabled) {
+      return null;
+    } else if (maxSelect < minSelect) {
       return {maxSelectLessThanMinSelect: true};
     } else {
       return null;
