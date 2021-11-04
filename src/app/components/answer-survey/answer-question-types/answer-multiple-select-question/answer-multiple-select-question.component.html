@@ -1,0 +1,29 @@
+<div [formGroup]="parentForm">
+  <div formArrayName="questionGroupsFormArray">
+    <div formArrayName="{{questionGroupIndex}}">
+      <label [attr.for]="'question' + question.id" class="form-label">
+        #{{ questionIndex + 1 }}: {{ question.text }}
+      </label>
+      <span *ngIf="question.required">*</span>
+
+      <div formArrayName="{{ questionIndex }}">
+        <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
+          <div class="row ms-2 mb-1" formGroupName="{{checkboxIndex}}">
+            <div class="col-auto">
+              <input [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
+                     class="form-check-input me-2" formControlName="checked"
+                     type="checkbox" value="true">
+              <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
+                     class="form-check-label">
+                {{ checkbox.text }}
+              </label>
+            </div>
+            <input *ngIf="checkbox.hasTextField" type="text" class="form-control col me-3"
+                   formControlName="text"
+                   [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

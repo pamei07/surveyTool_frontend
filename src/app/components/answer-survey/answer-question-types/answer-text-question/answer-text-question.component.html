@@ -1,0 +1,20 @@
+<div [formGroup]="parentForm">
+  <div formArrayName="questionGroupsFormArray">
+    <div formArrayName="{{questionGroupIndex}}">
+      <label [attr.for]="'question' + question.id" class="form-label">
+        #{{ questionIndex + 1 }}: {{ question.text }}
+      </label>
+      <span *ngIf="question.required">*</span>
+
+      <textarea [attr.id]="'question' + question.id" class="form-control"
+                formControlName="{{ questionIndex }}"></textarea>
+      <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
+           class="alert alert-danger p-2 mt-1 mb-0">
+        <div *ngIf="text?.errors?.required">
+          Diese Frage muss beantwortet werden.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

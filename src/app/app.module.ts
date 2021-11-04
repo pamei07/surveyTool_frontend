@@ -34,7 +34,9 @@ import {QuestionUpdateComponent} from "./components/create-survey/question/quest
 import {CheckboxDeleteComponent} from "./components/create-survey/checkbox/checkbox-delete/checkbox-delete.component";
 import {DateValidationDirective} from "./directives/date-validation.directive";
 import {MinMaxSelectValidationDirective} from "./directives/min-max-select-validation.directive";
-import {AnswerQuestionComponent} from "./components/answer-survey/answer-question/answer-question.component";
+import {AnswerTextQuestionComponent} from "./components/answer-survey/answer-question-types/answer-text-question/answer-text-question.component";
+import {AnswerRadioQuestionComponent} from "./components/answer-survey/answer-question-types/answer-radio-question/answer-radio-question.component";
+import {AnswerMultipleSelectQuestionComponent} from "./components/answer-survey/answer-question-types/answer-multiple-select-question/answer-multiple-select-question.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -70,7 +72,9 @@ const appRoutes: Routes = [
     AnswerSurveyOverviewComponent,
     AnswerSurveyParticipationComponent,
     AnswerQuestionGroupComponent,
-    AnswerQuestionComponent,
+    AnswerTextQuestionComponent,
+    AnswerRadioQuestionComponent,
+    AnswerMultipleSelectQuestionComponent,
     ThankYouComponent,
     ResultsOverviewComponent,
     ResultsSearchComponent,

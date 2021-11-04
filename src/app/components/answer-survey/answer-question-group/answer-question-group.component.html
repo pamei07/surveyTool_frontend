@@ -4,8 +4,17 @@
   </h3>
 
   <div *ngFor="let question of questionGroup.questions; index as questionIndex" class="mb-3">
-    <answer-question [questionGroupIndex]="questionGroupIndex"
-                     [question]="question"
-                     [questionIndex]="questionIndex"></answer-question>
+    <answer-text-question *ngIf="!question.hasCheckbox"
+                          [questionGroupIndex]="questionGroupIndex"
+                          [question]="question"
+                          [questionIndex]="questionIndex"></answer-text-question>
+    <answer-radio-question *ngIf="question.hasCheckbox && !question.checkboxGroup!.multipleSelect"
+                           [questionGroupIndex]="questionGroupIndex"
+                           [question]="question"
+                           [questionIndex]="questionIndex"></answer-radio-question>
+    <answer-multiple-select-question *ngIf="question.hasCheckbox && question.checkboxGroup!.multipleSelect"
+                                     [questionGroupIndex]="questionGroupIndex"
+                                     [question]="question"
+                                     [questionIndex]="questionIndex"></answer-multiple-select-question>
   </div>
 </div>
