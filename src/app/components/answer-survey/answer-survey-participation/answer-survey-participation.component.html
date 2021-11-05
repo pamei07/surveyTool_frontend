@@ -10,13 +10,11 @@
 </section>
 
 <section id="questionGroups" class="container restrictWidth">
-  <form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="answerForm">
     <div *ngFor="let questionGroup of survey.questionGroups; index as questionGroupIndex">
       <answer-question-group [questionGroup]="questionGroup"
                              [questionGroupIndex]="questionGroupIndex"></answer-question-group>
     </div>
-    <!--TODO: Add required attribute if questions is required-->
-    <!--TODO: min-/max-choices on multiple select questions-->
 
     <div>
       <button type="button" class="btn btn-success mb-3 float-end" [disabled]="answerForm.invalid"
@@ -50,7 +48,7 @@
             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
               Abbrechen
             </button>
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="postAnswersWithUser()">
               Ja, speichern.
             </button>
           </div>
