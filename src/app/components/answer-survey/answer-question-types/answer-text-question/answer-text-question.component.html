@@ -8,13 +8,10 @@
 
       <textarea [attr.id]="'question' + question.id" class="form-control"
                 formControlName="{{ questionIndex }}"></textarea>
-      <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
-           class="alert alert-danger p-2 mt-1 mb-0">
-        <div *ngIf="text?.errors?.required">
-          Diese Frage muss beantwortet werden.
-        </div>
-      </div>
 
+      <div class="alert alert-danger p-2 mt-3 mb-0 mx-4" *ngIf="text?.errors?.required">
+        Diese Frage muss beantwortet werden.
+      </div>
     </div>
   </div>
 </div>

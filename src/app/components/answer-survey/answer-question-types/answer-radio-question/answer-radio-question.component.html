@@ -26,11 +26,8 @@
                    [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
           </div>
         </div>
-        <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
-             class="alert alert-danger p-2 mt-3 mb-0 mx-4">
-          <div *ngIf="text?.errors?.required">
-            Das Textfeld muss ausgefüllt sein.
-          </div>
+        <div class="alert alert-danger p-2 mt-3 mb-0 mx-4" *ngIf="text?.errors?.required">
+          Das Textfeld muss ausgefüllt sein.
         </div>
         <div class="alert alert-danger p-2 mt-3 mb-0 mx-4" *ngIf="checkboxId?.errors?.required">
           Diese Frage muss beantwortet werden.
