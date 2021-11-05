@@ -19,7 +19,7 @@ export class SurveySubmissionComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  saveSurvey() {
     let newSurvey: Survey;
     let surveyID: number;
 
