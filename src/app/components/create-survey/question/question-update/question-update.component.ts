@@ -1,7 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Survey} from "../../../../model/survey";
-import {maxSelectGreaterThanMinSelectValidator} from "../../../../directives/min-max-select-validation.directive";
+import {
+  atLeastOneCheckboxIfQuestionRequired,
+  maxSelectGreaterThanMinSelectValidator
+} from "../../../../directives/min-max-select-validation.directive";
 
 @Component({
   selector: 'question-update',
@@ -22,7 +25,7 @@ export class QuestionUpdateComponent implements OnInit {
       minSelect: [{value: '0', disabled: true}, [Validators.required, Validators.min(0)]],
       maxSelect: [{value: '2', disabled: true}, [Validators.required, Validators.min(2)]]
     })
-  }, {validators: maxSelectGreaterThanMinSelectValidator()})
+  }, {validators: [maxSelectGreaterThanMinSelectValidator(), atLeastOneCheckboxIfQuestionRequired()]})
 
   get text() {
     return this.updateForm.get('text');

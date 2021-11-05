@@ -3,7 +3,10 @@ import {Survey} from "../../../../model/survey";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Question} from "../../../../model/question";
 import {CheckboxGroup} from "../../../../model/checkbox-group";
-import {maxSelectGreaterThanMinSelectValidator} from "../../../../directives/min-max-select-validation.directive";
+import {
+  atLeastOneCheckboxIfQuestionRequired,
+  maxSelectGreaterThanMinSelectValidator
+} from "../../../../directives/min-max-select-validation.directive";
 
 @Component({
   selector: 'question-add',
@@ -24,7 +27,7 @@ export class QuestionAddComponent implements OnInit {
       minSelect: [{value: '0', disabled: true}, [Validators.required, Validators.min(0)]],
       maxSelect: [{value: '2', disabled: true}, [Validators.required, Validators.min(2)]]
     })
-  }, {validators: maxSelectGreaterThanMinSelectValidator()})
+  }, {validators: [maxSelectGreaterThanMinSelectValidator(), atLeastOneCheckboxIfQuestionRequired()]})
 
   initialFormValues = this.questionForm.value;
 

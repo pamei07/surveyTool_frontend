@@ -3,9 +3,9 @@ import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 import {Question} from "../model/question";
 
 export function maxSelectGreaterThanMinSelectValidator(): ValidatorFn {
-  return (group: AbstractControl): ValidationErrors | null => {
-    let minSelectControl = group.get('checkboxGroup')?.get('minSelect');
-    let maxSelectControl = group.get('checkboxGroup')?.get('maxSelect');
+  return (formGroup: AbstractControl): ValidationErrors | null => {
+    let minSelectControl = formGroup.get('checkboxGroup')?.get('minSelect');
+    let maxSelectControl = formGroup.get('checkboxGroup')?.get('maxSelect');
 
     let minSelect = minSelectControl?.value;
     let maxSelect = maxSelectControl?.value;
@@ -14,6 +14,21 @@ export function maxSelectGreaterThanMinSelectValidator(): ValidatorFn {
       return null;
     } else if (maxSelect < minSelect) {
       return {maxSelectLessThanMinSelect: true};
+    } else {
+      return null;
+    }
+  }
+}
+
+export function atLeastOneCheckboxIfQuestionRequired(): ValidatorFn {
+  return (formGroup: AbstractControl): ValidationErrors | null => {
+    let requiredControl = formGroup.get('required');
+    let required = requiredControl?.value;
+    let minSelectControl = formGroup.get('checkboxGroup')?.get('minSelect');
+    let minSelect = minSelectControl?.value;
+
+    if (required === true && minSelectControl?.status !== 'DISABLED' && minSelect == 0) {
+      return {requiredButMinZeroCheckboxes: true};
     } else {
       return null;
     }

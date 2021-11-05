@@ -98,6 +98,10 @@
                      *ngIf="questionForm.hasError('maxSelectLessThanMinSelect')">
                   Das Maximum muss größer als / gleich dem Minimum sein.
                 </div>
+                <div class="alert alert-danger p-2 mt-1 mb-0"
+                     *ngIf="questionForm.hasError('requiredButMinZeroCheckboxes')">
+                  Wenn die Frage als erforderlich gekennzeichnet ist, muss das Minimum bei mind. 1 liegen.
+                </div>
               </div>
             </div>
           </div>
