@@ -8,6 +8,7 @@ import {Question} from "../../../model/question";
 import {Checkbox} from "../../../model/checkbox";
 import {User} from "../../../model/user";
 import {UserService} from "../../../services/user/user.service";
+import {noOfCheckboxesCheckedInMinMaxRange} from "../../../directives/min-max-select-validation.directive";
 
 @Component({
   selector: 'answer-survey-participation',
@@ -94,7 +95,8 @@ export class AnswerSurveyParticipationComponent implements OnInit {
 
         if (question.hasCheckbox) {
           if (question.checkboxGroup!.multipleSelect) {
-            questionsFormArray.push(this.fb.array([], [Validators.required]));
+            questionsFormArray
+              .push(this.fb.array([], [noOfCheckboxesCheckedInMinMaxRange(question)]));
             let checkboxesFormArray = questionsFormArray.at(questionIndex) as FormArray;
 
             question.checkboxGroup?.checkboxes?.forEach(checkbox => {

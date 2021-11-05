@@ -1,5 +1,6 @@
 import {Directive} from '@angular/core';
 import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
+import {Question} from "../model/question";
 
 export function maxSelectGreaterThanMinSelectValidator(): ValidatorFn {
   return (group: AbstractControl): ValidationErrors | null => {
@@ -15,6 +16,32 @@ export function maxSelectGreaterThanMinSelectValidator(): ValidatorFn {
       return {maxSelectLessThanMinSelect: true};
     } else {
       return null;
+    }
+  }
+}
+
+export function noOfCheckboxesCheckedInMinMaxRange(question: Question): ValidatorFn {
+  return (checkboxArray: AbstractControl): ValidationErrors | null => {
+    let questionRequired = question.required;
+    let minSelect = question!.checkboxGroup!.minSelect;
+    let maxSelect = question!.checkboxGroup!.maxSelect;
+
+    let checkedCounter = 0;
+    question!.checkboxGroup?.checkboxes.forEach((checkbox, checkboxIndex) => {
+      if (checkboxArray.get(checkboxIndex.toString())?.get('checked')?.value === true) {
+        checkedCounter++;
+      }
+    })
+
+    // If the question is not required: User can decide to not answer the question
+    if (!questionRequired && checkedCounter == 0) {
+      return null;
+    }
+    // If the user checks at least one box, he/she has to be in range, regardless if the question is required or not
+    else if (minSelect! <= checkedCounter && checkedCounter <= maxSelect!) {
+      return null;
+    } else {
+      return {noOfCheckedBoxesNotInRange: true};
     }
   }
 }

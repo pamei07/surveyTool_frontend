@@ -1,14 +1,17 @@
 <div [formGroup]="parentForm">
   <div formArrayName="questionGroupsFormArray">
     <div formArrayName="{{questionGroupIndex}}">
-      <label [attr.for]="'question' + question.id" class="form-label">
+      <label [attr.for]="'question' + question.id" class="form-label mb-1">
         #{{ questionIndex + 1 }}: {{ question.text }}
       </label>
       <span *ngIf="question.required">*</span>
+      <br>
+      <p class="text-muted mb-2 mt-0 mx-4">Wählen Sie bitte zwischen {{ question.checkboxGroup!.minSelect }}
+        und {{ question.checkboxGroup!.maxSelect }} Antwortmöglichkeiten aus.</p>
 
       <div formArrayName="{{ questionIndex }}">
         <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
-          <div class="row align-items-center ms-2 mb-1" formGroupName="{{checkboxIndex}}">
+          <div class="row align-items-center ms-2 mb-1" formGroupName="{{ checkboxIndex }}">
             <div class="col-auto">
               <input [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-input me-2" formControlName="checked"
@@ -23,14 +26,20 @@
                    formControlName="text"
                    [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
           </div>
-          <div *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.invalid &&
-                     (getTextFieldByCheckboxIndex(checkboxIndex)?.dirty ||
-                      getTextFieldByCheckboxIndex(checkboxIndex)?.touched)"
-               class="alert alert-danger p-2 mt-3 mb-0 mx-4">
-            <div *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.required">
-              Das Textfeld muss ausgefüllt sein.
-            </div>
+          <div class="alert alert-danger p-2 mt-3 mb-0 mx-4"
+               *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.required">
+            Das Textfeld muss ausgefüllt sein.
           </div>
+        </div>
+        <div class="alert alert-danger p-2 mt-3 mb-0 mx-4"
+             *ngIf="checkboxArray?.hasError('noOfCheckedBoxesNotInRange') && question.required">
+          Sie müssen zwischen {{ question.checkboxGroup!.minSelect }} und {{ question.checkboxGroup!.maxSelect }}
+          Antwortmöglichkeiten auswählen.
+        </div>
+        <div class="alert alert-danger p-2 mt-3 mb-0 mx-4"
+             *ngIf="checkboxArray?.hasError('noOfCheckedBoxesNotInRange') && !question.required">
+          Sie können nur zwischen {{ question.checkboxGroup!.minSelect }} und {{ question.checkboxGroup!.maxSelect }}
+          Antwortmöglichkeiten auswählen.
         </div>
       </div>
     </div>
