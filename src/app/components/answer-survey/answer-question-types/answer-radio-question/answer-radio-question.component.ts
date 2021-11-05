@@ -37,6 +37,10 @@ export class AnswerRadioQuestionComponent implements OnInit {
   }
 
   disableEnableInput(currentCheckbox: Checkbox) {
+    // Reset text value on click so that required-validation gets triggered when switching from a filled textfield
+    // to an empty one
+    this.text?.patchValue('');
+
     // If checkbox clicked has a text field => enable input field and field in FormGroup
     if (currentCheckbox.hasTextField) {
       (document.getElementById('checkbox' + currentCheckbox.id + 'text')! as HTMLInputElement).disabled = false;
