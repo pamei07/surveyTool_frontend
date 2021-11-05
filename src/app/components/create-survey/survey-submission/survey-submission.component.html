@@ -7,6 +7,12 @@
     <!--      </div>-->
     <!--    </div>-->
 
+    <div *ngIf="errorMessages.length !== 0">
+      <div class="errorMessage alert alert-danger p-2 my-2 d-block" *ngFor="let errorMessage of errorMessages">
+        {{ errorMessage }}
+      </div>
+    </div>
+
     <div class="row">
       <div>
         <button type="button" class="btn btn-success mt-2 mb-4 float-end"
