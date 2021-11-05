@@ -14,8 +14,6 @@ export class QuestionUpdateComponent implements OnInit {
   @Input() indexQuestionGroup!: number;
   @Input() indexQuestion!: number;
 
-  disableInput: boolean = false;
-
   updateForm = this.fb.group({
     text: ['', [Validators.required]],
     required: false,
@@ -87,14 +85,12 @@ export class QuestionUpdateComponent implements OnInit {
   }
 
   enableDisableMinMaxInput() {
-    if (this.disableInput) {
-      this.updateForm.get('checkboxGroup')?.get('minSelect')?.disable();
-      this.updateForm.get('checkboxGroup')?.get('maxSelect')?.disable();
-      this.disableInput = false;
-    } else {
-      this.updateForm.get('checkboxGroup')?.get('minSelect')?.enable();
-      this.updateForm.get('checkboxGroup')?.get('maxSelect')?.enable();
-      this.disableInput = true;
+    if (this.minSelect?.enabled && this.maxSelect?.enabled) {
+      this.minSelect?.disable();
+      this.maxSelect?.disable();
+    } else if (this.minSelect?.disabled && this.maxSelect?.disabled) {
+      this.minSelect?.enable();
+      this.maxSelect?.enable();
     }
   }
 }
