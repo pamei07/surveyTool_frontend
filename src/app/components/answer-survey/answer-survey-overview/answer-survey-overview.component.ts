@@ -9,6 +9,7 @@ import {Survey} from "../../../model/survey";
 export class AnswerSurveyOverviewComponent implements OnInit {
 
   @Input() survey!: Survey;
+  @Input() surveyNotFound!: boolean;
   @Output() participateBoolean = new EventEmitter<boolean>();
 
   constructor() {

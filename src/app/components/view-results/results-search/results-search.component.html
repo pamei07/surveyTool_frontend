@@ -8,7 +8,7 @@
       </button>
     </div>
   </form>
-  <div class="row alert alert-danger p-2 mt-2 mb-0"
+  <div id="errorMessage" class="row alert alert-danger p-2 mt-2 mb-0"
        *ngIf="surveyNotFound">
     <span *ngIf="currentAccessId == ''">
       Geben Sie bitte eine Zugangs-ID ein.
