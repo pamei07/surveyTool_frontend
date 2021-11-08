@@ -80,6 +80,10 @@ footer {
   width: 150px;
 }
 
+.collapseArrow {
+  height: 40px;
+}
+
 /* Other */
 .errorMessage {
   white-space: pre-wrap;

@@ -19,15 +19,7 @@
   </div>
   <hr>
   <div *ngFor="let questionGroup of survey.questionGroups">
-    <h3 class="text-center surveyInfo">{{ questionGroup.title }}</h3>
-    <div class="mb-4" *ngFor="let question of questionGroup.questions">
-      <results-text-question [question]="question"
-                             (userIdsOfParticipants)="countUniqueIds($event)"
-                             *ngIf="!question.hasCheckbox"></results-text-question>
-      <results-checkbox-question [question]="question"
-                                 (userIdsOfParticipants)="countUniqueIds($event)"
-                                 *ngIf="question.hasCheckbox"></results-checkbox-question>
-    </div>
-    <hr class="my-4">
+    <results-question-group [questionGroup]="questionGroup"
+                            (userIdsOfParticipants)="countUniqueIds($event)"></results-question-group>
   </div>
 </section>
