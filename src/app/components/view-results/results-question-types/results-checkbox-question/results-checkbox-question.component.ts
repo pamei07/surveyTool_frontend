@@ -62,4 +62,8 @@ export class ResultsCheckboxQuestionComponent implements OnInit {
       this.checkboxesHaveTextAnswers = true;
     }
   }
+
+  checkboxIsMostVoted(checkboxIndex: number) {
+    return (this.votesForCheckboxes[checkboxIndex] == Math.max.apply(null, this.votesForCheckboxes));
+  }
 }

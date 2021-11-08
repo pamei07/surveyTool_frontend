@@ -15,9 +15,15 @@
         </thead>
         <tbody>
         <tr *ngFor="let checkbox of question.checkboxGroup!.checkboxes; index as checkboxIndex">
-          <td>{{ checkbox.text }}:</td>
-          <td class="text-center">{{ this.votesForCheckboxes[checkboxIndex] }}</td>
-          <td class="text-center">{{ this.percentagesForCheckboxes[checkboxIndex] | percent }}</td>
+          <td [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">{{ checkbox.text }}:</td>
+          <td class="text-center"
+              [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">
+            {{ this.votesForCheckboxes[checkboxIndex] }}
+          </td>
+          <td class="text-center"
+              [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">
+            {{ this.percentagesForCheckboxes[checkboxIndex] | percent }}
+          </td>
           <td *ngIf="checkbox.hasTextField && checkboxesHaveTextAnswers">
             <div class="w-100 h-100 text-center">
               <button class="btn btn-primary" data-bs-toggle="modal"
