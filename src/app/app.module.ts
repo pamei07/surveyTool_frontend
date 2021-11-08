@@ -38,7 +38,7 @@ import {AnswerRadioQuestionComponent} from "./components/answer-survey/answer-qu
 import {AnswerMultipleSelectQuestionComponent} from "./components/answer-survey/answer-question-types/answer-multiple-select-question/answer-multiple-select-question.component";
 import {ResultsTextQuestionComponent} from "./components/view-results/results-question-types/results-text-question/results-text-question.component";
 import {ResultsCheckboxQuestionComponent} from "./components/view-results/results-question-types/results-checkbox-question/results-checkbox-question.component";
-import {ResultsCheckboxTextAnswersComponent} from "./components/view-results/results-question-types/results-modal-text-answers/results-checkbox-text-answers.component";
+import {ResultsCheckboxTextAnswersComponent} from "./components/view-results/results-question-types/results-checkbox-text-answers/results-checkbox-text-answers.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
