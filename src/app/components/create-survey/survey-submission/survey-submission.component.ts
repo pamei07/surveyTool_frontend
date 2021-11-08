@@ -30,7 +30,7 @@ export class SurveySubmissionComponent implements OnInit {
     let surveyID: number;
 
     this.surveyService.saveSurvey(this.survey).subscribe(savedSurvey => {
-      newSurvey = <Survey>savedSurvey;
+      newSurvey = savedSurvey;
       surveyID = <number>newSurvey.id;
       console.log(newSurvey);
 

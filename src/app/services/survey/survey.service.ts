@@ -14,18 +14,18 @@ export class SurveyService {
   }
 
   public saveSurvey(survey: Survey) {
-    return this.http.post(this.surveyUrl + '/createSurvey/save', survey);
+    return this.http.post<Survey>(this.surveyUrl + '/createSurvey/save', survey);
   }
 
   public getSurveyOverview(id: string | null) {
-    return this.http.get(this.surveyUrl + '/createSurvey/' + id + '/final');
+    return this.http.get<Survey>(this.surveyUrl + '/createSurvey/' + id + '/final');
   }
 
   public getSurveyOverviewByUuid(uuid: string | null) {
-    return this.http.get(this.surveyUrl + '/answers?uuid=' + uuid);
+    return this.http.get<Survey>(this.surveyUrl + '/answers?uuid=' + uuid);
   }
 
-  getSurveyByAccessId(accessId: string) {
-    return this.http.get(this.surveyUrl + '/results?accessId=' + accessId);
+  public getSurveyByAccessId(accessId: string) {
+    return this.http.get<Survey>(this.surveyUrl + '/results?accessId=' + accessId);
   }
 }

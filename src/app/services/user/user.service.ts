@@ -14,6 +14,6 @@ export class UserService {
   }
 
   public saveUser(user: User) {
-    return this.http.post(this.surveyUrl + '/postUser', user);
+    return this.http.post<User>(this.surveyUrl + '/postUser', user);
   }
 }

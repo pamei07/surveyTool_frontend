@@ -19,8 +19,8 @@ export class AnswerSurveyParentComponent implements OnInit {
 
     this.uuid = activatedRoute.snapshot.queryParamMap.get('surveyUUID');
 
-    surveyService.getSurveyOverviewByUuid(this.uuid).subscribe(x => {
-      this.survey = <Survey>x;
+    surveyService.getSurveyOverviewByUuid(this.uuid).subscribe(survey => {
+      this.survey = survey;
       console.log(this.survey);
     })
   }

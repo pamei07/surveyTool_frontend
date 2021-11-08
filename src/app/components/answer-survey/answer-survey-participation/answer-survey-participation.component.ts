@@ -133,8 +133,7 @@ export class AnswerSurveyParticipationComponent implements OnInit {
 
   postAnswersWithUser() {
     this.postUser().subscribe(savedUser => {
-      let user = <User>savedUser;
-      this.postAnswers(user);
+      this.postAnswers(savedUser);
     });
   }
 

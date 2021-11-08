@@ -26,7 +26,7 @@ export class ResultsSearchComponent implements OnInit {
 
   emitSurvey() {
     this.surveyService.getSurveyByAccessId(this.accessId).subscribe(survey => {
-      this.surveyEventEmitter.emit(<Survey>survey);
+      this.surveyEventEmitter.emit(survey);
     });
 
   }

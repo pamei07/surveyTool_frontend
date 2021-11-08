@@ -22,7 +22,7 @@ export class ResultsQuestionWithAnswersComponent implements OnInit {
 
   ngOnInit() {
     this.answerService.getAnswersByQuestionId(this.question.id).subscribe(answers => {
-      this.answers = <Answer[]>answers;
+      this.answers = answers;
       this.calculateNumberOfUsersAnswering(this.answers);
       if (this.question.hasCheckbox) {
         this.calculatePercentages();
