@@ -26,17 +26,17 @@
                    formControlName="text"
                    [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
           </div>
-          <div class="alert alert-danger p-2 mt-3 mb-0 mx-4"
+          <div class="alert alert-danger p-2 my-2 mx-4"
                *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.required">
             Das Textfeld muss ausgefüllt sein.
           </div>
         </div>
-        <div class="alert alert-danger p-2 mt-3 mb-0 mx-4"
+        <div class="alert alert-danger p-2 my-3 mx-4"
              *ngIf="checkboxArray?.hasError('noOfCheckedBoxesNotInRange') && question.required">
           Sie müssen zwischen {{ question.checkboxGroup!.minSelect }} und {{ question.checkboxGroup!.maxSelect }}
           Antwortmöglichkeiten auswählen.
         </div>
-        <div class="alert alert-danger p-2 mt-3 mb-0 mx-4"
+        <div class="alert alert-danger p-2 my-3 mx-4"
              *ngIf="checkboxArray?.hasError('noOfCheckedBoxesNotInRange') && !question.required">
           Sie können nur zwischen {{ question.checkboxGroup!.minSelect }} und {{ question.checkboxGroup!.maxSelect }}
           Antwortmöglichkeiten auswählen.
