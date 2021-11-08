@@ -24,7 +24,6 @@ import {AnswerQuestionGroupComponent} from "./components/answer-survey/answer-qu
 import {ThankYouComponent} from "./components/answer-survey/thank-you/thank-you.component";
 import {ResultsOverviewComponent} from "./components/view-results/results-overview/results-overview.component";
 import {ResultsSearchComponent} from "./components/view-results/results-search/results-search.component";
-import {ResultsQuestionWithAnswersComponent} from "./components/view-results/results-questions-with-answers/results-question-with-answers.component";
 import {SurveyCreationComponent} from "./components/create-survey/survey-creation/survey-creation.component";
 import {AnswerSurveyParentComponent} from "./components/answer-survey/answer-survey-parent/answer-survey-parent.component";
 import {QuestionGroupDeleteComponent} from "./components/create-survey/question-group/question-group-delete/question-group-delete.component";
@@ -37,6 +36,9 @@ import {MinMaxSelectValidationDirective} from "./directives/min-max-select-valid
 import {AnswerTextQuestionComponent} from "./components/answer-survey/answer-question-types/answer-text-question/answer-text-question.component";
 import {AnswerRadioQuestionComponent} from "./components/answer-survey/answer-question-types/answer-radio-question/answer-radio-question.component";
 import {AnswerMultipleSelectQuestionComponent} from "./components/answer-survey/answer-question-types/answer-multiple-select-question/answer-multiple-select-question.component";
+import {ResultsTextQuestionComponent} from "./components/view-results/results-question-types/results-text-question/results-text-question.component";
+import {ResultsCheckboxQuestionComponent} from "./components/view-results/results-question-types/results-checkbox-question/results-checkbox-question.component";
+import {ResultsCheckboxTextAnswersComponent} from "./components/view-results/results-question-types/results-modal-text-answers/results-checkbox-text-answers.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -78,7 +80,9 @@ const appRoutes: Routes = [
     ThankYouComponent,
     ResultsOverviewComponent,
     ResultsSearchComponent,
-    ResultsQuestionWithAnswersComponent,
+    ResultsTextQuestionComponent,
+    ResultsCheckboxQuestionComponent,
+    ResultsCheckboxTextAnswersComponent,
     AppHeaderComponent,
     AppFooterComponent,
     DateValidationDirective,

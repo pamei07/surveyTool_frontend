@@ -1,0 +1,24 @@
+<!-- Modal: View text answers -->
+<div class="modal fade" [attr.id]="'viewTextAnswers' + checkbox.id" tabindex="-1"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ checkbox.text }}:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let answer of answers">
+          <div class="card my-3" *ngIf="answer.checkbox!.id == checkbox.id">
+            <div class="card-body">
+              {{ answer.text }}
+              <span class="text-muted float-end mt-2">
+                          - {{ answer.user!.name }} (user#{{ answer.user!.id }})
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

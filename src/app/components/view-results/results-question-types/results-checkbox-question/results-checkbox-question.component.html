@@ -1,0 +1,37 @@
+<div class="container restrictWidth">
+  <h5>{{ question.text }}</h5>
+  <span>{{ numberOfUsersAnswering }} Teilnehmer haben diese Frage beantwortet.</span>
+  <div id="answers" class="my-2">
+    <div class="card card-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th class="text-muted" *ngIf="question.checkboxGroup!.multipleSelect">Multiple Select</th>
+          <th class="text-muted" *ngIf="!question.checkboxGroup!.multipleSelect">Single Select</th>
+          <th class="text-center"># Stimmen</th>
+          <th class="text-center">% der Teilnehmer</th>
+          <th class="text-center" *ngIf="checkboxesHaveTextAnswers">Text</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let checkbox of question.checkboxGroup!.checkboxes; index as checkboxIndex">
+          <td>{{ checkbox.text }}:</td>
+          <td class="text-center">{{ this.votesForCheckboxes[checkboxIndex] }}</td>
+          <td class="text-center">{{ this.percentagesForCheckboxes[checkboxIndex] | percent }}</td>
+          <td *ngIf="checkbox.hasTextField && checkboxesHaveTextAnswers">
+            <div class="w-100 h-100 text-center">
+              <button class="btn btn-primary" data-bs-toggle="modal"
+                      [attr.data-bs-target]="'#viewTextAnswers' + checkbox.id">
+                Ansehen
+              </button>
+            </div>
+            <results-checkbox-text-answers [answers]="answers"
+                                           [checkbox]="checkbox"></results-checkbox-text-answers>
+          </td>
+          <td class="text-center" *ngIf="!checkbox.hasTextField && checkboxesHaveTextAnswers"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

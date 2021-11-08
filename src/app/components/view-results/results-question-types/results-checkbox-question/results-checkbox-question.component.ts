@@ -1,14 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Question} from "../../../model/question";
-import {AnswerService} from "../../../services/answer/answer.service";
-import {Answer} from "../../../model/answer";
+import {Question} from "../../../../model/question";
+import {Answer} from "../../../../model/answer";
+import {AnswerService} from "../../../../services/answer/answer.service";
 
 @Component({
-  selector: 'results-question-with-answers',
-  templateUrl: 'results-question-with-answers.component.html'
+  selector: 'results-checkbox-question',
+  templateUrl: 'results-checkbox-question.component.html'
 })
 
-export class ResultsQuestionWithAnswersComponent implements OnInit {
+export class ResultsCheckboxQuestionComponent implements OnInit {
   @Input() question!: Question;
   @Output() userIdsOfParticipants = new EventEmitter<number[]>();
   answers!: Answer[];
