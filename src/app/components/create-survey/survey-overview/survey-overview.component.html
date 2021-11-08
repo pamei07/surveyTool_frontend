@@ -1,4 +1,4 @@
-<section id="surveyOverview" class="d-flex flex-column min-vw-100">
+<section id="surveyOverview" class="d-flex flex-column min-vw-100" *ngIf="!surveyNotFound">
   <!--    <div id="surveyNotAvailable" class="container restrictWidth mt-5" th:if="${notAvailable != null}">-->
   <!--        <div id="errorMessages" class="my-2">-->
   <!--            <div class="my-2 alert alert-danger">-->
@@ -71,5 +71,10 @@
         </p>
       </div>
     </div>
+  </div>
+</section>
+<section id="errorMessage" class="container restrictWidth" *ngIf="surveyNotFound">
+  <div class="alert alert-danger p-2 mt-4">
+    <span>Unter der angegebenen UUID wurde keine Umfrage gefunden.</span>
   </div>
 </section>
