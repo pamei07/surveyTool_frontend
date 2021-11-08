@@ -42,9 +42,8 @@
     </button>
   </div>
 </section>
-<section id="errorMessage" class="container restrictWidth">
-  <div class="alert alert-danger p-2 mt-4"
-       *ngIf="surveyNotFound">
+<section id="errorMessage" class="container restrictWidth" *ngIf="surveyNotFound">
+  <div class="alert alert-danger p-2 mt-4">
     <span>Unter der angegebenen UUID wurde keine Umfrage gefunden.</span>
   </div>
 </section>
