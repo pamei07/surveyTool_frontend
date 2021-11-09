@@ -1,5 +1,5 @@
 <div class="container restrictWidth">
-  <form (ngSubmit)="postSurveyWithUser()" [formGroup]="userForm">
+  <form [formGroup]="userForm">
 
     <div *ngIf="errorMessages.length !== 0">
       <div class="errorMessage alert alert-danger p-2 my-2 d-block" *ngFor="let errorMessage of errorMessages">
@@ -16,34 +16,6 @@
       </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="confirmSubmission" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="confirmSubmissionLabel">Umfrage speichern</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Sind Sie sicher? Sie können die Umfrage nachträglich nicht mehr verändern.
-          </div>
-          <hr class="my-0">
-          <div class="modal-body">
-            <label for="userName" class="form-label">
-              Geben Sie Ihren Namen ein (Optional):
-            </label>
-            <input id="userName" class="form-control" type="text" formControlName="userName">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-              Abbrechen
-            </button>
-            <button type="submit" class="btn btn-success" data-bs-dismiss="modal">
-              Ja, speichern.
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <survey-submission-modal (postSurvey)="postSurveyWithUser()"></survey-submission-modal>
   </form>
 </div>
