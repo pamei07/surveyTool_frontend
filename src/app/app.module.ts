@@ -43,6 +43,7 @@ import {ResultsQuestionGroupComponent} from "./components/view-results/results-q
 import {AnswerSubmissionComponent} from "./components/answer-survey/answer-submission/answer-submission.component";
 import {SurveySubmissionModalComponent} from "./components/create-survey/survey-submission-modal.component/survey-submission-modal.component";
 import {SurveyBasicInformationComponent} from "./components/shared-components/survey-basic-information/survey-basic-information.component";
+import {SurveyAccessDetailsComponent} from "./components/create-survey/survey-access-details/survey-access-details.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     SurveyBasicInformationComponent,
+    SurveyAccessDetailsComponent,
     SurveyCreationComponent,
     SurveyBasicsComponent,
     SurveyQuestionAddingComponent,

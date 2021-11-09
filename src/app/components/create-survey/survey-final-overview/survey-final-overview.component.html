@@ -1,42 +1,6 @@
-<section id="surveyOverview" class="d-flex flex-column min-vw-100" *ngIf="!surveyNotFound">
+<section id="surveyOverview" *ngIf="!surveyNotFound">
   <survey-basic-information [survey]="survey"></survey-basic-information>
-  <div id="additionalInformation" class="container restrictWidth" *ngIf="survey">
-    <div id="surveyAccessID" class="container">
-      <div class="row">
-        <h3>
-          Zugangs-ID:
-        </h3>
-      </div>
-      <div class="row mb-2 text-center">
-        <span id="accessID" class="surveyInfo text-center">
-          {{ survey.accessID }}
-        </span>
-      </div>
-      <div class="row text-center">
-        <p>
-          Mit dieser ID können Sie jederzeit die Ergebnisse ihrer Umfrage einsehen.
-        </p>
-      </div>
-    </div>
-    <hr>
-    <div id="surveyLink" class="container">
-      <div class="row">
-        <h3>
-          Link:
-        </h3>
-      </div>
-      <div class="row mb-2 text-center">
-        <span id="link" class="surveyInfo text-center">
-          http://localhost:4200/answers/overview?surveyUUID={{ survey.uuid }}
-        </span>
-      </div>
-      <div class="row text-center">
-        <p>
-          Mit diesem Link können andere Nutzer an ihrer Umfrage teilnehmen.
-        </p>
-      </div>
-    </div>
-  </div>
+  <survey-access-details [survey]="survey"></survey-access-details>
 </section>
 <section id="errorMessage" class="container restrictWidth" *ngIf="surveyNotFound">
   <div class="alert alert-danger p-2 mt-4">
