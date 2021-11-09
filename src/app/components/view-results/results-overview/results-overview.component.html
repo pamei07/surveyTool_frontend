@@ -22,5 +22,6 @@
   <div *ngFor="let questionGroup of survey.questionGroups">
     <results-question-group [questionGroup]="questionGroup"
                             (userIdsOfParticipants)="countUniqueIds($event)"></results-question-group>
+    <hr class="my-4">
   </div>
 </section>
