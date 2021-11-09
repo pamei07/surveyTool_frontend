@@ -40,7 +40,7 @@ import {ResultsTextQuestionComponent} from "./components/view-results/results-qu
 import {ResultsCheckboxQuestionComponent} from "./components/view-results/results-question-types/results-checkbox-question/results-checkbox-question.component";
 import {ResultsCheckboxTextAnswersComponent} from "./components/view-results/results-question-types/results-checkbox-text-answers/results-checkbox-text-answers.component";
 import {ResultsQuestionGroupComponent} from "./components/view-results/results-question-group/results-question-group.component";
-import {AnswerSubmissionComponent} from "./components/answer-survey/answer-submission/answer-submission.component";
+import {AnswersSubmissionComponent} from "./components/answer-survey/answers-submission/answers-submission.component";
 import {SurveySubmissionModalComponent} from "./components/create-survey/survey-submission-modal.component/survey-submission-modal.component";
 import {SurveyBasicInformationComponent} from "./components/shared-components/survey-basic-information/survey-basic-information.component";
 import {SurveyAccessDetailsComponent} from "./components/create-survey/survey-access-details/survey-access-details.component";
@@ -81,7 +81,7 @@ const appRoutes: Routes = [
     AnswerSurveyComponent,
     SurveyIntroComponent,
     ParticipateInSurveyComponent,
-    AnswerSubmissionComponent,
+    AnswersSubmissionComponent,
     QuestionGroupComponent,
     TextQuestionComponent,
     RadioQuestionComponent,

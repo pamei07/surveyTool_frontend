@@ -2,11 +2,11 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormGroup, FormGroupDirective} from "@angular/forms";
 
 @Component({
-  selector: 'answer-submission',
-  templateUrl: 'answer-submission.component.html'
+  selector: 'answers-submission',
+  templateUrl: 'answers-submission.component.html'
 })
 
-export class AnswerSubmissionComponent implements OnInit {
+export class AnswersSubmissionComponent implements OnInit {
 
   @Output() postAnswers = new EventEmitter;
   parentForm!: FormGroup;
