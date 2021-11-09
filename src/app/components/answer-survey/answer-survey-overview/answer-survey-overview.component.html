@@ -1,9 +1,11 @@
-<survey-basic-information [survey]="survey" *ngIf="!surveyNotFound"></survey-basic-information>
-<div class="container restrictWidth d-flex justify-content-center mb-3">
-  <button class="btn btn-primary participateButton" (click)="participate()" [disabled]="!withinTimeFrame">
-    Teilnehmen
-  </button>
-</div>
+<section id="surveyOverview" *ngIf="!surveyNotFound">
+  <survey-basic-information [survey]="survey"></survey-basic-information>
+  <div class="container restrictWidth d-flex justify-content-center mb-3">
+    <button class="btn btn-primary participateButton" (click)="participate()" [disabled]="!withinTimeFrame">
+      Teilnehmen
+    </button>
+  </div>
+</section>
 <section id="errorMessages" class="container restrictWidth" *ngIf="surveyNotFound || !withinTimeFrame">
   <div class="alert alert-danger p-2 mt-4" *ngIf="surveyNotFound">
     <span>Unter der angegebenen UUID wurde keine Umfrage gefunden.</span>
