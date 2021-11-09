@@ -3,6 +3,9 @@ import {Survey} from "../../../model/survey";
 import {SurveyService} from "../../../services/survey/survey.service";
 import {Router} from "@angular/router";
 import {QuestionGroup} from "../../../model/question-group";
+import {FormBuilder} from "@angular/forms";
+import {UserService} from "../../../services/user/user.service";
+import {User} from "../../../model/user";
 
 @Component({
   selector: 'survey-submission',
@@ -14,17 +17,45 @@ export class SurveySubmissionComponent implements OnInit {
   @Input() survey!: Survey;
   errorMessages: string[] = [];
 
+  userForm = this.fb.group({
+    userName: ['']
+  })
+
+  get userName() {
+    return this.userForm.get('userName');
+  }
+
   constructor(private surveyService: SurveyService,
+              private userService: UserService,
+              private fb: FormBuilder,
               private router: Router) {
   }
 
   ngOnInit() {
   }
 
-  saveSurvey() {
+  postSurveyWithUser() {
     if (this.checkIfAnythingEmpty(this.survey)) {
       return;
     }
+    this.postUser().subscribe(savedUser => {
+      this.postSurvey(savedUser);
+    })
+  }
+
+  private postUser() {
+    let user: User = new User();
+    let userNameInput = this.userName!.value;
+    if (userNameInput !== '') {
+      user.setName(userNameInput);
+    } else {
+      user.setName('Anonym');
+    }
+    return this.userService.saveUser(user);
+  }
+
+  private postSurvey(user: User) {
+    this.survey.setUser(user);
 
     let newSurvey: Survey;
     let surveyID: number;
@@ -61,6 +92,7 @@ export class SurveySubmissionComponent implements OnInit {
     }
     return anythingEmpty;
   }
+
 
   private checkIfCheckboxGroupsEmpty(questionGroup: QuestionGroup, questionGroupIndex: number): boolean {
     let anythingEmpty = false;

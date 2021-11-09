@@ -1,11 +1,5 @@
 <div class="container restrictWidth">
-  <form (ngSubmit)="saveSurvey()">
-    <!--    <div id="errorMessages" class="row my-2">-->
-    <!--      <div class="my-2 alert alert-danger" th:if="${#fields.hasGlobalErrors()}"-->
-    <!--           th:each="error : ${#fields.globalErrors()}">-->
-    <!--        <span class="d-block errorMessage" th:text="${error}"></span>-->
-    <!--      </div>-->
-    <!--    </div>-->
+  <form (ngSubmit)="postSurveyWithUser()" [formGroup]="userForm">
 
     <div *ngIf="errorMessages.length !== 0">
       <div class="errorMessage alert alert-danger p-2 my-2 d-block" *ngFor="let errorMessage of errorMessages">
@@ -32,6 +26,13 @@
           </div>
           <div class="modal-body">
             Sind Sie sicher? Sie können die Umfrage nachträglich nicht mehr verändern.
+          </div>
+          <hr class="my-0">
+          <div class="modal-body">
+            <label for="userName" class="form-label">
+              Geben Sie Ihren Namen ein (Optional):
+            </label>
+            <input id="userName" class="form-control" type="text" formControlName="userName">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
