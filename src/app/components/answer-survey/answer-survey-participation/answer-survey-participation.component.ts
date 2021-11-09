@@ -80,11 +80,13 @@ export class AnswerSurveyParticipationComponent implements OnInit {
    * insertInputFields():
    *    Push a FormArray for each questionGroup into the FormArray 'questionGroupsFormArray'.
    *    Each FormArray contains the form fields for each question in the questionGroup.
-   *    There are 2 types of form fields:
-   *    1. For questions with checkboxes:
+   *    There are 3 types of form fields:
+   *    1. For questions with checkboxes (multipleSelect):
    *       --> another FormArray containing FormGroups with an attribute 'checked' to mark if a checkbox has been checked
    *           and a 'text' attribute to capture the text input if available
-   *    2. For plain text questions:
+   *    2. For questions with checkboxes (singleSelect):
+   *       --> a FormGroup containing the checkboxId of the checkbox checked and a text if submitted
+   *    3. For plain text questions:
    *       --> a FormControl capturing the text input
    */
   insertInputFields() {
@@ -115,7 +117,7 @@ export class AnswerSurveyParticipationComponent implements OnInit {
     questionsFormArray.push(this.fb.array([], [noOfCheckboxesCheckedInMinMaxRange(question)]));
     let checkboxesFormArray = questionsFormArray.at(questionIndex) as FormArray;
 
-    question.checkboxGroup?.checkboxes?.forEach(checkbox => {
+    question.checkboxGroup?.checkboxes?.forEach(() => {
       checkboxesFormArray.push(this.fb.group({
         checked: false,
         text: [{value: '', disabled: true}, [Validators.required]]
@@ -172,60 +174,20 @@ export class AnswerSurveyParticipationComponent implements OnInit {
    *    --> Create an Answer object only if a text field is not empty
    */
   private postAnswers(user: User) {
-    let answer: Answer;
-    let currentQuestion: Question = new Question();
-    let currentCheckbox: Checkbox = new Checkbox();
     this.questionGroupsFormArray.controls.forEach((answersToQuestionGroup, questionGroupIndex) => {
       answersToQuestionGroup.value.forEach((answerToQuestion: any, questionIndex: number) => {
         if (answerToQuestion instanceof Array) {
           answerToQuestion.forEach((checkbox: any, checkboxIndex: number) => {
             if (checkbox.checked == true) {
-              answer = new Answer();
-              answer.setUser(user);
-
-              if (checkbox.text !== '') {
-                answer.setText(checkbox.text);
-              }
-
-              currentQuestion = this.survey.questionGroups![questionGroupIndex].questions![questionIndex]
-              answer.setQuestion(currentQuestion);
-
-              currentCheckbox = this.survey.questionGroups![questionGroupIndex].questions![questionIndex].checkboxGroup!.checkboxes![checkboxIndex];
-              answer.setCheckbox(currentCheckbox);
-
-              this.answerArray.push(answer)
+              this.pushAnswerToMultipleSelectQuestion(user, questionGroupIndex, questionIndex, checkbox, checkboxIndex);
             }
           })
         } else if (typeof answerToQuestion !== 'string') {
           if (answerToQuestion.checkboxId !== '') {
-            answer = new Answer();
-            answer.setUser(user);
-
-            if (answerToQuestion.text !== '') {
-              answer.setText(answerToQuestion.text);
-            }
-            currentQuestion = this.survey.questionGroups![questionGroupIndex].questions![questionIndex]
-            answer.setQuestion(currentQuestion);
-
-            currentCheckbox = this.survey
-              .questionGroups![questionGroupIndex]
-              .questions![questionIndex]
-              .checkboxGroup!
-              .checkboxes![answerToQuestion.checkboxId];
-            answer.setCheckbox(currentCheckbox);
-
-            this.answerArray.push(answer);
+            this.pushAnswerToSingleSelectQuestion(user, answerToQuestion, questionGroupIndex, questionIndex);
           }
         } else if (answerToQuestion !== '') {
-          answer = new Answer();
-          answer.setUser(user);
-
-          answer.setText(answerToQuestion);
-
-          currentQuestion = this.survey.questionGroups![questionGroupIndex].questions![questionIndex];
-          answer.setQuestion(currentQuestion);
-
-          this.answerArray.push(answer);
+          this.pushAnswerToTextQuestion(user, answerToQuestion, questionGroupIndex, questionIndex);
         }
       })
     });
@@ -234,5 +196,74 @@ export class AnswerSurveyParticipationComponent implements OnInit {
       this.answerArray = [];
       this.router.navigate(["thanks"])
     });
+  }
+
+  private pushAnswerToMultipleSelectQuestion(user: User,
+                                             questionGroupIndex: number,
+                                             questionIndex: number,
+                                             checkbox: any,
+                                             checkboxIndex: number) {
+    let answer = new Answer();
+    answer.setUser(user);
+
+    if (checkbox.text !== '') {
+      answer.setText(checkbox.text);
+    }
+
+    let currentQuestion: Question = this.survey
+      .questionGroups![questionGroupIndex]
+      .questions![questionIndex];
+    answer.setQuestion(currentQuestion);
+
+    let currentCheckbox: Checkbox = this.survey
+      .questionGroups![questionGroupIndex]
+      .questions![questionIndex]
+      .checkboxGroup!
+      .checkboxes![checkboxIndex];
+    answer.setCheckbox(currentCheckbox);
+
+    this.answerArray.push(answer);
+  }
+
+  private pushAnswerToSingleSelectQuestion(user: User,
+                                           answerToQuestion: any,
+                                           questionGroupIndex: number,
+                                           questionIndex: number) {
+    let answer = new Answer();
+    answer.setUser(user);
+
+    if (answerToQuestion.text !== '') {
+      answer.setText(answerToQuestion.text);
+    }
+
+    let currentQuestion: Question = this.survey
+      .questionGroups![questionGroupIndex]
+      .questions![questionIndex];
+    answer.setQuestion(currentQuestion);
+
+    let currentCheckbox: Checkbox = this.survey
+      .questionGroups![questionGroupIndex]
+      .questions![questionIndex]
+      .checkboxGroup!
+      .checkboxes![answerToQuestion.checkboxId];
+    answer.setCheckbox(currentCheckbox);
+
+    this.answerArray.push(answer);
+  }
+
+  private pushAnswerToTextQuestion(user: User,
+                                   answerToQuestion: string,
+                                   questionGroupIndex: number,
+                                   questionIndex: number) {
+    let answer = new Answer();
+    answer.setUser(user);
+    answer.setText(answerToQuestion);
+
+    let currentQuestion: Question = this.survey
+      .questionGroups![questionGroupIndex]
+      .questions![questionIndex];
+    answer.setQuestion(currentQuestion);
+
+    this.answerArray.push(answer);
   }
 }
