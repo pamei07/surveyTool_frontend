@@ -13,7 +13,7 @@ import {QuestionGroupListComponent} from "./components/create-survey/question-gr
 import {QuestionAddComponent} from "./components/create-survey/question/question-add/question-add.component";
 import {QuestionListComponent} from "./components/create-survey/question/question-list/question-list.component";
 import {CheckboxListComponent} from "./components/create-survey/checkbox/checkbox-list/checkbox-list.component";
-import {SurveySubmissionComponent} from "./components/create-survey/survey-submission/survey-submission.component";
+import {SurveySubmissionValidationComponent} from "./components/create-survey/survey-submission-validation/survey-submission-validation.component";
 import {CheckboxAddComponent} from './components/create-survey/checkbox/checkbox-add/checkbox-add.component';
 import {SurveyFinalOverviewComponent} from "./components/create-survey/survey-final-overview/survey-final-overview.component";
 import {SurveyIntroComponent} from "./components/answer-survey/survey-intro/survey-intro.component";
@@ -41,7 +41,7 @@ import {AnswersCheckboxQuestionComponent} from "./components/view-results/questi
 import {CheckboxTextAnswersComponent} from "./components/view-results/question-types/checkbox-text-answers/checkbox-text-answers.component";
 import {ResultsQuestionGroupComponent} from "./components/view-results/results-question-group/results-question-group.component";
 import {AnswersSubmissionComponent} from "./components/answer-survey/answers-submission/answers-submission.component";
-import {SurveySubmissionModalComponent} from "./components/create-survey/survey-submission-modal.component/survey-submission-modal.component";
+import {SurveySubmissionModalComponent} from "./components/create-survey/survey-submission-modal/survey-submission-modal.component";
 import {SurveyBasicInformationComponent} from "./components/shared-components/survey-basic-information/survey-basic-information.component";
 import {SurveyAccessDetailsComponent} from "./components/create-survey/survey-access-details/survey-access-details.component";
 
@@ -75,7 +75,7 @@ const appRoutes: Routes = [
     CheckboxListComponent,
     CheckboxAddComponent,
     CheckboxDeleteComponent,
-    SurveySubmissionComponent,
+    SurveySubmissionValidationComponent,
     SurveySubmissionModalComponent,
     SurveyFinalOverviewComponent,
     AnswerSurveyComponent,

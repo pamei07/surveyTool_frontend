@@ -8,11 +8,11 @@ import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../model/user";
 
 @Component({
-  selector: 'survey-submission',
-  templateUrl: 'survey-submission.component.html'
+  selector: 'survey-submission-validation',
+  templateUrl: 'survey-submission-validation.component.html'
 })
 
-export class SurveySubmissionComponent implements OnInit {
+export class SurveySubmissionValidationComponent implements OnInit {
 
   @Input() survey!: Survey;
   errorMessages: string[] = [];

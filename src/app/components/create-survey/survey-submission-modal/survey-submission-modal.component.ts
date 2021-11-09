@@ -7,6 +7,7 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 })
 
 export class SurveySubmissionModalComponent implements OnInit {
+
   @Output() postSurvey = new EventEmitter;
   parentForm!: FormGroup;
 

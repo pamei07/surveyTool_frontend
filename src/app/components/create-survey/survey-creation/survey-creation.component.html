@@ -5,7 +5,7 @@
   <add-questions *ngIf="basicInfoGiven"
                  [survey]="survey"
                  (basicInfoBoolean)="setBasicInfoGiven($event)"></add-questions>
-  <survey-submission *ngIf="basicInfoGiven"
-                     [survey]="survey"></survey-submission>
+  <survey-submission-validation *ngIf="basicInfoGiven"
+                                [survey]="survey"></survey-submission-validation>
 </section>
 
