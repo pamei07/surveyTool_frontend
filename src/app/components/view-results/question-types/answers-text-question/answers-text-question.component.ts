@@ -4,11 +4,11 @@ import {Answer} from "../../../../model/answer";
 import {AnswerService} from "../../../../services/answer/answer.service";
 
 @Component({
-  selector: 'results-text-question',
-  templateUrl: 'results-text-question.component.html'
+  selector: 'answers-text-question',
+  templateUrl: 'answers-text-question.component.html'
 })
 
-export class ResultsTextQuestionComponent implements OnInit {
+export class AnswersTextQuestionComponent implements OnInit {
   @Input() question!: Question;
   @Output() userIdsOfParticipants = new EventEmitter<number[]>();
   answers!: Answer[];

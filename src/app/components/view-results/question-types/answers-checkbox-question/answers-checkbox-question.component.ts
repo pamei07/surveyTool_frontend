@@ -4,11 +4,11 @@ import {Answer} from "../../../../model/answer";
 import {AnswerService} from "../../../../services/answer/answer.service";
 
 @Component({
-  selector: 'results-checkbox-question',
-  templateUrl: 'results-checkbox-question.component.html'
+  selector: 'answers-checkbox-question',
+  templateUrl: 'answers-checkbox-question.component.html'
 })
 
-export class ResultsCheckboxQuestionComponent implements OnInit {
+export class AnswersCheckboxQuestionComponent implements OnInit {
   @Input() question!: Question;
   @Output() userIdsOfParticipants = new EventEmitter<number[]>();
   answers!: Answer[];

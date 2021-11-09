@@ -9,10 +9,10 @@
 </h3>
 <div [attr.id]="'collapseAnswers' + questionGroup.id" class="show mb-4"
      *ngFor="let question of questionGroup.questions">
-  <results-text-question [question]="question"
+  <answers-text-question [question]="question"
                          (userIdsOfParticipants)="passUserIds($event)"
-                         *ngIf="!question.hasCheckbox"></results-text-question>
-  <results-checkbox-question [question]="question"
+                         *ngIf="!question.hasCheckbox"></answers-text-question>
+  <answers-checkbox-question [question]="question"
                              (userIdsOfParticipants)="passUserIds($event)"
-                             *ngIf="question.hasCheckbox"></results-checkbox-question>
+                             *ngIf="question.hasCheckbox"></answers-checkbox-question>
 </div>

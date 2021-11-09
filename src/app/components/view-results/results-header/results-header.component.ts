@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
-  selector: 'results-overview',
-  templateUrl: 'results-overview.component.html'
+  selector: 'results-header',
+  templateUrl: 'results-header.component.html'
 })
 
-export class ResultsOverviewComponent implements OnInit {
+export class ResultsHeaderComponent implements OnInit {
   survey!: Survey;
   uniqueUserIds: number[] = [];
 

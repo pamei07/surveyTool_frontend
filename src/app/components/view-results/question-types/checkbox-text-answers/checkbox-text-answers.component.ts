@@ -3,11 +3,11 @@ import {Answer} from "../../../../model/answer";
 import {Checkbox} from "../../../../model/checkbox";
 
 @Component({
-  selector: 'results-checkbox-text-answers',
-  templateUrl: 'results-checkbox-text-answers.component.html'
+  selector: 'checkbox-text-answers',
+  templateUrl: 'checkbox-text-answers.component.html'
 })
 
-export class ResultsCheckboxTextAnswersComponent implements OnInit {
+export class CheckboxTextAnswersComponent implements OnInit {
 
   @Input() answers!: Answer[];
   @Input() checkbox!: Checkbox;
