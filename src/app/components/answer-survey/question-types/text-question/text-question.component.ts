@@ -3,11 +3,11 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 import {Question} from "../../../../model/question";
 
 @Component({
-  selector: 'answer-text-question',
-  templateUrl: 'answer-text-question.component.html'
+  selector: 'text-question',
+  templateUrl: 'text-question.component.html'
 })
 
-export class AnswerTextQuestionComponent implements OnInit {
+export class TextQuestionComponent implements OnInit {
 
   @Input() questionGroupIndex!: number;
   @Input() question!: Question;

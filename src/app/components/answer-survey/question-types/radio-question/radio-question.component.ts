@@ -4,11 +4,11 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 import {Checkbox} from "../../../../model/checkbox";
 
 @Component({
-  selector: 'answer-radio-question',
-  templateUrl: 'answer-radio-question.component.html'
+  selector: 'radio-question',
+  templateUrl: 'radio-question.component.html'
 })
 
-export class AnswerRadioQuestionComponent implements OnInit {
+export class RadioQuestionComponent implements OnInit {
 
   @Input() questionGroupIndex!: number;
   @Input() question!: Question;

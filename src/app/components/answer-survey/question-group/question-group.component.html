@@ -1,0 +1,20 @@
+<div class="card card-body mb-3">
+  <h3 class="card-title">
+    {{ questionGroup.title }}
+  </h3>
+
+  <div *ngFor="let question of questionGroup.questions; index as questionIndex" class="mb-3">
+    <text-question *ngIf="!question.hasCheckbox"
+                   [questionGroupIndex]="questionGroupIndex"
+                   [question]="question"
+                   [questionIndex]="questionIndex"></text-question>
+    <radio-question *ngIf="question.hasCheckbox && !question.checkboxGroup!.multipleSelect"
+                    [questionGroupIndex]="questionGroupIndex"
+                    [question]="question"
+                    [questionIndex]="questionIndex"></radio-question>
+    <multiple-select-question *ngIf="question.hasCheckbox && question.checkboxGroup!.multipleSelect"
+                              [questionGroupIndex]="questionGroupIndex"
+                              [question]="question"
+                              [questionIndex]="questionIndex"></multiple-select-question>
+  </div>
+</div>

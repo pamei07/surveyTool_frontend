@@ -4,11 +4,11 @@ import {AbstractControl, FormControl, FormGroup, FormGroupDirective} from "@angu
 import {Checkbox} from "../../../../model/checkbox";
 
 @Component({
-  selector: 'answer-multiple-select-question',
-  templateUrl: 'answer-multiple-select-question.component.html'
+  selector: 'multiple-select-question',
+  templateUrl: 'multiple-select-question.component.html'
 })
 
-export class AnswerMultipleSelectQuestionComponent implements OnInit {
+export class MultipleSelectQuestionComponent implements OnInit {
 
   @Input() questionGroupIndex!: number;
   @Input() question!: Question;

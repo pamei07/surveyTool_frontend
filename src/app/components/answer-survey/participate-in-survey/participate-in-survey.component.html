@@ -12,8 +12,8 @@
 <section id="questionGroups" class="container restrictWidth" *ngIf="survey.questionGroups !== null">
   <form [formGroup]="answerForm">
     <div *ngFor="let questionGroup of survey.questionGroups; index as questionGroupIndex">
-      <answer-question-group [questionGroup]="questionGroup"
-                             [questionGroupIndex]="questionGroupIndex"></answer-question-group>
+      <question-group [questionGroup]="questionGroup"
+                      [questionGroupIndex]="questionGroupIndex"></question-group>
     </div>
 
     <div>

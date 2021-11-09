@@ -20,7 +20,7 @@ import {SurveyIntroComponent} from "./components/answer-survey/survey-intro/surv
 import {ParticipateInSurveyComponent} from "./components/answer-survey/participate-in-survey/participate-in-survey.component";
 import {AppHeaderComponent} from "./components/header/app-header.component";
 import {AppFooterComponent} from "./components/footer/app-footer.component";
-import {AnswerQuestionGroupComponent} from "./components/answer-survey/answer-question-group/answer-question-group.component";
+import {QuestionGroupComponent} from "./components/answer-survey/question-group/question-group.component";
 import {ThankYouComponent} from "./components/answer-survey/thank-you/thank-you.component";
 import {ResultsOverviewComponent} from "./components/view-results/results-overview/results-overview.component";
 import {ResultsSearchComponent} from "./components/view-results/results-search/results-search.component";
@@ -33,9 +33,9 @@ import {QuestionUpdateComponent} from "./components/create-survey/question/quest
 import {CheckboxDeleteComponent} from "./components/create-survey/checkbox/checkbox-delete/checkbox-delete.component";
 import {DateValidationDirective} from "./directives/date-validation.directive";
 import {MinMaxSelectValidationDirective} from "./directives/min-max-select-validation.directive";
-import {AnswerTextQuestionComponent} from "./components/answer-survey/answer-question-types/answer-text-question/answer-text-question.component";
-import {AnswerRadioQuestionComponent} from "./components/answer-survey/answer-question-types/answer-radio-question/answer-radio-question.component";
-import {AnswerMultipleSelectQuestionComponent} from "./components/answer-survey/answer-question-types/answer-multiple-select-question/answer-multiple-select-question.component";
+import {TextQuestionComponent} from "./components/answer-survey/question-types/text-question/text-question.component";
+import {RadioQuestionComponent} from "./components/answer-survey/question-types/radio-question/radio-question.component";
+import {MultipleSelectQuestionComponent} from "./components/answer-survey/question-types/multiple-select-question/multiple-select-question.component";
 import {ResultsTextQuestionComponent} from "./components/view-results/results-question-types/results-text-question/results-text-question.component";
 import {ResultsCheckboxQuestionComponent} from "./components/view-results/results-question-types/results-checkbox-question/results-checkbox-question.component";
 import {ResultsCheckboxTextAnswersComponent} from "./components/view-results/results-question-types/results-checkbox-text-answers/results-checkbox-text-answers.component";
@@ -82,10 +82,10 @@ const appRoutes: Routes = [
     SurveyIntroComponent,
     ParticipateInSurveyComponent,
     AnswerSubmissionComponent,
-    AnswerQuestionGroupComponent,
-    AnswerTextQuestionComponent,
-    AnswerRadioQuestionComponent,
-    AnswerMultipleSelectQuestionComponent,
+    QuestionGroupComponent,
+    TextQuestionComponent,
+    RadioQuestionComponent,
+    MultipleSelectQuestionComponent,
     ThankYouComponent,
     ResultsOverviewComponent,
     ResultsSearchComponent,
