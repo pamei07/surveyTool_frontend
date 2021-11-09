@@ -94,43 +94,55 @@ export class AnswerSurveyParticipationComponent implements OnInit {
       let questionsFormArray = this.questionGroupsFormArray.at(questionGroupIndex) as FormArray;
 
       questionGroup.questions!.forEach((question, questionIndex) => {
-
-        if (question.hasCheckbox) {
-          if (question.checkboxGroup!.multipleSelect) {
-            questionsFormArray
-              .push(this.fb.array([], [noOfCheckboxesCheckedInMinMaxRange(question)]));
-            let checkboxesFormArray = questionsFormArray.at(questionIndex) as FormArray;
-
-            question.checkboxGroup?.checkboxes?.forEach(checkbox => {
-              checkboxesFormArray.push(this.fb.group({
-                checked: false,
-                text: [{value: '', disabled: true}, [Validators.required]]
-              }))
-            })
-
-            questionsFormArray.setControl(questionIndex, checkboxesFormArray);
-          } else {
-            if (question.required) {
-              questionsFormArray.push(this.fb.group({
-                checkboxId: ['', [Validators.required]],
-                text: [{value: '', disabled: true}, [Validators.required]]
-              }))
-            } else {
-              questionsFormArray.push(this.fb.group({
-                checkboxId: [''],
-                text: [{value: '', disabled: true}, [Validators.required]]
-              }))
-            }
-          }
-        } else {
-          if (question.required) {
-            questionsFormArray.push(this.fb.control('', [Validators.required]));
-          } else {
-            questionsFormArray.push(this.fb.control(''));
-          }
-        }
+        this.addQuestionToForm(question, questionIndex, questionsFormArray);
       })
     })
+  }
+
+  private addQuestionToForm(question: Question, questionIndex: number, questionsFormArray: FormArray) {
+    if (question.hasCheckbox) {
+      if (question.checkboxGroup!.multipleSelect) {
+        this.addMultipleSelectQuestion(question, questionIndex, questionsFormArray);
+      } else {
+        this.addSingleSelectQuestion(question, questionsFormArray);
+      }
+    } else {
+      this.addTextQuestion(question, questionsFormArray);
+    }
+  }
+
+  private addMultipleSelectQuestion(question: Question, questionIndex: number, questionsFormArray: FormArray) {
+    questionsFormArray.push(this.fb.array([], [noOfCheckboxesCheckedInMinMaxRange(question)]));
+    let checkboxesFormArray = questionsFormArray.at(questionIndex) as FormArray;
+
+    question.checkboxGroup?.checkboxes?.forEach(checkbox => {
+      checkboxesFormArray.push(this.fb.group({
+        checked: false,
+        text: [{value: '', disabled: true}, [Validators.required]]
+      }))
+    })
+  }
+
+  private addSingleSelectQuestion(question: Question, questionsFormArray: FormArray) {
+    if (question.required) {
+      questionsFormArray.push(this.fb.group({
+        checkboxId: ['', [Validators.required]],
+        text: [{value: '', disabled: true}, [Validators.required]]
+      }))
+    } else {
+      questionsFormArray.push(this.fb.group({
+        checkboxId: [''],
+        text: [{value: '', disabled: true}, [Validators.required]]
+      }))
+    }
+  }
+
+  private addTextQuestion(question: Question, questionsFormArray: FormArray) {
+    if (question.required) {
+      questionsFormArray.push(this.fb.control('', [Validators.required]));
+    } else {
+      questionsFormArray.push(this.fb.control(''));
+    }
   }
 
   postAnswersWithUser() {
