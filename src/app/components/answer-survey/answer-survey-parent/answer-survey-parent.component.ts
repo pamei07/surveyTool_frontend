@@ -13,6 +13,7 @@ export class AnswerSurveyParentComponent implements OnInit {
 
   survey!: Survey;
   surveyNotFound: boolean = false;
+  withinTimeFrame: boolean = true;
   uuid: string | null;
   participate: boolean = false;
 
@@ -27,7 +28,12 @@ export class AnswerSurveyParentComponent implements OnInit {
         console.log(this.survey);
       }, (error: HttpErrorResponse) => {
         console.log(error);
-        this.surveyNotFound = true;
+        if (error.status === 404) {
+          this.surveyNotFound = true;
+        } else if (error.status === 403) {
+          this.survey = error.error;
+          this.withinTimeFrame = false;
+        }
       }
     )
   }

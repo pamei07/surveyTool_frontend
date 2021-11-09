@@ -1,11 +1,4 @@
 <section id="surveyOverview" class="d-flex flex-column min-vw-100" *ngIf="!surveyNotFound">
-  <!--    <div id="surveyNotAvailable" class="container restrictWidth mt-5" th:if="${notAvailable != null}">-->
-  <!--        <div id="errorMessages" class="my-2">-->
-  <!--            <div class="my-2 alert alert-danger">-->
-  <!--                <span class="d-block errorMessage" th:text="${notAvailable}"></span>-->
-  <!--            </div>-->
-  <!--        </div>-->
-  <!--    </div>-->
   <div id="information" class="container restrictWidth" *ngIf="survey">
     <h1 class="mt-3">
       Übersicht
@@ -15,13 +8,13 @@
       <h2 id="surveyName" class="surveyInfo">{{ survey.name }}</h2>
     </div>
     <hr>
-    <div id="surveyDescription" class="container" *ngIf="survey.description !== null">
+    <div id="surveyDescription" class="container" *ngIf="survey.description !== null && survey.description !== ''">
       <h3>
         Beschreibung:
       </h3>
       <p class="mx-2">{{ survey.description }}</p>
     </div>
-    <hr *ngIf="survey.description !== null">
+    <hr *ngIf="survey.description !== null && survey.description !== ''">
     <div id="surveyDates" class="my-4 row w-100 basicInformation justify-content-evenly">
       <div class="col-1 d-flex flex-column">
         <span>Startdatum:</span>
@@ -35,15 +28,18 @@
       </div>
     </div>
     <hr>
-  </div>
-  <div class="container restrictWidth d-flex justify-content-center mb-3">
-    <button class="btn btn-primary participateButton" (click)="participate()">
-      Teilnehmen
-    </button>
+    <div class="container restrictWidth d-flex justify-content-center mb-3">
+      <button class="btn btn-primary participateButton" (click)="participate()" [disabled]="!withinTimeFrame">
+        Teilnehmen
+      </button>
+    </div>
   </div>
 </section>
-<section id="errorMessage" class="container restrictWidth" *ngIf="surveyNotFound">
-  <div class="alert alert-danger p-2 mt-4">
+<section id="errorMessages" class="container restrictWidth" *ngIf="surveyNotFound || !withinTimeFrame">
+  <div class="alert alert-danger p-2 mt-4" *ngIf="surveyNotFound">
     <span>Unter der angegebenen UUID wurde keine Umfrage gefunden.</span>
+  </div>
+  <div class="alert alert-danger p-2 mt-1" *ngIf="!withinTimeFrame">
+    <span>Diese Umfrage ist zurzeit nicht freigegeben. (Siehe Start- und Endddatum)</span>
   </div>
 </section>

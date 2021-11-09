@@ -1,5 +1,6 @@
 <answer-survey-overview [survey]="survey"
                         [surveyNotFound]="surveyNotFound"
+                        [withinTimeFrame]="withinTimeFrame"
                         (participateBoolean)="setParticipate($event)"
                         *ngIf="!participate"></answer-survey-overview>
 <answer-survey-participation [survey]="survey"

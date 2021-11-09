@@ -10,6 +10,7 @@ export class AnswerSurveyOverviewComponent implements OnInit {
 
   @Input() survey!: Survey;
   @Input() surveyNotFound!: boolean;
+  @Input() withinTimeFrame!: boolean;
   @Output() participateBoolean = new EventEmitter<boolean>();
 
   constructor() {
