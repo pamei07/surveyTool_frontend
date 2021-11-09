@@ -38,20 +38,10 @@ export class SurveySubmissionComponent implements OnInit {
     if (this.checkIfAnythingEmpty(this.survey)) {
       return;
     }
-    this.postUser().subscribe(savedUser => {
+    let userName = this.userName?.value;
+    this.userService.postUser(userName).subscribe(savedUser => {
       this.postSurvey(savedUser);
     })
-  }
-
-  private postUser() {
-    let user: User = new User();
-    let userNameInput = this.userName!.value;
-    if (userNameInput !== '') {
-      user.setName(userNameInput);
-    } else {
-      user.setName('Anonym');
-    }
-    return this.userService.saveUser(user);
   }
 
   private postSurvey(user: User) {

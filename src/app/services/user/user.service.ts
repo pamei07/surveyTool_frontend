@@ -16,4 +16,14 @@ export class UserService {
   public saveUser(user: User) {
     return this.http.post<User>(this.surveyUrl + '/postUser', user);
   }
+
+  postUser(name: string) {
+    let user: User = new User();
+    if (name !== '') {
+      user.setName(name);
+    } else {
+      user.setName('Anonym');
+    }
+    return this.saveUser(user);
+  }
 }
