@@ -6,6 +6,9 @@
     <hr>
     <div>
       <h2 id="surveyName" class="surveyInfo">{{ survey.name }}</h2>
+      <span class="text-muted ms-3">
+          Erstellt von: {{ survey.user?.name }}
+      </span>
     </div>
     <hr>
     <div id="surveyDescription" class="container" *ngIf="survey.description !== null && survey.description !== ''">

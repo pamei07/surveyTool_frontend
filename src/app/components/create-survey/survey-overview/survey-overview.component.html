@@ -1,12 +1,4 @@
 <section id="surveyOverview" class="d-flex flex-column min-vw-100" *ngIf="!surveyNotFound">
-  <!--    <div id="surveyNotAvailable" class="container restrictWidth mt-5" th:if="${notAvailable != null}">-->
-  <!--        <div id="errorMessages" class="my-2">-->
-  <!--            <div class="my-2 alert alert-danger">-->
-  <!--                <span class="d-block errorMessage" th:text="${notAvailable}"></span>-->
-  <!--            </div>-->
-  <!--        </div>-->
-  <!--    </div>-->
-
   <div id="information" class="container restrictWidth" *ngIf="survey">
     <h1 class="mt-3">
       Übersicht
@@ -14,6 +6,9 @@
     <hr>
     <div>
       <h2 id="surveyName" class="surveyInfo">{{ survey.name }}</h2>
+      <span class="text-muted ms-3">
+          Erstellt von: {{ survey.user?.name }}
+      </span>
     </div>
     <hr>
     <div id="surveyDescription" class="container" *ngIf="survey.description !== null && survey.description !== ''">
