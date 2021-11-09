@@ -2,11 +2,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
-  selector: 'answer-survey-overview',
-  templateUrl: 'answer-survey-overview.component.html'
+  selector: 'survey-intro',
+  templateUrl: 'survey-intro.component.html'
 })
 
-export class AnswerSurveyOverviewComponent implements OnInit {
+export class SurveyIntroComponent implements OnInit {
 
   @Input() survey!: Survey;
   @Input() surveyNotFound!: boolean;

@@ -11,11 +11,11 @@ import {UserService} from "../../../services/user/user.service";
 import {noOfCheckboxesCheckedInMinMaxRange} from "../../../directives/min-max-select-validation.directive";
 
 @Component({
-  selector: 'answer-survey-participation',
-  templateUrl: 'answer-survey-participation.component.html'
+  selector: 'participate-in-survey',
+  templateUrl: 'participate-in-survey.component.html'
 })
 
-export class AnswerSurveyParticipationComponent implements OnInit {
+export class ParticipateInSurveyComponent implements OnInit {
 
   @Input() survey!: Survey;
   answerArray: Answer[] = [];

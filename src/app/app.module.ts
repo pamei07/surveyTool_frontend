@@ -16,8 +16,8 @@ import {CheckboxListComponent} from "./components/create-survey/checkbox/checkbo
 import {SurveySubmissionComponent} from "./components/create-survey/survey-submission/survey-submission.component";
 import {CheckboxAddComponent} from './components/create-survey/checkbox/checkbox-add/checkbox-add.component';
 import {SurveyFinalOverviewComponent} from "./components/create-survey/survey-final-overview/survey-final-overview.component";
-import {AnswerSurveyOverviewComponent} from "./components/answer-survey/answer-survey-overview/answer-survey-overview.component";
-import {AnswerSurveyParticipationComponent} from "./components/answer-survey/answer-survey-participation/answer-survey-participation.component";
+import {SurveyIntroComponent} from "./components/answer-survey/survey-intro/survey-intro.component";
+import {ParticipateInSurveyComponent} from "./components/answer-survey/participate-in-survey/participate-in-survey.component";
 import {AppHeaderComponent} from "./components/header/app-header.component";
 import {AppFooterComponent} from "./components/footer/app-footer.component";
 import {AnswerQuestionGroupComponent} from "./components/answer-survey/answer-question-group/answer-question-group.component";
@@ -79,8 +79,8 @@ const appRoutes: Routes = [
     SurveySubmissionModalComponent,
     SurveyFinalOverviewComponent,
     AnswerSurveyComponent,
-    AnswerSurveyOverviewComponent,
-    AnswerSurveyParticipationComponent,
+    SurveyIntroComponent,
+    ParticipateInSurveyComponent,
     AnswerSubmissionComponent,
     AnswerQuestionGroupComponent,
     AnswerTextQuestionComponent,
