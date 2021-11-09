@@ -6,10 +6,10 @@ import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'answer-survey-parent',
-  templateUrl: 'answer-survey-parent.component.html'
+  templateUrl: 'answer-survey.component.html'
 })
 
-export class AnswerSurveyParentComponent implements OnInit {
+export class AnswerSurveyComponent implements OnInit {
 
   survey!: Survey;
   surveyNotFound: boolean = false;

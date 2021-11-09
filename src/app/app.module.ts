@@ -25,7 +25,7 @@ import {ThankYouComponent} from "./components/answer-survey/thank-you/thank-you.
 import {ResultsOverviewComponent} from "./components/view-results/results-overview/results-overview.component";
 import {ResultsSearchComponent} from "./components/view-results/results-search/results-search.component";
 import {SurveyCreationComponent} from "./components/create-survey/survey-creation/survey-creation.component";
-import {AnswerSurveyParentComponent} from "./components/answer-survey/answer-survey-parent/answer-survey-parent.component";
+import {AnswerSurveyComponent} from "./components/answer-survey/answer-survey/answer-survey.component";
 import {QuestionGroupDeleteComponent} from "./components/create-survey/question-group/question-group-delete/question-group-delete.component";
 import {QuestionGroupUpdateComponent} from "./components/create-survey/question-group/question-group-update/question-group-update.component";
 import {QuestionDeleteComponent} from "./components/create-survey/question/question-delete/question-delete.component";
@@ -50,7 +50,7 @@ const appRoutes: Routes = [
   {path: 'createSurvey', component: SurveyCreationComponent},
   {path: 'createSurvey/questions', component: SurveyQuestionAddingComponent},
   {path: 'createSurvey/:id/final', component: SurveyFinalOverviewComponent},
-  {path: 'answers/overview', component: AnswerSurveyParentComponent},
+  {path: 'answers/overview', component: AnswerSurveyComponent},
   {path: 'thanks', component: ThankYouComponent},
   {path: 'viewResults', component: ResultsOverviewComponent}
 ]
@@ -78,7 +78,7 @@ const appRoutes: Routes = [
     SurveySubmissionComponent,
     SurveySubmissionModalComponent,
     SurveyFinalOverviewComponent,
-    AnswerSurveyParentComponent,
+    AnswerSurveyComponent,
     AnswerSurveyOverviewComponent,
     AnswerSurveyParticipationComponent,
     AnswerSubmissionComponent,
