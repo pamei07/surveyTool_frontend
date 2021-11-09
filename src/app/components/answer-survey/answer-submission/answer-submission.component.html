@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div class="modal fade" id="confirmAnswerSubmission" tabindex="-1" aria-hidden="true" [formGroup]="parentForm">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmAnswerSubmissionLabel">
+          Antworten einreichen
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Sind Sie sicher?<br>
+        Sie können ihre Antworten nachträglich nicht mehr verändern.
+      </div>
+      <hr class="my-0">
+      <div class="modal-body">
+        <label for="userName" class="form-label">
+          Geben Sie Ihren Namen ein (Optional):
+        </label>
+        <input id="userName" class="form-control" type="text" formControlName="userName">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+          Abbrechen
+        </button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="post()">
+          Ja, speichern.
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

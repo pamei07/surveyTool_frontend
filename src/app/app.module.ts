@@ -40,6 +40,7 @@ import {ResultsTextQuestionComponent} from "./components/view-results/results-qu
 import {ResultsCheckboxQuestionComponent} from "./components/view-results/results-question-types/results-checkbox-question/results-checkbox-question.component";
 import {ResultsCheckboxTextAnswersComponent} from "./components/view-results/results-question-types/results-checkbox-text-answers/results-checkbox-text-answers.component";
 import {ResultsQuestionGroupComponent} from "./components/view-results/results-question-group/results-question-group.component";
+import {AnswerSubmissionComponent} from "./components/answer-survey/answer-submission/answer-submission.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -74,6 +75,7 @@ const appRoutes: Routes = [
     AnswerSurveyParentComponent,
     AnswerSurveyOverviewComponent,
     AnswerSurveyParticipationComponent,
+    AnswerSubmissionComponent,
     AnswerQuestionGroupComponent,
     AnswerTextQuestionComponent,
     AnswerRadioQuestionComponent,
