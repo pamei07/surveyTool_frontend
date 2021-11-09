@@ -40,7 +40,9 @@ export class AnswerSurveyParticipationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.insertInputFields();
+    if (this.survey.questionGroups !== null) {
+      this.insertInputFields();
+    }
     console.log(this.answerForm);
   }
 

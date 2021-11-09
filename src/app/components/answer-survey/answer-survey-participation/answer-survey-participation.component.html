@@ -9,7 +9,7 @@
   </div>
 </section>
 
-<section id="questionGroups" class="container restrictWidth">
+<section id="questionGroups" class="container restrictWidth" *ngIf="survey.questionGroups !== null">
   <form [formGroup]="answerForm">
     <div *ngFor="let questionGroup of survey.questionGroups; index as questionGroupIndex">
       <answer-question-group [questionGroup]="questionGroup"
@@ -56,4 +56,10 @@
       </div>
     </div>
   </form>
+</section>
+
+<section id="errorMessage" class="container restrictWidth" *ngIf="survey.questionGroups === null">
+  <div class="alert alert-danger p-2 mt-4">
+    <span>Beim Laden der Fragen ist etwas schiefgelaufen. Vermutlich ist diese Umfrage zurzeit nicht freigegeben.</span>
+  </div>
 </section>
