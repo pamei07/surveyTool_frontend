@@ -4,11 +4,11 @@ import {Survey} from "../../../model/survey";
 import {endDateInFuture, startDateBeforeEndDateValidator} from "../../../directives/date-validation.directive";
 
 @Component({
-  selector: 'survey-basics',
-  templateUrl: 'survey-basics.component.html'
+  selector: 'survey-basic-information-form',
+  templateUrl: 'survey-basic-information-form.component.html'
 })
 
-export class SurveyBasicsComponent implements OnInit {
+export class SurveyBasicInformationFormComponent implements OnInit {
 
   @Input() survey!: Survey;
   @Output() basicInfoBoolean = new EventEmitter<boolean>();

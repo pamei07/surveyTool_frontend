@@ -4,8 +4,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./components/home/home.component";
-import {SurveyBasicsComponent} from "./components/create-survey/survey-basics/survey-basics.component";
-import {SurveyQuestionAddingComponent} from "./components/create-survey/survey-question-adding/survey-question-adding.component";
+import {SurveyBasicInformationFormComponent} from "./components/create-survey/survey-basic-information-form/survey-basic-information-form.component";
+import {AddQuestionsComponent} from "./components/create-survey/add-questions/add-questions.component";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {QuestionGroupAddComponent} from "./components/create-survey/question-group/question-group-add/question-group-add.component";
@@ -48,7 +48,7 @@ import {SurveyAccessDetailsComponent} from "./components/create-survey/survey-ac
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'createSurvey', component: SurveyCreationComponent},
-  {path: 'createSurvey/questions', component: SurveyQuestionAddingComponent},
+  {path: 'createSurvey/questions', component: AddQuestionsComponent},
   {path: 'createSurvey/:id/final', component: SurveyFinalOverviewComponent},
   {path: 'answers/overview', component: AnswerSurveyComponent},
   {path: 'thanks', component: ThankYouComponent},
@@ -62,8 +62,8 @@ const appRoutes: Routes = [
     SurveyBasicInformationComponent,
     SurveyAccessDetailsComponent,
     SurveyCreationComponent,
-    SurveyBasicsComponent,
-    SurveyQuestionAddingComponent,
+    SurveyBasicInformationFormComponent,
+    AddQuestionsComponent,
     QuestionGroupListComponent,
     QuestionGroupAddComponent,
     QuestionGroupUpdateComponent,
