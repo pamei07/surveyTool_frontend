@@ -12,4 +12,8 @@ export class Survey {
   uuid: string | undefined;
   user: User | undefined;
   questionGroups: QuestionGroup[] = [];
+
+  setUser(user: User) {
+    this.user = user;
+  }
 }
