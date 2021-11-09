@@ -15,7 +15,7 @@ import {QuestionListComponent} from "./components/create-survey/question/questio
 import {CheckboxListComponent} from "./components/create-survey/checkbox/checkbox-list/checkbox-list.component";
 import {SurveySubmissionComponent} from "./components/create-survey/survey-submission/survey-submission.component";
 import {CheckboxAddComponent} from './components/create-survey/checkbox/checkbox-add/checkbox-add.component';
-import {SurveyOverviewComponent} from "./components/create-survey/survey-overview/survey-overview.component";
+import {SurveyFinalOverviewComponent} from "./components/create-survey/survey-final-overview/survey-final-overview.component";
 import {AnswerSurveyOverviewComponent} from "./components/answer-survey/answer-survey-overview/answer-survey-overview.component";
 import {AnswerSurveyParticipationComponent} from "./components/answer-survey/answer-survey-participation/answer-survey-participation.component";
 import {AppHeaderComponent} from "./components/header/app-header.component";
@@ -42,12 +42,13 @@ import {ResultsCheckboxTextAnswersComponent} from "./components/view-results/res
 import {ResultsQuestionGroupComponent} from "./components/view-results/results-question-group/results-question-group.component";
 import {AnswerSubmissionComponent} from "./components/answer-survey/answer-submission/answer-submission.component";
 import {SurveySubmissionModalComponent} from "./components/create-survey/survey-submission-modal.component/survey-submission-modal.component";
+import {SurveyBasicInformationComponent} from "./components/shared-components/survey-basic-information/survey-basic-information.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'createSurvey', component: SurveyCreationComponent},
   {path: 'createSurvey/questions', component: SurveyQuestionAddingComponent},
-  {path: 'createSurvey/:id/final', component: SurveyOverviewComponent},
+  {path: 'createSurvey/:id/final', component: SurveyFinalOverviewComponent},
   {path: 'answers/overview', component: AnswerSurveyParentComponent},
   {path: 'thanks', component: ThankYouComponent},
   {path: 'viewResults', component: ResultsOverviewComponent}
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
+    SurveyBasicInformationComponent,
     SurveyCreationComponent,
     SurveyBasicsComponent,
     SurveyQuestionAddingComponent,
@@ -73,7 +75,7 @@ const appRoutes: Routes = [
     CheckboxDeleteComponent,
     SurveySubmissionComponent,
     SurveySubmissionModalComponent,
-    SurveyOverviewComponent,
+    SurveyFinalOverviewComponent,
     AnswerSurveyParentComponent,
     AnswerSurveyOverviewComponent,
     AnswerSurveyParticipationComponent,

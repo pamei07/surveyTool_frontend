@@ -5,11 +5,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
-  selector: 'survey-final',
-  templateUrl: 'survey-overview.component.html'
+  selector: 'survey-final-overview',
+  templateUrl: 'survey-final-overview.component.html'
 })
 
-export class SurveyOverviewComponent implements OnInit {
+export class SurveyFinalOverviewComponent implements OnInit {
 
   survey!: Survey;
   surveyNotFound: boolean = false;
