@@ -22,7 +22,15 @@ export class ResultsQuestionGroupComponent implements OnInit {
     this.userIdsOfParticipants.emit(userIds);
   }
 
+  /**
+   * Used to change the look of the collapse/open button
+   */
   collapseAnswers() {
     this.answersCollapsed = !this.answersCollapsed;
+  }
+
+  scrollToHeading(id: string) {
+    let element = document.getElementById(id);
+    element?.scrollIntoView();
   }
 }

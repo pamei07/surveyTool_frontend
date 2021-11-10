@@ -76,6 +76,10 @@ footer {
   font-size: 25px;
 }
 
+.scrollToTopButton {
+  font-size: 12px;
+}
+
 .homeButton {
   width: 150px;
 }
