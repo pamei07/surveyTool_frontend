@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
+import {User} from "../../../model/user";
 
 @Component({
   selector: 'results-header',
@@ -8,7 +9,7 @@ import {Survey} from "../../../model/survey";
 
 export class ResultsHeaderComponent implements OnInit {
   survey!: Survey;
-  uniqueUserIds: number[] = [];
+  uniqueParticipants: User[] = [];
 
   constructor() {
   }
@@ -18,15 +19,16 @@ export class ResultsHeaderComponent implements OnInit {
 
   showSurvey(survey: Survey) {
     this.survey = survey;
-    this.uniqueUserIds = [];
+    this.uniqueParticipants = [];
     console.log(this.survey);
   }
 
-  countUniqueIds(userIds: number[]) {
-    userIds.forEach((userId) => {
-      if (!this.uniqueUserIds.includes(userId)) {
-        this.uniqueUserIds.push(userId);
+  countUniqueParticipants(users: User[]) {
+    users.forEach((user) => {
+      if (!this.uniqueParticipants.some(listedUser => listedUser.id === user.id)) {
+        this.uniqueParticipants.push(user);
       }
     })
+    console.log(this.uniqueParticipants);
   }
 }

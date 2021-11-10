@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from "../../../../model/question";
 import {Answer} from "../../../../model/answer";
 import {AnswerService} from "../../../../services/answer/answer.service";
+import {User} from "../../../../model/user";
 
 @Component({
   selector: 'answers-text-question',
@@ -10,7 +11,7 @@ import {AnswerService} from "../../../../services/answer/answer.service";
 
 export class AnswersTextQuestionComponent implements OnInit {
   @Input() question!: Question;
-  @Output() userIdsOfParticipants = new EventEmitter<number[]>();
+  @Output() participants = new EventEmitter<User[]>();
   answers!: Answer[];
   numberOfUsersAnswering: number = 0;
 
@@ -25,12 +26,12 @@ export class AnswersTextQuestionComponent implements OnInit {
   }
 
   private calculateNumberOfUsersAnswering(answers: Answer[]) {
-    let userIds: number[] = [];
+    let users: User[] = [];
     for (let answer of answers) {
-      let userId = <number>answer.user!.id;
-      userIds.push(userId);
+      let user = <User>answer.user;
+      users.push(user);
     }
-    this.userIdsOfParticipants.emit(userIds);
-    this.numberOfUsersAnswering = userIds.length;
+    this.participants.emit(users);
+    this.numberOfUsersAnswering = users.length;
   }
 }

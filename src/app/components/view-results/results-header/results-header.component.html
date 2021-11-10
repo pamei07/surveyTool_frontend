@@ -14,14 +14,14 @@
     <div class="text-center text-muted">
       <span>
         Erstellt von: {{ survey.user?.name }} &nbsp;|&nbsp;
-        Anzahl der Teilnehmer: {{ uniqueUserIds.length }}
+        Anzahl der Teilnehmer: {{ uniqueParticipants.length }}
       </span>
     </div>
   </div>
   <hr>
   <div *ngFor="let questionGroup of survey.questionGroups">
     <results-question-group [questionGroup]="questionGroup"
-                            (userIdsOfParticipants)="countUniqueIds($event)"></results-question-group>
+                            (participants)="countUniqueParticipants($event)"></results-question-group>
     <hr class="my-4">
   </div>
 </section>

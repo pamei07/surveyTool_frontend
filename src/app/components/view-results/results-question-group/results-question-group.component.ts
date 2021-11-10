@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {QuestionGroup} from "../../../model/question-group";
+import {User} from "../../../model/user";
 
 @Component({
   selector: 'results-question-group',
@@ -9,7 +10,7 @@ import {QuestionGroup} from "../../../model/question-group";
 export class ResultsQuestionGroupComponent implements OnInit {
 
   @Input() questionGroup!: QuestionGroup;
-  @Output() userIdsOfParticipants = new EventEmitter<number[]>();
+  @Output() participants = new EventEmitter<User[]>();
   answersCollapsed: boolean = false;
 
   constructor() {
@@ -18,8 +19,8 @@ export class ResultsQuestionGroupComponent implements OnInit {
   ngOnInit() {
   }
 
-  passUserIds(userIds: number[]) {
-    this.userIdsOfParticipants.emit(userIds);
+  passUsers(users: User[]) {
+    this.participants.emit(users);
   }
 
   /**

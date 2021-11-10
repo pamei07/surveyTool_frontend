@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from "../../../../model/question";
 import {Answer} from "../../../../model/answer";
 import {AnswerService} from "../../../../services/answer/answer.service";
+import {User} from "../../../../model/user";
 
 @Component({
   selector: 'answers-checkbox-question',
@@ -10,7 +11,7 @@ import {AnswerService} from "../../../../services/answer/answer.service";
 
 export class AnswersCheckboxQuestionComponent implements OnInit {
   @Input() question!: Question;
-  @Output() userIdsOfParticipants = new EventEmitter<number[]>();
+  @Output() participants = new EventEmitter<User[]>();
   answers!: Answer[];
   numberOfUsersAnswering: number = 0;
   percentagesForCheckboxes: number[] = [];
@@ -32,15 +33,15 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
   }
 
   private calculateNumberOfUsersAnswering(answers: Answer[]) {
-    let userIds: number[] = [];
+    let users: User[] = [];
     for (let answer of answers) {
-      let userId = <number>answer.user!.id;
-      if (!userIds.includes(userId)) {
-        userIds.push(userId);
+      let userPostingAnswer = <User>answer.user;
+      if (!users.some(user => user.id === userPostingAnswer.id)) {
+        users.push(userPostingAnswer);
       }
     }
-    this.userIdsOfParticipants.emit(userIds);
-    this.numberOfUsersAnswering = userIds.length;
+    this.participants.emit(users);
+    this.numberOfUsersAnswering = users.length;
   }
 
 
