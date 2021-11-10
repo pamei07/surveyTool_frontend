@@ -1,6 +1,6 @@
 <div class="container restrictWidth">
   <h5>{{ question.text }}</h5>
-  <span>{{ numberOfUsersAnswering }} Teilnehmer haben diese Frage beantwortet.</span>
+  <span>{{ numberOfUsersAnswering }} Teilnehmer:innen haben diese Frage beantwortet.</span>
   <div id="answers" class="my-2">
     <div class="card card-body">
       <table class="table">
@@ -9,7 +9,7 @@
           <th class="text-muted" *ngIf="question.checkboxGroup!.multipleSelect">Multiple Select</th>
           <th class="text-muted" *ngIf="!question.checkboxGroup!.multipleSelect">Single Select</th>
           <th class="text-center"># Stimmen</th>
-          <th class="text-center">% der Teilnehmer</th>
+          <th class="text-center">% der Teilnehmer:innen</th>
           <th class="text-center" *ngIf="checkboxesHaveTextAnswers">Text</th>
         </tr>
         </thead>
