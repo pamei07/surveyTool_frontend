@@ -88,7 +88,21 @@ footer {
   height: 40px;
 }
 
+.participantsModalOpener {
+  cursor: pointer;
+}
+
 /* Other */
+.linkStyle {
+  color: #2A52CC;
+  text-decoration: underline;
+}
+
+.linkStyle:hover {
+  color: #2446AD;
+  text-decoration: underline;
+}
+
 .errorMessage {
   white-space: pre-wrap;
 }

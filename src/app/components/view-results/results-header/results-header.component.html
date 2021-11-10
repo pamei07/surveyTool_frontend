@@ -9,19 +9,25 @@
     <span>http://localhost:4200/answers/overview?surveyUUID={{ survey.uuid }}</span>
   </div>
   <hr>
-  <div id="headerWithNameNoOfParticipants" class="d-block">
+  <div class="d-block">
     <h2 class="text-center">{{ survey.name }}</h2>
     <div class="text-center text-muted">
       <span>
         Erstellt von: {{ survey.user?.name }} &nbsp;|&nbsp;
-        Anzahl der Teilnehmer: {{ uniqueParticipants.length }}
+        <span class="participantsModalOpener" data-bs-toggle="modal"
+              [attr.data-bs-target]="'#viewParticipants' + survey.id">
+          Anzahl der Teilnehmer:innen : <span class="linkStyle">{{ uniqueParticipants.length }}</span>
+        </span>
       </span>
     </div>
   </div>
+  <participants-list [survey]="survey"
+                     [filteredAndSortedParticipants]="filteredAndSortedParticipants"
+                     [overallNoOfParticipants]="uniqueParticipants.length"></participants-list>
   <hr>
   <div *ngFor="let questionGroup of survey.questionGroups">
     <results-question-group [questionGroup]="questionGroup"
-                            (participants)="countUniqueParticipants($event)"></results-question-group>
+                            (participants)="processUsers($event)"></results-question-group>
     <hr class="my-4">
   </div>
 </section>
