@@ -22,7 +22,7 @@
           </td>
           <td class="text-center"
               [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">
-            {{ this.percentagesForCheckboxes[checkboxIndex] | percent }}
+            {{ this.percentagesForCheckboxes[checkboxIndex] | percent:'.0-1' }}
           </td>
           <td *ngIf="checkbox.hasTextField && checkboxesHaveTextAnswers">
             <div class="w-100 h-100 text-center">
