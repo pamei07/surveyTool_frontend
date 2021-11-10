@@ -29,6 +29,5 @@ export class ResultsHeaderComponent implements OnInit {
         this.uniqueParticipants.push(user);
       }
     })
-    console.log(this.uniqueParticipants);
   }
 }
