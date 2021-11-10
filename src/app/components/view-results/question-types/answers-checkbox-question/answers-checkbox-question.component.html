@@ -14,7 +14,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let checkbox of question.checkboxGroup!.checkboxes; index as checkboxIndex">
+        <tr *ngFor="let checkbox of question.checkboxGroup!.checkboxes; index as checkboxIndex" class="align-middle">
           <td [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">{{ checkbox.text }}:</td>
           <td class="text-center"
               [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">
