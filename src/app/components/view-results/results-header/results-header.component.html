@@ -22,8 +22,7 @@
     </div>
   </div>
   <participants-list [survey]="survey"
-                     [filteredAndSortedParticipants]="filteredAndSortedParticipants"
-                     [overallNoOfParticipants]="uniqueParticipants.length"></participants-list>
+                     [uniqueParticipants]="uniqueParticipants"></participants-list>
   <hr>
   <div *ngFor="let questionGroup of survey.questionGroups">
     <results-question-group [questionGroup]="questionGroup"
