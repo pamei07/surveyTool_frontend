@@ -1,0 +1,10 @@
+<div class="container restrictWidth">
+  <h5>{{ question.text }}</h5>
+  <span>{{ numberOfUsersAnswering }} Teilnehmer:innen haben diese Frage beantwortet.</span>
+  <answers-checkbox-question-table [question]="question"
+                                   [answers]="answers"
+                                   [numberOfUsersAnswering]="numberOfUsersAnswering"
+                                   [votesForCheckboxes]="votesForCheckboxes"
+                                   *ngIf="answers"></answers-checkbox-question-table>
+  <answers-checkbox-question-pie-chart [data]="dataForPieChart"></answers-checkbox-question-pie-chart>
+</div>
