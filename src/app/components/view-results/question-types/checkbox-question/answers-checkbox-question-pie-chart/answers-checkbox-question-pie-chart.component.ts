@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Question} from "../../../../../model/question";
 
 @Component({
   selector: 'answers-checkbox-question-pie-chart',
@@ -7,7 +8,9 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class AnswersCheckboxQuestionPieChartComponent implements OnInit {
 
-  @Input() data?: Object[];
+  @Input() question!: Question;
+  @Input() votesForCheckboxes!: number[];
+  data: Object[] = [];
 
   view: [number, number] = [820, 400];
 
@@ -19,18 +22,12 @@ export class AnswersCheckboxQuestionPieChartComponent implements OnInit {
   legendPosition: string = 'below';
 
   ngOnInit(): void {
-
+    this.createDataForPieChart();
   }
 
-  onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  onActivate(data: any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data: any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  private createDataForPieChart() {
+    this.question.checkboxGroup!.checkboxes!.forEach((checkbox, index) => {
+      this.data.push({'name': checkbox.text, 'value': this.votesForCheckboxes[index]});
+    })
   }
 }

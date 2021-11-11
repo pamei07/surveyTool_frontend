@@ -16,8 +16,6 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
   numberOfUsersAnswering: number = 0;
   votesForCheckboxes: number[] = [];
 
-  dataForPieChart!: Object[];
-
   constructor(private answerService: AnswerService) {
   }
 
@@ -26,8 +24,6 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
       this.answers = answers;
       this.calculateNumberOfUsersAnswering(this.answers);
       this.countVotesForCheckboxes();
-
-      this.createDataForPieChart();
     });
   }
 
@@ -55,11 +51,4 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
     this.numberOfUsersAnswering = users.length;
   }
 
-
-  private createDataForPieChart() {
-    this.dataForPieChart = [];
-    this.question.checkboxGroup!.checkboxes!.forEach((checkbox, index) => {
-      this.dataForPieChart.push({'name': checkbox.text, 'value': this.votesForCheckboxes[index]});
-    })
-  }
 }

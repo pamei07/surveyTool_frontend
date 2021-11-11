@@ -6,5 +6,7 @@
                                    [numberOfUsersAnswering]="numberOfUsersAnswering"
                                    [votesForCheckboxes]="votesForCheckboxes"
                                    *ngIf="answers"></answers-checkbox-question-table>
-  <answers-checkbox-question-pie-chart [data]="dataForPieChart"></answers-checkbox-question-pie-chart>
+  <answers-checkbox-question-pie-chart [question]="question"
+                                       [votesForCheckboxes]="votesForCheckboxes"
+                                       *ngIf="answers"></answers-checkbox-question-pie-chart>
 </div>
