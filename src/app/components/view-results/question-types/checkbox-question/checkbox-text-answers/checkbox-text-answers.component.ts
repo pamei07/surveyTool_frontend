@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Answer} from "../../../../model/answer";
-import {Checkbox} from "../../../../model/checkbox";
+import {Answer} from "../../../../../model/answer";
+import {Checkbox} from "../../../../../model/checkbox";
 
 @Component({
   selector: 'checkbox-text-answers',
