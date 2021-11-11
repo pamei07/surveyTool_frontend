@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Question} from "../../../../model/question";
-import {Answer} from "../../../../model/answer";
-import {AnswerService} from "../../../../services/answer/answer.service";
-import {User} from "../../../../model/user";
+import {Question} from "../../../../../model/question";
+import {Answer} from "../../../../../model/answer";
+import {AnswerService} from "../../../../../services/answer/answer.service";
+import {User} from "../../../../../model/user";
 
 @Component({
   selector: 'answers-text-question',
