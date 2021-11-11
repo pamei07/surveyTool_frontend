@@ -36,15 +36,19 @@ import {MinMaxSelectValidationDirective} from "./directives/min-max-select-valid
 import {TextQuestionComponent} from "./components/answer-survey/question-types/text-question/text-question.component";
 import {RadioQuestionComponent} from "./components/answer-survey/question-types/radio-question/radio-question.component";
 import {MultipleSelectQuestionComponent} from "./components/answer-survey/question-types/multiple-select-question/multiple-select-question.component";
-import {AnswersTextQuestionComponent} from "./components/view-results/question-types/answers-text-question/answers-text-question.component";
-import {AnswersCheckboxQuestionComponent} from "./components/view-results/question-types/answers-checkbox-question/answers-checkbox-question.component";
-import {CheckboxTextAnswersComponent} from "./components/view-results/question-types/checkbox-text-answers/checkbox-text-answers.component";
+import {AnswersTextQuestionComponent} from "./components/view-results/question-types/text-question/answers-text-question/answers-text-question.component";
+import {AnswersCheckboxQuestionComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question/answers-checkbox-question.component";
+import {CheckboxTextAnswersComponent} from "./components/view-results/question-types/checkbox-question/checkbox-text-answers/checkbox-text-answers.component";
 import {ResultsQuestionGroupComponent} from "./components/view-results/results-question-group/results-question-group.component";
 import {AnswersSubmissionComponent} from "./components/answer-survey/answers-submission/answers-submission.component";
 import {SurveySubmissionModalComponent} from "./components/create-survey/survey-submission-modal/survey-submission-modal.component";
 import {SurveyBasicInformationComponent} from "./components/shared-components/survey-basic-information/survey-basic-information.component";
 import {SurveyAccessDetailsComponent} from "./components/create-survey/survey-access-details/survey-access-details.component";
 import {ParticipantsListComponent} from "./components/view-results/participants-list/participants-list.component";
+import {AnswersCheckboxQuestionPieChartComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question-pie-chart/answers-checkbox-question-pie-chart.component";
+import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AnswersCheckboxQuestionTableComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question-table/answers-checkbox-question-table.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -94,6 +98,8 @@ const appRoutes: Routes = [
     ParticipantsListComponent,
     AnswersTextQuestionComponent,
     AnswersCheckboxQuestionComponent,
+    AnswersCheckboxQuestionTableComponent,
+    AnswersCheckboxQuestionPieChartComponent,
     CheckboxTextAnswersComponent,
     AppHeaderComponent,
     AppFooterComponent,
@@ -102,10 +108,12 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
