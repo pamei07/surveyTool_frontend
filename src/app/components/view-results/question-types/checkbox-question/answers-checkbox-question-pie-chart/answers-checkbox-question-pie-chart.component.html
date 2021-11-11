@@ -2,9 +2,16 @@
   <ngx-charts-pie-chart
     [view]="view"
     [results]="data"
+    [scheme]="colors"
     [gradient]="gradient"
     [legend]="showLegend"
     [labels]="showLabels"
     [doughnut]="isDoughnut">
+    <ng-template #tooltipTemplate let-model="model">
+      <h5 class="mt-1">
+        {{ model.name }}
+      </h5>
+      <h6>Stimmen: {{ model.value }}</h6>
+    </ng-template>
   </ngx-charts-pie-chart>
 </div>

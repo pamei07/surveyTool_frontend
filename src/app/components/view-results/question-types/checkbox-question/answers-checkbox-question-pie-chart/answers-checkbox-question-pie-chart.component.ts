@@ -19,7 +19,7 @@ export class AnswersCheckboxQuestionPieChartComponent implements OnInit {
   showLegend: boolean = false;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
-  legendPosition: string = 'below';
+  colors: string = 'picnic';
 
   ngOnInit(): void {
     this.createDataForPieChart();

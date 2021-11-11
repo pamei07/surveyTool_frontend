@@ -111,3 +111,7 @@ footer {
   font-size: 35px;
   font-weight: 500;
 }
+
+.pie-label {
+  font-size: 14px !important;
+}
