@@ -1,12 +1,25 @@
 <div class="container restrictWidth">
   <h5>{{ question.text }}</h5>
-  <span>{{ numberOfUsersAnswering }} Teilnehmer:innen haben diese Frage beantwortet.</span>
-  <answers-checkbox-question-table [question]="question"
-                                   [answers]="answers"
-                                   [numberOfUsersAnswering]="numberOfUsersAnswering"
-                                   [votesForCheckboxes]="votesForCheckboxes"
-                                   *ngIf="answers"></answers-checkbox-question-table>
-  <answers-checkbox-question-pie-chart [question]="question"
-                                       [votesForCheckboxes]="votesForCheckboxes"
-                                       *ngIf="answers"></answers-checkbox-question-pie-chart>
+  <div class="row justify-content-between align-items-center">
+    <span class="col">{{ numberOfUsersAnswering }} Teilnehmer:innen haben diese Frage beantwortet.</span>
+    <div class="col text-end">
+      <button class="btn btn-primary me-1 p-2 pt-1" title="Tabelle" (click)="setShowTable(true)">
+        <img src="assets/svgs/table.svg" alt="table">
+      </button>
+      <button class="btn btn-primary me-1 p-2 pt-1" title="Kreisdiagramm" (click)="setShowTable(false)">
+        <img src="assets/svgs/pie-chart.svg" alt="pie-chart">
+      </button>
+    </div>
+
+  </div>
+  <div class="row">
+    <answers-checkbox-question-table [question]="question"
+                                     [answers]="answers"
+                                     [numberOfUsersAnswering]="numberOfUsersAnswering"
+                                     [votesForCheckboxes]="votesForCheckboxes"
+                                     *ngIf="answers && showTable"></answers-checkbox-question-table>
+    <answers-checkbox-question-pie-chart [question]="question"
+                                         [votesForCheckboxes]="votesForCheckboxes"
+                                         *ngIf="answers && !showTable"></answers-checkbox-question-pie-chart>
+  </div>
 </div>

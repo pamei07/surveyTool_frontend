@@ -15,6 +15,7 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
   answers!: Answer[];
   numberOfUsersAnswering: number = 0;
   votesForCheckboxes: number[] = [];
+  showTable: boolean = true;
 
   constructor(private answerService: AnswerService) {
   }
@@ -51,4 +52,7 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
     this.numberOfUsersAnswering = users.length;
   }
 
+  setShowTable(bool: boolean) {
+    this.showTable = bool;
+  }
 }
