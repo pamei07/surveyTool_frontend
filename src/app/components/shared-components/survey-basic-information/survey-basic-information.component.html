@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row my-1">
         <div class="col-2">
           <span class="bolderText">Zeitraum:</span>
         </div>
@@ -35,6 +35,16 @@
           <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
           <span class="me-2">{{ survey?.endDate | date: 'dd.MM.yyyy' }}</span>
           <span>{{ survey?.endDate | date: 'HH:mm' }} Uhr</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <span class="bolderText">Öffentlich:</span>
+        </div>
+        <div class="col">
+          <span *ngIf="survey.open == true">Ja</span>
+          <span *ngIf="survey.open == false">Nein</span>
         </div>
       </div>
     </div>
