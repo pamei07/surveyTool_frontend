@@ -51,15 +51,15 @@ footer {
 
 /* Preview basic information when adding questions */
 .basicInformation {
-  font-size: 20px;
+  font-size: 18px;
+}
+
+.bolderText {
+  font-weight: 500;
 }
 
 .surveyInfo {
   color: #2A52CC;
-}
-
-#accessID {
-  font-size: 30px;
 }
 
 /* Question table */
@@ -73,7 +73,7 @@ footer {
 }
 
 .participateButton {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .scrollToTopButton {
