@@ -1,3 +1,40 @@
-<div *ngFor="let survey of openAccessSurveys">
-  <span>{{ survey.name }}</span>
-</div>
+<section id="openAccessSurveys" class="container restrictWidth mt-3">
+  <h3 class="my-3">
+    Öffentlich zugängliche Umfragen:
+  </h3>
+  <div class="card card-body mb-3" *ngFor="let survey of openAccessSurveys">
+    <h4 class="surveyInfo">{{ survey.name }}</h4>
+    <div class="container">
+
+      <div class="row my-1 basicInformation">
+        <div class="col-2">
+          <span class="bolderText">Erstellt von:</span>
+        </div>
+        <div class="col">
+          <span>{{ survey?.user?.name }}</span>
+        </div>
+      </div>
+
+      <div class="row my-1 basicInformation">
+        <div class="col-2">
+          <span class="bolderText">Zeitraum:</span>
+        </div>
+        <div class="col">
+          <span class="me-2">{{ survey?.startDate | date: 'dd.MM.yyyy' }}</span>
+          <span>{{ survey?.startDate | date: 'HH:mm' }} Uhr</span>
+          <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+          <span class="me-2">{{ survey?.endDate | date: 'dd.MM.yyyy' }}</span>
+          <span>{{ survey?.endDate | date: 'HH:mm' }} Uhr</span>
+        </div>
+
+        <div class="col-auto">
+          <a [routerLink]="'/answers/overview'" [queryParams]="{surveyUUID: survey?.uuid}">
+            <button class="btn btn-outline-primary float-end">
+              Weiter
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
