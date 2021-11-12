@@ -17,12 +17,17 @@ export class SurveySubmissionValidationComponent implements OnInit {
   @Input() survey!: Survey;
   errorMessages: string[] = [];
 
-  userForm = this.fb.group({
-    userName: ['']
+  surveySubmissionForm = this.fb.group({
+    userName: [''],
+    openAccess: false
   })
 
   get userName() {
-    return this.userForm.get('userName');
+    return this.surveySubmissionForm.get('userName');
+  }
+
+  get openAccess() {
+    return this.surveySubmissionForm.get('openAccess');
   }
 
   constructor(private surveyService: SurveyService,
@@ -46,6 +51,7 @@ export class SurveySubmissionValidationComponent implements OnInit {
 
   private postSurvey(user: User) {
     this.survey.setUser(user);
+    this.survey.setOpen(this.openAccess?.value);
 
     let newSurvey: Survey;
     let surveyID: number;

@@ -16,4 +16,8 @@ export class Survey {
   setUser(user: User) {
     this.user = user;
   }
+
+  setOpen(bool: boolean) {
+    this.open = bool;
+  }
 }
