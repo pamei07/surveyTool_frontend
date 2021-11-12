@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Question} from "../../../../../model/question";
 import {Answer} from "../../../../../model/answer";
 import {AnswerService} from "../../../../../services/answer/answer.service";
@@ -11,7 +11,6 @@ import {User} from "../../../../../model/user";
 
 export class AnswersCheckboxQuestionComponent implements OnInit {
   @Input() question!: Question;
-  @Output() participants = new EventEmitter<User[]>();
   answers!: Answer[];
   numberOfUsersAnswering: number = 0;
   votesForCheckboxes: number[] = [];
@@ -48,7 +47,6 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
         users.push(userPostingAnswer);
       }
     }
-    this.participants.emit(users);
     this.numberOfUsersAnswering = users.length;
   }
 

@@ -27,8 +27,7 @@
 
   <hr>
   <div *ngFor="let questionGroup of survey.questionGroups">
-    <results-question-group [questionGroup]="questionGroup"
-                            (participants)="processUsers($event)"></results-question-group>
+    <results-question-group [questionGroup]="questionGroup"></results-question-group>
     <hr class="my-4">
   </div>
 </section>
