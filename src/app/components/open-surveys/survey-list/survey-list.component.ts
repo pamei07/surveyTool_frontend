@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {SurveyService} from "../../../services/survey/survey.service";
+import {Survey} from "../../../model/survey";
 
 @Component({
   selector: 'survey-list',
@@ -7,9 +9,14 @@ import {Component, OnInit} from '@angular/core';
 
 export class SurveyListComponent implements OnInit {
 
-  constructor() {
+  openAccessSurveys!: Survey[];
+
+  constructor(private surveyService: SurveyService) {
   }
 
   ngOnInit() {
+    this.surveyService.getSurveysThatAreOpenAccess().subscribe((surveys) => {
+      this.openAccessSurveys = surveys;
+    })
   }
 }

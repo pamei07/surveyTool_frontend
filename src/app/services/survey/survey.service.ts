@@ -28,4 +28,8 @@ export class SurveyService {
   public getSurveyByAccessId(accessId: string) {
     return this.http.get<Survey>(this.surveyUrl + '/results?accessId=' + accessId);
   }
+
+  public getSurveysThatAreOpenAccess() {
+    return this.http.get<Survey[]>(this.surveyUrl + '/openAccess');
+  }
 }
