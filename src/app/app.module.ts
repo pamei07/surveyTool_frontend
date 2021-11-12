@@ -49,6 +49,7 @@ import {AnswersCheckboxQuestionPieChartComponent} from "./components/view-result
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AnswersCheckboxQuestionTableComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question-table/answers-checkbox-question-table.component";
+import {SurveyListComponent} from "./components/open-surveys/survey-list/survey-list.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
   {path: 'createSurvey/:id/final', component: SurveyFinalOverviewComponent},
   {path: 'answers/overview', component: AnswerSurveyComponent},
   {path: 'thanks', component: ThankYouComponent},
-  {path: 'viewResults', component: ResultsHeaderComponent}
+  {path: 'viewResults', component: ResultsHeaderComponent},
+  {path: 'surveys', component: SurveyListComponent}
 ]
 
 @NgModule({
@@ -101,6 +103,7 @@ const appRoutes: Routes = [
     AnswersCheckboxQuestionTableComponent,
     AnswersCheckboxQuestionPieChartComponent,
     CheckboxTextAnswersComponent,
+    SurveyListComponent,
     AppHeaderComponent,
     AppFooterComponent,
     DateValidationDirective,
