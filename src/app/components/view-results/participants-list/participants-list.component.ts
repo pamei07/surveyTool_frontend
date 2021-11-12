@@ -1,28 +1,29 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 import {User} from "../../../model/user";
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'participants-list',
   templateUrl: 'participants-list.component.html'
 })
 
-export class ParticipantsListComponent implements OnInit, OnChanges {
+export class ParticipantsListComponent implements OnInit {
 
   @Input() survey!: Survey;
-  @Input() uniqueParticipants!: User[];
+  participants!: User[];
   filteredAndSortedParticipants!: User[];
   overallNoOfParticipants!: number;
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.filterAndSortParticipants(this.uniqueParticipants);
-    this.overallNoOfParticipants = this.uniqueParticipants.length;
+    this.userService.getParticipatingUsersBySurveyId(this.survey.id).subscribe((users) => {
+      this.participants = users;
+      this.filterAndSortParticipants(this.participants);
+      this.overallNoOfParticipants = this.participants.length;
+    });
   }
 
   private filterAndSortParticipants(participants: User[]) {

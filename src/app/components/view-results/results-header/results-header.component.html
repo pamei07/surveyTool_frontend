@@ -11,18 +11,20 @@
   <hr>
   <div class="d-block">
     <h2 class="text-center">{{ survey.name }}</h2>
-    <div class="text-center text-muted">
-      <span>
-        Erstellt von: {{ survey.user?.name }} &nbsp;|&nbsp;
-        <span class="participantsModalOpener" data-bs-toggle="modal"
-              [attr.data-bs-target]="'#viewParticipants' + survey.id">
-          Anzahl der Teilnehmer:innen : <span class="linkStyle">{{ uniqueParticipants.length }}</span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <span class="col-auto text-muted p-0">
+          Erstellt von: {{ survey.user?.name }}
         </span>
-      </span>
+        <span class="col-auto text-muted p-0">
+           &nbsp;&nbsp;|&nbsp;&nbsp;
+        </span>
+        <participants-list class="col-auto p-0" [survey]="survey"
+                           *ngIf="survey"></participants-list>
+      </div>
     </div>
   </div>
-  <participants-list [survey]="survey"
-                     [uniqueParticipants]="uniqueParticipants"></participants-list>
+
   <hr>
   <div *ngFor="let questionGroup of survey.questionGroups">
     <results-question-group [questionGroup]="questionGroup"

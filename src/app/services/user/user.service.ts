@@ -17,6 +17,10 @@ export class UserService {
     return this.http.post<User>(this.surveyUrl + '/postUser', user);
   }
 
+  public getParticipatingUsersBySurveyId(surveyId: number | undefined) {
+    return this.http.get<User[]>(this.surveyUrl + '/getParticipatingUsersBySurveyId?surveyId=' + surveyId);
+  }
+
   postUser(name: string) {
     let user: User = new User();
     if (name !== '') {

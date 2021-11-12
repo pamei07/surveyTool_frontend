@@ -1,5 +1,12 @@
+<span class="participantsModalOpener text-muted" data-bs-toggle="modal"
+      [attr.data-bs-target]="'#viewParticipants' + survey.id"
+      *ngIf="participants">
+  Anzahl der Teilnehmer:innen : <span class="linkStyle">{{ participants.length }}</span>
+</span>
+
+<!--Modal with list of participants:-->
 <div class="modal fade" [attr.id]="'viewParticipants' + survey.id" tabindex="-1"
-     aria-hidden="true">
+     aria-hidden="true" *ngIf="filteredAndSortedParticipants">
   <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md">
     <div class="modal-content">
       <div class="modal-header">
