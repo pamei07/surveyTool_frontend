@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./components/home/home.component";
 import {SurveyBasicInformationFormComponent} from "./components/create-survey/survey-basic-information-form/survey-basic-information-form.component";
-import {AddQuestionsComponent} from "./components/create-survey/add-questions/add-questions.component";
+import {AddSurveyContentComponent} from "./components/create-survey/add-survey-content/add-survey-content.component";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {QuestionGroupAddComponent} from "./components/create-survey/question-group/question-group-add/question-group-add.component";
@@ -53,7 +53,7 @@ import {AnswersCheckboxQuestionTableComponent} from "./components/view-results/q
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'createSurvey', component: SurveyCreationComponent},
-  {path: 'createSurvey/questions', component: AddQuestionsComponent},
+  {path: 'createSurvey/questions', component: AddSurveyContentComponent},
   {path: 'createSurvey/:id/final', component: SurveyFinalOverviewComponent},
   {path: 'answers/overview', component: AnswerSurveyComponent},
   {path: 'thanks', component: ThankYouComponent},
@@ -68,7 +68,7 @@ const appRoutes: Routes = [
     SurveyAccessDetailsComponent,
     SurveyCreationComponent,
     SurveyBasicInformationFormComponent,
-    AddQuestionsComponent,
+    AddSurveyContentComponent,
     QuestionGroupListComponent,
     QuestionGroupAddComponent,
     QuestionGroupUpdateComponent,

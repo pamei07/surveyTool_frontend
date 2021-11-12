@@ -2,11 +2,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
-  selector: 'add-questions',
-  templateUrl: 'add-questions.component.html'
+  selector: 'add-survey-content',
+  templateUrl: 'add-survey-content.component.html'
 })
 
-export class AddQuestionsComponent implements OnInit {
+export class AddSurveyContentComponent implements OnInit {
 
   @Input() survey!: Survey;
   @Output() basicInfoBoolean = new EventEmitter<boolean>();
