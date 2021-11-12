@@ -50,12 +50,20 @@ footer {
 }
 
 /* Preview basic information when adding questions */
+.addQuestionsSurveyInfo {
+  font-size: 20px;
+}
+
 .basicInformation {
   font-size: 18px;
 }
 
 .bolderText {
   font-weight: 500;
+}
+
+.lighterText {
+  font-weight: 350;
 }
 
 .surveyInfo {
