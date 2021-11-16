@@ -79,6 +79,7 @@ export class QuestionAddComponent implements OnInit {
 
     // Reset to initial values so that unchecked checkboxes do not result in null
     this.questionForm.reset(this.initialFormValues);
+    this.questionForm.patchValue({checkboxGroup: {minSelect: 0, maxSelect: 2}});
   }
 
   enableDisableMinMaxInput() {
