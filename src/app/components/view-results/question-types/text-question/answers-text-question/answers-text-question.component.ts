@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Question} from "../../../../../model/question";
 import {Answer} from "../../../../../model/answer";
 import {AnswerService} from "../../../../../services/answer/answer.service";
-import {User} from "../../../../../model/user";
 
 @Component({
   selector: 'answers-text-question',
@@ -25,11 +24,11 @@ export class AnswersTextQuestionComponent implements OnInit {
   }
 
   private calculateNumberOfUsersAnswering(answers: Answer[]) {
-    let users: User[] = [];
+    let userIDs: number[] = [];
     for (let answer of answers) {
-      let user = <User>answer.user;
-      users.push(user);
+      let userID = <number>answer.userID;
+      userIDs.push(userID);
     }
-    this.numberOfUsersAnswering = users.length;
+    this.numberOfUsersAnswering = userIDs.length;
   }
 }

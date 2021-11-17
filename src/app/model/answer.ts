@@ -1,27 +1,24 @@
-import {Question} from "./question";
-import {Checkbox} from "./checkbox";
-import {User} from "./user";
-
 export class Answer {
   id: number | undefined;
   text: string | undefined;
-  user: User | undefined;
-  question: Question | undefined;
-  checkbox: Checkbox | undefined;
+
+  userID: number | undefined;
+  questionID: number | undefined;
+  checkboxID: number | undefined;
 
   setText(text: string) {
     this.text = text;
   }
 
-  setQuestion(question: Question) {
-    this.question = question;
+  setQuestionID(questionID: number | undefined) {
+    this.questionID = questionID;
   }
 
-  setCheckbox(checkbox: Checkbox) {
-    this.checkbox = checkbox;
+  setCheckboxID(checkboxID: number | undefined) {
+    this.checkboxID = checkboxID;
   }
 
-  setUser(user: User) {
-    this.user = user;
+  setUserID(userID: number | undefined) {
+    this.userID = userID;
   }
 }

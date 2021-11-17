@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Question} from "../../../../../model/question";
 import {Answer} from "../../../../../model/answer";
 import {AnswerService} from "../../../../../services/answer/answer.service";
-import {User} from "../../../../../model/user";
 
 @Component({
   selector: 'answers-checkbox-question',
@@ -31,7 +30,7 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
     this.question.checkboxGroup!.checkboxes!.forEach((checkbox) => {
       let numberOfAnswersForCheckbox = 0;
       this.answers.forEach(answer => {
-        if (answer.checkbox!.id === checkbox.id) {
+        if (answer.checkboxID === checkbox.id) {
           numberOfAnswersForCheckbox++;
         }
       })
@@ -40,14 +39,14 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
   }
 
   private calculateNumberOfUsersAnswering(answers: Answer[]) {
-    let users: User[] = [];
+    let userIDs: number[] = [];
     for (let answer of answers) {
-      let userPostingAnswer = <User>answer.user;
-      if (!users.some(user => user.id === userPostingAnswer.id)) {
-        users.push(userPostingAnswer);
+      let userIdPostingAnswer = <number>answer.userID;
+      if (!userIDs.some(userID => userID === userIdPostingAnswer)) {
+        userIDs.push(userIdPostingAnswer);
       }
     }
-    this.numberOfUsersAnswering = users.length;
+    this.numberOfUsersAnswering = userIDs.length;
   }
 
   setShowTable(bool: boolean) {
