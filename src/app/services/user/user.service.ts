@@ -13,14 +13,6 @@ export class UserService {
     this.surveyUrl = 'http://localhost:8080';
   }
 
-  public saveUser(user: User) {
-    return this.http.post<User>(this.surveyUrl + '/postUser', user);
-  }
-
-  public getParticipatingUsersBySurveyId(surveyId: number | undefined) {
-    return this.http.get<User[]>(this.surveyUrl + '/getParticipatingUsersBySurveyId?surveyId=' + surveyId);
-  }
-
   postUser(name: string) {
     let user: User = new User();
     if (name !== '') {
@@ -29,5 +21,17 @@ export class UserService {
       user.setName('Anonym');
     }
     return this.saveUser(user);
+  }
+
+  public saveUser(user: User) {
+    return this.http.post<User>(this.surveyUrl + '/postUser', user);
+  }
+
+  public getParticipatingUsersBySurveyId(surveyId: number | undefined) {
+    return this.http.get<User[]>(this.surveyUrl + '/getParticipatingUsersBySurveyId?surveyId=' + surveyId);
+  }
+
+  public getUserById(creatorID: number | undefined) {
+    return this.http.get<User>(this.surveyUrl + '/users?id=' + creatorID);
   }
 }

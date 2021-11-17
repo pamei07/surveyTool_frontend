@@ -50,7 +50,7 @@ export class SurveySubmissionValidationComponent implements OnInit {
   }
 
   private postSurvey(user: User) {
-    this.survey.setUser(user);
+    this.survey.setUserID(user?.id);
     this.survey.setOpen(this.openAccess?.value);
 
     let newSurvey: Survey;
