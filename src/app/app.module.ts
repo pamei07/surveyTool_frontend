@@ -51,6 +51,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AnswersCheckboxQuestionTableComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question-table/answers-checkbox-question-table.component";
 import {SurveyListComponent} from "./components/open-surveys/survey-list/survey-list.component";
 import {CreatorOpenSurveyComponent} from "./components/open-surveys/creator-open-survey/creator-open-survey.component";
+import {TextAnswerAuthorComponent} from "./components/view-results/text-answer-author/text-answer-author.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -103,6 +104,7 @@ const appRoutes: Routes = [
     AnswersCheckboxQuestionComponent,
     AnswersCheckboxQuestionTableComponent,
     AnswersCheckboxQuestionPieChartComponent,
+    TextAnswerAuthorComponent,
     CheckboxTextAnswersComponent,
     SurveyListComponent,
     CreatorOpenSurveyComponent,

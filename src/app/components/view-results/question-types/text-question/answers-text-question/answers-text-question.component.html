@@ -5,9 +5,7 @@
     <div class="card mb-2" *ngFor="let answer of answers">
       <div class="card-body">
         {{ answer.text }}
-        <span class="text-muted float-end mt-2">
-          - {{ answer.user!.name }} (user#{{ answer.user!.id }})
-          </span>
+        <text-answer-author [answer]="answer"></text-answer-author>
       </div>
     </div>
   </div>
