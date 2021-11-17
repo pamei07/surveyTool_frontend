@@ -16,12 +16,12 @@
         </div>
       </div>
 
-      <div class="row my-1 text-muted">
+      <div class="row my-1 text-muted" *ngIf="user">
         <div class="col-2">
           <span class="bolderText">Erstellt von:</span>
         </div>
         <div class="col">
-          <span>{{ survey?.user?.name }}</span>
+          <span>{{ user?.name }}</span>
         </div>
       </div>
 
