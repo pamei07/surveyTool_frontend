@@ -1,4 +1,3 @@
-import {QuestionGroup} from "./question-group";
 import {CheckboxGroup} from "./checkbox-group";
 
 export class Question {
@@ -6,6 +5,5 @@ export class Question {
   text: string | undefined;
   required: boolean | undefined;
   hasCheckbox: boolean | undefined;
-  questionGroup: QuestionGroup | undefined;
   checkboxGroup: CheckboxGroup | undefined;
 }
