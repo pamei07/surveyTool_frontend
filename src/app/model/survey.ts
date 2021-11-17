@@ -1,5 +1,4 @@
 import {QuestionGroup} from "./question-group";
-import {User} from "./user";
 
 export class Survey {
   id: number | undefined;
@@ -10,11 +9,12 @@ export class Survey {
   open: boolean | undefined;
   accessID: string | undefined;
   uuid: string | undefined;
-  user: User | undefined;
   questionGroups: QuestionGroup[] = [];
 
-  setUser(user: User) {
-    this.user = user;
+  userID: number | undefined;
+
+  setUserID(userID: number | undefined) {
+    this.userID = userID;
   }
 
   setOpen(bool: boolean) {
