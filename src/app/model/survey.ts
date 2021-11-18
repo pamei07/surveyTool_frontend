@@ -12,6 +12,7 @@ export class Survey {
   questionGroups: QuestionGroup[] = [];
 
   userID: number | undefined;
+  userName: string | undefined;
 
   setUserID(userID: number | undefined) {
     this.userID = userID;
