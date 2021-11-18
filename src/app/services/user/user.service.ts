@@ -30,8 +30,4 @@ export class UserService {
   public getParticipatingUsersBySurveyId(surveyId: number | undefined) {
     return this.http.get<User[]>(this.surveyUrl + '/getParticipatingUsersBySurveyId?surveyId=' + surveyId);
   }
-
-  public getUserById(creatorID: number | undefined) {
-    return this.http.get<User>(this.surveyUrl + '/users?id=' + creatorID);
-  }
 }
