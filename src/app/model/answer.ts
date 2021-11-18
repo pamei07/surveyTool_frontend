@@ -3,6 +3,8 @@ export class Answer {
   text: string | undefined;
 
   userID: number | undefined;
+  userName: string | undefined;
+
   questionID: number | undefined;
   checkboxID: number | undefined;
 
