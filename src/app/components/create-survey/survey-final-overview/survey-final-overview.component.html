@@ -1,5 +1,5 @@
 <section id="surveyOverview" *ngIf="!surveyNotFound">
-  <survey-basic-information [survey]="survey" [user]="user"></survey-basic-information>
+  <survey-basic-information [survey]="survey"></survey-basic-information>
   <survey-access-details [survey]="survey"></survey-access-details>
 </section>
 <section id="errorMessage" class="container restrictWidth" *ngIf="surveyNotFound">

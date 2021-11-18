@@ -1,5 +1,5 @@
 <section id="surveyOverview" *ngIf="!surveyNotFound">
-  <survey-basic-information [survey]="survey" [user]="user"></survey-basic-information>
+  <survey-basic-information [survey]="survey"></survey-basic-information>
   <div class="container restrictWidth d-flex justify-content-center mt-3 mb-4">
     <button class="btn btn-primary participateButton" (click)="participate()" [disabled]="!withinTimeFrame">
       Teilnehmen

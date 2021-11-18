@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
-import {User} from "../../../model/user";
 import {UserService} from "../../../services/user/user.service";
 
 @Component({
@@ -10,7 +9,6 @@ import {UserService} from "../../../services/user/user.service";
 
 export class ResultsHeaderComponent implements OnInit {
   survey!: Survey;
-  user: User | undefined;
 
   constructor(private userService: UserService) {
   }
@@ -20,13 +18,6 @@ export class ResultsHeaderComponent implements OnInit {
 
   showSurvey(survey: Survey) {
     this.survey = survey;
-    this.user = undefined;
-    if (this.survey.userID !== null) {
-      this.userService.getUserById(this.survey.userID).subscribe(user => {
-        this.user = user;
-        console.log(this.user);
-      })
-    }
     console.log(this.survey);
   }
 }
