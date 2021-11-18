@@ -15,7 +15,7 @@ import {QuestionListComponent} from "./components/create-survey/question/questio
 import {CheckboxListComponent} from "./components/create-survey/checkbox/checkbox-list/checkbox-list.component";
 import {SurveySubmissionValidationComponent} from "./components/create-survey/survey-submission-validation/survey-submission-validation.component";
 import {CheckboxAddComponent} from './components/create-survey/checkbox/checkbox-add/checkbox-add.component';
-import {SurveyFinalOverviewComponent} from "./components/create-survey/survey-final-overview/survey-final-overview.component";
+import {SurveyFinalOverviewComponent} from "./components/view-results/survey-final-overview/survey-final-overview.component";
 import {SurveyIntroComponent} from "./components/answer-survey/survey-intro/survey-intro.component";
 import {ParticipateInSurveyComponent} from "./components/answer-survey/participate-in-survey/participate-in-survey.component";
 import {AppHeaderComponent} from "./components/header/app-header.component";
@@ -43,7 +43,7 @@ import {ResultsQuestionGroupComponent} from "./components/view-results/results-q
 import {AnswersSubmissionComponent} from "./components/answer-survey/answers-submission/answers-submission.component";
 import {SurveySubmissionModalComponent} from "./components/create-survey/survey-submission-modal/survey-submission-modal.component";
 import {SurveyBasicInformationComponent} from "./components/shared-components/survey-basic-information/survey-basic-information.component";
-import {SurveyAccessDetailsComponent} from "./components/create-survey/survey-access-details/survey-access-details.component";
+import {SurveyAccessDetailsComponent} from "./components/view-results/survey-access-details/survey-access-details.component";
 import {ParticipantsListComponent} from "./components/view-results/participants-list/participants-list.component";
 import {AnswersCheckboxQuestionPieChartComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question-pie-chart/answers-checkbox-question-pie-chart.component";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
