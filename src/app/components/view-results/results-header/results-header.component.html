@@ -1,13 +1,10 @@
-<results-search (surveyEventEmitter)="showSurvey($event)"></results-search>
-<section id="infoText" class="container restrictWidth text-center" *ngIf="!survey">
-  <hr>
-  <span>Um die Ergebnisse Ihrer Umfrage einzusehen, geben Sie bitte oben die dazugehörige Zugangs-ID ein.</span>
-</section>
-<section id="viewResults" class="container restrictWidth" *ngIf="survey">
-  <hr>
-  <div class="container restrictWidth w-100 text-center text-muted mb-2">
-    <span>http://localhost:4200/answers/overview?surveyUUID={{ survey.uuid }}</span>
+<section id="errorMessage" class="container restrictWidth" *ngIf="surveyNotFound">
+  <div class="alert alert-danger p-2 mt-4">
+    <span>Unter der angegebenen Zugangs-ID '{{ accessId }}' wurde keine Umfrage gefunden.</span>
   </div>
+</section>
+<section id="viewResults" class="container restrictWidth" *ngIf="!surveyNotFound && survey">
+  <survey-navigation [survey]="survey"></survey-navigation>
   <hr>
   <div class="d-block">
     <h2 class="text-center">{{ survey.name }}</h2>
@@ -24,7 +21,6 @@
       </div>
     </div>
   </div>
-
   <hr>
   <div *ngFor="let questionGroup of survey.questionGroups">
     <results-question-group [questionGroup]="questionGroup"></results-question-group>
