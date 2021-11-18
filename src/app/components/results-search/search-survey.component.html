@@ -1,14 +1,14 @@
 <section id="enterID" class="container restrictWidth d-flex flex-column align-items-center">
-  <form class="row w-50" [formGroup]="resultsForm" (ngSubmit)="emitSurvey()">
-    <div class="input-group mt-4 mb-2">
+  <form class="row w-50" [formGroup]="searchForm" (ngSubmit)="getSurveyByAccessId()">
+    <div class="input-group">
       <input class="form-control" name="accessID" type="text" placeholder="Zugangs-ID"
              formControlName="accessId" required>
       <button id="submitQuestionGroup" class="btn btn-primary" type="submit">
-        Ergebnisse
+        Suchen
       </button>
     </div>
   </form>
-  <div id="errorMessage" class="row alert alert-danger p-2 mt-2 mb-0"
+  <div id="errorMessage" class="row alert alert-danger p-2 mt-4 mb-0"
        *ngIf="surveyNotFound">
     <span *ngIf="currentAccessId == ''">
       Geben Sie bitte eine Zugangs-ID ein.

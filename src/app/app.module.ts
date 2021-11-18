@@ -23,7 +23,7 @@ import {AppFooterComponent} from "./components/footer/app-footer.component";
 import {QuestionGroupComponent} from "./components/answer-survey/question-group/question-group.component";
 import {ThankYouComponent} from "./components/answer-survey/thank-you/thank-you.component";
 import {ResultsHeaderComponent} from "./components/view-results/results-header/results-header.component";
-import {ResultsSearchComponent} from "./components/view-results/results-search/results-search.component";
+import {SearchSurveyComponent} from "./components/results-search/search-survey.component";
 import {SurveyCreationComponent} from "./components/create-survey/survey-creation/survey-creation.component";
 import {AnswerSurveyComponent} from "./components/answer-survey/answer-survey/answer-survey.component";
 import {QuestionGroupDeleteComponent} from "./components/create-survey/question-group/question-group-delete/question-group-delete.component";
@@ -58,6 +58,7 @@ const appRoutes: Routes = [
   {path: 'createSurvey/questions', component: AddSurveyContentComponent},
   {path: 'surveys/:accessId', component: SurveyOverviewComponent},
   {path: 'surveys/:accessId/answers', component: ResultsHeaderComponent},
+  {path: 'search', component: SearchSurveyComponent},
   {path: 'answers/overview', component: AnswerSurveyComponent},
   {path: 'thanks', component: ThankYouComponent},
   {path: 'surveys', component: SurveyListComponent}
@@ -97,7 +98,7 @@ const appRoutes: Routes = [
     ThankYouComponent,
     SurveyNavigationComponent,
     ResultsHeaderComponent,
-    ResultsSearchComponent,
+    SearchSurveyComponent,
     ResultsQuestionGroupComponent,
     ParticipantsListComponent,
     AnswersTextQuestionComponent,

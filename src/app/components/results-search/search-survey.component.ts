@@ -1,39 +1,40 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Survey} from "../../../model/survey";
-import {SurveyService} from "../../../services/survey/survey.service";
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
+import {Router} from "@angular/router";
+import {SurveyService} from "../../services/survey/survey.service";
+import {Survey} from "../../model/survey";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
-  selector: 'results-search',
-  templateUrl: 'results-search.component.html'
+  selector: 'search-survey',
+  templateUrl: 'search-survey.component.html'
 })
 
-export class ResultsSearchComponent implements OnInit {
+export class SearchSurveyComponent implements OnInit {
 
-  @Output() surveyEventEmitter = new EventEmitter<Survey>();
   surveyNotFound: boolean = false;
   currentAccessId: string = '';
 
-  resultsForm = this.fb.group({accessId: this.fb.control('')});
+  searchForm = this.fb.group({accessId: this.fb.control('')});
 
   get accessId() {
-    return this.resultsForm.get('accessId')!.value;
+    return this.searchForm.get('accessId')!.value;
   }
 
   constructor(private fb: FormBuilder,
+              private router: Router,
               private surveyService: SurveyService) {
   }
 
   ngOnInit() {
   }
 
-  emitSurvey() {
+  getSurveyByAccessId() {
     this.currentAccessId = this.accessId;
     this.surveyNotFound = false;
     this.surveyService.getSurveyByAccessId(this.accessId).subscribe(
       (response: Survey) => {
-        this.surveyEventEmitter.emit(response);
+        this.router.navigate(["surveys", response.accessID]);
       }, (error: HttpErrorResponse) => {
         console.log(error);
         this.surveyNotFound = true;
