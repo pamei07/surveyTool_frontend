@@ -22,7 +22,7 @@ export class SurveyService {
   }
 
   public getSurveyOverviewByUuid(uuid: string | null) {
-    return this.http.get<Survey>(this.surveyUrl + '/answers?uuid=' + uuid);
+    return this.http.get<Survey>(this.surveyUrl + '?uuid=' + uuid);
   }
 
   public getSurveysThatAreOpenAccess() {
