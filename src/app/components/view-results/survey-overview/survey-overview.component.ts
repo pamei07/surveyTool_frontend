@@ -3,17 +3,15 @@ import {SurveyService} from "../../../services/survey/survey.service";
 import {Survey} from "../../../model/survey";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
-import {User} from "../../../model/user";
 
 @Component({
-  selector: 'survey-final-overview',
-  templateUrl: 'survey-final-overview.component.html'
+  selector: 'survey-overview',
+  templateUrl: 'survey-overview.component.html'
 })
 
-export class SurveyFinalOverviewComponent implements OnInit {
+export class SurveyOverviewComponent implements OnInit {
 
   survey!: Survey;
-  user!: User;
   surveyNotFound: boolean = false;
   accessId!: string | null;
 
@@ -25,7 +23,7 @@ export class SurveyFinalOverviewComponent implements OnInit {
   ngOnInit() {
     this.accessId = this.activatedRoute!.snapshot.paramMap.get('accessId');
 
-    this.surveyService.getSurveyOverview(this.accessId).subscribe(
+    this.surveyService.getSurveyByAccessId(this.accessId).subscribe(
       (response: Survey) => {
         this.survey = response;
         console.log(this.survey);

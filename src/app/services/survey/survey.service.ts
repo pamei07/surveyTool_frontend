@@ -17,16 +17,12 @@ export class SurveyService {
     return this.http.post<Survey>(this.surveyUrl, survey);
   }
 
-  public getSurveyOverview(accessId: string | null) {
+  public getSurveyByAccessId(accessId: string | null) {
     return this.http.get<Survey>(this.surveyUrl + '/' + accessId);
   }
 
   public getSurveyOverviewByUuid(uuid: string | null) {
     return this.http.get<Survey>(this.surveyUrl + '/answers?uuid=' + uuid);
-  }
-
-  public getSurveyByAccessId(accessId: string) {
-    return this.http.get<Survey>(this.surveyUrl + '/results?accessId=' + accessId);
   }
 
   public getSurveysThatAreOpenAccess() {
