@@ -10,15 +10,15 @@ export class AnswerService {
   private readonly surveyUrl: string;
 
   constructor(private http: HttpClient) {
-    this.surveyUrl = 'http://localhost:8080';
+    this.surveyUrl = 'http://localhost:8080/answers';
   }
 
   public saveAnswers(answerArray: Answer[]) {
-    return this.http.post(this.surveyUrl + '/postAnswers', answerArray);
+    return this.http.post(this.surveyUrl, answerArray);
   }
 
   public getAnswersByQuestionId(questionId: number | undefined) {
-    return this.http.get<Answer[]>(this.surveyUrl + '/getAnswersByQuestionId?questionId=' + questionId);
+    return this.http.get<Answer[]>(this.surveyUrl + '/question?questionId=' + questionId);
   }
 
 }

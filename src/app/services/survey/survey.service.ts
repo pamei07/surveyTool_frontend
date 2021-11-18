@@ -10,11 +10,11 @@ export class SurveyService {
   private readonly surveyUrl: string;
 
   constructor(private http: HttpClient) {
-    this.surveyUrl = 'http://localhost:8080';
+    this.surveyUrl = 'http://localhost:8080/surveys';
   }
 
   public saveSurvey(survey: Survey) {
-    return this.http.post<Survey>(this.surveyUrl + '/createSurvey/save', survey);
+    return this.http.post<Survey>(this.surveyUrl, survey);
   }
 
   public getSurveyOverview(id: string | null) {

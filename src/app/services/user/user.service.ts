@@ -10,7 +10,7 @@ export class UserService {
   private readonly surveyUrl: string;
 
   constructor(private http: HttpClient) {
-    this.surveyUrl = 'http://localhost:8080';
+    this.surveyUrl = 'http://localhost:8080/users';
   }
 
   postUser(name: string) {
@@ -24,10 +24,10 @@ export class UserService {
   }
 
   public saveUser(user: User) {
-    return this.http.post<User>(this.surveyUrl + '/postUser', user);
+    return this.http.post<User>(this.surveyUrl, user);
   }
 
   public getParticipatingUsersBySurveyId(surveyId: number | undefined) {
-    return this.http.get<User[]>(this.surveyUrl + '/getParticipatingUsersBySurveyId?surveyId=' + surveyId);
+    return this.http.get<User[]>(this.surveyUrl + '/survey?surveyId=' + surveyId);
   }
 }
