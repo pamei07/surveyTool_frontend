@@ -54,14 +54,14 @@ export class SurveySubmissionValidationComponent implements OnInit {
     this.survey.setOpen(this.openAccess?.value);
 
     let newSurvey: Survey;
-    let surveyID: number;
+    let accessId: string;
 
     this.surveyService.saveSurvey(this.survey).subscribe(savedSurvey => {
       newSurvey = savedSurvey;
-      surveyID = <number>newSurvey.id;
+      accessId = <string>newSurvey.accessID;
       console.log(newSurvey);
 
-      this.router.navigate(["createSurvey", surveyID, "final"]);
+      this.router.navigate(["surveys", accessId]);
     });
   }
 

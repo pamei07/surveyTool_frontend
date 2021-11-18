@@ -15,7 +15,7 @@ export class SurveyFinalOverviewComponent implements OnInit {
   survey!: Survey;
   user!: User;
   surveyNotFound: boolean = false;
-  id!: string | null;
+  accessId!: string | null;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -23,9 +23,9 @@ export class SurveyFinalOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = this.activatedRoute!.snapshot.paramMap.get('id');
+    this.accessId = this.activatedRoute!.snapshot.paramMap.get('accessId');
 
-    this.surveyService.getSurveyOverview(this.id).subscribe(
+    this.surveyService.getSurveyOverview(this.accessId).subscribe(
       (response: Survey) => {
         this.survey = response;
         console.log(this.survey);
