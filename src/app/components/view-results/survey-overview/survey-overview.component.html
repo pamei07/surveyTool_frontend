@@ -4,7 +4,7 @@
   </div>
 </section>
 <section id="surveyOverview" class="container restrictWidth" *ngIf="!surveyNotFound">
-  <survey-navigation [survey]="survey"></survey-navigation>
+  <survey-navigation [survey]="survey" [overview]="true"></survey-navigation>
   <survey-basic-information [survey]="survey"></survey-basic-information>
   <survey-access-details [survey]="survey"></survey-access-details>
 </section>

@@ -1,16 +1,14 @@
-<section class="mt-3">
+<section class="my-4">
   <div class="container restrictWidth">
-    <div class="row">
-      <a class="col-6 text-center py-3" (click)="navigateToOverview()">
-        <div>
-          Übersicht
-        </div>
-      </a>
-      <a class="col-6 text-center py-3" (click)="navigateToResults()">
-        <div>
-          Ergebnisse
-        </div>
-      </a>
+    <div class="row justify-content-evenly">
+      <button class="btn col-5 py-2 surveyNavigationButton" (click)="navigateToOverview()"
+              [ngClass]="{'btn-primary': overview === true, 'btn-outline-primary': overview === false}">
+        Übersicht
+      </button>
+      <button class="btn col-5 py-2 surveyNavigationButton" (click)="navigateToResults()"
+              [ngClass]="{'btn-primary': overview === false, 'btn-outline-primary': overview === true}">
+        Ergebnisse
+      </button>
     </div>
   </div>
 </section>

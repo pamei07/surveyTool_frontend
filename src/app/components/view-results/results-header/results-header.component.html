@@ -4,7 +4,7 @@
   </div>
 </section>
 <section id="viewResults" class="container restrictWidth" *ngIf="!surveyNotFound && survey">
-  <survey-navigation [survey]="survey"></survey-navigation>
+  <survey-navigation [survey]="survey" [overview]="false"></survey-navigation>
   <hr>
   <div class="d-block">
     <h2 class="text-center">{{ survey.name }}</h2>

@@ -3,25 +3,26 @@ import {Router} from "@angular/router";
 import {Survey} from "../../../model/survey";
 
 @Component({
-    selector: 'survey-navigation',
-    templateUrl: 'survey-navigation.component.html'
+  selector: 'survey-navigation',
+  templateUrl: 'survey-navigation.component.html'
 })
 
 export class SurveyNavigationComponent implements OnInit {
 
-    @Input() survey!: Survey;
+  @Input() survey!: Survey;
+  @Input() overview!: boolean;
 
-    constructor(private router: Router) {
-    }
+  constructor(private router: Router) {
+  }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 
-    navigateToOverview() {
-        this.router.navigate(["surveys", this.survey.accessID]);
-    }
+  navigateToOverview() {
+    this.router.navigate(["surveys", this.survey.accessID]);
+  }
 
-    navigateToResults() {
-        this.router.navigate(["surveys", this.survey.accessID, "answers"]);
-    }
+  navigateToResults() {
+    this.router.navigate(["surveys", this.survey.accessID, "answers"]);
+  }
 }
