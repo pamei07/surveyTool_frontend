@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
-import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'results-header',
@@ -10,7 +9,7 @@ import {UserService} from "../../../services/user/user.service";
 export class ResultsHeaderComponent implements OnInit {
   survey!: Survey;
 
-  constructor(private userService: UserService) {
+  constructor() {
   }
 
   ngOnInit() {
