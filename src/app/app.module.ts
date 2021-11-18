@@ -54,14 +54,12 @@ import {SurveyNavigationComponent} from "./components/view-results/survey-naviga
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'createSurvey', component: SurveyCreationComponent},
-  {path: 'createSurvey/questions', component: AddSurveyContentComponent},
+  {path: 'surveys', component: SurveyListComponent},
+  {path: 'surveys/create', component: SurveyCreationComponent},
+  {path: 'surveys/participate', component: AnswerSurveyComponent},
   {path: 'surveys/:accessId', component: SurveyOverviewComponent},
   {path: 'surveys/:accessId/answers', component: ResultsHeaderComponent},
-  {path: 'search', component: SearchSurveyComponent},
-  {path: 'answers/overview', component: AnswerSurveyComponent},
-  {path: 'thanks', component: ThankYouComponent},
-  {path: 'surveys', component: SurveyListComponent}
+  {path: 'thanks', component: ThankYouComponent}
 ]
 
 @NgModule({
