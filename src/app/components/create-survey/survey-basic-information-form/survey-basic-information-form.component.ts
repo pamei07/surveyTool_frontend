@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Survey} from "../../../model/survey";
-import {endDateInFuture, startDateBeforeEndDateValidator} from "../../../directives/date-validation.directive";
+import {dateInFuture, startDateBeforeEndDateValidator} from "../../../directives/date-validation.directive";
 
 @Component({
   selector: 'survey-basic-information-form',
@@ -16,8 +16,8 @@ export class SurveyBasicInformationFormComponent implements OnInit {
   surveyForm = this.fb.group({
     name: ['', [Validators.required]],
     description: [''],
-    startDate: ['', [Validators.required]],
-    endDate: ['', [Validators.required, endDateInFuture()]]
+    startDate: ['', [Validators.required, dateInFuture()]],
+    endDate: ['', [Validators.required, dateInFuture()]]
   }, {validators: startDateBeforeEndDateValidator()})
 
   get name() {
