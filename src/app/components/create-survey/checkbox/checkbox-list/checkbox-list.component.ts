@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 
 @Component({
-  selector: 'checkbox-list',
+  selector: 'app-checkbox-list',
   templateUrl: 'checkbox-list.component.html'
 })
 

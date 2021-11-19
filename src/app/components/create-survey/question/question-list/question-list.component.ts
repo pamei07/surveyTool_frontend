@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 
 @Component({
-  selector: 'question-list',
+  selector: 'app-question-list',
   templateUrl: 'question-list.component.html'
 })
 

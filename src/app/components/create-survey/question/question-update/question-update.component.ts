@@ -7,7 +7,7 @@ import {
 } from "../../../../directives/min-max-select-validation.directive";
 
 @Component({
-  selector: 'question-update',
+  selector: 'app-question-update',
   templateUrl: 'question-update.component.html'
 })
 

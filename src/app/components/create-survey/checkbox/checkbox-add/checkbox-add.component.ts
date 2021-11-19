@@ -4,7 +4,7 @@ import {Checkbox} from "../../../../model/checkbox";
 import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'checkbox-add',
+  selector: 'app-checkbox-add',
   templateUrl: 'checkbox-add.component.html'
 })
 

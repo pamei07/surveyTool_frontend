@@ -12,8 +12,8 @@
 <section id="questionGroups" class="container restrictWidth" *ngIf="survey.questionGroups !== null">
   <form [formGroup]="answerForm">
     <div *ngFor="let questionGroup of survey.questionGroups; index as questionGroupIndex">
-      <question-group [questionGroup]="questionGroup"
-                      [questionGroupIndex]="questionGroupIndex"></question-group>
+      <app-question-group [questionGroup]="questionGroup"
+                          [questionGroupIndex]="questionGroupIndex"></app-question-group>
     </div>
 
     <div>
@@ -23,7 +23,7 @@
       </button>
     </div>
 
-    <answers-submission (postAnswers)="postAnswersWithUser()"></answers-submission>
+    <app-answers-submission (postAnswers)="postAnswersWithUser()"></app-answers-submission>
   </form>
 </section>
 

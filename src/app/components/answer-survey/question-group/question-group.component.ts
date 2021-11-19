@@ -3,7 +3,7 @@ import {QuestionGroup} from "../../../model/question-group";
 import {FormGroup, FormGroupDirective} from "@angular/forms";
 
 @Component({
-  selector: 'question-group',
+  selector: 'app-question-group',
   templateUrl: 'question-group.component.html'
 })
 

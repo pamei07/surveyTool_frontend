@@ -4,7 +4,7 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 import {Checkbox} from "../../../../model/checkbox";
 
 @Component({
-  selector: 'radio-question',
+  selector: 'app-radio-question',
   templateUrl: 'radio-question.component.html'
 })
 

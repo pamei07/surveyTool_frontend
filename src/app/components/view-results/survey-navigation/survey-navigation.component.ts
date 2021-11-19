@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
-  selector: 'survey-navigation',
+  selector: 'app-survey-navigation',
   templateUrl: 'survey-navigation.component.html'
 })
 

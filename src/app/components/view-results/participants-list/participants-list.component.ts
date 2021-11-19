@@ -4,7 +4,7 @@ import {User} from "../../../model/user";
 import {UserService} from "../../../services/user/user.service";
 
 @Component({
-  selector: 'participants-list',
+  selector: 'app-participants-list',
   templateUrl: 'participants-list.component.html'
 })
 

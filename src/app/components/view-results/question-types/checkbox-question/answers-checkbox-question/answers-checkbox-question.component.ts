@@ -4,7 +4,7 @@ import {Answer} from "../../../../../model/answer";
 import {AnswerService} from "../../../../../services/answer/answer.service";
 
 @Component({
-  selector: 'answers-checkbox-question',
+  selector: 'app-answers-checkbox-question',
   templateUrl: 'answers-checkbox-question.component.html'
 })
 

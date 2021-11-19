@@ -13,13 +13,13 @@
 
   </div>
   <div class="row">
-    <answers-checkbox-question-table [question]="question"
-                                     [answers]="answers"
-                                     [numberOfUsersAnswering]="numberOfUsersAnswering"
-                                     [votesForCheckboxes]="votesForCheckboxes"
-                                     *ngIf="answers && showTable"></answers-checkbox-question-table>
-    <answers-checkbox-question-pie-chart [question]="question"
+    <app-answers-checkbox-question-table [question]="question"
+                                         [answers]="answers"
+                                         [numberOfUsersAnswering]="numberOfUsersAnswering"
                                          [votesForCheckboxes]="votesForCheckboxes"
-                                         *ngIf="answers && !showTable"></answers-checkbox-question-pie-chart>
+                                         *ngIf="answers && showTable"></app-answers-checkbox-question-table>
+    <app-answers-checkbox-question-pie-chart [question]="question"
+                                             [votesForCheckboxes]="votesForCheckboxes"
+                                             *ngIf="answers && !showTable"></app-answers-checkbox-question-pie-chart>
   </div>
 </div>

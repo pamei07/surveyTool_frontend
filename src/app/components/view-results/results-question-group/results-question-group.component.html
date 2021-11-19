@@ -10,10 +10,10 @@
 </h3>
 <div [attr.id]="'collapseAnswers' + questionGroup.id" class="show">
   <div class="mb-4" *ngFor="let question of questionGroup.questions">
-    <answers-text-question [question]="question"
-                           *ngIf="!question.hasCheckbox"></answers-text-question>
-    <answers-checkbox-question [question]="question"
-                               *ngIf="question.hasCheckbox"></answers-checkbox-question>
+    <app-answers-text-question [question]="question"
+                               *ngIf="!question.hasCheckbox"></app-answers-text-question>
+    <app-answers-checkbox-question [question]="question"
+                                   *ngIf="question.hasCheckbox"></app-answers-checkbox-question>
   </div>
   <div class="container text-end">
     <button id="buttonToQuestionGroupHeading" class="btn btn-outline-primary scrollToTopButton py-1 px-2 me-2"

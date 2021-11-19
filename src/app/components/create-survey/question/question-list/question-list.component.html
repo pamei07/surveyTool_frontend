@@ -48,12 +48,12 @@
           </div>
         </div>
 
-        <checkbox-list [survey]="survey"
-                       [indexQuestionGroup]="indexQuestionGroup"
-                       [indexQuestion]="indexQuestion"></checkbox-list>
-        <checkbox-add [survey]="survey"
-                      [indexQuestionGroup]="indexQuestionGroup"
-                      [indexQuestion]="indexQuestion"></checkbox-add>
+        <app-checkbox-list [survey]="survey"
+                           [indexQuestionGroup]="indexQuestionGroup"
+                           [indexQuestion]="indexQuestion"></app-checkbox-list>
+        <app-checkbox-add [survey]="survey"
+                          [indexQuestionGroup]="indexQuestionGroup"
+                          [indexQuestion]="indexQuestion"></app-checkbox-add>
       </td>
 
       <td class="text-center">
@@ -76,12 +76,12 @@
             <img src="assets/svgs/x-lg.svg" alt="Löschen">
           </button>
 
-          <question-update [survey]="survey"
-                           [indexQuestionGroup]="indexQuestionGroup"
-                           [indexQuestion]="indexQuestion"></question-update>
-          <question-delete [survey]="survey"
-                           [indexQuestionGroup]="indexQuestionGroup"
-                           [indexQuestion]="indexQuestion"></question-delete>
+          <app-question-update [survey]="survey"
+                               [indexQuestionGroup]="indexQuestionGroup"
+                               [indexQuestion]="indexQuestion"></app-question-update>
+          <app-question-delete [survey]="survey"
+                               [indexQuestionGroup]="indexQuestionGroup"
+                               [indexQuestion]="indexQuestion"></app-question-delete>
 
         </div>
       </td>

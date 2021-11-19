@@ -5,7 +5,7 @@ import {SurveyService} from "../../../services/survey/survey.service";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
-  selector: 'survey',
+  selector: 'app-survey',
   templateUrl: 'survey.component.html'
 })
 

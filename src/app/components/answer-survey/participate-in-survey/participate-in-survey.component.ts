@@ -11,7 +11,7 @@ import {UserService} from "../../../services/user/user.service";
 import {noOfCheckboxesCheckedInMinMaxRange} from "../../../directives/min-max-select-validation.directive";
 
 @Component({
-  selector: 'participate-in-survey',
+  selector: 'app-participate-in-survey',
   templateUrl: 'participate-in-survey.component.html'
 })
 

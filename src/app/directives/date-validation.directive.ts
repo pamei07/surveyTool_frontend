@@ -32,7 +32,7 @@ export function dateInFuture(): ValidatorFn {
   }
 }
 
-@Directive({selector: '[date-validation]'})
+@Directive({selector: '[appDateValidation]'})
 export class DateValidationDirective {
   constructor() {
   }

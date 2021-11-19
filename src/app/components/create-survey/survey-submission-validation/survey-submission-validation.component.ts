@@ -8,7 +8,7 @@ import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../model/user";
 
 @Component({
-  selector: 'survey-submission-validation',
+  selector: 'app-survey-submission-validation',
   templateUrl: 'survey-submission-validation.component.html'
 })
 

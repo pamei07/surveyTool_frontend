@@ -4,7 +4,7 @@ import {Survey} from "../../../../model/survey";
 import {QuestionGroup} from "../../../../model/question-group";
 
 @Component({
-  selector: 'question-group-add',
+  selector: 'app-question-group-add',
   templateUrl: 'question-group-add.component.html'
 })
 

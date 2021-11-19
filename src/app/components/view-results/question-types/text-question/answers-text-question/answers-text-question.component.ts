@@ -4,7 +4,7 @@ import {Answer} from "../../../../../model/answer";
 import {AnswerService} from "../../../../../services/answer/answer.service";
 
 @Component({
-  selector: 'answers-text-question',
+  selector: 'app-answers-text-question',
   templateUrl: 'answers-text-question.component.html'
 })
 

@@ -6,7 +6,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {User} from "../../../model/user";
 
 @Component({
-  selector: 'answer-survey-parent',
+  selector: 'app-answer-survey-parent',
   templateUrl: 'answer-survey.component.html'
 })
 

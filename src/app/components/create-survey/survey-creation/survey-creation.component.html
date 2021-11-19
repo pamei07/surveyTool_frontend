@@ -1,11 +1,11 @@
 <section id="surveyForm" class="container restrictWidth">
-  <survey-basic-information-form *ngIf="!basicInfoGiven"
-                                 [survey]="survey"
-                                 (basicInfoBoolean)="setBasicInfoGiven($event)"></survey-basic-information-form>
-  <add-survey-content *ngIf="basicInfoGiven"
-                      [survey]="survey"
-                      (basicInfoBoolean)="setBasicInfoGiven($event)"></add-survey-content>
-  <survey-submission-validation *ngIf="basicInfoGiven"
-                                [survey]="survey"></survey-submission-validation>
+  <app-survey-basic-information-form *ngIf="!basicInfoGiven"
+                                     [survey]="survey"
+                                     (basicInfoBoolean)="setBasicInfoGiven($event)"></app-survey-basic-information-form>
+  <app-add-survey-content *ngIf="basicInfoGiven"
+                          [survey]="survey"
+                          (basicInfoBoolean)="setBasicInfoGiven($event)"></app-add-survey-content>
+  <app-survey-submission-validation *ngIf="basicInfoGiven"
+                                    [survey]="survey"></app-survey-submission-validation>
 </section>
 

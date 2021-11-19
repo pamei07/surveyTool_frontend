@@ -4,7 +4,7 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 import {Checkbox} from "../../../../model/checkbox";
 
 @Component({
-  selector: 'multiple-select-question',
+  selector: 'app-multiple-select-question',
   templateUrl: 'multiple-select-question.component.html'
 })
 

@@ -21,11 +21,13 @@
         </div>
       </div>
 
-      <question-group-update [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></question-group-update>
-      <question-group-delete [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></question-group-delete>
+      <app-question-group-update [survey]="survey"
+                                 [indexQuestionGroup]="indexQuestionGroup"></app-question-group-update>
+      <app-question-group-delete [survey]="survey"
+                                 [indexQuestionGroup]="indexQuestionGroup"></app-question-group-delete>
 
-      <question-list [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></question-list>
-      <question-add [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></question-add>
+      <app-question-list [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></app-question-list>
+      <app-question-add [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></app-question-add>
 
     </div>
   </div>

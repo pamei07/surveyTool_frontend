@@ -4,7 +4,7 @@ import {Survey} from "../../../model/survey";
 import {dateInFuture, startDateBeforeEndDateValidator} from "../../../directives/date-validation.directive";
 
 @Component({
-  selector: 'survey-basic-information-form',
+  selector: 'app-survey-basic-information-form',
   templateUrl: 'survey-basic-information-form.component.html'
 })
 

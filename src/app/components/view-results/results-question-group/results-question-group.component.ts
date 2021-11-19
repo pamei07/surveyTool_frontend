@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {QuestionGroup} from "../../../model/question-group";
 
 @Component({
-  selector: 'results-question-group',
+  selector: 'app-results-question-group',
   templateUrl: 'results-question-group.component.html'
 })
 

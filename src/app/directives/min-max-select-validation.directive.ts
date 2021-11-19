@@ -61,7 +61,7 @@ export function noOfCheckboxesCheckedInMinMaxRange(question: Question): Validato
   }
 }
 
-@Directive({selector: '[min-max-select-validation]'})
+@Directive({selector: '[appMinMaxSelectValidation]'})
 export class MinMaxSelectValidationDirective {
   constructor() {
   }

@@ -3,7 +3,7 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 import {Question} from "../../../../model/question";
 
 @Component({
-  selector: 'text-question',
+  selector: 'app-text-question',
   templateUrl: 'text-question.component.html'
 })
 

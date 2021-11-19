@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 
 @Component({
-  selector: 'checkbox-delete',
+  selector: 'app-checkbox-delete',
   templateUrl: 'checkbox-delete.component.html'
 })
 

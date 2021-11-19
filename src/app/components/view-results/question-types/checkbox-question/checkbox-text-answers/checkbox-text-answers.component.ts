@@ -3,7 +3,7 @@ import {Answer} from "../../../../../model/answer";
 import {Checkbox} from "../../../../../model/checkbox";
 
 @Component({
-  selector: 'checkbox-text-answers',
+  selector: 'app-checkbox-text-answers',
   templateUrl: 'checkbox-text-answers.component.html'
 })
 

@@ -10,14 +10,14 @@
         <span class="col-auto text-muted p-0">
            &nbsp;&nbsp;|&nbsp;&nbsp;
         </span>
-        <participants-list class="col-auto p-0" [survey]="survey"
-                           *ngIf="survey"></participants-list>
+        <app-participants-list class="col-auto p-0" [survey]="survey"
+                               *ngIf="survey"></app-participants-list>
       </div>
     </div>
   </div>
   <hr>
   <div *ngFor="let questionGroup of survey.questionGroups">
-    <results-question-group [questionGroup]="questionGroup"></results-question-group>
+    <app-results-question-group [questionGroup]="questionGroup"></app-results-question-group>
     <hr class="my-4">
   </div>
 </section>

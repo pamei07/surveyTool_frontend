@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormGroup, FormGroupDirective} from "@angular/forms";
 
 @Component({
-  selector: 'answers-submission',
+  selector: 'app-answers-submission',
   templateUrl: 'answers-submission.component.html'
 })
 

@@ -3,7 +3,7 @@ import {Question} from "../../../../../model/question";
 import {Answer} from "../../../../../model/answer";
 
 @Component({
-  selector: 'answers-checkbox-question-table',
+  selector: 'app-answers-checkbox-question-table',
   templateUrl: 'answers-checkbox-question-table.component.html'
 })
 

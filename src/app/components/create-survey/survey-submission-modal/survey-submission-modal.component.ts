@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormGroup, FormGroupDirective} from "@angular/forms";
 
 @Component({
-  selector: 'survey-submission-modal',
+  selector: 'app-survey-submission-modal',
   templateUrl: 'survey-submission-modal.component.html'
 })
 

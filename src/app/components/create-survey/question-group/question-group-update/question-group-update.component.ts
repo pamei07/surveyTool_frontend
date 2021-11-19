@@ -3,7 +3,7 @@ import {Survey} from "../../../../model/survey";
 import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'question-group-update',
+  selector: 'app-question-group-update',
   templateUrl: 'question-group-update.component.html'
 })
 

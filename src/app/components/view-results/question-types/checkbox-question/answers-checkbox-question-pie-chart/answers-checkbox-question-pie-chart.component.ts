@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Question} from "../../../../../model/question";
 
 @Component({
-  selector: 'answers-checkbox-question-pie-chart',
+  selector: 'app-answers-checkbox-question-pie-chart',
   templateUrl: 'answers-checkbox-question-pie-chart.component.html'
 })
 
