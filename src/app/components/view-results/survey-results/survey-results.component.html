@@ -1,10 +1,4 @@
-<section id="errorMessage" class="container restrictWidth" *ngIf="surveyNotFound">
-  <div class="alert alert-danger p-2 mt-4">
-    <span>Unter der angegebenen Zugangs-ID '{{ accessId }}' wurde keine Umfrage gefunden.</span>
-  </div>
-</section>
-<section id="viewResults" class="container restrictWidth" *ngIf="!surveyNotFound && survey">
-  <survey-navigation [survey]="survey" [overview]="false"></survey-navigation>
+<section id="viewResults" class="container restrictWidth" *ngIf="survey">
   <hr>
   <div class="d-block">
     <h2 class="text-center">{{ survey.name }}</h2>

@@ -2,11 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
-  selector: 'survey-overview',
-  templateUrl: 'survey-overview.component.html'
+  selector: 'survey-results',
+  templateUrl: 'survey-results.component.html'
 })
 
-export class SurveyOverviewComponent implements OnInit {
+export class SurveyResultsComponent implements OnInit {
 
   @Input() survey!: Survey;
 
@@ -14,5 +14,6 @@ export class SurveyOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 }

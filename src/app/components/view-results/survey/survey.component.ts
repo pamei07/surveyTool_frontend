@@ -1,19 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
-import {HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SurveyService} from "../../../services/survey/survey.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
-  selector: 'results-header',
-  templateUrl: 'results-header.component.html'
+  selector: 'survey',
+  templateUrl: 'survey.component.html'
 })
 
-export class ResultsHeaderComponent implements OnInit {
+export class SurveyComponent implements OnInit {
 
   survey!: Survey;
   surveyNotFound: boolean = false;
   accessId!: string | null;
+  overview: boolean = true;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -32,5 +33,9 @@ export class ResultsHeaderComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  setOverview(bool: boolean) {
+    this.overview = bool;
   }
 }

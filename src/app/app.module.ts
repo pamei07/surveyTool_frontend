@@ -22,7 +22,7 @@ import {AppHeaderComponent} from "./components/header/app-header.component";
 import {AppFooterComponent} from "./components/footer/app-footer.component";
 import {QuestionGroupComponent} from "./components/answer-survey/question-group/question-group.component";
 import {ThankYouComponent} from "./components/answer-survey/thank-you/thank-you.component";
-import {ResultsHeaderComponent} from "./components/view-results/results-header/results-header.component";
+import {SurveyResultsComponent} from "./components/view-results/survey-results/survey-results.component";
 import {SearchSurveyComponent} from "./components/results-search/search-survey.component";
 import {SurveyCreationComponent} from "./components/create-survey/survey-creation/survey-creation.component";
 import {AnswerSurveyComponent} from "./components/answer-survey/answer-survey/answer-survey.component";
@@ -51,14 +51,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AnswersCheckboxQuestionTableComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question-table/answers-checkbox-question-table.component";
 import {SurveyListComponent} from "./components/open-surveys/survey-list/survey-list.component";
 import {SurveyNavigationComponent} from "./components/view-results/survey-navigation/survey-navigation.component";
+import {SurveyComponent} from "./components/view-results/survey/survey.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'surveys', component: SurveyListComponent},
   {path: 'surveys/create', component: SurveyCreationComponent},
   {path: 'surveys/participate', component: AnswerSurveyComponent},
-  {path: 'surveys/:accessId', component: SurveyOverviewComponent},
-  {path: 'surveys/:accessId/answers', component: ResultsHeaderComponent},
+  {path: 'surveys/:accessId', component: SurveyComponent},
   {path: 'thanks', component: ThankYouComponent}
 ]
 
@@ -94,8 +94,9 @@ const appRoutes: Routes = [
     RadioQuestionComponent,
     MultipleSelectQuestionComponent,
     ThankYouComponent,
+    SurveyComponent,
     SurveyNavigationComponent,
-    ResultsHeaderComponent,
+    SurveyResultsComponent,
     SearchSurveyComponent,
     ResultsQuestionGroupComponent,
     ParticipantsListComponent,

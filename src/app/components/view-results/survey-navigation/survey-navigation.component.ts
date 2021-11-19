@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
@@ -10,19 +9,17 @@ import {Survey} from "../../../model/survey";
 export class SurveyNavigationComponent implements OnInit {
 
   @Input() survey!: Survey;
-  @Input() overview!: boolean;
+  @Output() overviewResultsEventEmitter = new EventEmitter<boolean>();
+  overview: boolean = true;
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
   }
 
-  navigateToOverview() {
-    this.router.navigate(["surveys", this.survey.accessID]);
-  }
-
-  navigateToResults() {
-    this.router.navigate(["surveys", this.survey.accessID, "answers"]);
+  navigateOverview(bool: boolean) {
+    this.overview = bool;
+    this.overviewResultsEventEmitter.emit(bool);
   }
 }
