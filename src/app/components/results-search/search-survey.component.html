@@ -10,10 +10,10 @@
   </form>
   <div id="errorMessage" class="row alert alert-danger p-2 mt-4 mb-0"
        *ngIf="surveyNotFound">
-    <span *ngIf="currentAccessId == ''">
+    <span *ngIf="currentAccessId === ''">
       Geben Sie bitte eine Zugangs-ID ein.
     </span>
-    <span *ngIf="currentAccessId != ''">
+    <span *ngIf="currentAccessId !== ''">
       Es wurde keine Umfrage mit der Zugangs-ID '{{ currentAccessId }}' gefunden.
     </span>
   </div>

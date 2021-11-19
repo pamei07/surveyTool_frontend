@@ -1,7 +1,7 @@
 <div id="noCheckboxes" class="row"
      *ngIf="survey.questionGroups![indexQuestionGroup].questions![indexQuestion].checkboxGroup">
   <div class="d-flex text-center justify-content-center"
-       *ngIf="survey.questionGroups![indexQuestionGroup].questions![indexQuestion].checkboxGroup!.checkboxes!.length == 0">
+       *ngIf="survey.questionGroups![indexQuestionGroup].questions![indexQuestion].checkboxGroup!.checkboxes!.length === 0">
     <p class="alert alert-secondary m-0 w-75">
       Keine Auswahlmöglichkeiten gegeben.
     </p>
