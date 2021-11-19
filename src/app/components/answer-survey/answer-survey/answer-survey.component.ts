@@ -22,9 +22,9 @@ export class AnswerSurveyComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private surveyService: SurveyService) {
 
-    this.uuid = activatedRoute.snapshot.queryParamMap.get('surveyUUID');
+    this.uuid = activatedRoute.snapshot.queryParamMap.get('participationid');
 
-    surveyService.getSurveyOverviewByUuid(this.uuid).subscribe(
+    surveyService.getSurveyOverviewByParticipationId(this.uuid).subscribe(
       (response: Survey) => {
         this.survey = response;
         console.log(this.survey);

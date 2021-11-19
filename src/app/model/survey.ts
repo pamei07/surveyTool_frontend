@@ -8,7 +8,7 @@ export class Survey {
   endDate: string = '';
   open: boolean | undefined;
   accessID: string | undefined;
-  uuid: string | undefined;
+  participationID: string | undefined;
   questionGroups: QuestionGroup[] = [];
 
   userID: number | undefined;

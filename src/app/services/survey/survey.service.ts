@@ -21,8 +21,8 @@ export class SurveyService {
     return this.http.get<Survey>(this.surveyUrl + '/' + accessId);
   }
 
-  public getSurveyOverviewByUuid(uuid: string | null) {
-    return this.http.get<Survey>(this.surveyUrl + '?uuid=' + uuid);
+  public getSurveyOverviewByParticipationId(participationId: string | null) {
+    return this.http.get<Survey>(this.surveyUrl + '?participationId=' + participationId);
   }
 
   public getSurveysThatAreOpenAccess() {
