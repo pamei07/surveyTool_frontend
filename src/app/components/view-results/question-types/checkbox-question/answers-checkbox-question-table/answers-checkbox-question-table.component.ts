@@ -15,14 +15,10 @@ export class AnswersCheckboxQuestionTableComponent implements OnInit {
   percentagesForCheckboxes: number[] = [];
   checkboxesHaveTextAnswers: boolean = false;
 
-  constructor() {
-  }
-
   ngOnInit() {
     this.calculatePercentages();
     this.checkIfTextAnswersAvailable();
   }
-
 
   private calculatePercentages() {
     this.votesForCheckboxes.forEach((votes) => {

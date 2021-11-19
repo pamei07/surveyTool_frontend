@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Question} from "../../../../model/question";
-import {AbstractControl, FormControl, FormGroup, FormGroupDirective} from "@angular/forms";
+import {FormGroup, FormGroupDirective} from "@angular/forms";
 import {Checkbox} from "../../../../model/checkbox";
 
 @Component({
@@ -14,14 +14,6 @@ export class MultipleSelectQuestionComponent implements OnInit {
   @Input() question!: Question;
   @Input() questionIndex!: number;
   parentForm!: FormGroup;
-
-  getCheckedFieldByCheckboxIndex(checkboxIndex: number): AbstractControl {
-    return <FormControl>this.parentForm.get('questionGroupsFormArray')
-      ?.get(this.questionGroupIndex.toString())
-      ?.get(this.questionIndex.toString())
-      ?.get(checkboxIndex.toString())
-      ?.get('checked');
-  }
 
   getTextFieldByCheckboxIndex(checkboxIndex: number) {
     return this.parentForm.get('questionGroupsFormArray')

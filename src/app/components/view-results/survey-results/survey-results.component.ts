@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
@@ -6,14 +6,8 @@ import {Survey} from "../../../model/survey";
   templateUrl: 'survey-results.component.html'
 })
 
-export class SurveyResultsComponent implements OnInit {
+export class SurveyResultsComponent {
 
   @Input() survey!: Survey;
 
-  constructor() {
-  }
-
-  ngOnInit() {
-
-  }
 }

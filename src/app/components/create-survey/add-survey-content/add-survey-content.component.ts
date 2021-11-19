@@ -11,9 +11,6 @@ export class AddSurveyContentComponent {
   @Input() survey!: Survey;
   @Output() basicInfoBoolean = new EventEmitter<boolean>();
 
-  constructor() {
-  }
-
   sendBasicInfoFalse() {
     this.basicInfoBoolean.emit(false);
   }

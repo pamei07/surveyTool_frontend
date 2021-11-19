@@ -1,18 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
-    selector: 'survey-access-details',
-    templateUrl: 'survey-access-details.component.html'
+  selector: 'survey-access-details',
+  templateUrl: 'survey-access-details.component.html'
 })
 
-export class SurveyAccessDetailsComponent implements OnInit {
+export class SurveyAccessDetailsComponent {
 
-    @Input() survey!: Survey;
+  @Input() survey!: Survey;
 
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
 }

@@ -13,10 +13,6 @@ export class SurveyIntroComponent {
   @Input() withinTimeFrame!: boolean;
   @Output() participateBoolean = new EventEmitter<boolean>();
 
-  constructor() {
-
-  }
-
   participate() {
     this.participateBoolean.emit(true);
   }

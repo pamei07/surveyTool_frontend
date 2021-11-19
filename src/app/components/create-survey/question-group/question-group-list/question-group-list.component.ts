@@ -10,7 +10,4 @@ export class QuestionGroupListComponent {
 
   @Input() survey!: Survey;
 
-  constructor() {
-  }
-
 }

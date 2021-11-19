@@ -12,7 +12,4 @@ export class CheckboxListComponent {
   @Input() indexQuestionGroup!: number;
   @Input() indexQuestion!: number;
 
-  constructor() {
-  }
-
 }

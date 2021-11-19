@@ -10,6 +10,4 @@ export class SurveyBasicInformationComponent {
 
   @Input() survey!: Survey;
 
-  constructor() {
-  }
 }

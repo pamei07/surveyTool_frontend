@@ -12,9 +12,6 @@ export class QuestionDeleteComponent {
   @Input() indexQuestionGroup!: number;
   @Input() indexQuestion!: number;
 
-  constructor() {
-  }
-
   deleteQuestion(indexQuestion: number) {
     this.survey.questionGroups![this.indexQuestionGroup].questions!.splice(indexQuestion, 1);
   }

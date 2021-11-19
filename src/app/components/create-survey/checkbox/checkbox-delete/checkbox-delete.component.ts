@@ -13,9 +13,6 @@ export class CheckboxDeleteComponent {
   @Input() indexQuestion!: number;
   @Input() indexCheckbox!: number;
 
-  constructor() {
-  }
-
   deleteCheckbox(indexCheckbox: number) {
     this.survey
       .questionGroups![this.indexQuestionGroup]

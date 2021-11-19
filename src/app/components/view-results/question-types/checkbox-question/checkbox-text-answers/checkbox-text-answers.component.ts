@@ -12,6 +12,4 @@ export class CheckboxTextAnswersComponent {
   @Input() answers!: Answer[];
   @Input() checkbox!: Checkbox;
 
-  constructor() {
-  }
 }

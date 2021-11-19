@@ -11,7 +11,4 @@ export class QuestionListComponent {
   @Input() survey!: Survey;
   @Input() indexQuestionGroup!: number;
 
-  constructor() {
-  }
-
 }
