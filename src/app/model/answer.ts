@@ -2,25 +2,25 @@ export class Answer {
   id: number | undefined;
   text: string | undefined;
 
-  userID: number | undefined;
+  userId: number | undefined;
   userName: string | undefined;
 
-  questionID: number | undefined;
-  checkboxID: number | undefined;
+  questionId: number | undefined;
+  checkboxId: number | undefined;
 
   setText(text: string) {
     this.text = text;
   }
 
-  setQuestionID(questionID: number | undefined) {
-    this.questionID = questionID;
+  setQuestionId(questionId: number | undefined) {
+    this.questionId = questionId;
   }
 
-  setCheckboxID(checkboxID: number | undefined) {
-    this.checkboxID = checkboxID;
+  setCheckboxId(checkboxId: number | undefined) {
+    this.checkboxId = checkboxId;
   }
 
-  setUserID(userID: number | undefined) {
-    this.userID = userID;
+  setUserId(userId: number | undefined) {
+    this.userId = userId;
   }
 }

@@ -24,11 +24,11 @@ export class AnswersTextQuestionComponent implements OnInit {
   }
 
   private calculateNumberOfUsersAnswering(answers: Answer[]) {
-    let userIDs: number[] = [];
+    let userIds: number[] = [];
     for (let answer of answers) {
-      let userID = <number>answer.userID;
-      userIDs.push(userID);
+      let userId = <number>answer.userId;
+      userIds.push(userId);
     }
-    this.numberOfUsersAnswering = userIDs.length;
+    this.numberOfUsersAnswering = userIds.length;
   }
 }

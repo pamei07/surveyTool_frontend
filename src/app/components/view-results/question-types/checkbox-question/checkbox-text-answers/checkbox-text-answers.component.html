@@ -9,11 +9,11 @@
       </div>
       <div class="modal-body">
         <div *ngFor="let answer of answers">
-          <div class="card my-3" *ngIf="answer.checkboxID === checkbox.id">
+          <div class="card my-3" *ngIf="answer.checkboxId === checkbox.id">
             <div class="card-body">
               {{ answer.text }}
               <span class="text-muted float-end mt-2">
-                - {{ answer?.userName }} (user#{{ answer?.userID }})
+                - {{ answer?.userName }} (user#{{ answer?.userId }})
               </span>
             </div>
           </div>

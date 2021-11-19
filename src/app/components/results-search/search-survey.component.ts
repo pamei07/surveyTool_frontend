@@ -31,7 +31,7 @@ export class SearchSurveyComponent {
     this.surveyNotFound = false;
     this.surveyService.getSurveyByAccessId(this.accessId).subscribe(
       (response: Survey) => {
-        this.router.navigate(["surveys", response.accessID]);
+        this.router.navigate(["surveys", response.accessId]);
       }, (error: HttpErrorResponse) => {
         console.log(error);
         this.surveyNotFound = true;

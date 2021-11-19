@@ -1,12 +1,12 @@
 <section id="surveyAccessDetails">
   <div class="container restrictWidth">
-    <div id="accessID" class="container restrictWidth">
+    <div id="accessId" class="container restrictWidth">
       <div class="row align-items-center fontSize18px">
         <div class="col-3">
           <span class="bolderText me-2">Zugangs-ID:</span>
         </div>
         <div class="col">
-          <span class="blueText bolderText">{{ survey?.accessID }}</span>
+          <span class="blueText bolderText">{{ survey?.accessId }}</span>
         </div>
         <div class="col text-end">
           <button class="btn btn-secondary rounded-circle p-0 px-1" type="button"
@@ -30,7 +30,7 @@
       <div class="row align-items-center">
         <div class="col-auto">
           <span class="blueText text-center ms-2">
-            http://localhost:4200/surveys/{{ survey?.accessID }}
+            http://localhost:4200/surveys/{{ survey?.accessId }}
           </span>
         </div>
         <div class="col text-end">
@@ -55,7 +55,7 @@
       <div class="row align-items-center">
         <div class="col-auto">
           <span class="blueText text-center ms-2">
-            http://localhost:4200/surveys/participate?participationid={{ survey?.participationID }}
+            http://localhost:4200/surveys/participate?participationid={{ survey?.participationId }}
           </span>
         </div>
         <div class="col text-end">

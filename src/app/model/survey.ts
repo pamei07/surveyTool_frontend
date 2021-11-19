@@ -7,15 +7,15 @@ export class Survey {
   startDate: string = '';
   endDate: string = '';
   open: boolean | undefined;
-  accessID: string | undefined;
-  participationID: string | undefined;
+  accessId: string | undefined;
+  participationId: string | undefined;
   questionGroups: QuestionGroup[] = [];
 
-  userID: number | undefined;
+  userId: number | undefined;
   userName: string | undefined;
 
-  setUserID(userID: number | undefined) {
-    this.userID = userID;
+  setUserId(userId: number | undefined) {
+    this.userId = userId;
   }
 
   setOpen(bool: boolean) {

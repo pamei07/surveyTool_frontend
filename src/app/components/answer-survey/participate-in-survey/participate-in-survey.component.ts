@@ -194,7 +194,7 @@ export class ParticipateInSurveyComponent implements OnInit {
                                              checkbox: any,
                                              checkboxIndex: number) {
     let answer = new Answer();
-    answer.setUserID(user.id);
+    answer.setUserId(user.id);
 
     if (checkbox.text !== '') {
       answer.setText(checkbox.text);
@@ -203,14 +203,14 @@ export class ParticipateInSurveyComponent implements OnInit {
     let currentQuestion: Question = this.survey
       .questionGroups![questionGroupIndex]
       .questions![questionIndex];
-    answer.setQuestionID(currentQuestion.id);
+    answer.setQuestionId(currentQuestion.id);
 
     let currentCheckbox: Checkbox = this.survey
       .questionGroups![questionGroupIndex]
       .questions![questionIndex]
       .checkboxGroup!
       .checkboxes![checkboxIndex];
-    answer.setCheckboxID(currentCheckbox.id);
+    answer.setCheckboxId(currentCheckbox.id);
 
     this.answerArray.push(answer);
   }
@@ -220,7 +220,7 @@ export class ParticipateInSurveyComponent implements OnInit {
                                            questionGroupIndex: number,
                                            questionIndex: number) {
     let answer = new Answer();
-    answer.setUserID(user.id);
+    answer.setUserId(user.id);
 
     if (answerToQuestion.text !== '') {
       answer.setText(answerToQuestion.text);
@@ -229,14 +229,14 @@ export class ParticipateInSurveyComponent implements OnInit {
     let currentQuestion: Question = this.survey
       .questionGroups![questionGroupIndex]
       .questions![questionIndex];
-    answer.setQuestionID(currentQuestion.id);
+    answer.setQuestionId(currentQuestion.id);
 
     let currentCheckbox: Checkbox = this.survey
       .questionGroups![questionGroupIndex]
       .questions![questionIndex]
       .checkboxGroup!
       .checkboxes![answerToQuestion.checkboxId];
-    answer.setCheckboxID(currentCheckbox.id);
+    answer.setCheckboxId(currentCheckbox.id);
 
     this.answerArray.push(answer);
   }
@@ -246,13 +246,13 @@ export class ParticipateInSurveyComponent implements OnInit {
                                    questionGroupIndex: number,
                                    questionIndex: number) {
     let answer = new Answer();
-    answer.setUserID(user.id);
+    answer.setUserId(user.id);
     answer.setText(answerToQuestion);
 
     let currentQuestion: Question = this.survey
       .questionGroups![questionGroupIndex]
       .questions![questionIndex];
-    answer.setQuestionID(currentQuestion.id);
+    answer.setQuestionId(currentQuestion.id);
 
     this.answerArray.push(answer);
   }

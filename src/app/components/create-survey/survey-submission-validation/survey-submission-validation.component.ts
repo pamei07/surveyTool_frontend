@@ -47,7 +47,7 @@ export class SurveySubmissionValidationComponent {
   }
 
   private postSurvey(user: User) {
-    this.survey.setUserID(user?.id);
+    this.survey.setUserId(user?.id);
     this.survey.setOpen(this.openAccess?.value);
 
     let newSurvey: Survey;
@@ -55,7 +55,7 @@ export class SurveySubmissionValidationComponent {
 
     this.surveyService.saveSurvey(this.survey).subscribe(savedSurvey => {
       newSurvey = savedSurvey;
-      accessId = <string>newSurvey.accessID;
+      accessId = <string>newSurvey.accessId;
       console.log(newSurvey);
 
       this.router.navigate(["surveys", accessId]);

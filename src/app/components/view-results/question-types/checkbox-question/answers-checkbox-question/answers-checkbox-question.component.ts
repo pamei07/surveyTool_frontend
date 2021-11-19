@@ -30,7 +30,7 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
     this.question.checkboxGroup!.checkboxes!.forEach((checkbox) => {
       let numberOfAnswersForCheckbox = 0;
       this.answers.forEach(answer => {
-        if (answer.checkboxID === checkbox.id) {
+        if (answer.checkboxId === checkbox.id) {
           numberOfAnswersForCheckbox++;
         }
       })
@@ -39,14 +39,14 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
   }
 
   private calculateNumberOfUsersAnswering(answers: Answer[]) {
-    let userIDs: number[] = [];
+    let userIds: number[] = [];
     for (let answer of answers) {
-      let userIdPostingAnswer = <number>answer.userID;
-      if (!userIDs.some(userID => userID === userIdPostingAnswer)) {
-        userIDs.push(userIdPostingAnswer);
+      let userIdPostingAnswer = <number>answer.userId;
+      if (!userIds.some(userId => userId === userIdPostingAnswer)) {
+        userIds.push(userIdPostingAnswer);
       }
     }
-    this.numberOfUsersAnswering = userIDs.length;
+    this.numberOfUsersAnswering = userIds.length;
   }
 
   setShowTable(bool: boolean) {
