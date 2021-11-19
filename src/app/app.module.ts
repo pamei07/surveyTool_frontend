@@ -57,7 +57,7 @@ const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'surveys', component: SurveyListComponent},
   {path: 'surveys/create', component: SurveyCreationComponent},
-  {path: 'surveys/participate', component: AnswerSurveyComponent},
+  {path: 'surveys/participate/:participationId', component: AnswerSurveyComponent},
   {path: 'surveys/:accessId', component: SurveyComponent},
   {path: 'thanks', component: ThankYouComponent}
 ]

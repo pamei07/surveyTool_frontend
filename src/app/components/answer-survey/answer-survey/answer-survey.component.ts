@@ -22,7 +22,7 @@ export class AnswerSurveyComponent {
   constructor(private activatedRoute: ActivatedRoute,
               private surveyService: SurveyService) {
 
-    this.uuid = activatedRoute.snapshot.queryParamMap.get('participationid');
+    this.uuid = activatedRoute.snapshot.paramMap.get('participationId');
 
     surveyService.getSurveyOverviewByParticipationId(this.uuid).subscribe(
       (response: Survey) => {

@@ -31,7 +31,7 @@
           </div>
 
           <div class="col-auto">
-            <a [routerLink]="'/surveys/participate'" [queryParams]="{participationid: survey?.participationId}">
+            <a [routerLink]="['participate', survey?.participationId]">
               <button class="btn btn-outline-primary float-end">
                 Weiter
               </button>
