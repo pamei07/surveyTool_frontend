@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
 import {SurveyService} from "../../services/survey/survey.service";
@@ -10,7 +10,7 @@ import {HttpErrorResponse} from "@angular/common/http";
   templateUrl: 'search-survey.component.html'
 })
 
-export class SearchSurveyComponent implements OnInit {
+export class SearchSurveyComponent {
 
   surveyNotFound: boolean = false;
   currentAccessId: string = '';
@@ -24,9 +24,6 @@ export class SearchSurveyComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private router: Router,
               private surveyService: SurveyService) {
-  }
-
-  ngOnInit() {
   }
 
   getSurveyByAccessId() {

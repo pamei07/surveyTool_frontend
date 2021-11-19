@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 
 @Component({
@@ -6,7 +6,7 @@ import {Survey} from "../../../../model/survey";
   templateUrl: 'checkbox-delete.component.html'
 })
 
-export class CheckboxDeleteComponent implements OnInit {
+export class CheckboxDeleteComponent {
 
   @Input() survey!: Survey
   @Input() indexQuestionGroup!: number;
@@ -14,9 +14,6 @@ export class CheckboxDeleteComponent implements OnInit {
   @Input() indexCheckbox!: number;
 
   constructor() {
-  }
-
-  ngOnInit() {
   }
 
   deleteCheckbox(indexCheckbox: number) {

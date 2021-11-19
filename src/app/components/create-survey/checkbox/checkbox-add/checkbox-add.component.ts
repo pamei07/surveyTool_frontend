@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 import {Checkbox} from "../../../../model/checkbox";
 import {FormBuilder, Validators} from "@angular/forms";
@@ -8,7 +8,7 @@ import {FormBuilder, Validators} from "@angular/forms";
   templateUrl: 'checkbox-add.component.html'
 })
 
-export class CheckboxAddComponent implements OnInit {
+export class CheckboxAddComponent {
 
   @Input() survey!: Survey;
   @Input() indexQuestionGroup!: number;
@@ -26,9 +26,6 @@ export class CheckboxAddComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder) {
-  }
-
-  ngOnInit() {
   }
 
   addCheckboxToQuestion() {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 
 @Component({
@@ -6,16 +6,13 @@ import {Survey} from "../../../../model/survey";
   templateUrl: 'checkbox-list.component.html'
 })
 
-export class CheckboxListComponent implements OnInit {
+export class CheckboxListComponent {
 
   @Input() survey!: Survey;
   @Input() indexQuestionGroup!: number;
   @Input() indexQuestion!: number;
 
   constructor() {
-  }
-
-  ngOnInit() {
   }
 
 }

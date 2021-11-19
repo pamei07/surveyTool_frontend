@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
@@ -6,7 +6,7 @@ import {Survey} from "../../../model/survey";
   templateUrl: 'survey-intro.component.html'
 })
 
-export class SurveyIntroComponent implements OnInit {
+export class SurveyIntroComponent {
 
   @Input() survey!: Survey;
   @Input() surveyNotFound!: boolean;
@@ -15,9 +15,6 @@ export class SurveyIntroComponent implements OnInit {
 
   constructor() {
 
-  }
-
-  ngOnInit() {
   }
 
   participate() {

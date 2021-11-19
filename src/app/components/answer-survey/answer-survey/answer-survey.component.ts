@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Survey} from "../../../model/survey";
 import {ActivatedRoute} from "@angular/router";
 import {SurveyService} from "../../../services/survey/survey.service";
@@ -10,7 +10,7 @@ import {User} from "../../../model/user";
   templateUrl: 'answer-survey.component.html'
 })
 
-export class AnswerSurveyComponent implements OnInit {
+export class AnswerSurveyComponent {
 
   survey!: Survey;
   user!: User;
@@ -38,9 +38,6 @@ export class AnswerSurveyComponent implements OnInit {
         }
       }
     )
-  }
-
-  ngOnInit() {
   }
 
   setParticipate(bool: boolean) {

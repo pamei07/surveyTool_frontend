@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Survey} from "../../../../model/survey";
 import {QuestionGroup} from "../../../../model/question-group";
@@ -8,7 +8,7 @@ import {QuestionGroup} from "../../../../model/question-group";
   templateUrl: 'question-group-add.component.html'
 })
 
-export class QuestionGroupAddComponent implements OnInit {
+export class QuestionGroupAddComponent {
 
   @Input() survey!: Survey;
 
@@ -21,9 +21,6 @@ export class QuestionGroupAddComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder) {
-  }
-
-  ngOnInit() {
   }
 
   addNewQuestionGroup() {

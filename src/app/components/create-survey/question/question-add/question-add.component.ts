@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Question} from "../../../../model/question";
@@ -13,7 +13,7 @@ import {
   templateUrl: 'question-add.component.html'
 })
 
-export class QuestionAddComponent implements OnInit {
+export class QuestionAddComponent {
 
   @Input() survey!: Survey;
   @Input() indexQuestionGroup!: number;
@@ -44,10 +44,6 @@ export class QuestionAddComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder) {
-  }
-
-  ngOnInit() {
-
   }
 
   addNewQuestion() {

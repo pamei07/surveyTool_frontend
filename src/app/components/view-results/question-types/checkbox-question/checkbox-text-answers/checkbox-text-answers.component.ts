@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Answer} from "../../../../../model/answer";
 import {Checkbox} from "../../../../../model/checkbox";
 
@@ -7,14 +7,11 @@ import {Checkbox} from "../../../../../model/checkbox";
   templateUrl: 'checkbox-text-answers.component.html'
 })
 
-export class CheckboxTextAnswersComponent implements OnInit {
+export class CheckboxTextAnswersComponent {
 
   @Input() answers!: Answer[];
   @Input() checkbox!: Checkbox;
 
   constructor() {
-  }
-
-  ngOnInit() {
   }
 }

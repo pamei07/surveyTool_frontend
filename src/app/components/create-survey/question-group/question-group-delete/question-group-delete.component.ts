@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 
 @Component({
@@ -6,7 +6,7 @@ import {Survey} from "../../../../model/survey";
   templateUrl: 'question-group-delete.component.html'
 })
 
-export class QuestionGroupDeleteComponent implements OnInit {
+export class QuestionGroupDeleteComponent {
 
   @Input() survey!: Survey;
   @Input() indexQuestionGroup!: number;
@@ -14,11 +14,8 @@ export class QuestionGroupDeleteComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
-  }
-
   deleteQuestionGroup(indexQuestionGroup: number) {
     this.survey.questionGroups?.splice(indexQuestionGroup, 1);
   }
-  
+
 }

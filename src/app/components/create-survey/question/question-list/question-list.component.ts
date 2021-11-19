@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 
 @Component({
@@ -6,16 +6,12 @@ import {Survey} from "../../../../model/survey";
   templateUrl: 'question-list.component.html'
 })
 
-export class QuestionListComponent implements OnInit {
+export class QuestionListComponent {
 
   @Input() survey!: Survey;
   @Input() indexQuestionGroup!: number;
 
   constructor() {
   }
-
-  ngOnInit() {
-  }
-
 
 }
