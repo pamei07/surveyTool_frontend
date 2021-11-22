@@ -6,7 +6,8 @@
       <button class="btn btn-primary me-1 p-2 pt-1" title="Tabelle" (click)="setShowTable(true)">
         <img src="assets/svgs/table.svg" alt="table">
       </button>
-      <button class="btn btn-primary me-1 p-2 pt-1" title="Kreisdiagramm" (click)="setShowTable(false)">
+      <button class="btn btn-primary me-1 p-2 pt-1" title="Kreisdiagramm" (click)="setShowTable(false)"
+              [disabled]="answers && answers.length === 0">
         <img src="assets/svgs/pie-chart.svg" alt="pie-chart">
       </button>
     </div>
@@ -20,6 +21,6 @@
                                          *ngIf="answers && showTable"></app-answers-checkbox-question-table>
     <app-answers-checkbox-question-pie-chart [question]="question"
                                              [votesForCheckboxes]="votesForCheckboxes"
-                                             *ngIf="answers && !showTable"></app-answers-checkbox-question-pie-chart>
+                                             *ngIf="answers && !showTable && (answers.length > 0)"></app-answers-checkbox-question-pie-chart>
   </div>
 </div>
