@@ -48,7 +48,7 @@ export class SurveySubmissionValidationComponent {
 
   private postSurvey(user: User) {
     this.survey.setUserId(user?.id);
-    this.survey.setOpen(this.openAccess?.value);
+    this.survey.setOpenAccess(this.openAccess?.value);
 
     let newSurvey: Survey;
     let accessId: string;

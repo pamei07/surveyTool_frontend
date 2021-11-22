@@ -6,7 +6,7 @@ export class Survey {
   description: string = '';
   startDate: string = '';
   endDate: string = '';
-  open: boolean | undefined;
+  openAccess: boolean | undefined;
   accessId: string | undefined;
   participationId: string | undefined;
   questionGroups: QuestionGroup[] = [];
@@ -18,7 +18,7 @@ export class Survey {
     this.userId = userId;
   }
 
-  setOpen(bool: boolean) {
-    this.open = bool;
+  setOpenAccess(bool: boolean) {
+    this.openAccess = bool;
   }
 }
