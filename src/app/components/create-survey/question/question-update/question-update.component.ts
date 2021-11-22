@@ -79,8 +79,14 @@ export class QuestionUpdateComponent implements OnInit {
     if (questionToUpdate.hasCheckbox) {
       let checkboxGroupToUpdate = questionToUpdate.checkboxGroup!;
       checkboxGroupToUpdate.multipleSelect = this.updateForm.value.checkboxGroup.multipleSelect;
-      checkboxGroupToUpdate.minSelect = this.updateForm.value.checkboxGroup.minSelect;
-      checkboxGroupToUpdate.maxSelect = this.updateForm.value.checkboxGroup.maxSelect;
+      if (!this.minSelect?.disabled && this.maxSelect?.disabled) {
+        checkboxGroupToUpdate.minSelect = this.minSelect?.value;
+        checkboxGroupToUpdate.maxSelect = this.maxSelect?.value;
+      } else {
+        checkboxGroupToUpdate.minSelect = 0;
+        checkboxGroupToUpdate.maxSelect = 2;
+      }
+
       questionToUpdate.checkboxGroup = checkboxGroupToUpdate;
     }
 

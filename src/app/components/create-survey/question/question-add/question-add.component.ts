@@ -60,8 +60,13 @@ export class QuestionAddComponent {
     if (question.hasCheckbox) {
       let checkboxGroup = new CheckboxGroup();
       checkboxGroup.multipleSelect = this.questionForm.value.checkboxGroup.multipleSelect;
-      checkboxGroup.minSelect = this.questionForm.value.checkboxGroup.minSelect;
-      checkboxGroup.maxSelect = this.questionForm.value.checkboxGroup.maxSelect;
+      if (!this.minSelect?.disabled && this.maxSelect?.disabled) {
+        checkboxGroup.minSelect = this.minSelect?.value;
+        checkboxGroup.maxSelect = this.maxSelect?.value;
+      } else {
+        checkboxGroup.minSelect = 0;
+        checkboxGroup.maxSelect = 2;
+      }
 
       question.checkboxGroup = checkboxGroup;
     }
