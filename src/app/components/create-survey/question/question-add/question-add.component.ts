@@ -5,7 +5,7 @@ import {Question} from "../../../../model/question";
 import {CheckboxGroup} from "../../../../model/checkbox-group";
 import {
   atLeastOneCheckboxIfQuestionRequired,
-  maxSelectGreaterThanMinSelectValidator
+  maxSelectGreaterThanEqualsMinSelectValidator
 } from "../../../../directives/min-max-select-validation.directive";
 
 @Component({
@@ -27,7 +27,7 @@ export class QuestionAddComponent {
       minSelect: [{value: '0', disabled: true}, [Validators.required, Validators.min(0)]],
       maxSelect: [{value: '2', disabled: true}, [Validators.required, Validators.min(2)]]
     })
-  }, {validators: [maxSelectGreaterThanMinSelectValidator(), atLeastOneCheckboxIfQuestionRequired()]})
+  }, {validators: [maxSelectGreaterThanEqualsMinSelectValidator(), atLeastOneCheckboxIfQuestionRequired()]})
 
   initialFormValues = this.questionForm.value;
 

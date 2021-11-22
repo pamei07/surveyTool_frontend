@@ -2,7 +2,7 @@ import {Directive} from '@angular/core';
 import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 import {Question} from "../model/question";
 
-export function maxSelectGreaterThanMinSelectValidator(): ValidatorFn {
+export function maxSelectGreaterThanEqualsMinSelectValidator(): ValidatorFn {
   return (formGroup: AbstractControl): ValidationErrors | null => {
     let minSelectControl = formGroup.get('checkboxGroup')?.get('minSelect');
     let maxSelectControl = formGroup.get('checkboxGroup')?.get('maxSelect');
