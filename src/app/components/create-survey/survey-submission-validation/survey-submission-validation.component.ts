@@ -6,6 +6,7 @@ import {QuestionGroup} from "../../../model/question-group";
 import {FormBuilder} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../model/user";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-survey-submission-validation',
@@ -16,6 +17,8 @@ export class SurveySubmissionValidationComponent {
 
   @Input() survey!: Survey;
   errorMessages: string[] = [];
+  private backendErrorMessage: string = "Beim Speichern der Umfrage ist etwas schiefgelaufen.\n" +
+    " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
 
   surveySubmissionForm = this.fb.group({
     userName: [''],
@@ -41,9 +44,13 @@ export class SurveySubmissionValidationComponent {
       return;
     }
     let userName = this.userName?.value;
-    this.userService.postUser(userName).subscribe(savedUser => {
-      this.postSurvey(savedUser);
-    })
+    this.userService.postUser(userName).subscribe(
+      (response: User) => {
+        this.postSurvey(response);
+      }, (error: HttpErrorResponse) => {
+        this.errorMessages = [];
+        this.errorMessages.push(this.backendErrorMessage);
+      })
   }
 
   private postSurvey(user: User) {
@@ -53,13 +60,17 @@ export class SurveySubmissionValidationComponent {
     let newSurvey: Survey;
     let accessId: string;
 
-    this.surveyService.saveSurvey(this.survey).subscribe(savedSurvey => {
-      newSurvey = savedSurvey;
-      accessId = <string>newSurvey.accessId;
-      console.log(newSurvey);
+    this.surveyService.saveSurvey(this.survey).subscribe(
+      (response: Survey) => {
+        newSurvey = response;
+        accessId = <string>newSurvey.accessId;
+        console.log(newSurvey);
 
-      this.router.navigate(["surveys", accessId]);
-    });
+        this.router.navigate(["surveys", accessId]);
+      }, (error: HttpErrorResponse) => {
+        this.errorMessages = [];
+        this.errorMessages.push(this.backendErrorMessage);
+      });
   }
 
   private checkIfAnythingEmpty(survey: Survey): boolean {

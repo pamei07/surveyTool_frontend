@@ -9,6 +9,7 @@ import {Checkbox} from "../../../model/checkbox";
 import {User} from "../../../model/user";
 import {UserService} from "../../../services/user/user.service";
 import {noOfCheckboxesCheckedInMinMaxRange} from "../../../directives/min-max-select-validation.directive";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-participate-in-survey',
@@ -19,6 +20,9 @@ export class ParticipateInSurveyComponent implements OnInit {
 
   @Input() survey!: Survey;
   answerArray: Answer[] = [];
+  backendError: boolean = false;
+  backendErrorMessage: string = "Beim Senden Ihrer Antworten ist etwas schiefgelaufen.\n" +
+    " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
 
   answerForm = this.fb.group({
     userName: [''],
@@ -149,9 +153,12 @@ export class ParticipateInSurveyComponent implements OnInit {
 
   postAnswersWithUser() {
     let userName = this.userName?.value;
-    this.userService.postUser(userName).subscribe(savedUser => {
-      this.postAnswers(savedUser);
-    });
+    this.userService.postUser(userName).subscribe(
+      (response: User) => {
+        this.postAnswers(response);
+      }, (error: HttpErrorResponse) => {
+        this.backendError = true;
+      });
   }
 
   /**
@@ -182,10 +189,13 @@ export class ParticipateInSurveyComponent implements OnInit {
       })
     });
     console.log(this.answerArray);
-    this.answerService.saveAnswers(this.answerArray).subscribe(() => {
-      this.answerArray = [];
-      this.router.navigate(["thanks"])
-    });
+    this.answerService.saveAnswers(this.answerArray).subscribe(
+      () => {
+        this.answerArray = [];
+        this.router.navigate(["thanks"])
+      }, (error: HttpErrorResponse) => {
+        this.backendError = true;
+      });
   }
 
   private pushAnswerToMultipleSelectQuestion(user: User,

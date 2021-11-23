@@ -16,6 +16,12 @@
                           [questionGroupIndex]="questionGroupIndex"></app-question-group>
     </div>
 
+    <div *ngIf="backendError === true">
+      <div class="errorMessage alert alert-danger p-2 my-2 d-block">
+        {{ backendErrorMessage }}
+      </div>
+    </div>
+
     <div>
       <button type="button" class="btn btn-success mb-3 float-end" [disabled]="answerForm.invalid"
               data-bs-toggle="modal" data-bs-target="#confirmAnswerSubmission">
