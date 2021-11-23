@@ -19,4 +19,12 @@ export class SurveyListComponent implements OnInit {
       this.openAccessSurveys = surveys;
     })
   }
+
+  currentDateInRange(survey: Survey): boolean {
+    // DF => date format
+    let startDateDF = Date.parse(survey.startDate);
+    let currentDateDF = Date.now();
+
+    return currentDateDF < startDateDF;
+  }
 }
