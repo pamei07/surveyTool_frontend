@@ -13,7 +13,7 @@ export class QuestionGroupUpdateComponent implements OnInit {
   @Input() indexQuestionGroup!: number;
 
   updateForm = this.fb.group({
-    title: ['', Validators.required]
+    title: ['', [Validators.required, Validators.maxLength(255)]]
   })
 
   get title() {

@@ -14,14 +14,18 @@ export class SurveyBasicInformationFormComponent implements OnInit {
   @Output() basicInfoBoolean = new EventEmitter<boolean>();
 
   surveyForm = this.fb.group({
-    name: ['', [Validators.required]],
-    description: [''],
+    name: ['', [Validators.required, Validators.maxLength(255)]],
+    description: ['', [Validators.maxLength(3000)]],
     startDate: ['', [Validators.required, dateInFuture()]],
     endDate: ['', [Validators.required, dateInFuture()]]
   }, {validators: startDateBeforeEndDateValidator()})
 
   get name() {
     return this.surveyForm.get('name');
+  }
+
+  get description() {
+    return this.surveyForm.get('description');
   }
 
   get startDate() {

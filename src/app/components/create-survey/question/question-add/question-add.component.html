@@ -19,6 +19,9 @@
             <div class="errorMessage" *ngIf="text?.errors?.required">
               Eine Frage benötigt einen Fragentext.
             </div>
+            <div class="errorMessage" *ngIf="text?.errors?.maxlength">
+              Der Fragentext darf nicht länger als 500 Zeichen sein.
+            </div>
           </div>
         </div>
       </div>

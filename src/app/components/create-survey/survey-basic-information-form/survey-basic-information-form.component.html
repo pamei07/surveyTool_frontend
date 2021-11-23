@@ -14,14 +14,23 @@
           <div *ngIf="name?.errors?.required">
             Bitte geben Sie einen Namen für die Umfrage ein.
           </div>
+          <div *ngIf="name?.errors?.maxlength">
+            Der Name der Umfrage darf nicht länger als 255 Zeichen lang sein.
+          </div>
         </div>
       </div>
     </div>
     <div id="surveyDescription" class="row mb-3">
       <div class="col">
-        <label for="description" class="form-label labelInput">Beschreibung</label>
+        <label for="description" class="form-label labelInput">Beschreibung (max. 3000 Zeichen)</label>
         <textarea id="description" name="description" class="form-control textArea"
                   formControlName="description"></textarea>
+        <div *ngIf="(description?.invalid && (description?.dirty || description?.touched))"
+             class="alert alert-danger p-2 mt-1 mb-0">
+          <div *ngIf="description?.errors?.maxlength">
+            Die Beschreibung darf nicht länger als 3000 Zeichen lang sein.
+          </div>
+        </div>
       </div>
     </div>
 

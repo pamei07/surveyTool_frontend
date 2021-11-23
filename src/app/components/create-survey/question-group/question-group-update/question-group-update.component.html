@@ -18,6 +18,9 @@
             <div class="errorMessage" *ngIf="title?.errors?.required">
               Ein Frageblock benötigt einen Titel.
             </div>
+            <div *ngIf="title?.errors?.maxlength">
+              Der Titel des Frageblocks darf nicht länger als 255 Zeichen sein.
+            </div>
           </div>
         </div>
         <div class="modal-footer">

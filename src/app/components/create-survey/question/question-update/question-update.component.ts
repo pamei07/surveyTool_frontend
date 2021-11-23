@@ -18,7 +18,7 @@ export class QuestionUpdateComponent implements OnInit {
   @Input() indexQuestion!: number;
 
   updateForm = this.fb.group({
-    text: ['', [Validators.required]],
+    text: ['', [Validators.required, Validators.maxLength(500)]],
     required: false,
     checkboxGroup: this.fb.group({
       multipleSelect: false,

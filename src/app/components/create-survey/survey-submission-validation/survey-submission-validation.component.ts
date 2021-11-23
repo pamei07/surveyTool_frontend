@@ -3,7 +3,7 @@ import {Survey} from "../../../model/survey";
 import {SurveyService} from "../../../services/survey/survey.service";
 import {Router} from "@angular/router";
 import {QuestionGroup} from "../../../model/question-group";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../model/user";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -21,7 +21,7 @@ export class SurveySubmissionValidationComponent {
     " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
 
   surveySubmissionForm = this.fb.group({
-    userName: [''],
+    userName: ['', [Validators.maxLength(255)]],
     openAccess: false
   })
 

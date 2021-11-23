@@ -15,7 +15,7 @@ export class CheckboxAddComponent {
   @Input() indexQuestion!: number;
 
   checkboxForm = this.fb.group({
-    text: ['', [Validators.required]],
+    text: ['', [Validators.required, Validators.maxLength(255)]],
     hasTextField: false
   })
 

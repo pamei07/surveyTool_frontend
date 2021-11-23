@@ -11,6 +11,10 @@ export class SurveySubmissionModalComponent implements OnInit {
   @Output() postSurvey = new EventEmitter;
   parentForm!: FormGroup;
 
+  get userName() {
+    return this.parentForm.get('userName');
+  }
+
   constructor(private parentFormGroup: FormGroupDirective) {
   }
 

@@ -19,7 +19,7 @@ export class QuestionAddComponent {
   @Input() indexQuestionGroup!: number;
 
   questionForm = this.fb.group({
-    text: ['', [Validators.required]],
+    text: ['', [Validators.required, Validators.maxLength(500)]],
     required: false,
     hasCheckbox: false,
     checkboxGroup: this.fb.group({

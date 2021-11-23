@@ -13,7 +13,7 @@ export class QuestionGroupAddComponent {
   @Input() survey!: Survey;
 
   questionGroupForm = this.fb.group({
-    title: ['', Validators.required]
+    title: ['', [Validators.required, Validators.maxLength(255)]]
   })
 
   get title() {
