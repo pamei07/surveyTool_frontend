@@ -22,7 +22,11 @@ export class AnswersCheckboxQuestionTableComponent implements OnInit {
 
   private calculatePercentages() {
     this.votesForCheckboxes.forEach((votes) => {
-      this.percentagesForCheckboxes.push(votes / this.numberOfUsersAnswering);
+      if (this.numberOfUsersAnswering > 0) {
+        this.percentagesForCheckboxes.push(votes / this.numberOfUsersAnswering);
+      } else {
+        this.percentagesForCheckboxes.push(0);
+      }
     })
   }
 
@@ -33,6 +37,7 @@ export class AnswersCheckboxQuestionTableComponent implements OnInit {
   }
 
   checkboxIsMostVoted(checkboxIndex: number) {
-    return (this.votesForCheckboxes[checkboxIndex] == Math.max.apply(null, this.votesForCheckboxes));
+    return (this.votesForCheckboxes[checkboxIndex] == Math.max.apply(null, this.votesForCheckboxes)) &&
+      (this.votesForCheckboxes[checkboxIndex] !== 0);
   }
 }
