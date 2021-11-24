@@ -21,7 +21,7 @@
             [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">
           {{ this.percentagesForCheckboxes[checkboxIndex] | percent:'.0-1' }}
         </td>
-        <td *ngIf="checkbox.hasTextField && checkboxesHaveTextAnswers">
+        <td *ngIf="checkbox.hasTextField && checkboxesHaveTextAnswers && (votesForCheckboxes[checkboxIndex] > 0)">
           <div class="w-100 h-100 text-center">
             <button class="btn btn-primary" data-bs-toggle="modal"
                     [attr.data-bs-target]="'#viewTextAnswers' + checkbox.id">
@@ -31,7 +31,8 @@
           <app-checkbox-text-answers [answers]="answers"
                                      [checkbox]="checkbox"></app-checkbox-text-answers>
         </td>
-        <td class="text-center" *ngIf="!checkbox.hasTextField && checkboxesHaveTextAnswers"></td>
+        <td class="text-center" *ngIf="(!checkbox.hasTextField || votesForCheckboxes[checkboxIndex] === 0) &&
+                                        checkboxesHaveTextAnswers"></td>
       </tr>
       </tbody>
     </table>
