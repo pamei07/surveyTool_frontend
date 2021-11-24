@@ -1,57 +1,56 @@
 <section id="surveyBasicInformation">
-  <div id="information" class="container restrictWidth">
-    <hr>
-    <div class="container restrictWidth fontSize18px">
-      <div class="row">
-        <div class="col-2">
-          <span class="bolderText">Titel:</span>
-        </div>
-        <div class="col">
-          <span>{{ survey?.name }}</span>
-        </div>
+  <hr>
+  <div class="container restrictWidth fontSize18px">
+    <div class="row">
+      <div class="col-2">
+        <span class="bolderText">Titel:</span>
       </div>
-
-      <div class="row my-1 text-muted">
-        <div class="col-2">
-          <span class="bolderText">Erstellt von:</span>
-        </div>
-        <div class="col">
-          <span>{{ survey?.userName }}</span>
-        </div>
-      </div>
-
-      <div class="row my-1">
-        <div class="col-2">
-          <span class="bolderText">Zeitraum:</span>
-        </div>
-        <div class="col">
-          <span class="me-2">{{ survey?.startDate | date: 'dd.MM.yyyy' }}</span>
-          <span>{{ survey?.startDate | date: 'HH:mm' }} Uhr</span>
-          <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-          <span class="me-2">{{ survey?.endDate | date: 'dd.MM.yyyy' }}</span>
-          <span>{{ survey?.endDate | date: 'HH:mm' }} Uhr</span>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-2">
-          <span class="bolderText">Öffentlich:</span>
-        </div>
-        <div class="col">
-          <span *ngIf="survey?.openAccess === true">Ja</span>
-          <span *ngIf="survey?.openAccess === false">Nein</span>
-        </div>
+      <div class="col">
+        <span>{{ survey?.name }}</span>
       </div>
     </div>
 
-    <hr>
-
-    <div id="surveyDescription" class="container" *ngIf="survey?.description !== null && survey?.description !== ''">
-      <span class="fontSize18px bolderText">Beschreibung:</span>
-      <p class="mx-2">{{ survey?.description }}</p>
+    <div class="row my-1 text-muted">
+      <div class="col-2">
+        <span class="bolderText">Erstellt von:</span>
+      </div>
+      <div class="col">
+        <span>{{ survey?.userName }}</span>
+      </div>
     </div>
 
-    <hr *ngIf="survey?.description !== null && survey?.description !== ''">
+    <div class="row my-1">
+      <div class="col-2">
+        <span class="bolderText">Zeitraum:</span>
+      </div>
+      <div class="col">
+        <span class="me-2">{{ survey?.startDate | date: 'dd.MM.yyyy' }}</span>
+        <span>{{ survey?.startDate | date: 'HH:mm' }} Uhr</span>
+        <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+        <span class="me-2">{{ survey?.endDate | date: 'dd.MM.yyyy' }}</span>
+        <span>{{ survey?.endDate | date: 'HH:mm' }} Uhr</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <span class="bolderText">Öffentlich:</span>
+      </div>
+      <div class="col">
+        <span *ngIf="survey?.openAccess === true">Ja</span>
+        <span *ngIf="survey?.openAccess === false">Nein</span>
+      </div>
+    </div>
   </div>
+
+  <hr>
+
+  <div id="surveyDescription" class="container restrictWidth"
+       *ngIf="survey?.description !== null && survey?.description !== ''">
+    <span class="fontSize18px bolderText">Beschreibung:</span>
+    <p class="mx-2">{{ survey?.description }}</p>
+  </div>
+
+  <hr *ngIf="survey?.description !== null && survey?.description !== ''">
 </section>
 

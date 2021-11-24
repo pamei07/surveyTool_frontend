@@ -1,74 +1,72 @@
 <section id="surveyAccessDetails">
-  <div class="container restrictWidth">
-    <div id="accessId" class="container restrictWidth">
-      <div class="row align-items-center fontSize18px">
-        <div class="col-3">
-          <span class="bolderText me-2">Zugangs-ID:</span>
-        </div>
-        <div class="col">
-          <span class="blueText bolderText">{{ survey?.accessId }}</span>
-        </div>
-        <div class="col text-end">
-          <button class="btn btn-secondary rounded-circle p-0 px-1" type="button"
-                  data-bs-toggle="tooltip" data-bs-placement="top"
-                  title="Mit dieser ID können Sie auf der Startseite nach ihrer Umfrage suchen.">
-            <img class="pb-1" src="../../../../assets/svgs/info-lg.svg" alt="info">
-          </button>
-        </div>
+  <div id="accessId" class="container restrictWidth">
+    <div class="row align-items-center fontSize18px">
+      <div class="col-3">
+        <span class="bolderText me-2">Zugangs-ID:</span>
+      </div>
+      <div class="col">
+        <span class="blueText bolderText">{{ survey?.accessId }}</span>
+      </div>
+      <div class="col text-end">
+        <button class="btn btn-secondary rounded-circle p-0 px-1" type="button"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Mit dieser ID können Sie auf der Startseite nach ihrer Umfrage suchen.">
+          <img class="pb-1" src="../../../../assets/svgs/info-lg.svg" alt="info">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div id="accessLink" class="container restrictWidth">
+    <div class="row fontSize18px">
+      <div class="col-3">
+        <span class="bolderText me-2">Übersichts-Link:</span>
       </div>
     </div>
 
-    <hr>
-
-    <div id="accessLink" class="container restrictWidth">
-      <div class="row fontSize18px">
-        <div class="col-3">
-          <span class="bolderText me-2">Übersichts-Link:</span>
-        </div>
-      </div>
-
-      <div class="row align-items-center">
-        <div class="col-auto">
+    <div class="row align-items-center">
+      <div class="col-auto">
           <span class="blueText text-center ms-2">
             http://localhost:4200/surveys/{{ survey?.accessId }}
           </span>
-        </div>
-        <div class="col text-end">
-          <button class="btn btn-secondary rounded-circle p-0 px-1" type="button"
-                  data-bs-toggle="tooltip" data-bs-placement="top"
-                  title="Mit diesem Link erreichen Sie direkt die Übersichtsseite und die Ergebnisse ihrer Umfrage.">
-            <img class="pb-1" src="../../../../assets/svgs/info-lg.svg" alt="info">
-          </button>
-        </div>
+      </div>
+      <div class="col text-end">
+        <button class="btn btn-secondary rounded-circle p-0 px-1" type="button"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Mit diesem Link erreichen Sie direkt die Übersichtsseite und die Ergebnisse ihrer Umfrage.">
+          <img class="pb-1" src="../../../../assets/svgs/info-lg.svg" alt="info">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div id="link" class="container restrictWidth">
+    <div class="row fontSize18px">
+      <div class="col-3">
+        <span class="bolderText me-2">Teilnahme-Link:</span>
       </div>
     </div>
 
-    <hr>
-
-    <div id="link" class="container restrictWidth">
-      <div class="row fontSize18px">
-        <div class="col-3">
-          <span class="bolderText me-2">Teilnahme-Link:</span>
-        </div>
-      </div>
-
-      <div class="row align-items-center">
-        <div class="col-auto">
+    <div class="row align-items-center">
+      <div class="col-auto">
           <span class="blueText text-center ms-2">
             http://localhost:4200/surveys/participate/{{ survey?.participationId }}
           </span>
-        </div>
-        <div class="col text-end">
-          <button class="btn btn-secondary rounded-circle p-0 px-1" type="button"
-                  data-bs-toggle="tooltip" data-bs-placement="top"
-                  title="Mit diesem Link können andere Nutzer an ihrer Umfrage teilnehmen.">
-            <img class="pb-1" src="../../../../assets/svgs/info-lg.svg" alt="info">
-          </button>
-        </div>
+      </div>
+      <div class="col text-end">
+        <button class="btn btn-secondary rounded-circle p-0 px-1" type="button"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Mit diesem Link können andere Nutzer an ihrer Umfrage teilnehmen.">
+          <img class="pb-1" src="../../../../assets/svgs/info-lg.svg" alt="info">
+        </button>
       </div>
     </div>
-
-    <hr>
-
   </div>
+
+  <hr>
+
 </section>
