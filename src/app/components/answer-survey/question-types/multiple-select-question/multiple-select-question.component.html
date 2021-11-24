@@ -19,28 +19,32 @@
       </p>
 
       <div formArrayName="{{ questionIndex }}">
-        <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
-          <div class="row align-items-center ms-2 mb-1" formGroupName="{{ checkboxIndex }}">
-            <div class="col-auto">
+        <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex"
+             formGroupName="{{ checkboxIndex }}">
+          <div class="row ms-2 mb-1">
+            <div>
               <input [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-input me-2" formControlName="checked"
                      type="checkbox" value="true"
                      (click)="enableDisableTextFieldIfAvailable(checkbox, checkboxIndex)">
               <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-label">
-                {{ checkbox.text }}
+                {{ checkbox.text }}<span *ngIf="checkbox.hasTextField"> :</span>
               </label>
             </div>
-            <input *ngIf="checkbox.hasTextField" type="text" class="form-control col me-5"
+          </div>
+          <div class="row ms-5 me-3 mb-1" *ngIf="checkbox.hasTextField">
+            <input type="text" class="form-control"
                    formControlName="text"
                    [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
           </div>
-          <div *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.invalid" class="alert alert-danger p-2 my-2 mx-4">
+          <div *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.invalid"
+               class="alert alert-danger p-2 my-2 ms-5 me-3">
             <span *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.required">Das Textfeld muss ausgefüllt sein.</span>
             <span *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.maxlength">Ihre Antwort darf nicht länger als 1500 Zeichen sein.</span>
           </div>
         </div>
-        <div class="alert alert-danger p-2 my-3 mx-4"
+        <div class="alert alert-danger p-2 my-2 ms-5 me-3"
              *ngIf="checkboxArray?.hasError('noOfCheckedBoxesNotInRange') && question.required">
           <span *ngIf="minSelect < maxSelect && minSelect !== 0">
             Sie müssen zwischen {{ minSelect }} und {{ maxSelect }} Antwortmöglichkeiten auswählen.
@@ -49,7 +53,7 @@
             Sie müssen genau {{ minSelect }} Antwortmöglichkeiten auswählen.
           </span>
         </div>
-        <div class="alert alert-danger p-2 my-3 mx-4"
+        <div class="alert alert-danger p-2 my-2 ms-5 me-3"
              *ngIf="checkboxArray?.hasError('noOfCheckedBoxesNotInRange') && !question.required">
           <span *ngIf="minSelect < maxSelect && minSelect !== 0">
             Sie können nur zwischen {{ minSelect }} und {{ maxSelect }} Antwortmöglichkeiten auswählen.
