@@ -9,14 +9,16 @@
       <div formGroupName="{{ questionIndex }}">
         <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
           <div class="row ms-2 mb-1">
-            <div>
+            <div class="col-auto ps-1 pe-0">
               <input [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-input me-2" formControlName="checkboxId"
                      [attr.name]="'question' + question.id"
                      type="radio" value="{{ checkboxIndex }}"
                      (click)="disableEnableInput(checkbox)">
+            </div>
+            <div class="col">
               <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
-                     class="form-check-label">
+                     class="form-check-labels">
                 {{ checkbox.text }}<span *ngIf="checkbox.hasTextField">:</span>
               </label>
             </div>

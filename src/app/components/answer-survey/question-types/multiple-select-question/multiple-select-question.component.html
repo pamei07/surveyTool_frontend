@@ -22,11 +22,13 @@
         <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex"
              formGroupName="{{ checkboxIndex }}">
           <div class="row ms-2 mb-1">
-            <div>
+            <div class="col-auto ps-1 pe-0">
               <input [attr.id]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-input me-2" formControlName="checked"
                      type="checkbox" value="true"
                      (click)="enableDisableTextFieldIfAvailable(checkbox, checkboxIndex)">
+            </div>
+            <div class="col">
               <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
                      class="form-check-label">
                 {{ checkbox.text }}<span *ngIf="checkbox.hasTextField">:</span>
