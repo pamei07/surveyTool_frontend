@@ -11,6 +11,10 @@ export class AnswersSubmissionComponent implements OnInit {
   @Output() postAnswers = new EventEmitter;
   parentForm!: FormGroup;
 
+  get userName() {
+    return this.parentForm.get('userName');
+  }
+
   constructor(private parentFormGroup: FormGroupDirective) {
   }
 

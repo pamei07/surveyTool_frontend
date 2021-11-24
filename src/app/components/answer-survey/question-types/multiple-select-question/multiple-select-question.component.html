@@ -26,9 +26,9 @@
                    formControlName="text"
                    [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
           </div>
-          <div class="alert alert-danger p-2 my-2 mx-4"
-               *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.required">
-            Das Textfeld muss ausgefüllt sein.
+          <div *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.invalid" class="alert alert-danger p-2 my-2 mx-4">
+            <span *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.required">Das Textfeld muss ausgefüllt sein.</span>
+            <span *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.maxlength">Ihre Antwort darf nicht länger als 1500 Zeichen sein.</span>
           </div>
         </div>
         <div class="alert alert-danger p-2 my-3 mx-4"

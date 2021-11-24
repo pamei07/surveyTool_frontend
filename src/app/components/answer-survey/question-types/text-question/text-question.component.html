@@ -7,10 +7,11 @@
       <span *ngIf="question.required">*</span>
 
       <textarea [attr.id]="'question' + question.id" class="form-control"
-                formControlName="{{ questionIndex }}"></textarea>
+                formControlName="{{ questionIndex }}" placeholder="max. 1500 Zeichen"></textarea>
 
-      <div class="alert alert-danger p-2 mt-3 mb-0 mx-4" *ngIf="text?.errors?.required">
-        Diese Frage muss beantwortet werden.
+      <div *ngIf="text?.invalid" class="alert alert-danger p-2 mt-3 mb-0 mx-4">
+        <span *ngIf="text?.errors?.required">Diese Frage muss beantwortet werden.</span>
+        <span *ngIf="text?.errors?.maxlength">Ihre Antwort darf nicht länger als 1500 Zeichen sein.</span>
       </div>
     </div>
   </div>

@@ -25,7 +25,7 @@ export class ParticipateInSurveyComponent implements OnInit {
     " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
 
   answerForm = this.fb.group({
-    userName: [''],
+    userName: ['', [Validators.maxLength(255)]],
     questionGroupsFormArray: this.fb.array([])
   });
 
@@ -124,7 +124,7 @@ export class ParticipateInSurveyComponent implements OnInit {
     question.checkboxGroup?.checkboxes?.forEach(() => {
       checkboxesFormArray.push(this.fb.group({
         checked: false,
-        text: [{value: '', disabled: true}, [Validators.required]]
+        text: [{value: '', disabled: true}, [Validators.required, Validators.maxLength(1500)]]
       }))
     })
   }
@@ -133,21 +133,21 @@ export class ParticipateInSurveyComponent implements OnInit {
     if (question.required) {
       questionsFormArray.push(this.fb.group({
         checkboxId: ['', [Validators.required]],
-        text: [{value: '', disabled: true}, [Validators.required]]
+        text: [{value: '', disabled: true}, [Validators.required, Validators.maxLength(1500)]]
       }))
     } else {
       questionsFormArray.push(this.fb.group({
         checkboxId: [''],
-        text: [{value: '', disabled: true}, [Validators.required]]
+        text: [{value: '', disabled: true}, [Validators.required, Validators.maxLength(1500)]]
       }))
     }
   }
 
   private addTextQuestion(question: Question, questionsFormArray: FormArray) {
     if (question.required) {
-      questionsFormArray.push(this.fb.control('', [Validators.required]));
+      questionsFormArray.push(this.fb.control('', [Validators.required, Validators.maxLength(1500)]));
     } else {
-      questionsFormArray.push(this.fb.control(''));
+      questionsFormArray.push(this.fb.control('', [Validators.maxLength(1500)]));
     }
   }
 

@@ -18,12 +18,16 @@
           Geben Sie Ihren Namen ein (Optional):
         </label>
         <input id="userName" class="form-control" type="text" formControlName="userName">
+        <div class="alert alert-danger p-2 m-0 mt-2" *ngIf="userName?.errors?.maxlength">
+          Der angegebene Name darf nicht länger als 255 Zeichen sein.
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
           Abbrechen
         </button>
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="post()">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="post()"
+                [disabled]="parentForm.invalid">
           Ja, speichern.
         </button>
       </div>
