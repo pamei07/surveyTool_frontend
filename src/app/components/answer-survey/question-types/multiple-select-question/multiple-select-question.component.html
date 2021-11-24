@@ -6,8 +6,17 @@
       </label>
       <span *ngIf="question.required">*</span>
       <br>
-      <p class="text-muted mb-2 mt-0 mx-4">Wählen Sie bitte zwischen {{ question.checkboxGroup!.minSelect }}
-        und {{ question.checkboxGroup!.maxSelect }} Antwortmöglichkeiten aus.</p>
+      <p class="text-muted mb-2 mt-0 mx-4">
+        <span *ngIf="minSelect < maxSelect && minSelect !== 0">
+          Wählen Sie bitte zwischen {{ minSelect }} und {{ maxSelect }} Antwortmöglichkeiten aus.
+        </span>
+        <span *ngIf="minSelect === maxSelect">
+          Wählen Sie bitte {{ minSelect }} Antwortmöglichkeiten aus.
+        </span>
+        <span *ngIf="minSelect === 0">
+          Wählen Sie bitte bis zu {{ maxSelect }} Antwortmöglichkeiten aus.
+        </span>
+      </p>
 
       <div formArrayName="{{ questionIndex }}">
         <div *ngFor="let checkbox of question.checkboxGroup?.checkboxes; index as checkboxIndex">
@@ -33,13 +42,24 @@
         </div>
         <div class="alert alert-danger p-2 my-3 mx-4"
              *ngIf="checkboxArray?.hasError('noOfCheckedBoxesNotInRange') && question.required">
-          Sie müssen zwischen {{ question.checkboxGroup!.minSelect }} und {{ question.checkboxGroup!.maxSelect }}
-          Antwortmöglichkeiten auswählen.
+          <span *ngIf="minSelect < maxSelect && minSelect !== 0">
+            Sie müssen zwischen {{ minSelect }} und {{ maxSelect }} Antwortmöglichkeiten auswählen.
+          </span>
+          <span *ngIf="minSelect === maxSelect">
+            Sie müssen genau {{ minSelect }} Antwortmöglichkeiten auswählen.
+          </span>
         </div>
         <div class="alert alert-danger p-2 my-3 mx-4"
              *ngIf="checkboxArray?.hasError('noOfCheckedBoxesNotInRange') && !question.required">
-          Sie können nur zwischen {{ question.checkboxGroup!.minSelect }} und {{ question.checkboxGroup!.maxSelect }}
-          Antwortmöglichkeiten auswählen.
+          <span *ngIf="minSelect < maxSelect && minSelect !== 0">
+            Sie können nur zwischen {{ minSelect }} und {{ maxSelect }} Antwortmöglichkeiten auswählen.
+          </span>
+          <span *ngIf="minSelect === maxSelect">
+            Sie können nur genau {{ minSelect }} Antwortmöglichkeiten auswählen.
+          </span>
+          <span *ngIf="minSelect === 0">
+            Sie können nur bis zu {{ maxSelect }} Antwortmöglichkeiten auswählen.
+          </span>
         </div>
       </div>
     </div>

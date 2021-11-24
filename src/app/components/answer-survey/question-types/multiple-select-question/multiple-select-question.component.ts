@@ -15,6 +15,14 @@ export class MultipleSelectQuestionComponent implements OnInit {
   @Input() questionIndex!: number;
   parentForm!: FormGroup;
 
+  get minSelect() {
+    return this.question.checkboxGroup!.minSelect;
+  }
+
+  get maxSelect() {
+    return this.question.checkboxGroup!.maxSelect;
+  }
+
   getTextFieldByCheckboxIndex(checkboxIndex: number) {
     return this.parentForm.get('questionGroupsFormArray')
       ?.get(this.questionGroupIndex.toString())
