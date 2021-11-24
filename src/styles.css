@@ -137,3 +137,16 @@ footer {
 .textArea {
   height: 200px;
 }
+
+/* Override Bootstrap CSS */
+.card {
+  background-color: #F9F9F9;
+}
+
+.btn-outline-primary {
+  background-color: #FFFFFF;
+}
+
+.modal-header {
+  background-color: #F1F1F1;
+}
