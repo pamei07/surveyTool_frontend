@@ -105,6 +105,9 @@ footer {
   font-size: 20px;
 }
 
+.pageNumberSelection {
+  max-width: 70px !important;
+}
 
 /* Other */
 .linkStyle {

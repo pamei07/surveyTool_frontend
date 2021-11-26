@@ -281,4 +281,9 @@ export class ParticipateInSurveyComponent implements OnInit {
   goNext() {
     this.page += 1;
   }
+
+  goTo() {
+    let goToSelection = document.getElementById('goToSelection') as HTMLInputElement;
+    this.page = Number(goToSelection?.value);
+  }
 }
