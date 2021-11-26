@@ -1,15 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 import {Router} from "@angular/router";
-import {Answer} from "../../../model/answer";
 import {FormArray, FormBuilder, Validators} from "@angular/forms";
-import {AnswerService} from "../../../services/answer/answer.service";
 import {Question} from "../../../model/question";
-import {Checkbox} from "../../../model/checkbox";
-import {User} from "../../../model/user";
-import {UserService} from "../../../services/user/user.service";
 import {noOfCheckboxesCheckedInMinMaxRange} from "../../../directives/min-max-select-validation.directive";
-import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-participate-in-survey',
@@ -19,7 +13,6 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class ParticipateInSurveyComponent implements OnInit {
 
   @Input() survey!: Survey;
-  answerArray: Answer[] = [];
   backendError: boolean = false;
   backendErrorMessage: string = "Beim Senden Ihrer Antworten ist etwas schiefgelaufen.\n" +
     " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
@@ -45,9 +38,7 @@ export class ParticipateInSurveyComponent implements OnInit {
   }
 
   constructor(private router: Router,
-              private fb: FormBuilder,
-              private userService: UserService,
-              private answerService: AnswerService) {
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -158,122 +149,6 @@ export class ParticipateInSurveyComponent implements OnInit {
     }
   }
 
-  postAnswersWithUser() {
-    let userName = this.userName?.value;
-    this.userService.postUser(userName).subscribe(
-      (response: User) => {
-        this.postAnswers(response);
-      }, (error: HttpErrorResponse) => {
-        this.backendError = true;
-      });
-  }
-
-  /**
-   * Create Answer objects for each question on submit.
-   * 1. For checkboxes with multipleSelect:
-   *    --> Create an Answer object only if a checkbox has been checked
-   * 2. For checkboxes without multipleSelect:
-   *    --> Create an Answer object only if a checkbox-id is given
-   * 3. For text questions:
-   *    --> Create an Answer object only if a text field is not empty
-   */
-  private postAnswers(user: User) {
-    this.questionGroupsFormArray.controls.forEach((answersToQuestionGroup, questionGroupIndex) => {
-      answersToQuestionGroup.value.forEach((answerToQuestion: any, questionIndex: number) => {
-        if (answerToQuestion instanceof Array) {
-          answerToQuestion.forEach((checkbox: any, checkboxIndex: number) => {
-            if (checkbox.checked == true) {
-              this.pushAnswerToMultipleSelectQuestion(user, questionGroupIndex, questionIndex, checkbox, checkboxIndex);
-            }
-          })
-        } else if (typeof answerToQuestion !== 'string') {
-          if (answerToQuestion.checkboxId !== '') {
-            this.pushAnswerToSingleSelectQuestion(user, answerToQuestion, questionGroupIndex, questionIndex);
-          }
-        } else if (answerToQuestion !== '') {
-          this.pushAnswerToTextQuestion(user, answerToQuestion, questionGroupIndex, questionIndex);
-        }
-      })
-    });
-    console.log(this.answerArray);
-    this.answerService.saveAnswers(this.answerArray).subscribe(
-      () => {
-        this.answerArray = [];
-        this.router.navigate(["thanks"])
-      }, (error: HttpErrorResponse) => {
-        this.backendError = true;
-      });
-  }
-
-  private pushAnswerToMultipleSelectQuestion(user: User,
-                                             questionGroupIndex: number,
-                                             questionIndex: number,
-                                             checkbox: any,
-                                             checkboxIndex: number) {
-    let answer = new Answer();
-    answer.setUserId(user.id);
-
-    if (checkbox.text !== '') {
-      answer.setText(checkbox.text);
-    }
-
-    let currentQuestion: Question = this.survey
-      .questionGroups![questionGroupIndex]
-      .questions![questionIndex];
-    answer.setQuestionId(currentQuestion.id);
-
-    let currentCheckbox: Checkbox = this.survey
-      .questionGroups![questionGroupIndex]
-      .questions![questionIndex]
-      .checkboxGroup!
-      .checkboxes![checkboxIndex];
-    answer.setCheckboxId(currentCheckbox.id);
-
-    this.answerArray.push(answer);
-  }
-
-  private pushAnswerToSingleSelectQuestion(user: User,
-                                           answerToQuestion: any,
-                                           questionGroupIndex: number,
-                                           questionIndex: number) {
-    let answer = new Answer();
-    answer.setUserId(user.id);
-
-    if (answerToQuestion.text !== '') {
-      answer.setText(answerToQuestion.text);
-    }
-
-    let currentQuestion: Question = this.survey
-      .questionGroups![questionGroupIndex]
-      .questions![questionIndex];
-    answer.setQuestionId(currentQuestion.id);
-
-    let currentCheckbox: Checkbox = this.survey
-      .questionGroups![questionGroupIndex]
-      .questions![questionIndex]
-      .checkboxGroup!
-      .checkboxes![answerToQuestion.checkboxId];
-    answer.setCheckboxId(currentCheckbox.id);
-
-    this.answerArray.push(answer);
-  }
-
-  private pushAnswerToTextQuestion(user: User,
-                                   answerToQuestion: string,
-                                   questionGroupIndex: number,
-                                   questionIndex: number) {
-    let answer = new Answer();
-    answer.setUserId(user.id);
-    answer.setText(answerToQuestion);
-
-    let currentQuestion: Question = this.survey
-      .questionGroups![questionGroupIndex]
-      .questions![questionIndex];
-    answer.setQuestionId(currentQuestion.id);
-
-    this.answerArray.push(answer);
-  }
-
   goBack() {
     this.page -= 1;
   }
@@ -285,5 +160,9 @@ export class ParticipateInSurveyComponent implements OnInit {
   goTo() {
     let goToSelection = document.getElementById('goToSelection') as HTMLInputElement;
     this.page = Number(goToSelection?.value);
+  }
+
+  setBackendError() {
+    this.backendError = true;
   }
 }

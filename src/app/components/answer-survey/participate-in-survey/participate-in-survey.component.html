@@ -21,7 +21,7 @@
     </div>
 
     <div *ngIf="backendError === true">
-      <div class="errorMessage alert alert-danger p-2 my-2 d-block">
+      <div class="errorMessage alert alert-danger p-2 my-3 d-block">
         {{ backendErrorMessage }}
       </div>
     </div>
@@ -58,7 +58,8 @@
 
     </div>
 
-    <app-answers-submission (postAnswers)="postAnswersWithUser()"></app-answers-submission>
+    <app-answers-submission [survey]="survey"
+                            (backendErrorEventEmitter)="setBackendError()"></app-answers-submission>
   </form>
 </section>
 

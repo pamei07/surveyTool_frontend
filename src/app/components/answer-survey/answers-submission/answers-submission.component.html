@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="confirmAnswerSubmission" tabindex="-1" aria-hidden="true" [formGroup]="parentForm">
+<div class="modal fade" id="confirmAnswerSubmission" tabindex="-1" aria-hidden="true" [formGroup]="answerForm">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -26,8 +26,8 @@
         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
           Abbrechen
         </button>
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="post()"
-                [disabled]="parentForm.invalid">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="postAnswersWithUser()"
+                [disabled]="answerForm.invalid">
           Ja, speichern.
         </button>
       </div>
