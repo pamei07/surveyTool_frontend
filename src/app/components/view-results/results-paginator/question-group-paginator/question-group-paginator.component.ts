@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {QuestionGroup} from "../../../model/question-group";
+import {QuestionGroup} from "../../../../model/question-group";
 
 @Component({
   selector: 'app-question-group-paginator',

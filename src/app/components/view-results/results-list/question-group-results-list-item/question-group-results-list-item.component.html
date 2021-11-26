@@ -3,9 +3,9 @@
     [attr.data-bs-target]="'#collapseAnswers' + questionGroup.id" aria-expanded="true"
     [attr.aria-controls]="'#collapseAnswers' + questionGroup.id">
   {{ questionGroup.title }}
-  <img class="float-end collapseArrow" src="assets/svgs/chevron-up.svg" alt="up-arrow"
+  <img class="float-end collapseArrow" src="../../../../../assets/svgs/chevron-up.svg" alt="up-arrow"
        *ngIf="!answersCollapsed">
-  <img class="float-end collapseArrow" src="assets/svgs/chevron-down.svg" alt="down-arrow"
+  <img class="float-end collapseArrow" src="../../../../../assets/svgs/chevron-down.svg" alt="down-arrow"
        *ngIf="answersCollapsed">
 </h3>
 <div [attr.id]="'collapseAnswers' + questionGroup.id" class="show">

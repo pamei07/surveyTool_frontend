@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Survey} from "../../../model/survey";
+import {Survey} from "../../../../model/survey";
 
 @Component({
   selector: 'app-survey-access-details',

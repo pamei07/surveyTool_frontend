@@ -15,7 +15,7 @@ import {QuestionListComponent} from "./components/create-survey/question/questio
 import {CheckboxListComponent} from "./components/create-survey/checkbox/checkbox-list/checkbox-list.component";
 import {SurveySubmissionValidationComponent} from "./components/create-survey/survey-submission-validation/survey-submission-validation.component";
 import {CheckboxAddComponent} from './components/create-survey/checkbox/checkbox-add/checkbox-add.component';
-import {SurveyOverviewComponent} from "./components/view-results/survey-overview/survey-overview.component";
+import {SurveyOverviewComponent} from "./components/view-results/overview/survey-overview/survey-overview.component";
 import {SurveyIntroComponent} from "./components/answer-survey/survey-intro/survey-intro.component";
 import {ParticipateInSurveyComponent} from "./components/answer-survey/participate-in-survey/participate-in-survey.component";
 import {AppHeaderComponent} from "./components/header/app-header.component";
@@ -42,7 +42,7 @@ import {CheckboxTextAnswersComponent} from "./components/view-results/question-t
 import {AnswersSubmissionComponent} from "./components/answer-survey/answers-submission/answers-submission.component";
 import {SurveySubmissionModalComponent} from "./components/create-survey/survey-submission-modal/survey-submission-modal.component";
 import {SurveyBasicInformationComponent} from "./components/shared-components/survey-basic-information/survey-basic-information.component";
-import {SurveyAccessDetailsComponent} from "./components/view-results/survey-access-details/survey-access-details.component";
+import {SurveyAccessDetailsComponent} from "./components/view-results/overview/survey-access-details/survey-access-details.component";
 import {ParticipantsListComponent} from "./components/view-results/participants-list/participants-list.component";
 import {AnswersCheckboxQuestionPieChartComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question-pie-chart/answers-checkbox-question-pie-chart.component";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
@@ -52,10 +52,10 @@ import {SurveyListComponent} from "./components/open-surveys/survey-list/survey-
 import {SurveyNavigationComponent} from "./components/view-results/survey-navigation/survey-navigation.component";
 import {SurveyComponent} from "./components/view-results/survey/survey.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {QuestionGroupPaginatorComponent} from './components/view-results/question-group-paginator/question-group-paginator.component';
-import {QuestionGroupResultsListComponent} from "./components/view-results/question-group-results-list/question-group-results-list.component";
-import {QuestionGroupPageComponent} from './components/view-results/question-group-page/question-group-page.component';
-import {QuestionGroupResultsListItemComponent} from "./components/view-results/results-question-group/question-group-results-list-item.component";
+import {QuestionGroupPaginatorComponent} from './components/view-results/results-paginator/question-group-paginator/question-group-paginator.component';
+import {QuestionGroupResultsListComponent} from "./components/view-results/results-list/question-group-results-list/question-group-results-list.component";
+import {QuestionGroupPageComponent} from './components/view-results/results-paginator/question-group-page/question-group-page.component';
+import {QuestionGroupResultsListItemComponent} from "./components/view-results/results-list/question-group-results-list-item/question-group-results-list-item.component";
 
 
 const appRoutes: Routes = [
