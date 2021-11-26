@@ -1,6 +1,6 @@
 <div class="card card-body mb-3">
   <h3 class="card-title">
-    {{ questionGroup.title }}
+    {{ questionGroupIndex + 1 }}. {{ questionGroup.title }}
   </h3>
 
   <div *ngFor="let question of questionGroup.questions; index as questionIndex" class="mb-3">

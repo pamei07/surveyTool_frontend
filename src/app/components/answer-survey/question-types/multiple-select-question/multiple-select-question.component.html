@@ -1,8 +1,8 @@
 <div [formGroup]="parentForm">
   <div formArrayName="questionGroupsFormArray">
     <div formArrayName="{{questionGroupIndex}}">
-      <label [attr.for]="'question' + question.id" class="form-label mb-1">
-        #{{ questionIndex + 1 }}: {{ question.text }}
+      <label [attr.for]="'question' + question.id" class="form-label mb-1 ms-2">
+        <span class="bolderText">{{ questionIndex + 1 }}.</span> {{ question.text }}
       </label>
       <span *ngIf="question.required">*</span>
       <br>
