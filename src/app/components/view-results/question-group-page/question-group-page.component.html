@@ -1,0 +1,17 @@
+<h3 id="questionGroupHeading{{ questionGroup.id }}" class="blueText mb-3">
+  {{ questionGroup.title }}
+</h3>
+<div>
+  <div class="mb-4" *ngFor="let question of questionGroup.questions">
+    <app-answers-text-question [question]="question"
+                               *ngIf="!question.hasCheckbox"></app-answers-text-question>
+    <app-answers-checkbox-question [question]="question"
+                                   *ngIf="question.hasCheckbox"></app-answers-checkbox-question>
+  </div>
+  <div class="container text-end">
+    <button id="buttonToQuestionGroupHeading" class="btn btn-outline-primary scrollToTopButton py-1 px-2 me-2"
+            (click)="scrollToHeading('questionGroupHeading' + questionGroup.id)">
+      Nach Oben
+    </button>
+  </div>
+</div>

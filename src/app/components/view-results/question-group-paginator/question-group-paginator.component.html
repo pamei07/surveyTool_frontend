@@ -1,0 +1,12 @@
+<section>
+  <ngb-pagination class="d-flex justify-content-center"
+                  [collectionSize]="questionGroups.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
+                  [rotate]="true" [ellipses]="true" [boundaryLinks]="false"></ngb-pagination>
+  <div *ngFor="let questionGroup of questionGroups; let index = index">
+    <app-question-group-page [style.display]="index > (page - 1) || index < (page - 1) ? 'none' : null"
+                             [questionGroup]="questionGroup"></app-question-group-page>
+  </div>
+  <ngb-pagination class="d-flex justify-content-center"
+                  [collectionSize]="questionGroups.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
+                  [rotate]="true" [ellipses]="true" [boundaryLinks]="false"></ngb-pagination>
+</section>
