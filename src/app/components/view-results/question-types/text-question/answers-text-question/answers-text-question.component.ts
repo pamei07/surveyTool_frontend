@@ -10,6 +10,7 @@ import {AnswerService} from "../../../../../services/answer/answer.service";
 
 export class AnswersTextQuestionComponent implements OnInit {
   @Input() question!: Question;
+  @Input() questionIndex!: number;
   answers!: Answer[];
   numberOfUsersAnswering: number = 0;
 

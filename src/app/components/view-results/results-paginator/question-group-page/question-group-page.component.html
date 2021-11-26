@@ -1,11 +1,11 @@
-<h3 id="questionGroupHeading{{ questionGroup.id }}" class="blueText mb-3">
-  {{ questionGroup.title }}
+<h3 id="questionGroupHeading{{ questionGroup.id }}">
+  <span class="blueText mb-3">{{ questionGroup.title }}</span>
 </h3>
 <div>
-  <div class="mb-4" *ngFor="let question of questionGroup.questions">
-    <app-answers-text-question [question]="question"
+  <div class="mb-4" *ngFor="let question of questionGroup.questions; index as questionIndex">
+    <app-answers-text-question [question]="question" [questionIndex]="questionIndex"
                                *ngIf="!question.hasCheckbox"></app-answers-text-question>
-    <app-answers-checkbox-question [question]="question"
+    <app-answers-checkbox-question [question]="question" [questionIndex]="questionIndex"
                                    *ngIf="question.hasCheckbox"></app-answers-checkbox-question>
   </div>
   <div class="container text-end">

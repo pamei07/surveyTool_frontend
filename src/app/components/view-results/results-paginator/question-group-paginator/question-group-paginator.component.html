@@ -1,8 +1,9 @@
 <app-table-of-contents-paginator [questionGroups]="questionGroups"
                                  (pageNumberEventEmitter)="goToPage($event)"></app-table-of-contents-paginator>
-<div *ngFor="let questionGroup of questionGroups; let index = index">
-  <app-question-group-page [style.display]="index > (page - 1) || index < (page - 1) ? 'none' : null"
-                           [questionGroup]="questionGroup"></app-question-group-page>
+<div *ngFor="let questionGroup of questionGroups; index as questionGroupIndex">
+  <app-question-group-page
+    [style.display]="questionGroupIndex > (page - 1) || questionGroupIndex < (page - 1) ? 'none' : null"
+    [questionGroup]="questionGroup"></app-question-group-page>
 </div>
 <ngb-pagination class="d-flex justify-content-center mb-3"
                 [collectionSize]="questionGroups.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"

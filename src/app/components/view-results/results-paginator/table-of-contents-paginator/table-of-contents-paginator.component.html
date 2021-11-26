@@ -2,8 +2,8 @@
   <div class="card-body">
     <h6>Inhaltsverzeichnis:</h6>
     <ol class="m-0 ps-3">
-      <li class="hoverUnderline" *ngFor="let questionGroup of questionGroups; let index = index"
-          (click)="emitPageNumber(index + 1)">
+      <li class="hoverUnderline" *ngFor="let questionGroup of questionGroups; index as questionGroupIndex"
+          (click)="emitPageNumber(questionGroupIndex + 1)">
         <span class="linkStyle cursorPointer">{{ questionGroup.title }}</span>
       </li>
     </ol>
