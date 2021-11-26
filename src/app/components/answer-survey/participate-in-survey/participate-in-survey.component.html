@@ -9,11 +9,15 @@
   </div>
 </section>
 
-<section id="questionGroups" class="container restrictWidth" *ngIf="survey.questionGroups !== null">
+<section id="questionGroups" class="container restrictWidth" *ngIf="questionGroups !== null">
   <form [formGroup]="answerForm">
-    <div *ngFor="let questionGroup of survey.questionGroups; index as questionGroupIndex">
+
+    <ngb-progressbar class="mb-3" type="success" [value]="(page / questionGroups.length) * 100"></ngb-progressbar>
+
+    <div *ngFor="let questionGroup of questionGroups; index as questionGroupIndex">
       <app-question-group [questionGroup]="questionGroup"
-                          [questionGroupIndex]="questionGroupIndex"></app-question-group>
+                          [questionGroupIndex]="questionGroupIndex"
+                          [style.display]="questionGroupIndex > (page - 1) || questionGroupIndex < (page - 1) ? 'none' : null"></app-question-group>
     </div>
 
     <div *ngIf="backendError === true">
@@ -22,9 +26,16 @@
       </div>
     </div>
 
-    <div>
+    <div id="navigationButtons">
+      <button type="button" class="btn btn-outline-primary mb-3" [disabled]="page === 1" (click)="goBack()">
+        Zurück
+      </button>
+      <button type="button" class="btn btn-primary mb-3 float-end" (click)="goNext()"
+              *ngIf="page < questionGroups.length">
+        Weiter
+      </button>
       <button type="button" class="btn btn-success mb-3 float-end" [disabled]="questionGroupsFormArray.invalid"
-              data-bs-toggle="modal" data-bs-target="#confirmAnswerSubmission">
+              data-bs-toggle="modal" data-bs-target="#confirmAnswerSubmission" *ngIf="page === questionGroups.length">
         Einreichen
       </button>
     </div>
@@ -33,7 +44,7 @@
   </form>
 </section>
 
-<section id="errorMessage" class="container restrictWidth" *ngIf="survey.questionGroups === null">
+<section id="errorMessage" class="container restrictWidth" *ngIf="questionGroups === null">
   <div class="alert alert-danger p-2 mt-4">
     <span>Beim Laden der Fragen ist etwas schiefgelaufen. Vermutlich ist diese Umfrage zurzeit nicht freigegeben.</span>
   </div>
