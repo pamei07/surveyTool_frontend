@@ -10,11 +10,11 @@
       <div class="d-flex justify-content-between">
         <h3 class="d-inline">{{ questionGroup.title }}</h3>
         <div id="updateDeleteButton" class="d-inline">
-          <button class="btn btn-primary me-1 pt-1" type="button" title="Ändern" data-bs-toggle="modal"
+          <button class="btn btn-primary me-1 p-1 pt-0" type="button" title="Ändern" data-bs-toggle="modal"
                   [attr.data-bs-target]="'#confirmUpdateGroup' + indexQuestionGroup">
             <img src="assets/svgs/wrench.svg" alt="Ändern">
           </button>
-          <button class="btn btn-danger pt-1" type="button" title="Löschen" data-bs-toggle="modal"
+          <button class="btn btn-danger p-1 pt-0" type="button" title="Löschen" data-bs-toggle="modal"
                   [attr.data-bs-target]="'#confirmDeletionGroup' + indexQuestionGroup">
             <img src="assets/svgs/x-lg.svg" alt="Löschen">
           </button>
