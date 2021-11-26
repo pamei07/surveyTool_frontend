@@ -29,7 +29,8 @@
       </span>
     </div>
     <app-question-group-results-list [questionGroups]="questionGroups"
-                                     *ngIf="listView"></app-question-group-results-list>
-    <app-question-group-paginator [questionGroups]="questionGroups" *ngIf="!listView"></app-question-group-paginator>
+                                     [style.display]="!listView ? 'none' : null"></app-question-group-results-list>
+    <app-question-group-paginator [questionGroups]="questionGroups"
+                                  [style.display]="listView ? 'none' : null"></app-question-group-paginator>
   </div>
 </section>
