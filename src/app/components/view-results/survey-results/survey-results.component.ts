@@ -9,5 +9,13 @@ import {Survey} from "../../../model/survey";
 export class SurveyResultsComponent {
 
   @Input() survey!: Survey;
+  listView: boolean = true;
 
+  get questionGroups() {
+    return this.survey.questionGroups;
+  }
+
+  toggleView(bool: boolean) {
+    this.listView = bool;
+  }
 }

@@ -3,7 +3,7 @@
   <div class="d-block">
     <h2 class="text-center">{{ survey.name }}</h2>
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center align-items-center">
         <span class="col-auto text-muted p-0">
           Erstellt von: {{ survey.userName }}
         </span>
@@ -16,8 +16,14 @@
     </div>
   </div>
   <hr>
-  <div *ngFor="let questionGroup of survey.questionGroups">
-    <app-results-question-group [questionGroup]="questionGroup"></app-results-question-group>
-    <hr class="my-4">
+  <div>
+    <div class="text-end mb-2">
+      <span class="linkStyle cursorPointer" (click)="toggleView(true)">Listenansicht</span>
+      <span class="col-auto text-muted p-0">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <span class="linkStyle cursorPointer" (click)="toggleView(false)">Seitenansicht</span>
+    </div>
+    <app-question-group-results-list [questionGroups]="questionGroups"
+                                     *ngIf="listView"></app-question-group-results-list>
+    <app-question-group-paginator [questionGroups]="questionGroups" *ngIf="!listView"></app-question-group-paginator>
   </div>
 </section>
