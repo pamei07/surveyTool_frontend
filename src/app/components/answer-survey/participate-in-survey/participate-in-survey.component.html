@@ -12,50 +12,13 @@
 <section id="questionGroups" class="container restrictWidth" *ngIf="questionGroups !== null">
   <form [formGroup]="answerForm">
 
-    <ngb-progressbar class="mb-3 mx-2" type="success" [value]="(page / questionGroups.length) * 100"></ngb-progressbar>
-
-    <div *ngFor="let questionGroup of questionGroups; index as questionGroupIndex">
-      <app-question-group [questionGroup]="questionGroup"
-                          [questionGroupIndex]="questionGroupIndex"
-                          [style.display]="questionGroupIndex > (page - 1) || questionGroupIndex < (page - 1) ? 'none' : null"></app-question-group>
-    </div>
+    <app-question-group-paginator-participation
+      [questionGroups]="questionGroups"></app-question-group-paginator-participation>
 
     <div *ngIf="backendError === true">
       <div class="errorMessage alert alert-danger p-2 my-3 d-block">
         {{ backendErrorMessage }}
       </div>
-    </div>
-
-    <div id="navigationButtons" class="container mb-3">
-      <div class="row justify-items-between align-items-center">
-        <div class="col">
-          <button type="button" class="btn btn-outline-primary" [disabled]="page === 1" (click)="goBack()">
-            Zurück
-          </button>
-        </div>
-        <div class="col">
-          <div class="input-group justify-content-center">
-            <select id="goToSelection" name="goToSelection" class="form-select pageNumberSelection">
-              <option *ngFor="let questionGroup of questionGroups; index as pageNumber"
-                      [selected]="page === (pageNumber + 1)"
-                      value="{{ pageNumber + 1 }}">{{ pageNumber + 1 }}</option>
-            </select>
-            <button class="btn btn-outline-primary" type="button" (click)="goTo()">Gehe zu</button>
-          </div>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-primary float-end" (click)="goNext()"
-                  *ngIf="page < questionGroups.length">
-            Weiter
-          </button>
-          <button type="button" class="btn btn-success float-end" [disabled]="questionGroupsFormArray.invalid"
-                  data-bs-toggle="modal" data-bs-target="#confirmAnswerSubmission"
-                  *ngIf="page === questionGroups.length">
-            Einreichen
-          </button>
-        </div>
-      </div>
-
     </div>
 
     <app-answers-submission [survey]="survey"

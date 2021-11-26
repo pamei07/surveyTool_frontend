@@ -3,11 +3,11 @@ import {QuestionGroup} from "../../../model/question-group";
 import {FormGroup, FormGroupDirective} from "@angular/forms";
 
 @Component({
-  selector: 'app-question-group',
-  templateUrl: 'question-group.component.html'
+  selector: 'app-question-group-page-participation',
+  templateUrl: 'question-group-page-participation.component.html'
 })
 
-export class QuestionGroupComponent implements OnInit {
+export class QuestionGroupPageParticipationComponent implements OnInit {
 
   @Input() questionGroup!: QuestionGroup;
   @Input() questionGroupIndex!: number;

@@ -17,9 +17,6 @@ export class ParticipateInSurveyComponent implements OnInit {
   backendErrorMessage: string = "Beim Senden Ihrer Antworten ist etwas schiefgelaufen.\n" +
     " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
 
-  page: number = 1;
-  pageSize: number = 1;
-
   answerForm = this.fb.group({
     userName: ['', [Validators.maxLength(255)]],
     questionGroupsFormArray: this.fb.array([])
@@ -147,19 +144,6 @@ export class ParticipateInSurveyComponent implements OnInit {
     } else {
       questionsFormArray.push(this.fb.control('', [Validators.maxLength(1500)]));
     }
-  }
-
-  goBack() {
-    this.page -= 1;
-  }
-
-  goNext() {
-    this.page += 1;
-  }
-
-  goTo() {
-    let goToSelection = document.getElementById('goToSelection') as HTMLInputElement;
-    this.page = Number(goToSelection?.value);
   }
 
   setBackendError() {

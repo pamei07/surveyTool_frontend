@@ -20,7 +20,7 @@ import {SurveyIntroComponent} from "./components/answer-survey/survey-intro/surv
 import {ParticipateInSurveyComponent} from "./components/answer-survey/participate-in-survey/participate-in-survey.component";
 import {AppHeaderComponent} from "./components/header/app-header.component";
 import {AppFooterComponent} from "./components/footer/app-footer.component";
-import {QuestionGroupComponent} from "./components/answer-survey/question-group/question-group.component";
+import {QuestionGroupPageParticipationComponent} from "./components/answer-survey/question-group-page-participation/question-group-page-participation.component";
 import {ThankYouComponent} from "./components/answer-survey/thank-you/thank-you.component";
 import {SurveyResultsComponent} from "./components/view-results/survey-results/survey-results.component";
 import {SearchSurveyComponent} from "./components/results-search/search-survey.component";
@@ -52,12 +52,13 @@ import {SurveyListComponent} from "./components/open-surveys/survey-list/survey-
 import {SurveyNavigationComponent} from "./components/view-results/survey-navigation/survey-navigation.component";
 import {SurveyComponent} from "./components/view-results/survey/survey.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {QuestionGroupPaginatorComponent} from './components/view-results/results-paginator/question-group-paginator/question-group-paginator.component';
 import {QuestionGroupResultsListComponent} from "./components/view-results/results-list/question-group-results-list/question-group-results-list.component";
 import {QuestionGroupPageComponent} from './components/view-results/results-paginator/question-group-page/question-group-page.component';
 import {QuestionGroupResultsListItemComponent} from "./components/view-results/results-list/question-group-results-list-item/question-group-results-list-item.component";
 import {TableOfContentsListComponent} from './components/view-results/results-list/table-of-contents-list/table-of-contents-list.component';
-import { TableOfContentsPaginatorComponent } from './components/view-results/results-paginator/table-of-contents-paginator/table-of-contents-paginator.component';
+import {TableOfContentsPaginatorComponent} from './components/view-results/results-paginator/table-of-contents-paginator/table-of-contents-paginator.component';
+import {QuestionGroupPaginatorParticipationComponent} from "./components/answer-survey/question-group-paginator-participation/question-group-paginator-participation.component";
+import {QuestionGroupPaginatorComponent} from "./components/view-results/results-paginator/question-group-paginator/question-group-paginator.component";
 
 
 const appRoutes: Routes = [
@@ -96,7 +97,7 @@ const appRoutes: Routes = [
     SurveyIntroComponent,
     ParticipateInSurveyComponent,
     AnswersSubmissionComponent,
-    QuestionGroupComponent,
+    QuestionGroupPageParticipationComponent,
     TextQuestionComponent,
     RadioQuestionComponent,
     MultipleSelectQuestionComponent,
@@ -117,11 +118,13 @@ const appRoutes: Routes = [
     AppFooterComponent,
     DateValidationDirective,
     MinMaxSelectValidationDirective,
-    QuestionGroupPaginatorComponent,
+    QuestionGroupPaginatorParticipationComponent,
     QuestionGroupResultsListItemComponent,
     QuestionGroupPageComponent,
     TableOfContentsListComponent,
-    TableOfContentsPaginatorComponent
+    TableOfContentsPaginatorComponent,
+    QuestionGroupPaginatorParticipationComponent,
+    QuestionGroupPaginatorComponent
   ],
   imports: [
     BrowserModule,
