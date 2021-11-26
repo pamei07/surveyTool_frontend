@@ -9,7 +9,7 @@
          *ngFor="let questionGroup of survey.questionGroups; index as indexQuestionGroup">
       <div class="d-flex justify-content-between">
         <h3 class="d-inline">{{ questionGroup.title }}</h3>
-        <div id="updateDeleteButton" class="d-inline">
+        <div id="updateDeleteButton" class="d-inline me-2">
           <button class="btn btn-primary me-1 p-1 pt-0" type="button" title="Ändern" data-bs-toggle="modal"
                   [attr.data-bs-target]="'#confirmUpdateGroup' + indexQuestionGroup">
             <img src="assets/svgs/wrench.svg" alt="Ändern">
