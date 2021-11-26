@@ -109,7 +109,6 @@ footer {
 /* Other */
 .linkStyle {
   color: #2A52CC;
-  text-decoration: underline;
 }
 
 .linkStyle:hover {
@@ -136,6 +135,15 @@ footer {
 
 .textArea {
   height: 200px;
+}
+
+.selectedViewResults {
+  color: #2446AD;
+}
+
+.tableOfContents {
+  display: table;
+  max-width: 66%;
 }
 
 /* Override Bootstrap CSS */

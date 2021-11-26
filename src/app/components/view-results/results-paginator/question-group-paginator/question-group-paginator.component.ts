@@ -17,4 +17,7 @@ export class QuestionGroupPaginatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToPage(page: number) {
+    this.page = page;
+  }
 }

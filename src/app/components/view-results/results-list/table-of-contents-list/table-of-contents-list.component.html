@@ -1,0 +1,11 @@
+<div class="card tableOfContents ms-2 mb-3">
+  <div class="card-body">
+    <h6>Inhaltsverzeichnis:</h6>
+    <ol class="m-0 ps-3">
+      <li class="hoverUnderline" *ngFor="let questionGroup of questionGroups"
+          (click)="scrollToHeading('questionGroupHeading' + questionGroup.id)">
+        <span class="linkStyle cursorPointer">{{ questionGroup.title }}</span>
+      </li>
+    </ol>
+  </div>
+</div>

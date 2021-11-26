@@ -56,6 +56,8 @@ import {QuestionGroupPaginatorComponent} from './components/view-results/results
 import {QuestionGroupResultsListComponent} from "./components/view-results/results-list/question-group-results-list/question-group-results-list.component";
 import {QuestionGroupPageComponent} from './components/view-results/results-paginator/question-group-page/question-group-page.component';
 import {QuestionGroupResultsListItemComponent} from "./components/view-results/results-list/question-group-results-list-item/question-group-results-list-item.component";
+import {TableOfContentsListComponent} from './components/view-results/results-list/table-of-contents-list/table-of-contents-list.component';
+import { TableOfContentsPaginatorComponent } from './components/view-results/results-paginator/table-of-contents-paginator/table-of-contents-paginator.component';
 
 
 const appRoutes: Routes = [
@@ -117,7 +119,9 @@ const appRoutes: Routes = [
     MinMaxSelectValidationDirective,
     QuestionGroupPaginatorComponent,
     QuestionGroupResultsListItemComponent,
-    QuestionGroupPageComponent
+    QuestionGroupPageComponent,
+    TableOfContentsListComponent,
+    TableOfContentsPaginatorComponent
   ],
   imports: [
     BrowserModule,

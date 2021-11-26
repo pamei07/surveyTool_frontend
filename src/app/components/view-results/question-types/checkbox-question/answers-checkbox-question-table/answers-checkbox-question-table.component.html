@@ -3,8 +3,8 @@
     <table class="table">
       <thead>
       <tr>
-        <th class="text-muted" *ngIf="question.checkboxGroup!.multipleSelect">Multiple Select</th>
-        <th class="text-muted" *ngIf="!question.checkboxGroup!.multipleSelect">Single Select</th>
+        <th *ngIf="question.checkboxGroup!.multipleSelect"><span class="blueText">Multiple Select</span></th>
+        <th *ngIf="!question.checkboxGroup!.multipleSelect"><span class="blueText">Single Select</span></th>
         <th class="text-center"># Stimmen</th>
         <th class="text-center">% der Teilnehmer:innen</th>
         <th class="text-center" *ngIf="checkboxesHaveTextAnswers">Text</th>
