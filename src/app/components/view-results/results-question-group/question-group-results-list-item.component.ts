@@ -2,11 +2,11 @@ import {Component, Input} from '@angular/core';
 import {QuestionGroup} from "../../../model/question-group";
 
 @Component({
-  selector: 'app-results-question-group',
-  templateUrl: 'results-question-group.component.html'
+  selector: 'app-question-group-results-list-item',
+  templateUrl: 'question-group-results-list-item.component.html'
 })
 
-export class ResultsQuestionGroupComponent {
+export class QuestionGroupResultsListItemComponent {
 
   @Input() questionGroup!: QuestionGroup;
   answersCollapsed: boolean = false;
