@@ -139,6 +139,7 @@ footer {
 
 .selectedViewResults {
   color: #2446AD;
+  text-decoration: underline;
 }
 
 .tableOfContents {

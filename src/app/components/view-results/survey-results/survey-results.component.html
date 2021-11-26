@@ -19,14 +19,10 @@
   <div>
     <div class="float-end ms-2 mb-2">
       <span class="linkStyle cursorPointer" (click)="toggleView(true)"
-            [ngClass]="{'selectedViewResults': listView === true}">
-        Listenansicht
-      </span>
+            [ngClass]="{'selectedViewResults': listView === true}">Listenansicht</span>
       <span class="col-auto text-muted p-0">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
       <span class="linkStyle cursorPointer" (click)="toggleView(false)"
-            [ngClass]="{'selectedViewResults': listView === false}">
-        Seitenansicht
-      </span>
+            [ngClass]="{'selectedViewResults': listView === false}">Seitenansicht</span>
     </div>
     <app-question-group-results-list [questionGroups]="questionGroups"
                                      [style.display]="!listView ? 'none' : null"></app-question-group-results-list>
