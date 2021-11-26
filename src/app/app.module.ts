@@ -39,7 +39,6 @@ import {MultipleSelectQuestionComponent} from "./components/answer-survey/questi
 import {AnswersTextQuestionComponent} from "./components/view-results/question-types/text-question/answers-text-question/answers-text-question.component";
 import {AnswersCheckboxQuestionComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question/answers-checkbox-question.component";
 import {CheckboxTextAnswersComponent} from "./components/view-results/question-types/checkbox-question/checkbox-text-answers/checkbox-text-answers.component";
-import {ResultsQuestionGroupComponent} from "./components/view-results/results-question-group/results-question-group.component";
 import {AnswersSubmissionComponent} from "./components/answer-survey/answers-submission/answers-submission.component";
 import {SurveySubmissionModalComponent} from "./components/create-survey/survey-submission-modal/survey-submission-modal.component";
 import {SurveyBasicInformationComponent} from "./components/shared-components/survey-basic-information/survey-basic-information.component";
@@ -52,6 +51,12 @@ import {AnswersCheckboxQuestionTableComponent} from "./components/view-results/q
 import {SurveyListComponent} from "./components/open-surveys/survey-list/survey-list.component";
 import {SurveyNavigationComponent} from "./components/view-results/survey-navigation/survey-navigation.component";
 import {SurveyComponent} from "./components/view-results/survey/survey.component";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {QuestionGroupPaginatorComponent} from './components/view-results/question-group-paginator/question-group-paginator.component';
+import {QuestionGroupResultsListComponent} from "./components/view-results/question-group-results-list/question-group-results-list.component";
+import {QuestionGroupPageComponent} from './components/view-results/question-group-page/question-group-page.component';
+import {QuestionGroupResultsListItemComponent} from "./components/view-results/results-question-group/question-group-results-list-item.component";
+
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -98,7 +103,7 @@ const appRoutes: Routes = [
     SurveyNavigationComponent,
     SurveyResultsComponent,
     SearchSurveyComponent,
-    ResultsQuestionGroupComponent,
+    QuestionGroupResultsListComponent,
     ParticipantsListComponent,
     AnswersTextQuestionComponent,
     AnswersCheckboxQuestionComponent,
@@ -109,7 +114,10 @@ const appRoutes: Routes = [
     AppHeaderComponent,
     AppFooterComponent,
     DateValidationDirective,
-    MinMaxSelectValidationDirective
+    MinMaxSelectValidationDirective,
+    QuestionGroupPaginatorComponent,
+    QuestionGroupResultsListItemComponent,
+    QuestionGroupPageComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +126,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
