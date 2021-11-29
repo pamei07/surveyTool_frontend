@@ -23,7 +23,7 @@ body {
 }
 
 .restrictWidth {
-  max-width: 820px;
+  max-width: 820px !important;
 }
 
 /* Styling for header: */
@@ -67,7 +67,7 @@ footer {
 }
 
 .blueText {
-  color: #2A52CC;
+  color: #0079AD;
 }
 
 /* Question table */
