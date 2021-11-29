@@ -146,8 +146,8 @@ footer {
 }
 
 .tableOfContents {
-  display: table;
-  max-width: 66%;
+  display: table !important;
+  max-width: 66% !important;
 }
 
 /* Override Bootstrap CSS */
