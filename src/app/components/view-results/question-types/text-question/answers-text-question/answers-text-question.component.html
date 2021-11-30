@@ -1,4 +1,4 @@
-<div class="container restrictWidth">
+<div [attr.id]="'question' + question.id" class="container restrictWidth" *ngIf="answers">
   <h5>
     {{ questionIndex + 1 }}. {{ question.text }}<span *ngIf="question.required">*</span>
   </h5>
@@ -7,16 +7,23 @@
     <div *ngFor="let answer of answers; index as answerIndex">
       <div [attr.class]="'card mb-2 ' + 'question' + question.id"
            [ngClass]="{'collapse collapsableAnswer': answerIndex > 4}">
-        <div class="card-body">
-          {{ answer.text }}
-          <span class="text-muted float-end mt-2">
-          - {{ answer?.userName }} (user#{{ answer?.userId }})
-        </span>
+        <div class="card-body container">
+          <div class="row">
+            <div class="col-sm-auto pe-0">
+              <span class="text-muted">{{ answerIndex + 1 }}.</span>
+            </div>
+            <div class="col">
+              {{ answer.text }}
+              <span class="text-muted float-end mt-2">
+                - {{ answer?.userName }} (user#{{ answer?.userId }})
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container" *ngIf="answers && answers.length > 5" (click)="collapseTextAnswers()">
+  <div class="container" *ngIf="answers.length > 5" (click)="collapseTextAnswers()">
     <div class="row text-center cursorPointer">
       <div class="col">
         <div *ngIf="collapsedAnswers">
