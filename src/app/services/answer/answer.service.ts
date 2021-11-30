@@ -18,7 +18,7 @@ export class AnswerService {
   }
 
   public getAnswersByQuestionId(questionId: number | undefined) {
-    return this.http.get<Answer[]>(this.surveyUrl + '/question?questionId=' + questionId);
+    return this.http.get<Answer[]>(this.surveyUrl + '/questions/' + questionId);
   }
 
 }
