@@ -13,6 +13,7 @@ export class AnswersTextQuestionComponent implements OnInit {
   @Input() questionIndex!: number;
   answers!: Answer[];
   numberOfUsersAnswering: number = 0;
+  collapsedAnswers: boolean = true;
 
   constructor(private answerService: AnswerService) {
   }
@@ -31,5 +32,19 @@ export class AnswersTextQuestionComponent implements OnInit {
       userIds.push(userId);
     }
     this.numberOfUsersAnswering = userIds.length;
+  }
+
+  collapseTextAnswers() {
+    let relevantAnswers = 'question' + this.question.id;
+    if (this.collapsedAnswers) {
+      Array.from(document.getElementsByClassName('collapsableAnswer ' + relevantAnswers)).forEach((answer) => {
+        answer.classList.add('show');
+      });
+    } else {
+      Array.from(document.getElementsByClassName('collapsableAnswer ' + relevantAnswers)).forEach((answer) => {
+        answer.classList.remove('show');
+      });
+    }
+    this.collapsedAnswers = !this.collapsedAnswers;
   }
 }
