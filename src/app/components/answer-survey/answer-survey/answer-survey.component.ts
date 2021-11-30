@@ -16,15 +16,15 @@ export class AnswerSurveyComponent {
   user!: User;
   surveyNotFound: boolean = false;
   withinTimeFrame: boolean = true;
-  uuid: string | null;
+  participationId: string | null;
   participate: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               private surveyService: SurveyService) {
 
-    this.uuid = activatedRoute.snapshot.paramMap.get('participationId');
+    this.participationId = activatedRoute.snapshot.paramMap.get('participationId');
 
-    surveyService.getSurveyOverviewByParticipationId(this.uuid).subscribe(
+    surveyService.getSurveyOverviewByParticipationId(this.participationId).subscribe(
       (response: Survey) => {
         this.survey = response;
         console.log(this.survey);
