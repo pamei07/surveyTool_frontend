@@ -1,4 +1,4 @@
-<div class="container restrictWidth">
+<div class="container restrictWidth" *ngIf="answers">
   <h5>
     {{ questionIndex + 1 }}. {{ question.text }}<span *ngIf="question.required">*</span>
   </h5>
