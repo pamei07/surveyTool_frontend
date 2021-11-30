@@ -18,7 +18,7 @@ export class SurveyService {
   }
 
   public getSurveyByAccessId(accessId: string | null) {
-    return this.http.get<Survey>(this.surveyUrl + '/' + accessId);
+    return this.http.get<Survey>(this.surveyUrl + '?accessId=' + accessId);
   }
 
   public getSurveyOverviewByParticipationId(participationId: string | null) {
@@ -26,6 +26,6 @@ export class SurveyService {
   }
 
   public getSurveysThatAreOpenAccess() {
-    return this.http.get<Survey[]>(this.surveyUrl + '/openAccess');
+    return this.http.get<Survey[]>(this.surveyUrl);
   }
 }
