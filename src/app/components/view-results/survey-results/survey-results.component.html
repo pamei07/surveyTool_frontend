@@ -25,8 +25,8 @@
             [ngClass]="{'selectedViewResults': listView === false}">Seitenansicht</span>
     </div>
     <app-question-group-results-list [questionGroups]="questionGroups"
-                                     [style.display]="!listView ? 'none' : null"></app-question-group-results-list>
+                                     *ngIf="listView"></app-question-group-results-list>
     <app-question-group-paginator [questionGroups]="questionGroups"
-                                  [style.display]="listView ? 'none' : null"></app-question-group-paginator>
+                                  *ngIf="!listView"></app-question-group-paginator>
   </div>
 </section>
