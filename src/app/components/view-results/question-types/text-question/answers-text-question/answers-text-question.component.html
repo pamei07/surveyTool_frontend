@@ -20,7 +20,7 @@
     <div class="row text-center cursorPointer">
       <div class="col">
         <div *ngIf="collapsedAnswers">
-          <span class="linkStyle me-2">Ausklappen</span>
+          <span class="linkStyle me-2">Ausklappen ({{ answers.length - 5}})</span>
           <img class="collapseArrow" src="../../../../../../assets/svgs/chevron-down.svg" alt="down-arrow">
         </div>
         <div *ngIf="!collapsedAnswers">
