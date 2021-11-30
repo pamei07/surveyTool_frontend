@@ -43,6 +43,8 @@ export class AnswersTextQuestionComponent implements OnInit {
     } else {
       Array.from(document.getElementsByClassName('collapsableAnswer ' + relevantAnswers)).forEach((answer) => {
         answer.classList.remove('show');
+        let element = document.getElementById('question' + this.question.id);
+        element?.scrollIntoView();
       });
     }
     this.collapsedAnswers = !this.collapsedAnswers;
