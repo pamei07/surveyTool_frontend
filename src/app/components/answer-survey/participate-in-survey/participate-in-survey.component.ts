@@ -89,6 +89,10 @@ export class ParticipateInSurveyComponent implements OnInit {
    *       --> a FormControl capturing the text input
    */
   insertInputFields() {
+    if (this.questionGroups === undefined) {
+      return;
+    }
+
     this.survey.questionGroups!.forEach((questionGroup, questionGroupIndex) => {
 
       this.questionGroupsFormArray.push(this.fb.array([]));
