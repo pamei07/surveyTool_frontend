@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 import {User} from "../../../model/user";
 import {UserService} from "../../../services/user/user.service";
@@ -8,7 +8,7 @@ import {UserService} from "../../../services/user/user.service";
   templateUrl: 'participants-list.component.html'
 })
 
-export class ParticipantsListComponent implements OnInit, OnChanges {
+export class ParticipantsListComponent implements OnInit {
 
   @Input() survey!: Survey;
   participants!: User[];
@@ -19,10 +19,6 @@ export class ParticipantsListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.fetchAndSetParticipants();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
     this.fetchAndSetParticipants();
   }
 
