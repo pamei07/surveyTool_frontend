@@ -1,19 +1,19 @@
-<section id="surveyOverview" class="container restrictWidth" *ngIf="!surveyNotFound">
+<section id="surveyOverview" *ngIf="!surveyNotFound">
   <h2 class="my-3 text-center">
     Übersicht
   </h2>
   <app-survey-basic-information [survey]="survey"></app-survey-basic-information>
-  <div class="container restrictWidth d-flex justify-content-center mt-3 mb-4">
+  <div class="d-flex justify-content-center mt-3 mb-4">
     <button class="btn btn-primary participateButton" (click)="participate()" [disabled]="!withinTimeFrame">
       Teilnehmen
     </button>
   </div>
 </section>
-<section id="errorMessages" class="container restrictWidth" *ngIf="surveyNotFound || !withinTimeFrame">
-  <div class="alert alert-danger p-2 mt-4" *ngIf="surveyNotFound">
+<section id="errorMessages" class="alert alert-danger p-2 mt-4" *ngIf="surveyNotFound || !withinTimeFrame">
+  <div *ngIf="surveyNotFound">
     <span>Unter der angegebenen Teilnahme-ID wurde keine Umfrage gefunden.</span>
   </div>
-  <div class="alert alert-danger p-2 mt-1" *ngIf="!withinTimeFrame">
+  <div *ngIf="!withinTimeFrame">
     <span>Diese Umfrage ist zurzeit nicht freigegeben. (Siehe Zeitraum)</span>
   </div>
 </section>

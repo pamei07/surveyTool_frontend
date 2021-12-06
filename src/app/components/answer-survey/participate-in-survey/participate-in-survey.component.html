@@ -1,15 +1,13 @@
 <section id="name" class="d-flex flex-column" *ngIf="questionGroups !== undefined">
-  <div class="container restrictWidth">
-    <div class="row my-4">
-      <div class="col d-flex flex-column text-center">
-        <span id="headingAnsweringSurvey">{{ survey.name }}</span>
-      </div>
+  <div class="row mt-4 mb-2">
+    <div class="col d-flex flex-column text-center">
+      <span id="headingAnsweringSurvey">{{ survey.name }}</span>
     </div>
-    <hr>
   </div>
+  <hr>
 </section>
 
-<section id="questionGroups" class="container restrictWidth" *ngIf="questionGroups !== undefined">
+<section id="questionGroups" *ngIf="questionGroups !== undefined">
   <form [formGroup]="answerForm">
 
     <app-question-group-paginator-participation
@@ -26,7 +24,7 @@
   </form>
 </section>
 
-<section id="errorMessage" class="container restrictWidth" *ngIf="questionGroups === undefined">
+<section id="errorMessage" *ngIf="questionGroups === undefined">
   <div class="alert alert-danger p-2 mt-4">
     <span>Beim Laden der Fragen ist etwas schiefgelaufen. Vermutlich ist diese Umfrage zurzeit nicht freigegeben.</span>
   </div>

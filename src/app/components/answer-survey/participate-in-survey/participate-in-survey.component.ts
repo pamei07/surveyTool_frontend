@@ -93,7 +93,7 @@ export class ParticipateInSurveyComponent implements OnInit {
       return;
     }
 
-    this.survey.questionGroups!.forEach((questionGroup, questionGroupIndex) => {
+    this.questionGroups.forEach((questionGroup, questionGroupIndex) => {
 
       this.questionGroupsFormArray.push(this.fb.array([]));
       let questionsFormArray = this.questionGroupsFormArray.at(questionGroupIndex) as FormArray;

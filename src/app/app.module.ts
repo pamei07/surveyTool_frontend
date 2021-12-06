@@ -34,7 +34,7 @@ import {CheckboxDeleteComponent} from "./components/create-survey/checkbox/check
 import {DateValidationDirective} from "./directives/date-validation.directive";
 import {MinMaxSelectValidationDirective} from "./directives/min-max-select-validation.directive";
 import {TextQuestionComponent} from "./components/answer-survey/question-types/text-question/text-question.component";
-import {RadioQuestionComponent} from "./components/answer-survey/question-types/radio-question/radio-question.component";
+import {SingleSelectQuestion} from "./components/answer-survey/question-types/single-select-question/single-select-question.component";
 import {MultipleSelectQuestionComponent} from "./components/answer-survey/question-types/multiple-select-question/multiple-select-question.component";
 import {AnswersTextQuestionComponent} from "./components/view-results/question-types/text-question/answers-text-question/answers-text-question.component";
 import {AnswersCheckboxQuestionComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question/answers-checkbox-question.component";
@@ -99,7 +99,7 @@ const appRoutes: Routes = [
     AnswersSubmissionComponent,
     QuestionGroupPageParticipationComponent,
     TextQuestionComponent,
-    RadioQuestionComponent,
+    SingleSelectQuestion,
     MultipleSelectQuestionComponent,
     ThankYouComponent,
     SurveyComponent,

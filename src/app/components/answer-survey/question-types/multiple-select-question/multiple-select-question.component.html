@@ -36,9 +36,8 @@
             </div>
           </div>
           <div class="row ms-5 me-3 mb-1" *ngIf="checkbox.hasTextField">
-            <input type="text" class="form-control"
-                   formControlName="text"
-                   [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
+            <textarea class="form-control shortTextarea" formControlName="text"
+                      [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id"></textarea>
           </div>
           <div *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.invalid"
                class="alert alert-danger p-2 my-2 ms-5 me-3">

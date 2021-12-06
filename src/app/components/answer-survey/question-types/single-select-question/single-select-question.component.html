@@ -24,17 +24,19 @@
             </div>
           </div>
           <div class="row ms-5 me-3 mb-1" *ngIf="checkbox.hasTextField">
-            <input [attr.id]="'checkbox' + checkbox.id + 'text'" type="text" class="form-control"
-                   formControlName="text"
-                   [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id">
+            <textarea [attr.id]="'checkbox' + checkbox.id + 'text'" class="form-control shortTextarea"
+                      formControlName="text"
+                      [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id"></textarea>
           </div>
         </div>
-        <div class="alert alert-danger p-2 my-2 ms-5 me-3" *ngIf="text?.invalid">
-          <span *ngIf="text?.errors?.required">Das Textfeld muss ausgefüllt sein.</span>
-          <span *ngIf="text?.errors?.maxlength">Ihre Antwort darf nicht länger als 1500 Zeichen sein.</span>
-        </div>
-        <div class="alert alert-danger p-2 my-2 ms-5 me-3" *ngIf="checkboxId?.errors?.required">
-          Diese Frage muss beantwortet werden.
+        <div class="alert alert-danger p-2 my-2 ms-5 me-3" *ngIf="text?.invalid || checkboxId?.errors?.required">
+          <div *ngIf="text?.invalid">
+            <span *ngIf="text?.errors?.required">Das Textfeld muss ausgefüllt sein.</span>
+            <span *ngIf="text?.errors?.maxlength">Ihre Antwort darf nicht länger als 1500 Zeichen sein.</span>
+          </div>
+          <div *ngIf="checkboxId?.errors?.required">
+            Diese Frage muss beantwortet werden.
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,9 @@
-<app-survey-intro [survey]="survey"
-                  [surveyNotFound]="surveyNotFound"
-                  [withinTimeFrame]="withinTimeFrame"
-                  (participateBoolean)="setParticipate($event)"
-                  *ngIf="!participate"></app-survey-intro>
-<app-participate-in-survey [survey]="survey"
-                           *ngIf="participate"></app-participate-in-survey>
+<section id="answerSurvey" class="container restrictWidth">
+  <app-survey-intro [survey]="survey"
+                    [surveyNotFound]="surveyNotFound"
+                    [withinTimeFrame]="withinTimeFrame"
+                    (participateBoolean)="setParticipate($event)"
+                    *ngIf="!participate"></app-survey-intro>
+  <app-participate-in-survey [survey]="survey"
+                             *ngIf="participate && survey"></app-participate-in-survey>
+</section>

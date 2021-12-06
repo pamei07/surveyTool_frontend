@@ -4,11 +4,11 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 import {Checkbox} from "../../../../model/checkbox";
 
 @Component({
-  selector: 'app-radio-question',
-  templateUrl: 'radio-question.component.html'
+  selector: 'app-single-select-question',
+  templateUrl: 'single-select-question.component.html'
 })
 
-export class RadioQuestionComponent implements OnInit {
+export class SingleSelectQuestion implements OnInit {
 
   @Input() questionGroupIndex!: number;
   @Input() question!: Question;

@@ -140,6 +140,10 @@ footer {
   height: 200px;
 }
 
+.shortTextarea {
+  height: 38px;
+}
+
 .selectedViewResults {
   color: #2446AD;
   text-decoration: underline;
@@ -173,3 +177,4 @@ footer {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+

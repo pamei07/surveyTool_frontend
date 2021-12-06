@@ -40,13 +40,13 @@ export class AnswersSubmissionComponent implements OnInit {
     this.answerForm = this.parentFormGroup.control;
   }
 
-  postAnswersWithUser() {
+  saveAnswersWithUser() {
     let userName = this.userName?.value;
     let user = this.userService.createUser(userName);
     this.userService.saveUser(user).subscribe(
       (response: User) => {
-        this.postAnswers(response);
-      }, (error: HttpErrorResponse) => {
+        this.saveAnswers(response);
+      }, () => {
         this.backendError();
       });
   }
@@ -60,7 +60,7 @@ export class AnswersSubmissionComponent implements OnInit {
    * 3. For text questions:
    *    --> Create an Answer object only if a text field is not empty
    */
-  private postAnswers(user: User) {
+  private saveAnswers(user: User) {
     this.questionGroupsFormArray.controls.forEach((answersToQuestionGroup, questionGroupIndex) => {
       answersToQuestionGroup.value.forEach((answerToQuestion: any, questionIndex: number) => {
         if (answerToQuestion instanceof Array) {

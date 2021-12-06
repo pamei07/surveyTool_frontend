@@ -8,10 +8,10 @@
                        [questionGroupIndex]="questionGroupIndex"
                        [question]="question"
                        [questionIndex]="questionIndex"></app-text-question>
-    <app-radio-question *ngIf="question.hasCheckbox && !question.checkboxGroup!.multipleSelect"
-                        [questionGroupIndex]="questionGroupIndex"
-                        [question]="question"
-                        [questionIndex]="questionIndex"></app-radio-question>
+    <app-single-select-question *ngIf="question.hasCheckbox && !question.checkboxGroup!.multipleSelect"
+                                [questionGroupIndex]="questionGroupIndex"
+                                [question]="question"
+                                [questionIndex]="questionIndex"></app-single-select-question>
     <app-multiple-select-question *ngIf="question.hasCheckbox && question.checkboxGroup!.multipleSelect"
                                   [questionGroupIndex]="questionGroupIndex"
                                   [question]="question"
