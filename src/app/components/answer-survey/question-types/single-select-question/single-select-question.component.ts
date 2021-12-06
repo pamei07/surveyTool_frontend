@@ -8,7 +8,7 @@ import {Checkbox} from "../../../../model/checkbox";
   templateUrl: 'single-select-question.component.html'
 })
 
-export class SingleSelectQuestion implements OnInit {
+export class SingleSelectQuestionComponent implements OnInit {
 
   @Input() questionGroupIndex!: number;
   @Input() question!: Question;
