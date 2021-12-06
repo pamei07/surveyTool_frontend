@@ -2,6 +2,14 @@
   <h3 class="my-3 text-center text-decoration-underline">
     Öffentlich zugängliche Umfragen
   </h3>
+  <div class="text-end mx-2 mb-2">
+    Sortieren nach:&nbsp;&nbsp;
+    <span class="linkStyle cursorPointer" (click)="sortByStartDate()"
+          [ngClass]="{'selectedLinkStyle': sortedByStartDate === true}">Startdatum</span>
+    <span class="col-auto text-muted p-0">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+    <span class="linkStyle cursorPointer" (click)="sortByEndDate()"
+          [ngClass]="{'selectedLinkStyle': sortedByStartDate === false}">Enddatum</span>
+  </div>
   <div *ngIf="openAccessSurveys">
     <div class="alert alert-danger p-2 mt-4" *ngIf="openAccessSurveys.length === 0">
       <span>Es gibt zurzeit leider keine öffentlich zugänglichen Umfragen.</span>
