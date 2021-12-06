@@ -24,7 +24,7 @@ export class AnswerSurveyComponent {
 
     this.participationId = activatedRoute.snapshot.paramMap.get('participationId');
 
-    surveyService.getSurveyOverviewByParticipationId(this.participationId).subscribe(
+    surveyService.findSurveyByParticipationId(this.participationId).subscribe(
       (response: Survey) => {
         this.survey = response;
         console.log(this.survey);

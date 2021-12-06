@@ -20,7 +20,7 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.answerService.getAnswersByQuestionId(this.question.id).subscribe(answers => {
+    this.answerService.findAnswersByQuestionId(this.question.id).subscribe(answers => {
       this.answers = answers;
       this.calculateNumberOfUsersAnswering(this.answers);
       this.countVotesForCheckboxes();

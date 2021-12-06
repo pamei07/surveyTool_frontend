@@ -17,15 +17,15 @@ export class SurveyService {
     return this.http.post<Survey>(this.surveyUrl, survey);
   }
 
-  public getSurveyByAccessId(accessId: string | null) {
+  public findSurveyByAccessId(accessId: string | null) {
     return this.http.get<Survey>(this.surveyUrl + '?accessId=' + accessId);
   }
 
-  public getSurveyOverviewByParticipationId(participationId: string | null) {
+  public findSurveyByParticipationId(participationId: string | null) {
     return this.http.get<Survey>(this.surveyUrl + '?participationId=' + participationId);
   }
 
-  public getSurveysThatAreOpenAccess() {
+  public findSurveysThatAreOpenAccess() {
     return this.http.get<Survey[]>(this.surveyUrl);
   }
 }

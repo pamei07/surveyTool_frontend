@@ -15,7 +15,7 @@ export class SurveyListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.surveyService.getSurveysThatAreOpenAccess().subscribe((surveys) => {
+    this.surveyService.findSurveysThatAreOpenAccess().subscribe((surveys) => {
       this.openAccessSurveys = surveys;
     })
   }

@@ -24,7 +24,7 @@ export class SurveyComponent implements OnInit {
   ngOnInit() {
     this.accessId = this.activatedRoute!.snapshot.paramMap.get('accessId');
 
-    this.surveyService.getSurveyByAccessId(this.accessId).subscribe(
+    this.surveyService.findSurveyByAccessId(this.accessId).subscribe(
       (response: Survey) => {
         this.survey = response;
         console.log(this.survey);

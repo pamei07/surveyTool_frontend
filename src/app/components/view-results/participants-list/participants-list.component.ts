@@ -23,7 +23,7 @@ export class ParticipantsListComponent implements OnInit {
   }
 
   private fetchAndSetParticipants() {
-    this.userService.getParticipatingUsersBySurveyId(this.survey.id).subscribe((users) => {
+    this.userService.findParticipatingUsersBySurveyId(this.survey.id).subscribe((users) => {
       this.participants = users;
       this.filterAndSortParticipants(this.participants);
       this.overallNoOfParticipants = this.participants.length;

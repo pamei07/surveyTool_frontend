@@ -27,7 +27,7 @@ export class UserService {
     return this.http.post<User>(this.surveyUrl, user);
   }
 
-  public getParticipatingUsersBySurveyId(surveyId: number | undefined) {
+  public findParticipatingUsersBySurveyId(surveyId: number | undefined) {
     return this.http.get<User[]>(this.surveyUrl + '/surveys/' + surveyId);
   }
 }
