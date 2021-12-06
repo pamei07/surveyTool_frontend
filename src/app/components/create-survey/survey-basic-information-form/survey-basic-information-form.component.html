@@ -1,9 +1,9 @@
-<section id="surveyBasics">
+<section id="surveyBasics" class="card card-body mt-4">
   <form [formGroup]="surveyForm" (ngSubmit)="setBasicInformationOnSurvey()">
-    <h2 class="my-4">
+    <h3 class="mb-3">
       Erstellen Sie Ihre Umfrage:
-    </h2>
-    <div id="surveyName" class="row mb-3">
+    </h3>
+    <div id="surveyName" class="row mb-3 px-1">
       <div class="col">
         <label for="name" class="form-label labelInput">Titel*</label>
         <input id="name" name="name" type="text" class="form-control" required
@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div id="surveyDescription" class="row mb-3">
+    <div id="surveyDescription" class="row mb-3 px-1">
       <div class="col">
         <label for="description" class="form-label labelInput">Beschreibung</label>
         <textarea id="description" name="description" class="form-control textArea"
@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div id="surveyDates" class="row mb-3">
+    <div id="surveyDates" class="row mb-3 px-1">
       <div class="col">
         <label for="startDate" class="form-label labelInput">Startdatum*</label>
         <input id="startDate" name="startDate" type="datetime-local" class="form-control" required
@@ -65,10 +65,10 @@
         </div>
       </div>
     </div>
-    <div class="alert alert-danger p-2 mt-1 mb-0" *ngIf="surveyForm.hasError('endDateBeforeStartDate')">
+    <div class="alert alert-danger p-2 mt-1 mb-0 mx-1" *ngIf="surveyForm.hasError('endDateBeforeStartDate')">
       Das Startdatum muss vor dem Enddatum liegen.
     </div>
-    <button type="submit" class="mt-3 btn btn-primary float-end" [disabled]="surveyForm.invalid">
+    <button type="submit" class="btn btn-primary float-end mt-2 me-2" [disabled]="surveyForm.invalid">
       Weiter
     </button>
   </form>
