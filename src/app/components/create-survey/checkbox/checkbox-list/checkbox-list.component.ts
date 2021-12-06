@@ -12,4 +12,16 @@ export class CheckboxListComponent {
   @Input() indexQuestionGroup!: number;
   @Input() indexQuestion!: number;
 
+  get checkboxGroup() {
+    return this.survey.questionGroups![this.indexQuestionGroup].questions![this.indexQuestion].checkboxGroup;
+  }
+
+  get checkboxes() {
+    return this.survey.questionGroups![this.indexQuestionGroup].questions![this.indexQuestion].checkboxGroup!.checkboxes;
+  }
+
+  get noOfCheckboxes() {
+    return this.survey.questionGroups![this.indexQuestionGroup].questions![this.indexQuestion].checkboxGroup!.checkboxes!.length;
+  }
+
 }
