@@ -1,18 +1,16 @@
-<section id="viewResults" class="container restrictWidth" *ngIf="survey">
+<section id="viewResults" *ngIf="survey">
   <hr>
   <div class="d-block">
     <h2 class="text-center">{{ survey.name }}</h2>
-    <div class="container">
-      <div class="row justify-content-center align-items-center">
-        <span class="col-auto text-muted p-0">
-          Erstellt von: {{ survey.userName }}
-        </span>
-        <span class="col-auto text-muted p-0">
+    <div class="row justify-content-center align-items-center">
+      <span class="col-auto text-muted p-0">
+        Erstellt von: {{ survey.userName }}
+      </span>
+      <span class="col-auto text-muted p-0">
            &nbsp;&nbsp;|&nbsp;&nbsp;
-        </span>
-        <app-participants-list class="col-auto p-0" [survey]="survey"
-                               *ngIf="survey"></app-participants-list>
-      </div>
+      </span>
+      <app-participants-list class="col-auto p-0" [survey]="survey"
+                             *ngIf="survey"></app-participants-list>
     </div>
   </div>
   <hr>

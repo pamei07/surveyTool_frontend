@@ -7,7 +7,7 @@
     <div *ngFor="let answer of answers; index as answerIndex">
       <div [attr.class]="'card mb-2 ' + 'question' + question.id"
            [ngClass]="{'collapse collapsableAnswer': answerIndex > 4}">
-        <div class="card-body container">
+        <div class="card-body">
           <div class="row">
             <div class="col-sm-auto pe-0">
               <span class="text-muted">{{ answerIndex + 1 }}.</span>
@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-  <div class="container" *ngIf="answers.length > 5" (click)="collapseTextAnswers()">
+  <div *ngIf="answers.length > 5" (click)="collapseTextAnswers()">
     <div class="row text-center cursorPointer">
       <div class="col">
         <div *ngIf="collapsedAnswers">

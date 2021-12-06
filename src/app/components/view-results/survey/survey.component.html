@@ -1,9 +1,11 @@
-<section id="errorMessage" class="container restrictWidth" *ngIf="surveyNotFound">
-  <div class="alert alert-danger p-2 mt-4">
-    <span>Unter der angegebenen Zugangs-ID '{{ accessId }}' wurde keine Umfrage gefunden.</span>
+<section class="container restrictWidth">
+  <div id="errorMessage" *ngIf="surveyNotFound">
+    <div class="alert alert-danger p-2 mt-4">
+      <span>Unter der angegebenen Zugangs-ID '{{ accessId }}' wurde keine Umfrage gefunden.</span>
+    </div>
   </div>
+  <app-survey-navigation [survey]="survey" (overviewResultsEventEmitter)="setOverview($event)"
+                         *ngIf="!surveyNotFound"></app-survey-navigation>
+  <app-survey-overview [survey]="survey" *ngIf="!surveyNotFound && overview"></app-survey-overview>
+  <app-survey-results [survey]="survey" *ngIf="!surveyNotFound && !overview"></app-survey-results>
 </section>
-<app-survey-navigation [survey]="survey" (overviewResultsEventEmitter)="setOverview($event)"
-                       *ngIf="!surveyNotFound"></app-survey-navigation>
-<app-survey-overview [survey]="survey" *ngIf="!surveyNotFound && overview"></app-survey-overview>
-<app-survey-results [survey]="survey" *ngIf="!surveyNotFound && !overview"></app-survey-results>
