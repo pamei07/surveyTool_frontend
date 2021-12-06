@@ -2,10 +2,10 @@
   <app-survey-basic-information-form *ngIf="!basicInfoGiven"
                                      [survey]="survey"
                                      (basicInfoBoolean)="setBasicInfoGiven($event)"></app-survey-basic-information-form>
-  <app-add-survey-content *ngIf="basicInfoGiven"
-                          [survey]="survey"
-                          (basicInfoBoolean)="setBasicInfoGiven($event)"></app-add-survey-content>
-  <app-survey-submission-validation *ngIf="basicInfoGiven"
-                                    [survey]="survey"></app-survey-submission-validation>
+  <div *ngIf="basicInfoGiven">
+    <app-add-survey-content [survey]="survey"
+                            (basicInfoBoolean)="setBasicInfoGiven($event)"></app-add-survey-content>
+    <app-survey-submission-validation [survey]="survey"></app-survey-submission-validation>
+  </div>
 </section>
 
