@@ -91,7 +91,7 @@ export class SurveySubmissionComponent {
             + '] enthält keine Fragen!')
           isComplete = false;
         } else {
-          isComplete = this.checkIfCheckboxGroupComplete(questionGroup, questionGroupIndex);
+          isComplete = this.checkIfQuestionsComplete(questionGroup, questionGroupIndex);
         }
       })
     }
@@ -99,7 +99,7 @@ export class SurveySubmissionComponent {
   }
 
 
-  private checkIfCheckboxGroupComplete(questionGroup: QuestionGroup, questionGroupIndex: number): boolean {
+  private checkIfQuestionsComplete(questionGroup: QuestionGroup, questionGroupIndex: number): boolean {
     let isComplete = true;
     questionGroup.questions.forEach((question, questionIndex) => {
       if (question.hasCheckbox) {
