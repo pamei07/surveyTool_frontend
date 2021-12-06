@@ -15,12 +15,12 @@
       <span>Es gibt zurzeit leider keine öffentlich zugänglichen Umfragen.</span>
     </div>
     <div *ngIf="openAccessSurveys.length > 0">
-      <div class="card card-body mb-3" *ngFor="let survey of openAccessSurveys">
+      <div class="card card-body mb-3"
+           *ngFor="let survey of openAccessSurveys | slice: (page - 1) * pageSize : page * pageSize">
         <h4 class="blueText">{{ survey.name }}</h4>
         <div class="container">
-
           <div class="row my-1 fontSize18px">
-            <div class="col-2">
+            <div class="col-auto">
               <span class="bolderText">Erstellt von:</span>
             </div>
             <div class="col">
@@ -28,12 +28,12 @@
             </div>
           </div>
           <div class="row my-1 fontSize18px">
-            <div class="col-2">
+            <div class="col-auto">
               <span class="bolderText">Zeitraum:</span>
             </div>
             <div class="col" [ngClass]="{'currentDateNotInRange': currentDateInRange(survey)}">
               <span class="me-2">{{ survey?.startDate | date: 'dd.MM.yyyy' }}</span>
-              <span>{{ survey?.startDate | date: 'HH:mm' }} Uhr</span>
+              <span>{{ survey?.startDate | date: 'HH:mm' }}</span>
               <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
               <span class="me-2">{{ survey?.endDate | date: 'dd.MM.yyyy' }}</span>
               <span>{{ survey?.endDate | date: 'HH:mm' }} Uhr</span>
@@ -49,6 +49,9 @@
           </div>
         </div>
       </div>
+      <ngb-pagination class="d-flex justify-content-center mb-3"
+                      [collectionSize]="openAccessSurveys.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
+                      [rotate]="true" [ellipses]="true" [boundaryLinks]="false"></ngb-pagination>
     </div>
   </div>
 </section>

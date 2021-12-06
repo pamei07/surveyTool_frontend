@@ -3,14 +3,17 @@ import {SurveyService} from "../../../services/survey/survey.service";
 import {Survey} from "../../../model/survey";
 
 @Component({
-  selector: 'app-survey-list',
-  templateUrl: 'survey-list.component.html'
+  selector: 'app-survey-paginator',
+  templateUrl: 'survey-paginator.component.html'
 })
 
-export class SurveyListComponent implements OnInit {
+export class SurveyPaginatorComponent implements OnInit {
 
   openAccessSurveys!: Survey[];
   sortedByStartDate: boolean = true;
+
+  page: number = 1;
+  pageSize: number = 5;
 
   constructor(private surveyService: SurveyService) {
   }
@@ -42,6 +45,7 @@ export class SurveyListComponent implements OnInit {
       return 0;
     })
     this.sortedByStartDate = false;
+    this.page = 1;
   }
 
   sortByStartDate() {
@@ -57,5 +61,6 @@ export class SurveyListComponent implements OnInit {
       return 0;
     })
     this.sortedByStartDate = true;
+    this.page = 1;
   }
 }
