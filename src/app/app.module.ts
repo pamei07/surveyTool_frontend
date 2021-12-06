@@ -13,7 +13,7 @@ import {QuestionGroupListComponent} from "./components/create-survey/question-gr
 import {QuestionAddComponent} from "./components/create-survey/question/question-add/question-add.component";
 import {QuestionListComponent} from "./components/create-survey/question/question-list/question-list.component";
 import {CheckboxListComponent} from "./components/create-survey/checkbox/checkbox-list/checkbox-list.component";
-import {SurveySubmissionValidationComponent} from "./components/create-survey/survey-submission-validation/survey-submission-validation.component";
+import {SurveySubmissionComponent} from "./components/create-survey/survey-submission/survey-submission.component";
 import {CheckboxAddComponent} from './components/create-survey/checkbox/checkbox-add/checkbox-add.component';
 import {SurveyOverviewComponent} from "./components/view-results/overview/survey-overview/survey-overview.component";
 import {SurveyIntroComponent} from "./components/answer-survey/survey-intro/survey-intro.component";
@@ -90,7 +90,7 @@ const appRoutes: Routes = [
     CheckboxListComponent,
     CheckboxAddComponent,
     CheckboxDeleteComponent,
-    SurveySubmissionValidationComponent,
+    SurveySubmissionComponent,
     SurveySubmissionModalComponent,
     SurveyOverviewComponent,
     AnswerSurveyComponent,

@@ -22,7 +22,7 @@ export class SurveySubmissionModalComponent implements OnInit {
     this.parentForm = this.parentFormGroup.control;
   }
 
-  post() {
+  saveSurvey() {
     this.postSurvey.emit();
   }
 }

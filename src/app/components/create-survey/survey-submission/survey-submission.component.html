@@ -2,7 +2,7 @@
   <form [formGroup]="surveySubmissionForm">
 
     <div *ngIf="errorMessages.length !== 0">
-      <div class="errorMessage alert alert-danger p-2 my-2 d-block" *ngFor="let errorMessage of errorMessages">
+      <div class="errorMessage alert alert-danger p-2 my-2 mx-1 d-block" *ngFor="let errorMessage of errorMessages">
         {{ errorMessage }}
       </div>
     </div>
@@ -16,6 +16,6 @@
       </div>
     </div>
 
-    <app-survey-submission-modal (postSurvey)="postSurveyWithUser()"></app-survey-submission-modal>
+    <app-survey-submission-modal (postSurvey)="saveSurveyWithUser()"></app-survey-submission-modal>
   </form>
 </div>
