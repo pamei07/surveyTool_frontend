@@ -13,14 +13,14 @@ export class UserService {
     this.surveyUrl = 'http://localhost:8080/users';
   }
 
-  postUser(name: string) {
+  public createUser(name: string): User {
     let user: User = new User();
     if (name !== '') {
       user.setName(name);
     } else {
       user.setName('Anonym');
     }
-    return this.saveUser(user);
+    return user;
   }
 
   public saveUser(user: User) {

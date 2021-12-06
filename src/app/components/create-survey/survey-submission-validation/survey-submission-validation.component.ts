@@ -44,7 +44,8 @@ export class SurveySubmissionValidationComponent {
       return;
     }
     let userName = this.userName?.value;
-    this.userService.postUser(userName).subscribe(
+    let user = this.userService.createUser(userName);
+    this.userService.saveUser(user).subscribe(
       (response: User) => {
         this.postSurvey(response);
       }, (error: HttpErrorResponse) => {
