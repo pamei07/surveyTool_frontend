@@ -12,8 +12,8 @@
       <div class="row mb-3">
         <div class="col">
           <label for="question" class="form-label">Frage*</label>
-          <input id="question" class="form-control" name="text" type="text"
-                 formControlName="text" required>
+          <textarea id="question" class="form-control shortTextarea" name="text" formControlName="text"
+                    required></textarea>
           <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
                class="alert alert-danger p-2 mt-1 mb-0">
             <div class="errorMessage" *ngIf="text?.errors?.required">
