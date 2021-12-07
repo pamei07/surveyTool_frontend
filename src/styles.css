@@ -12,7 +12,11 @@ body {
   min-height: 100vh;
   /* Divides body (header, main, footer) into a grid (Gitter): */
   display: grid;
-  /* Three rows: 1. As big as the header is 2. All remaining space 3. As big as the footer is */
+  /* 4 rows:
+  1. As big as the header is
+  2. 0 Space for router-outlet
+  3. All remaining space for content
+  4. As big as the footer is */
   grid-template-rows: [header] auto [router-outlet] 0 [body] 1fr [footer] auto;
   /* Each row takes up the whole browser horizontally */
   grid-template-columns: 100%;
@@ -190,6 +194,10 @@ footer {
 .tableOfContents {
   display: table !important;
   max-width: 66% !important;
+}
+
+#addCheckboxTextInput {
+  min-width: 170px;
 }
 
 /* Override Bootstrap CSS */
