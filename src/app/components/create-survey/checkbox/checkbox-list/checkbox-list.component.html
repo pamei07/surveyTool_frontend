@@ -9,7 +9,7 @@
 </div>
 
 <div id="listOfCheckboxes" *ngIf="checkboxGroup">
-  <ul class="list-group mb-2 mx-4 p-0 cursorMover draggableList" cdkDropList (cdkDropListDropped)="drop($event)"
+  <ul class="list-group mb-1 mx-4 p-0 cursorMover draggableList" cdkDropList (cdkDropListDropped)="drop($event)"
       *ngIf="noOfCheckboxes > 0">
     <li class="list-group-item draggableListItem" cdkDrag
         *ngFor="let checkbox of checkboxes; index as indexCheckbox;">
