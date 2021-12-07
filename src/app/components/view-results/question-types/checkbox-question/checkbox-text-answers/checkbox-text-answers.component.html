@@ -8,13 +8,20 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div *ngFor="let answer of relevantAnswers">
+        <div *ngFor="let answer of relevantAnswers; index as answerIndex">
           <div class="card mb-2">
-            <div class="card-body">
-              {{ answer.text }}
-              <span class="text-muted float-end mt-2">
-                - {{ answer?.userName }} (user#{{ answer?.userId }})
-              </span>
+            <div class="card-body py-2">
+              <div class="row">
+                <div class="col-sm-auto pe-0">
+                  <span class="text-muted">{{ answerIndex + 1 }}.</span>
+                </div>
+                <div class="col">
+                  {{ answer.text }}
+                  <span class="text-muted float-end mt-2">
+                    - {{ answer?.userName }} (user#{{ answer?.userId }})
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
