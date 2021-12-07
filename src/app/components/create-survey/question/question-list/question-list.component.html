@@ -5,88 +5,86 @@
   </span>
 </div>
 <div *ngIf="survey.questionGroups![indexQuestionGroup].questions!.length > 0" id="questionList">
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th>#</th>
-      <th>Typ</th>
-      <th class="questionColumn">Frage</th>
-      <th class="text-center">*</th>
-      <th class="text-center">Ä/L</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="questionTableRow"
+  <ol class="list-group draggableList mt-3 mb-4" cdkDropList (cdkDropListDropped)="drop($event)">
+    <li class="list-group-item draggableListItem" cdkDrag
         *ngFor="let question of survey.questionGroups![indexQuestionGroup].questions; index as indexQuestion">
-      <td>{{indexQuestion + 1}}</td>
+      <div class="row align-items-start">
+        <div class="col-auto fontSize18px p-2 pt-0">
+          {{ indexQuestion + 1 }}.
+        </div>
 
-      <td *ngIf="question.hasCheckbox">Auswahl</td>
-      <td *ngIf="!question.hasCheckbox">Freitext</td>
-
-      <td class="questionColumn">
-        <span class="bolderText">{{ question.text }}</span>
-
-        <div *ngIf="question!.hasCheckbox">
-          <div class="d-flex flex-row my-1">
-            <div *ngIf="question.checkboxGroup!.multipleSelect"
-                 class="d-flex justify-content-evenly w-100">
-              <span>
-                Mehrfachauswahl: Ja
-              </span>
-              <span>
-                Min.: {{ question.checkboxGroup!.minSelect }}
-              </span>
-              <span>
-                Max.: {{ question.checkboxGroup!.maxSelect }}
-              </span>
+        <div class="col p-0">
+          <div class="container p-0">
+            <div class="cursorMover bolderText fontSize18px row m-0" cdkDragHandle>
+              {{ question.text }}
             </div>
-            <div *ngIf="!question.checkboxGroup!.multipleSelect"
-                 class="d-flex justify-content-evenly w-100">
-              <span>
-                  Mehrfachauswahl: Nein
-              </span>
+
+            <div class="row">
+              <div class="col-auto">
+                <div class="row ms-2">Erforderlich:</div>
+                <div class="row ms-2">Fragentyp:</div>
+              </div>
+              <div class="col-auto">
+                <div class="row ms-0">
+                  <span *ngIf="question.required">Ja</span>
+                  <span *ngIf="!question.required">Nein</span>
+                </div>
+                <div class="row ms-0">
+                  <span *ngIf="question.hasCheckbox">Auswahl</span>
+                  <span *ngIf="!question.hasCheckbox">Freitext</span>
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-2 mx-3" *ngIf="question!.hasCheckbox">
+
+            <div class="row">
+              <div *ngIf="question!.hasCheckbox">
+                <div class="d-flex flex-row mb-1">
+                  <div *ngIf="question.checkboxGroup!.multipleSelect"
+                       class="d-flex justify-content-evenly w-100">
+                    <span>Mehrfachauswahl: Ja</span>
+                    <span>Min.: {{ question.checkboxGroup!.minSelect }}</span>
+                    <span>Max.: {{ question.checkboxGroup!.maxSelect }}</span>
+                  </div>
+                  <div *ngIf="!question.checkboxGroup!.multipleSelect"
+                       class="d-flex justify-content-evenly w-100">
+                    <span>Mehrfachauswahl: Nein</span>
+                  </div>
+                </div>
+              </div>
+
+              <app-checkbox-list [survey]="survey"
+                                 [indexQuestionGroup]="indexQuestionGroup"
+                                 [indexQuestion]="indexQuestion"></app-checkbox-list>
+              <app-checkbox-add [survey]="survey"
+                                [indexQuestionGroup]="indexQuestionGroup"
+                                [indexQuestion]="indexQuestion"></app-checkbox-add>
             </div>
           </div>
         </div>
 
-        <app-checkbox-list [survey]="survey"
-                           [indexQuestionGroup]="indexQuestionGroup"
-                           [indexQuestion]="indexQuestion"></app-checkbox-list>
-        <app-checkbox-add [survey]="survey"
-                          [indexQuestionGroup]="indexQuestionGroup"
-                          [indexQuestion]="indexQuestion"></app-checkbox-add>
-      </td>
+        <div class="col-auto px-1">
+          <div id="updateDeleteButton" class="d-flex">
+            <button class="btn btn-primary me-1 p-1 pt-0" type="button" title="Ändern" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#confirmUpdateQuestion' + indexQuestion + 'Group' + indexQuestionGroup">
+              <img src="assets/svgs/wrench.svg" alt="Ändern">
+            </button>
+            <button class="btn btn-danger p-1 pt-0" type="button" title="Löschen" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#confirmDeletionQuestion' + indexQuestion + 'Group' + indexQuestionGroup">
+              <img src="assets/svgs/x-lg.svg" alt="Löschen">
+            </button>
 
-      <td class="text-center">
-        <span *ngIf="question.required">
-          Ja
-        </span>
-        <span *ngIf="!question.required">
-          Nein
-        </span>
-      </td>
+            <app-question-update [survey]="survey"
+                                 [indexQuestionGroup]="indexQuestionGroup"
+                                 [indexQuestion]="indexQuestion"></app-question-update>
+            <app-question-delete [survey]="survey"
+                                 [indexQuestionGroup]="indexQuestionGroup"
+                                 [indexQuestion]="indexQuestion"></app-question-delete>
 
-      <td>
-        <div id="updateDeleteButton" class="d-flex">
-          <button class="btn btn-primary me-1 p-1 pt-0" type="button" title="Ändern" data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#confirmUpdateQuestion' + indexQuestion + 'Group' + indexQuestionGroup">
-            <img src="assets/svgs/wrench.svg" alt="Ändern">
-          </button>
-          <button class="btn btn-danger p-1 pt-0" type="button" title="Löschen" data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#confirmDeletionQuestion' + indexQuestion + 'Group' + indexQuestionGroup">
-            <img src="assets/svgs/x-lg.svg" alt="Löschen">
-          </button>
-
-          <app-question-update [survey]="survey"
-                               [indexQuestionGroup]="indexQuestionGroup"
-                               [indexQuestion]="indexQuestion"></app-question-update>
-          <app-question-delete [survey]="survey"
-                               [indexQuestionGroup]="indexQuestionGroup"
-                               [indexQuestion]="indexQuestion"></app-question-delete>
-
+          </div>
         </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+      </div>
+    </li>
+  </ol>
 </div>
