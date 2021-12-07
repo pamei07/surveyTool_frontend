@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
+import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
+import {Checkbox} from "../../../../model/checkbox";
 
 @Component({
   selector: 'app-checkbox-list',
@@ -24,4 +26,7 @@ export class CheckboxListComponent {
     return this.survey.questionGroups![this.indexQuestionGroup].questions![this.indexQuestion].checkboxGroup!.checkboxes!.length;
   }
 
+  drop($event: CdkDragDrop<Checkbox[]>) {
+    moveItemInArray(this.checkboxes, $event.previousIndex, $event.currentIndex);
+  }
 }

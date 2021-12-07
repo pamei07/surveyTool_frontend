@@ -9,9 +9,9 @@
 </div>
 
 <div id="listOfCheckboxes" *ngIf="checkboxGroup">
-  <ul class="list-group mb-2 p-0"
+  <ul class="list-group mb-2 p-0 cursorMover checkboxList" cdkDropList (cdkDropListDropped)="drop($event)"
       *ngIf="noOfCheckboxes > 0">
-    <li class="list-group-item"
+    <li class="list-group-item checkboxListItem" cdkDrag
         *ngFor="let checkbox of checkboxes; index as indexCheckbox;">
       <span> {{ checkbox.text }} </span>
       <div class="float-end">

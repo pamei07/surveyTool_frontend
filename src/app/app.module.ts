@@ -59,6 +59,7 @@ import {TableOfContentsListComponent} from './components/view-results/results-li
 import {TableOfContentsPaginatorComponent} from './components/view-results/results-paginator/table-of-contents-paginator/table-of-contents-paginator.component';
 import {QuestionGroupPaginatorParticipationComponent} from "./components/answer-survey/question-group-paginator-participation/question-group-paginator-participation.component";
 import {QuestionGroupPaginatorComponent} from "./components/view-results/results-paginator/question-group-paginator/question-group-paginator.component";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 
 const appRoutes: Routes = [
@@ -134,7 +135,8 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     NgxChartsModule,
-    NgbModule
+    NgbModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
