@@ -33,6 +33,11 @@ export class SurveyPaginatorComponent implements OnInit {
   }
 
   sortByEndDate() {
+    // Skip sorting if already done
+    if (!this.sortedByStartDate) {
+      return;
+    }
+
     this.openAccessSurveys.sort((survey1, survey2) => {
       let endDate1 = Date.parse(survey1.endDate);
       let endDate2 = Date.parse(survey2.endDate);
@@ -49,6 +54,11 @@ export class SurveyPaginatorComponent implements OnInit {
   }
 
   sortByStartDate() {
+    // Skip sorting if already done
+    if (this.sortedByStartDate) {
+      return;
+    }
+
     this.openAccessSurveys.sort((survey1, survey2) => {
       let startDate1 = Date.parse(survey1.startDate);
       let startDate2 = Date.parse(survey2.startDate);
