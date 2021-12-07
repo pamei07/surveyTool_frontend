@@ -23,11 +23,18 @@
       <div class="col-auto">
         <div class="container p-0">
           <div class="row">
-            <span class="bolderText me-2 fontSize18px">Übersichts-Link:</span>
+            <span class="bolderText me-2 fontSize18px">
+              Übersichts-Link:
+            </span>
+
           </div>
           <div class="row">
             <span class="blueText text-center ms-2">
               http://localhost:4200/surveys/{{ survey?.accessId }}
+              <img src="assets/svgs/clipboard.svg" alt="Copy to clipboard"
+                   class="clipboardButton cursorPointer ms-2 mb-1"
+                   [cdkCopyToClipboard]="'http://localhost:4200/surveys/' + survey.accessId"
+                   ngbTooltip="Link kopieren">
             </span>
           </div>
         </div>
@@ -53,6 +60,10 @@
           <div class="row">
             <span class="blueText text-center ms-2">
               http://localhost:4200/surveys/participate/{{ survey?.participationId }}
+              <img src="assets/svgs/clipboard.svg" alt="Copy to clipboard"
+                   class="clipboardButton cursorPointer ms-2 mb-1"
+                   [cdkCopyToClipboard]="'http://localhost:4200/surveys/participate/' + survey.participationId"
+                   ngbTooltip="Link kopieren">
             </span>
           </div>
         </div>

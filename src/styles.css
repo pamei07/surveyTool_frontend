@@ -121,6 +121,10 @@ footer {
   max-width: 70px !important;
 }
 
+.clipboardButton {
+  height: 20px;
+}
+
 /* CDK Drag & Drop */
 .cursorMover {
   cursor: move;

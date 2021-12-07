@@ -60,6 +60,7 @@ import {TableOfContentsPaginatorComponent} from './components/view-results/resul
 import {QuestionGroupPaginatorParticipationComponent} from "./components/answer-survey/question-group-paginator-participation/question-group-paginator-participation.component";
 import {QuestionGroupPaginatorComponent} from "./components/view-results/results-paginator/question-group-paginator/question-group-paginator.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {ClipboardModule} from "@angular/cdk/clipboard";
 
 
 const appRoutes: Routes = [
@@ -136,7 +137,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     NgxChartsModule,
     NgbModule,
-    DragDropModule
+    DragDropModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
