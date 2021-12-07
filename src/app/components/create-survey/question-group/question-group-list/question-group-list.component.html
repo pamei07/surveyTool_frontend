@@ -4,30 +4,37 @@
           Es wurde bisher kein Frageblock hinzugefügt.
       </span>
   </div>
-  <div id="questionGroupListing" class="row card card-body mb-3 px-2"
-       *ngFor="let questionGroup of survey.questionGroups; index as indexQuestionGroup">
-    <div class="d-flex justify-content-between">
-      <h3 class="d-inline">{{ questionGroup.title }}</h3>
-      <div id="updateDeleteButton" class="d-inline me-2">
-        <button class="btn btn-primary me-1 p-1 pt-0" type="button" title="Ändern" data-bs-toggle="modal"
-                [attr.data-bs-target]="'#confirmUpdateGroup' + indexQuestionGroup">
-          <img src="assets/svgs/wrench.svg" alt="Ändern">
-        </button>
-        <button class="btn btn-danger p-1 pt-0" type="button" title="Löschen" data-bs-toggle="modal"
-                [attr.data-bs-target]="'#confirmDeletionGroup' + indexQuestionGroup">
-          <img src="assets/svgs/x-lg.svg" alt="Löschen">
-        </button>
+  <div class="draggableList" cdkDropList (cdkDropListDropped)="drop($event)">
+    <div id="questionGroupListItem" class="draggableListItem row card card-body mb-3 px-2" cdkDrag
+         *ngFor="let questionGroup of survey.questionGroups; index as indexQuestionGroup">
+      <div class="d-flex justify-content-between">
+        <div class="d-flex align-items-start">
+          <img class="moveQuestionGroup cursorMover mt-1 me-2" src="assets/svgs/arrows-move.svg" alt="Bewegen"
+               cdkDragHandle>
+          <h3 class="m-0">{{ questionGroup.title }}</h3>
+        </div>
+        <div id="updateDeleteButtonQuestionGroup" class="me-2">
+          <button class="btn btn-primary me-1 p-1 pt-0" type="button" title="Ändern" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#confirmUpdateGroup' + indexQuestionGroup">
+            <img src="assets/svgs/wrench.svg" alt="Ändern">
+          </button>
+          <button class="btn btn-danger p-1 pt-0" type="button" title="Löschen" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#confirmDeletionGroup' + indexQuestionGroup">
+            <img src="assets/svgs/x-lg.svg" alt="Löschen">
+          </button>
+        </div>
       </div>
+
+      <app-question-group-update [survey]="survey"
+                                 [indexQuestionGroup]="indexQuestionGroup"></app-question-group-update>
+      <app-question-group-delete [survey]="survey"
+                                 [indexQuestionGroup]="indexQuestionGroup"></app-question-group-delete>
+
+      <app-question-list [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></app-question-list>
+      <app-question-add [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></app-question-add>
+
     </div>
-
-    <app-question-group-update [survey]="survey"
-                               [indexQuestionGroup]="indexQuestionGroup"></app-question-group-update>
-    <app-question-group-delete [survey]="survey"
-                               [indexQuestionGroup]="indexQuestionGroup"></app-question-group-delete>
-
-    <app-question-list [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></app-question-list>
-    <app-question-add [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></app-question-add>
-
   </div>
+
 </div>
 

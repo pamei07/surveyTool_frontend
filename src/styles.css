@@ -76,6 +76,10 @@ footer {
 }
 
 /* Buttons */
+#updateDeleteButtonQuestionGroup {
+  min-width: 56px;
+}
+
 .smallDeleteBtn {
   height: 15px;
 }
@@ -105,6 +109,10 @@ footer {
   font-size: 20px;
 }
 
+.moveQuestionGroup {
+  height: 25px;
+}
+
 .pageNumberSelection {
   max-width: 70px !important;
 }
@@ -122,7 +130,6 @@ footer {
 }
 
 .cdk-drag-placeholder {
-  border-radius: 0 !important;
   opacity: 75%;
 }
 
@@ -132,11 +139,15 @@ footer {
 }
 
 /* Animate dragging of item over list */
-.checkboxList.cdk-drop-list-dragging .checkboxListItem:not(.cdk-drag-placeholder) {
+.draggableList.cdk-drop-list-dragging .draggableListItem:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 /* Other */
+#questionGroupListItem.cdk-drag-placeholder {
+  border-radius: 0.25rem;
+}
+
 .linkStyle {
   color: #2A52CC;
 }
