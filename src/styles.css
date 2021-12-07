@@ -200,6 +200,18 @@ footer {
   min-width: 170px;
 }
 
+.innerCard {
+  background-color: #E8E8E8 !important;
+}
+
+.innerInnerCard {
+  background-color: #D6D6D6 !important;
+}
+
+.minMaxInputField {
+  width: 50px !important;
+}
+
 /* Override Bootstrap CSS */
 .list-group {
   border: 0.08em solid #DFDFDF;
@@ -238,3 +250,15 @@ footer {
   border: 0;
 }
 
+/* Hide number input arrows: */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

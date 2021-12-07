@@ -8,7 +8,7 @@
     Frage hinzufügen
   </button>
   <div [attr.id]="'collapseQuestionform' + indexQuestionGroup" class="collapse mt-2 mx-2">
-    <div class="card card-body">
+    <div class="card card-body innerCard">
       <div class="row mb-3">
         <div class="col">
           <label for="question" class="form-label">Frage*</label>
@@ -46,8 +46,8 @@
       </div>
       <div class="collapse mb-3 mx-2"
            [attr.id]="'checkboxGroupForm' + indexQuestionGroup">
-        <div class="card card-body" formGroupName="checkboxGroup">
-          <div class="row mb-2">
+        <div class="card card-body innerInnerCard" formGroupName="checkboxGroup">
+          <div class="row align-items-center">
             <div class="col">
               <label [attr.for]="'multipleSelect' + indexQuestionGroup" class="form-check-label">
                 Mehrfachauswahl?&nbsp;&nbsp;
@@ -58,48 +58,49 @@
                      (change)="enableDisableMinMaxInput()">
             </div>
             <div class="col">
-              <label [attr.for]="'minSelect' + indexQuestionGroup"
-                     class="form-label">
-                Minimum:
-              </label>
-              <input [attr.id]="'minSelect' + indexQuestionGroup" class="form-control" name="minSelect"
-                     type="number" min="0"
-                     formControlName="minSelect">
-              <div *ngIf="minSelect?.invalid && (minSelect?.dirty || minSelect?.touched)"
-                   class="alert alert-danger p-2 mt-1 mb-0">
-                <div *ngIf="minSelect?.errors?.required">
-                  Das Minimum muss angegeben werden.
-                </div>
-                <div *ngIf="minSelect?.errors?.min">
-                  Das Minimum muss mind. 0 sein.
-                </div>
+              <div class="container row p-0 m-0 align-items-center">
+                <label [attr.for]="'minSelect' + indexQuestionGroup" class="form-label col-auto ps-0 m-0">
+                  Minimum:
+                </label>
+                <input [attr.id]="'minSelect' + indexQuestionGroup" class="form-control minMaxInputField text-end py-1"
+                       name="minSelect" type="number" min="0" formControlName="minSelect">
               </div>
             </div>
             <div class="col">
-              <label [attr.for]="'maxSelect' + indexQuestionGroup"
-                     class="form-label">
-                Maximal:
-              </label>
-              <input [attr.id]="'maxSelect' + indexQuestionGroup" class="form-control" name="maxSelect"
-                     type="number" min="2"
-                     formControlName="maxSelect">
-              <div *ngIf="maxSelect?.invalid && (maxSelect?.dirty || maxSelect?.touched)"
-                   class="alert alert-danger p-2 mt-1 mb-0">
-                <div *ngIf="maxSelect?.errors?.required">
-                  Das Maximum muss angegeben werden.
-                </div>
-                <div *ngIf="maxSelect?.errors?.min">
-                  Das Maximum muss mind. 2 sein.
-                </div>
+              <div class="container row p-0 m-0 align-items-center">
+                <label [attr.for]="'maxSelect' + indexQuestionGroup" class="form-label col-auto ps-0 m-0">
+                  Maximal:
+                </label>
+                <input [attr.id]="'maxSelect' + indexQuestionGroup" class="form-control minMaxInputField text-end py-1"
+                       name="maxSelect" type="number" min="2" formControlName="maxSelect">
               </div>
             </div>
           </div>
-          <div class="row mx-0">
-            <div class="alert alert-danger p-2 mt-1 mb-0"
+
+          <div class="row mt-2 mx-2">
+            <div *ngIf="minSelect?.invalid && (minSelect?.dirty || minSelect?.touched)"
+                 class="alert alert-danger p-2 mb-1">
+              <div *ngIf="minSelect?.errors?.required">
+                Das Minimum muss angegeben werden.
+              </div>
+              <div *ngIf="minSelect?.errors?.min">
+                Das Minimum muss mind. 0 sein.
+              </div>
+            </div>
+            <div *ngIf="maxSelect?.invalid && (maxSelect?.dirty || maxSelect?.touched)"
+                 class="alert alert-danger p-2 mb-1">
+              <div *ngIf="maxSelect?.errors?.required">
+                Das Maximum muss angegeben werden.
+              </div>
+              <div *ngIf="maxSelect?.errors?.min">
+                Das Maximum muss mind. 2 sein.
+              </div>
+            </div>
+            <div class="alert alert-danger p-2 mb-1"
                  *ngIf="questionForm.hasError('maxSelectLessThanMinSelect')">
               Das Maximum muss größer als / gleich dem Minimum sein.
             </div>
-            <div class="alert alert-danger p-2 mt-1 mb-0"
+            <div class="alert alert-danger p-2 mb-1"
                  *ngIf="questionForm.hasError('requiredButMinZeroCheckboxes')">
               Wenn die Frage als erforderlich gekennzeichnet ist, muss das Minimum bei mind. 1 liegen.
             </div>
