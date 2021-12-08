@@ -80,7 +80,7 @@ footer {
 }
 
 /* Buttons */
-#updateDeleteButtonQuestionGroup {
+.updateDeleteButtonGroup {
   min-width: 56px;
 }
 

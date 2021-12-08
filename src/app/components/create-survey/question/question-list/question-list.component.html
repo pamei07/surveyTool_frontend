@@ -5,18 +5,41 @@
   </span>
 </div>
 <div *ngIf="survey.questionGroups![indexQuestionGroup].questions!.length > 0" id="questionList">
-  <ol class="list-group draggableList mt-3 mb-4" cdkDropList (cdkDropListDropped)="drop($event)">
+  <ul class="list-group draggableList mt-3 mb-4" cdkDropList (cdkDropListDropped)="drop($event)">
     <li class="list-group-item draggableListItem" cdkDrag
         *ngFor="let question of survey.questionGroups![indexQuestionGroup].questions; index as indexQuestion">
       <div class="row align-items-start">
-        <div class="col-auto fontSize18px p-2 pt-0">
+        <div class="col-auto fontSize18px p-2 pt-0 d-none d-sm-block">
           {{ indexQuestion + 1 }}.
         </div>
 
         <div class="col p-0">
           <div class="container p-0">
             <div class="cursorMover bolderText fontSize18px row m-0" cdkDragHandle>
-              {{ question.text }}
+              <span class="col p-0 ms-1 ms-sm-0">
+                {{ question.text }}
+              </span>
+
+              <div class="col-auto px-1">
+                <div id="updateDeleteButton" class="updateDeleteButtonGroup">
+                  <button class="btn btn-primary me-1 p-1 pt-0" type="button" title="Ändern" data-bs-toggle="modal"
+                          [attr.data-bs-target]="'#confirmUpdateQuestion' + indexQuestion + 'Group' + indexQuestionGroup">
+                    <img src="assets/svgs/wrench.svg" alt="Ändern">
+                  </button>
+                  <button class="btn btn-danger p-1 pt-0" type="button" title="Löschen" data-bs-toggle="modal"
+                          [attr.data-bs-target]="'#confirmDeletionQuestion' + indexQuestion + 'Group' + indexQuestionGroup">
+                    <img src="assets/svgs/x-lg.svg" alt="Löschen">
+                  </button>
+
+                  <app-question-update [survey]="survey"
+                                       [indexQuestionGroup]="indexQuestionGroup"
+                                       [indexQuestion]="indexQuestion"></app-question-update>
+                  <app-question-delete [survey]="survey"
+                                       [indexQuestionGroup]="indexQuestionGroup"
+                                       [indexQuestion]="indexQuestion"></app-question-delete>
+
+                </div>
+              </div>
             </div>
 
             <div class="row">
@@ -63,28 +86,7 @@
             </div>
           </div>
         </div>
-
-        <div class="col-auto px-1">
-          <div id="updateDeleteButton" class="d-flex">
-            <button class="btn btn-primary me-1 p-1 pt-0" type="button" title="Ändern" data-bs-toggle="modal"
-                    [attr.data-bs-target]="'#confirmUpdateQuestion' + indexQuestion + 'Group' + indexQuestionGroup">
-              <img src="assets/svgs/wrench.svg" alt="Ändern">
-            </button>
-            <button class="btn btn-danger p-1 pt-0" type="button" title="Löschen" data-bs-toggle="modal"
-                    [attr.data-bs-target]="'#confirmDeletionQuestion' + indexQuestion + 'Group' + indexQuestionGroup">
-              <img src="assets/svgs/x-lg.svg" alt="Löschen">
-            </button>
-
-            <app-question-update [survey]="survey"
-                                 [indexQuestionGroup]="indexQuestionGroup"
-                                 [indexQuestion]="indexQuestion"></app-question-update>
-            <app-question-delete [survey]="survey"
-                                 [indexQuestionGroup]="indexQuestionGroup"
-                                 [indexQuestion]="indexQuestion"></app-question-delete>
-
-          </div>
-        </div>
       </div>
     </li>
-  </ol>
+  </ul>
 </div>
