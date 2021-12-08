@@ -6,7 +6,7 @@
         <span class="bolderText">Titel:</span>
       </div>
       <div class="col-sm">
-        <span class="ms-2 ms-sm-0">{{ survey?.name }}</span>
+        <span class="ms-2">{{ survey?.name }}</span>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
         <span class="bolderText">Erstellt von:</span>
       </div>
       <div class="col-sm">
-        <span class="ms-2 ms-sm-0">{{ survey?.userName }}</span>
+        <span class="ms-2">{{ survey?.userName }}</span>
       </div>
     </div>
 
@@ -24,7 +24,7 @@
         <span class="bolderText">Zeitraum:</span>
       </div>
       <div class="col-sm">
-        <span class="ms-2 ms-sm-0">{{ survey?.startDate | date: 'dd.MM.yyyy' }}  {{ survey?.startDate | date: 'HH:mm' }}
+        <span class="ms-2">{{ survey?.startDate | date: 'dd.MM.yyyy' }}  {{ survey?.startDate | date: 'HH:mm' }}
           Uhr
           &nbsp;&nbsp;-&nbsp;<br class="d-inline d-sm-none">&nbsp;
           {{ survey?.endDate | date: 'dd.MM.yyyy' }}  {{ survey?.endDate | date: 'HH:mm' }} Uhr</span>
@@ -36,8 +36,8 @@
         <span class="bolderText">Öffentlich:</span>
       </div>
       <div class="col-sm">
-        <span class="ms-2 ms-sm-0" *ngIf="survey?.openAccess === true">Ja</span>
-        <span class="ms-2 ms-sm-0" *ngIf="survey?.openAccess === false">Nein</span>
+        <span class="ms-2" *ngIf="survey?.openAccess === true">Ja</span>
+        <span class="ms-2" *ngIf="survey?.openAccess === false">Nein</span>
       </div>
     </div>
   </div>
