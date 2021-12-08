@@ -26,16 +26,20 @@
             <span class="bolderText me-2 fontSize18px">
               Übersichts-Link:
             </span>
-
           </div>
           <div class="row">
-            <span class="blueText text-center ms-2">
-              http://localhost:4200/surveys/{{ survey?.accessId }}
+            <div class="blueText text-center ms-2">
+              <span class="d-none d-sm-inline">
+                http://localhost:4200/surveys/{{ survey?.accessId }}
+              </span>
+              <span class="d-inline d-sm-none">
+                .../surveys/{{ survey?.accessId }}
+              </span>
               <img src="assets/svgs/clipboard.svg" alt="Copy to clipboard"
                    class="clipboardButton cursorPointer ms-2 mb-1"
                    [cdkCopyToClipboard]="'http://localhost:4200/surveys/' + survey.accessId"
                    ngbTooltip="Link kopieren">
-            </span>
+            </div>
           </div>
         </div>
       </div>
@@ -58,13 +62,18 @@
             <span class="bolderText me-2 fontSize18px">Teilnahme-Link:</span>
           </div>
           <div class="row">
-            <span class="blueText text-center ms-2">
+            <div class="blueText text-center ms-2">
+              <span class="d-none d-sm-inline">
               http://localhost:4200/surveys/participate/{{ survey?.participationId }}
+              </span>
+              <span class="d-inline d-sm-none">
+              .../surveys/participate/{{ survey?.participationId }}
+              </span>
               <img src="assets/svgs/clipboard.svg" alt="Copy to clipboard"
                    class="clipboardButton cursorPointer ms-2 mb-1"
                    [cdkCopyToClipboard]="'http://localhost:4200/surveys/participate/' + survey.participationId"
                    ngbTooltip="Link kopieren">
-            </span>
+            </div>
           </div>
         </div>
       </div>
