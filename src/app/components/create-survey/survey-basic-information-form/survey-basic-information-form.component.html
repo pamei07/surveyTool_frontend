@@ -1,4 +1,4 @@
-<section id="surveyBasics" class="card card-body mt-4">
+<section id="surveyBasics" class="card card-body my-4">
   <form [formGroup]="surveyForm" (ngSubmit)="setBasicInformationOnSurvey()">
     <h3 class="mb-3">
       Erstellen Sie Ihre Umfrage:
@@ -34,8 +34,8 @@
       </div>
     </div>
 
-    <div id="surveyDates" class="row mb-3 px-1">
-      <div class="col">
+    <div id="surveyDates" class="row mb-2 px-1">
+      <div class="col-sm">
         <label for="startDate" class="form-label labelInput">Startdatum*</label>
         <input id="startDate" name="startDate" type="datetime-local" class="form-control" required
                formControlName="startDate">
@@ -50,8 +50,8 @@
         </div>
       </div>
 
-      <div class="col">
-        <label for="endDate" class="form-label labelInput">Enddatum*</label>
+      <div class="col-sm">
+        <label for="endDate" class="form-label labelInput mt-3 mt-sm-0">Enddatum*</label>
         <input id="endDate" name="endDate" type="datetime-local" class="form-control" required
                formControlName="endDate">
         <div *ngIf="(endDate?.invalid && (endDate?.dirty || endDate?.touched))"

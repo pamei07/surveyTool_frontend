@@ -9,24 +9,23 @@
 
   <div class="container restrictWidth fontSize20px mt-3">
     <div class="row">
-      <div class="col-2">
+      <div class="col-sm-2">
         <span class="bolderText">Titel:</span>
       </div>
       <div class="col lighterText">
-        <span>{{ survey?.name }}</span>
+        <span class="ms-2">{{ survey?.name }}</span>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-2">
+      <div class="col-sm-2">
         <span class="bolderText">Zeitraum:</span>
       </div>
       <div class="col lighterText">
-        <span class="me-2">{{ survey?.startDate | date: 'dd.MM.yyyy' }}</span>
-        <span>{{ survey?.startDate | date: 'HH:mm' }} Uhr</span>
-        <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-        <span class="me-2">{{ survey?.endDate | date: 'dd.MM.yyyy' }}</span>
-        <span>{{ survey?.endDate | date: 'HH:mm' }} Uhr</span>
+        <span class="ms-2">{{ survey?.startDate | date: 'dd.MM.yyyy' }}  {{ survey?.startDate | date: 'HH:mm' }}
+          Uhr
+          &nbsp;&nbsp;-&nbsp;<br class="d-inline d-sm-none">&nbsp;
+          {{ survey?.endDate | date: 'dd.MM.yyyy' }}  {{ survey?.endDate | date: 'HH:mm' }} Uhr</span>
       </div>
     </div>
   </div>
