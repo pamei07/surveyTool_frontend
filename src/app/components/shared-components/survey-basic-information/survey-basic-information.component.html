@@ -2,41 +2,39 @@
   <hr>
   <div class="container fontSize18px">
     <div class="row">
-      <div class="col-2">
+      <div class="col-sm-2">
         <span class="bolderText">Titel:</span>
       </div>
-      <div class="col">
+      <div class="col-sm">
         <span>{{ survey?.name }}</span>
       </div>
     </div>
 
     <div class="row my-1 text-muted">
-      <div class="col-2">
+      <div class="col-sm-2">
         <span class="bolderText">Erstellt von:</span>
       </div>
-      <div class="col">
+      <div class="col-sm">
         <span>{{ survey?.userName }}</span>
       </div>
     </div>
 
     <div class="row my-1">
-      <div class="col-2">
+      <div class="col-sm-2">
         <span class="bolderText">Zeitraum:</span>
       </div>
-      <div class="col">
-        <span class="me-2">{{ survey?.startDate | date: 'dd.MM.yyyy' }}</span>
-        <span>{{ survey?.startDate | date: 'HH:mm' }} Uhr</span>
-        <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-        <span class="me-2">{{ survey?.endDate | date: 'dd.MM.yyyy' }}</span>
-        <span>{{ survey?.endDate | date: 'HH:mm' }} Uhr</span>
+      <div class="col-sm">
+        <span>{{ survey?.startDate | date: 'dd.MM.yyyy' }}  {{ survey?.startDate | date: 'HH:mm' }} Uhr
+          &nbsp;&nbsp;-&nbsp;&nbsp;<br class="d-block d-sm-none">
+          {{ survey?.endDate | date: 'dd.MM.yyyy' }}  {{ survey?.endDate | date: 'HH:mm' }} Uhr</span>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-2">
+      <div class="col-sm-2">
         <span class="bolderText">Öffentlich:</span>
       </div>
-      <div class="col">
+      <div class="col-sm">
         <span *ngIf="survey?.openAccess === true">Ja</span>
         <span *ngIf="survey?.openAccess === false">Nein</span>
       </div>
