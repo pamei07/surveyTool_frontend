@@ -13,7 +13,7 @@
         <h5 class="modal-title">Liste der Teilnehmer:innen</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" *ngIf="filteredAndSortedParticipants.length !== 0">
+      <div class="modal-body text-start" *ngIf="filteredAndSortedParticipants.length !== 0">
         <ul class="list-group">
           <li class="list-group-item" *ngFor="let participant of filteredAndSortedParticipants; index as index">
             <span class="text-muted">{{ index + 1}}.</span><span> {{ participant.name }}</span>&nbsp;
