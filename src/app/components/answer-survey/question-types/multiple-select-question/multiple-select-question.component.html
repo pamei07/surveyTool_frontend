@@ -1,11 +1,12 @@
 <div [formGroup]="parentForm">
   <div formArrayName="questionGroupsFormArray">
     <div formArrayName="{{questionGroupIndex}}">
-      <label [attr.for]="'question' + question.id" class="form-label mb-1 ms-2">
-        <span class="bolderText">{{ questionIndex + 1 }}.</span> {{ question.text }}
+      <label [attr.for]="'question' + question.id" class="form-label row ms-2 mb-1">
+        <span class="col-auto px-0 bolderText">{{ questionIndex + 1 }}.</span>
+        <span class="col ps-1">
+          {{ question.text }}<span *ngIf="question.required">*</span>
+        </span>
       </label>
-      <span *ngIf="question.required">*</span>
-      <br>
       <p class="text-muted mb-2 mt-0 mx-4">
         <span *ngIf="minSelect < maxSelect && minSelect !== 0">
           Wählen Sie bitte zwischen {{ minSelect }} und {{ maxSelect }} Antwortmöglichkeiten aus.

@@ -1,10 +1,12 @@
 <div [formGroup]="parentForm">
   <div formArrayName="questionGroupsFormArray">
     <div formArrayName="{{questionGroupIndex}}">
-      <label [attr.for]="'question' + question.id" class="form-label ms-2">
-        <span class="bolderText">{{ questionIndex + 1 }}.</span> {{ question.text }}
+      <label [attr.for]="'question' + question.id" class="form-label row ms-2">
+        <span class="col-auto px-0 bolderText">{{ questionIndex + 1 }}.</span>
+        <span class="col ps-1">
+          {{ question.text }}<span *ngIf="question.required">*</span>
+        </span>
       </label>
-      <span *ngIf="question.required">*</span>
 
       <div class="ms-5 me-3 mb-1">
         <textarea class="form-control" [attr.id]="'question' + question.id"
