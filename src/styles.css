@@ -200,8 +200,10 @@ footer {
   max-width: 66% !important;
 }
 
-#addCheckboxTextInput {
-  min-width: 170px;
+@media (min-width: 576px) {
+  #addCheckboxTextInput {
+    min-width: 170px;
+  }
 }
 
 .innerCard {

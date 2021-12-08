@@ -1,20 +1,22 @@
-<form id="addCheckbox" class="mx-5" [formGroup]="checkboxForm" (ngSubmit)="addCheckboxToQuestion()"
+<form id="addCheckbox" class="mx-2 mx-sm-5" [formGroup]="checkboxForm" (ngSubmit)="addCheckboxToQuestion()"
       *ngIf="survey.questionGroups![indexQuestionGroup].questions![indexQuestion].checkboxGroup">
   <div class="input-group mt-2 mb-1">
     <div class="input-group-text">
       <label [attr.for]="'hasTextField' + indexQuestion + 'group' + indexQuestionGroup">
         <!-- Add whitespace manually as the checkbox itself needs mt-0 to stay
              vertically centered => overwrites margin of label -->
-        Mit Textfeld:&nbsp;&nbsp;&nbsp;
+        <span class="d-none d-sm-inline">Mit Textfeld:&nbsp;&nbsp;&nbsp;</span>
+        <span class="d-inline d-sm-none"></span>
       </label>
       <input [attr.id]="'hasTextField' + indexQuestion + 'group' + indexQuestionGroup"
              class="form-check-input mt-0" name="text" type="checkbox"
              formControlName="hasTextField">
     </div>
-    <input id="addCheckboxTextInput" class="form-control" name="text" placeholder="Neue Auswahlmöglichkeit"
+    <input id="addCheckboxTextInput" class="form-control" name="text" placeholder="Auswahlmöglichkeit"
            formControlName="text" required>
     <button type="submit" class="btn btn-primary" [disabled]="checkboxForm.invalid">
-      Hinzufügen
+      <span class="d-none d-sm-inline">Hinzufügen</span>
+      <span class="d-inline d-sm-none">+</span>
     </button>
   </div>
   <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
