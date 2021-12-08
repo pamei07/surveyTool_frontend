@@ -6,7 +6,7 @@
         <th *ngIf="question.checkboxGroup!.multipleSelect"><span class="blueText">Multiple Select</span></th>
         <th *ngIf="!question.checkboxGroup!.multipleSelect"><span class="blueText">Single Select</span></th>
         <th class="text-center"># Stimmen</th>
-        <th class="text-center">% der Teilnehmer:innen</th>
+        <th class="text-center d-none d-sm-table-cell">% der Teilnehmer:innen</th>
         <th class="text-center" *ngIf="checkboxesHaveTextAnswers">Text</th>
       </tr>
       </thead>
@@ -17,7 +17,7 @@
             [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">
           {{ this.votesForCheckboxes[checkboxIndex] }}
         </td>
-        <td class="text-center"
+        <td class="text-center d-none d-sm-table-cell"
             [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">
           {{ this.percentagesForCheckboxes[checkboxIndex] | percent:'.0-1' }}
         </td>
