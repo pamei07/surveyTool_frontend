@@ -26,18 +26,21 @@
         </div>
       </div>
       <div class="row mb-3 justify-content-evenly">
-        <div class="col-3">
+        <div class="col-sm-3">
           <label [attr.for]="'required' + indexQuestionGroup" class="form-check-label">
             Erforderlich?&nbsp;&nbsp;
           </label>
-          <input [attr.id]="'required' + indexQuestionGroup" class="form-check-input" name="required" value="true"
+          <input [attr.id]="'required' + indexQuestionGroup"
+                 class="form-check-input float-sm-none float-start me-2 me-sm-0"
+                 name="required" value="true"
                  type="checkbox" formControlName="required">
         </div>
-        <div class="col-4">
+        <div class="col-sm-4">
           <label [attr.for]="'checkboxes' + indexQuestionGroup" class="form-check-label">
             Antwortmöglichkeiten?&nbsp;&nbsp;
           </label>
-          <input [attr.id]="'checkboxes' + indexQuestionGroup" class="form-check-input" name="questionType"
+          <input [attr.id]="'checkboxes' + indexQuestionGroup"
+                 class="form-check-input float-sm-none float-start me-2 me-sm-0" name="questionType"
                  type="checkbox" formControlName="hasCheckbox" value="true"
                  data-bs-toggle="collapse" aria-expanded="false"
                  [attr.data-bs-target]="'#checkboxGroupForm' + indexQuestionGroup"
@@ -48,17 +51,17 @@
            [attr.id]="'checkboxGroupForm' + indexQuestionGroup">
         <div class="card card-body innerInnerCard" formGroupName="checkboxGroup">
           <div class="row align-items-center">
-            <div class="col">
-              <label [attr.for]="'multipleSelect' + indexQuestionGroup" class="form-check-label">
-                Mehrfachauswahl?&nbsp;&nbsp;
+            <div class="col-sm">
+              <label [attr.for]="'multipleSelect' + indexQuestionGroup" class="form-check-label me-2 me-sm-2">
+                Mehrfachauswahl?
               </label>
               <input [attr.id]="'multipleSelect' + indexQuestionGroup" class="form-check-input"
                      name="multipleSelect" type="checkbox" value="true"
                      formControlName="multipleSelect"
                      (change)="enableDisableMinMaxInput()">
             </div>
-            <div class="col">
-              <div class="container row p-0 m-0 align-items-center">
+            <div class="col-sm">
+              <div class="container row p-0 m-0 align-items-center justify-content-between justify-content-sm-start">
                 <label [attr.for]="'minSelect' + indexQuestionGroup" class="form-label col-auto ps-0 m-0">
                   Minimum:
                 </label>
@@ -66,8 +69,8 @@
                        name="minSelect" type="number" min="0" formControlName="minSelect">
               </div>
             </div>
-            <div class="col">
-              <div class="container row p-0 m-0 align-items-center">
+            <div class="col-sm">
+              <div class="container row p-0 m-0 align-items-center justify-content-between justify-content-sm-start">
                 <label [attr.for]="'maxSelect' + indexQuestionGroup" class="form-label col-auto ps-0 m-0">
                   Maximal:
                 </label>

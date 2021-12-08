@@ -39,7 +39,7 @@
           <hr class="mt-1">
           <div class="container">
             <div class="row mb-2 align-items-center" formGroupName="checkboxGroup">
-              <div class="col ps-0 pe-1">
+              <div class="col-sm">
                 <label [attr.for]="'multipleSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                        class="form-check-label">
                   Mehrfachauswahl?&nbsp;&nbsp;
@@ -49,22 +49,22 @@
                        formControlName="multipleSelect"
                        (change)="enableDisableMinMaxInput()">
               </div>
-              <div class="col-auto px-4">
-                <div class="container row p-0 m-0 align-items-center">
+              <div class="col-sm-auto mx-sm-2 mb-1 mb-sm-0">
+                <div class="container row p-0 m-0 align-items-center justify-content-between justify-content-sm-start">
                   <label [attr.for]="'minSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                          class="form-label col-auto ps-0 m-0">
-                    Minimum:
+                    Min.:
                   </label>
                   <input [attr.id]="'minSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                          class="form-control minMaxInputField text-end py-1" name="minSelect" type="number" min="0"
                          formControlName="minSelect">
                 </div>
               </div>
-              <div class="col-auto px-1">
-                <div class="container row p-0 m-0 align-items-center">
+              <div class="col-sm-auto mx-sm-2">
+                <div class="container row p-0 m-0 align-items-center justify-content-between justify-content-sm-start">
                   <label [attr.for]="'maxSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                          class="form-label col-auto ps-0 m-0">
-                    Maximal:
+                    Max.:
                   </label>
                   <input [attr.id]="'maxSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                          class="form-control minMaxInputField text-end py-1" name="maxSelect" type="number" min="2"
