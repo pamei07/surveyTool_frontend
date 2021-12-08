@@ -91,7 +91,9 @@ export class SurveySubmissionComponent {
             + '] enthält keine Fragen!')
           isComplete = false;
         } else {
-          isComplete = this.checkIfQuestionsComplete(questionGroup, questionGroupIndex);
+          if (!this.checkIfQuestionsComplete(questionGroup, questionGroupIndex)) {
+            isComplete = false;
+          }
         }
       })
     }
