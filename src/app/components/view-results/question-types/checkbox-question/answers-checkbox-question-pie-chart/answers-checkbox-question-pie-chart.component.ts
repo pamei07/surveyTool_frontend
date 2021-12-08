@@ -12,7 +12,7 @@ export class AnswersCheckboxQuestionPieChartComponent implements OnInit {
   @Input() votesForCheckboxes!: number[];
   data: Object[] = [];
 
-  view: [number, number] = [820, 400];
+  height: number = 400;
 
   // Pie chart options
   gradient: boolean = true;

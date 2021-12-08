@@ -1,6 +1,6 @@
-<div id="pieChart" class="container restrictWidth">
+<div #containerRef id="pieChart" class="container restrictWidth">
   <ngx-charts-pie-chart
-    [view]="view"
+    [view]="[containerRef.offsetWidth, height]"
     [results]="data"
     [scheme]="colors"
     [gradient]="gradient"
