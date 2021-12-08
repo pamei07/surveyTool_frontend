@@ -10,4 +10,6 @@ export class SurveyAccessDetailsComponent {
 
   @Input() survey!: Survey;
 
+  readonly baseUrl: string = 'http://localhost:4200/';
+
 }
