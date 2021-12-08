@@ -1,6 +1,6 @@
-<section id="introduction" class="container restrictWidth mt-4 mb-5">
-  <h2 class="my-3">Willkommen beim Umfragetool!</h2>
-  <p class="p-2">
+<section id="introduction" class="container restrictWidth mt-4">
+  <h2 class="my-3 text-center text-sm-start">Willkommen beim Umfragetool!</h2>
+  <p class="p-2 mb-3 mb-sm-5">
     Hier können Sie
     <span class="fw-bold">Umfragen erstellen</span>,
     <span class="fw-bold">an ihnen teilnehmen</span> und die
@@ -9,28 +9,27 @@
     Dabei bleibt es Ihnen überlassen, ob Sie die Umfrage öffentlich zugänglich machen wollen oder lieber eine Einladung
     zur Teilnahme per Link verschicken.
   </p>
+  <section id="buttons"
+           class="container row restrictWidth text-center justify-content-center align-items-center">
+    <div class="col-sm-3 mb-3 mb-sm-0">
+      <a routerLink="/surveys/create" class="text-decoration-none">
+        <button type="button" class="btn btn-lg btn-outline-primary homeButton">
+          Umfrage<br>
+          erstellen
+        </button>
+      </a>
+    </div>
+    <div class="col-sm-3 mb-4 mb-sm-0">
+      <a routerLink="/surveys" class="text-decoration-none">
+        <button type="button" class="btn btn-lg btn-outline-primary homeButton">
+          Offene<br>
+          Umfragen
+        </button>
+      </a>
+    </div>
+  </section>
 </section>
 
-<section id="buttons"
-         class="d-flex flex-row justify-content-center align-items-center">
-  <div class="me-3">
-    <a routerLink="/surveys/create" class="text-decoration-none">
-      <button type="button" class="btn btn-lg btn-outline-primary homeButton">
-        Umfrage<br>
-        erstellen
-      </button>
-    </a>
-  </div>
-  <div>
-    <a routerLink="/surveys" class="text-decoration-none">
-      <button type="button" class="btn btn-lg btn-outline-primary homeButton">
-        Offene<br>
-        Umfragen
-      </button>
-    </a>
-  </div>
-</section>
-
-<section id="search" class="container restrictWidth mt-5">
-  <app-search-survey class="container"></app-search-survey>
-</section>
+<!--<section id="search" class="container restrictWidth mt-5">-->
+<!--  <app-search-survey class="container"></app-search-survey>-->
+<!--</section>-->
