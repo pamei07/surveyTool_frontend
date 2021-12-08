@@ -2,14 +2,14 @@
   <hr>
   <div class="d-block">
     <h2 class="text-center">{{ survey.name }}</h2>
-    <div class="row justify-content-center align-items-center">
-      <span class="col-auto text-muted p-0">
+    <div class="row justify-content-center align-items-center text-center">
+      <span class="col-sm-auto text-muted p-0">
         Erstellt von: {{ survey.userName }}
       </span>
-      <span class="col-auto text-muted p-0">
+      <span class="col-auto text-muted p-0 d-none d-sm-inline">
            &nbsp;&nbsp;|&nbsp;&nbsp;
       </span>
-      <app-participants-list class="col-auto p-0" [survey]="survey"
+      <app-participants-list class="col-sm-auto p-0" [survey]="survey"
                              *ngIf="survey"></app-participants-list>
     </div>
   </div>
