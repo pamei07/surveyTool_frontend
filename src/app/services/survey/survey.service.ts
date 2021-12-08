@@ -1,16 +1,16 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Survey} from "../../model/survey";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SurveyService {
 
-  private readonly surveyUrl: string;
+  private readonly surveyUrl: string = environment.baseUrl + 'surveys';
 
   constructor(private http: HttpClient) {
-    this.surveyUrl = 'http://localhost:8080/surveys';
   }
 
   public saveSurvey(survey: Survey) {
