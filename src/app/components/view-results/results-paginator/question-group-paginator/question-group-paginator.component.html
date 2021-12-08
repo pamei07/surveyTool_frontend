@@ -5,6 +5,6 @@
     [style.display]="questionGroupIndex > (page - 1) || questionGroupIndex < (page - 1) ? 'none' : null"
     [questionGroup]="questionGroup"></app-question-group-page>
 </div>
-<ngb-pagination class="d-flex justify-content-center mb-3"
+<ngb-pagination class="d-flex justify-content-center my-3"
                 [collectionSize]="questionGroups.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
                 [rotate]="true" [ellipses]="true" [boundaryLinks]="false"></ngb-pagination>
