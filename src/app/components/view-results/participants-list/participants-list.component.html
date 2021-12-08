@@ -16,7 +16,7 @@
       <div class="modal-body text-start" *ngIf="filteredAndSortedParticipants.length !== 0">
         <ul class="list-group">
           <li class="list-group-item" *ngFor="let participant of filteredAndSortedParticipants; index as index">
-            <span class="text-muted">{{ index + 1}}.</span><span> {{ participant.name }}</span>&nbsp;
+            <span class="text-muted">{{ index + 1}}.&nbsp;&nbsp;</span><span> {{ participant.name }}</span>&nbsp;
             <span class="text-muted float-end">(#{{ participant.id }})</span>
           </li>
         </ul>
