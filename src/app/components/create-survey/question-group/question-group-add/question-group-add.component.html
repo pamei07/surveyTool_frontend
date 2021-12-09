@@ -13,7 +13,7 @@
     </div>
     <div *ngIf="title?.invalid && (title?.dirty || title?.touched)"
          class="alert alert-danger p-2 m-0">
-      <div class="errorMessage" *ngIf="title?.errors?.required">
+      <div class="errorMessage" *ngIf="title?.errors?.required || title?.errors?.stringIsEmpty">
         Ein Frageblock benötigt einen Titel.
       </div>
       <div class="errorMessage" *ngIf="title?.errors?.maxlength">

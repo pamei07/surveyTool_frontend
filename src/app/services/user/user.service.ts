@@ -15,7 +15,7 @@ export class UserService {
 
   public createUser(name: string): User {
     let user: User = new User();
-    if (name !== '') {
+    if (name.trim() !== '') {
       user.setName(name);
     } else {
       user.setName('Anonym');

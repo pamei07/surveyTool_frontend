@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormGroup, FormGroupDirective} from "@angular/forms";
 import {User} from "../../../model/user";
-import {HttpErrorResponse} from "@angular/common/http";
 import {Answer} from "../../../model/answer";
 import {Question} from "../../../model/question";
 import {Checkbox} from "../../../model/checkbox";
@@ -73,7 +72,7 @@ export class AnswersSubmissionComponent implements OnInit {
           if (answerToQuestion.checkboxId !== '') {
             this.pushAnswerToSingleSelectQuestion(user, answerToQuestion, questionGroupIndex, questionIndex);
           }
-        } else if (answerToQuestion !== '') {
+        } else if (answerToQuestion.trim() !== '') { // Skip text answers that only contain whitespace
           this.pushAnswerToTextQuestion(user, answerToQuestion, questionGroupIndex, questionIndex);
         }
       })
@@ -83,7 +82,7 @@ export class AnswersSubmissionComponent implements OnInit {
       () => {
         this.answerArray = [];
         this.router.navigate(["thanks"]);
-      }, (error: HttpErrorResponse) => {
+      }, () => {
         this.backendError();
       });
   }

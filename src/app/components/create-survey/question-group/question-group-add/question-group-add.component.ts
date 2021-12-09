@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Survey} from "../../../../model/survey";
 import {QuestionGroup} from "../../../../model/question-group";
+import {stringNotEmpty} from "../../../../directives/string-validation.directive";
 
 @Component({
   selector: 'app-question-group-add',
@@ -13,7 +14,7 @@ export class QuestionGroupAddComponent {
   @Input() survey!: Survey;
 
   questionGroupForm = this.fb.group({
-    title: ['', [Validators.required, Validators.maxLength(255)]]
+    title: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]]
   })
 
   get title() {

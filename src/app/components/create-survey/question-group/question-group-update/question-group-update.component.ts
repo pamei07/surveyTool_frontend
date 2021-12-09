@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 import {FormBuilder, Validators} from "@angular/forms";
+import {stringNotEmpty} from "../../../../directives/string-validation.directive";
 
 @Component({
   selector: 'app-question-group-update',
@@ -13,7 +14,7 @@ export class QuestionGroupUpdateComponent implements OnInit {
   @Input() indexQuestionGroup!: number;
 
   updateForm = this.fb.group({
-    title: ['', [Validators.required, Validators.maxLength(255)]]
+    title: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]]
   })
 
   get title() {

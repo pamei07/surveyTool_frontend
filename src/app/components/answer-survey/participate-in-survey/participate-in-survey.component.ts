@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {FormArray, FormBuilder, Validators} from "@angular/forms";
 import {Question} from "../../../model/question";
 import {noOfCheckboxesCheckedInMinMaxRange} from "../../../directives/min-max-select-validation.directive";
+import {stringNotEmpty} from "../../../directives/string-validation.directive";
 
 @Component({
   selector: 'app-participate-in-survey',
@@ -123,7 +124,7 @@ export class ParticipateInSurveyComponent implements OnInit {
     question.checkboxGroup?.checkboxes?.forEach(() => {
       checkboxesFormArray.push(this.fb.group({
         checked: false,
-        text: [{value: '', disabled: true}, [Validators.required, Validators.maxLength(1500)]]
+        text: [{value: '', disabled: true}, [Validators.required, Validators.maxLength(1500), stringNotEmpty()]]
       }))
     })
   }
@@ -132,19 +133,19 @@ export class ParticipateInSurveyComponent implements OnInit {
     if (question.required) {
       questionsFormArray.push(this.fb.group({
         checkboxId: ['', [Validators.required]],
-        text: [{value: '', disabled: true}, [Validators.required, Validators.maxLength(1500)]]
+        text: [{value: '', disabled: true}, [Validators.required, Validators.maxLength(1500), stringNotEmpty()]]
       }))
     } else {
       questionsFormArray.push(this.fb.group({
         checkboxId: [''],
-        text: [{value: '', disabled: true}, [Validators.required, Validators.maxLength(1500)]]
+        text: [{value: '', disabled: true}, [Validators.required, Validators.maxLength(1500), stringNotEmpty()]]
       }))
     }
   }
 
   private addTextQuestion(question: Question, questionsFormArray: FormArray) {
     if (question.required) {
-      questionsFormArray.push(this.fb.control('', [Validators.required, Validators.maxLength(1500)]));
+      questionsFormArray.push(this.fb.control('', [Validators.required, Validators.maxLength(1500), stringNotEmpty()]));
     } else {
       questionsFormArray.push(this.fb.control('', [Validators.maxLength(1500)]));
     }

@@ -15,7 +15,7 @@
                  formControlName="title" required>
           <div *ngIf="title?.invalid && (title?.dirty || title?.touched)"
                class="alert alert-danger p-2 m-0 mt-2">
-            <div class="errorMessage" *ngIf="title?.errors?.required">
+            <div class="errorMessage" *ngIf="title?.errors?.required || title?.errors?.stringIsEmpty">
               Ein Frageblock benötigt einen Titel.
             </div>
             <div *ngIf="title?.errors?.maxlength">

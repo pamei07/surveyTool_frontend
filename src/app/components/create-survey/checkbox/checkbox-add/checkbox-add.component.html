@@ -21,7 +21,7 @@
   </div>
   <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
        class="alert alert-danger p-2 m-0">
-    <div *ngIf="text?.errors?.required">
+    <div *ngIf="text?.errors?.required || text?.errors?.stringIsEmpty">
       Eine Checkbox benötigt einen Text.
     </div>
     <div *ngIf="text?.errors?.maxlength">

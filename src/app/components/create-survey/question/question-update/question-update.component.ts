@@ -5,6 +5,7 @@ import {
   atLeastOneCheckboxIfQuestionRequired,
   maxSelectGreaterThanEqualsMinSelectValidator
 } from "../../../../directives/min-max-select-validation.directive";
+import {stringNotEmpty} from "../../../../directives/string-validation.directive";
 
 @Component({
   selector: 'app-question-update',
@@ -18,7 +19,7 @@ export class QuestionUpdateComponent implements OnInit {
   @Input() indexQuestion!: number;
 
   updateForm = this.fb.group({
-    text: ['', [Validators.required, Validators.maxLength(500)]],
+    text: ['', [Validators.required, Validators.maxLength(500), stringNotEmpty()]],
     required: false,
     checkboxGroup: this.fb.group({
       multipleSelect: false,

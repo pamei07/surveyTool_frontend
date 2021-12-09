@@ -18,7 +18,7 @@
                     class="form-control shortTextarea" name="title" formControlName="text" required></textarea>
           <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
                class="alert alert-danger p-2 mt-1 mb-?0">
-            <div class="errorMessage" *ngIf="text?.errors?.required">
+            <div class="errorMessage" *ngIf="text?.errors?.required || text?.errors?.stringIsEmpty">
               Eine Frage benötigt einen Fragentext.
             </div>
             <div class="errorMessage" *ngIf="text?.errors?.maxlength">

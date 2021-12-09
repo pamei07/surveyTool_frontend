@@ -61,6 +61,7 @@ import {QuestionGroupPaginatorParticipationComponent} from "./components/answer-
 import {QuestionGroupPaginatorComponent} from "./components/view-results/results-paginator/question-group-paginator/question-group-paginator.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ClipboardModule} from "@angular/cdk/clipboard";
+import { StringValidationDirective } from './directives/string-validation.directive';
 
 
 const appRoutes: Routes = [
@@ -126,7 +127,8 @@ const appRoutes: Routes = [
     TableOfContentsListComponent,
     TableOfContentsPaginatorComponent,
     QuestionGroupPaginatorParticipationComponent,
-    QuestionGroupPaginatorComponent
+    QuestionGroupPaginatorComponent,
+    StringValidationDirective
   ],
   imports: [
     BrowserModule,

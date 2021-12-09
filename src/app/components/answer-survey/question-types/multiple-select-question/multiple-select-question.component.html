@@ -42,7 +42,8 @@
           </div>
           <div *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.invalid"
                class="alert alert-danger p-2 my-2 ms-5 me-3">
-            <span *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.required">Das Textfeld muss ausgefüllt sein.</span>
+            <span
+              *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.required || getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.stringIsEmpty">Das Textfeld muss ausgefüllt sein.</span>
             <span *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.maxlength">Ihre Antwort darf nicht länger als 1500 Zeichen sein.</span>
           </div>
         </div>

@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
 import {Checkbox} from "../../../../model/checkbox";
 import {FormBuilder, Validators} from "@angular/forms";
+import {stringNotEmpty} from "../../../../directives/string-validation.directive";
 
 @Component({
   selector: 'app-checkbox-add',
@@ -15,7 +16,7 @@ export class CheckboxAddComponent {
   @Input() indexQuestion!: number;
 
   checkboxForm = this.fb.group({
-    text: ['', [Validators.required, Validators.maxLength(255)]],
+    text: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]],
     hasTextField: false
   })
 

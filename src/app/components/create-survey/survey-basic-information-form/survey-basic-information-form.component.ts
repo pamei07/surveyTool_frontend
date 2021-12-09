@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Survey} from "../../../model/survey";
 import {dateInFuture, startDateBeforeEndDateValidator} from "../../../directives/date-validation.directive";
+import {stringNotEmpty} from "../../../directives/string-validation.directive";
 
 @Component({
   selector: 'app-survey-basic-information-form',
@@ -14,7 +15,7 @@ export class SurveyBasicInformationFormComponent implements OnInit {
   @Output() basicInfoBoolean = new EventEmitter<boolean>();
 
   surveyForm = this.fb.group({
-    name: ['', [Validators.required, Validators.maxLength(255)]],
+    name: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]],
     description: ['', [Validators.maxLength(3000)]],
     startDate: ['', [Validators.required, dateInFuture()]],
     endDate: ['', [Validators.required, dateInFuture()]]
@@ -50,7 +51,8 @@ export class SurveyBasicInformationFormComponent implements OnInit {
 
   setBasicInformationOnSurvey() {
     this.survey.name = this.surveyForm.value.name;
-    this.survey.description = this.surveyForm.value.description;
+    // Trim description to prevent saving "empty" descriptions/descriptions with only whitespace
+    this.survey.description = this.surveyForm.value.description.trim();
     this.survey.startDate = this.surveyForm.value.startDate;
     this.survey.endDate = this.surveyForm.value.endDate;
     this.basicInfoBoolean.emit(true);

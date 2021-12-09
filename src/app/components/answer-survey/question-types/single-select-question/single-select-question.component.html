@@ -33,7 +33,8 @@
         </div>
         <div class="alert alert-danger p-2 my-2 ms-5 me-3" *ngIf="text?.invalid || checkboxId?.errors?.required">
           <div *ngIf="text?.invalid">
-            <span *ngIf="text?.errors?.required">Das Textfeld muss ausgefüllt sein.</span>
+            <span
+              *ngIf="text?.errors?.required || text?.errors?.stringIsEmpty">Das Textfeld muss ausgefüllt sein.</span>
             <span *ngIf="text?.errors?.maxlength">Ihre Antwort darf nicht länger als 1500 Zeichen sein.</span>
           </div>
           <div *ngIf="checkboxId?.errors?.required">

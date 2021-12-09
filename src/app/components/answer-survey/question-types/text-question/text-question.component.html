@@ -14,7 +14,7 @@
       </div>
 
       <div *ngIf="text?.invalid" class="alert alert-danger p-2 my-2 ms-5 me-3">
-        <span *ngIf="text?.errors?.required">Diese Frage muss beantwortet werden.</span>
+        <span *ngIf="text?.errors?.required || text?.errors?.stringIsEmpty">Diese Frage muss beantwortet werden.</span>
         <span *ngIf="text?.errors?.maxlength">Ihre Antwort darf nicht länger als 1500 Zeichen sein.</span>
       </div>
     </div>
