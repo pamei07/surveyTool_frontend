@@ -23,9 +23,11 @@
         </td>
         <td *ngIf="checkbox.hasTextField && checkboxesHaveTextAnswers && (votesForCheckboxes[checkboxIndex] > 0)">
           <div class="w-100 h-100 text-center">
-            <button class="btn btn-primary" data-bs-toggle="modal"
+            <button class="btn btn-primary py-1 pt-0 py-sm-1" data-bs-toggle="modal"
                     [attr.data-bs-target]="'#viewTextAnswers' + checkbox.id">
-              Ansehen
+              <span class="d-none d-sm-inline">Ansehen</span>
+              <img class="d-inline d-sm-none viewTextAnswers" src="assets/svgs/eye.svg" alt="Ansehen">
+
             </button>
           </div>
           <app-checkbox-text-answers [answers]="answers"

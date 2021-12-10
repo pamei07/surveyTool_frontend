@@ -125,6 +125,10 @@ footer {
   height: 20px;
 }
 
+.viewTextAnswers {
+  height: 20px;
+}
+
 /* CDK Drag & Drop */
 .cursorMover {
   cursor: move;
