@@ -14,6 +14,22 @@ export class Survey {
   userId: number | undefined;
   userName: string | undefined;
 
+  setName(name: string) {
+    this.name = name;
+  }
+
+  setDescription(description: string) {
+    this.description = description;
+  }
+
+  setStartDate(startDate: string) {
+    this.startDate = startDate;
+  }
+
+  setEndDate(endDate: string) {
+    this.endDate = endDate;
+  }
+
   setUserId(userId: number | undefined) {
     this.userId = userId;
   }
