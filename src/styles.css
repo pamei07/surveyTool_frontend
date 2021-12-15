@@ -129,6 +129,26 @@ footer {
   height: 20px;
 }
 
+@media (min-width: 1024px) {
+  .helpButton {
+    position: fixed;
+    bottom: 10%;
+    right: 3.5%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .helpButton {
+    float: right;
+    margin-top: -5px;
+  }
+}
+
+.questionMark {
+  height: 40px;
+  width: 30px;
+}
+
 /* CDK Drag & Drop */
 .cursorMover {
   cursor: move;
