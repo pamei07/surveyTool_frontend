@@ -1,9 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 import {SurveyService} from "../../../services/survey/survey.service";
 import {Router} from "@angular/router";
 import {QuestionGroup} from "../../../model/question-group";
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, FormGroupDirective} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../model/user";
 
@@ -12,30 +12,47 @@ import {User} from "../../../model/user";
   templateUrl: 'survey-submission.component.html'
 })
 
-export class SurveySubmissionComponent {
+export class SurveySubmissionComponent implements OnInit {
 
   @Input() survey!: Survey;
+  surveyForm!: FormGroup;
   errorMessages: string[] = [];
   private backendErrorMessage: string = "Beim Speichern der Umfrage ist etwas schiefgelaufen.\n" +
     " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
 
-  surveySubmissionForm = this.fb.group({
-    userName: ['', [Validators.maxLength(255)]],
-    openAccess: false
-  })
+  get name() {
+    return this.surveyForm.get('name');
+  }
+
+  get description() {
+    return this.surveyForm.get('description');
+  }
+
+  get startDate() {
+    return this.surveyForm.get('startDate');
+  }
+
+  get endDate() {
+    return this.surveyForm.get('endDate');
+  }
 
   get userName() {
-    return this.surveySubmissionForm.get('userName');
+    return this.surveyForm.get('userName');
   }
 
   get openAccess() {
-    return this.surveySubmissionForm.get('openAccess');
+    return this.surveyForm.get('openAccess');
   }
 
   constructor(private surveyService: SurveyService,
               private userService: UserService,
               private fb: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private parentFormGroup: FormGroupDirective) {
+  }
+
+  ngOnInit() {
+    this.surveyForm = this.parentFormGroup.control;
   }
 
   saveSurveyWithUser() {
@@ -55,6 +72,10 @@ export class SurveySubmissionComponent {
   }
 
   private saveSurvey(user: User) {
+    this.survey.setName(this.name?.value);
+    this.survey.setDescription(this.description?.value);
+    this.survey.setStartDate(this.startDate?.value);
+    this.survey.setEndDate(this.endDate?.value);
     this.survey.setUserId(user?.id);
     this.survey.setOpenAccess(this.openAccess?.value);
 

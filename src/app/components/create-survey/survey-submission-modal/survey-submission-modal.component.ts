@@ -9,17 +9,25 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 export class SurveySubmissionModalComponent implements OnInit {
 
   @Output() postSurvey = new EventEmitter;
-  parentForm!: FormGroup;
+  surveyForm!: FormGroup;
 
   get userName() {
-    return this.parentForm.get('userName');
+    return this.surveyForm.get('userName');
+  }
+
+  get startDate() {
+    return this.surveyForm.get('startDate');
+  }
+
+  get endDate() {
+    return this.surveyForm.get('endDate');
   }
 
   constructor(private parentFormGroup: FormGroupDirective) {
   }
 
   ngOnInit() {
-    this.parentForm = this.parentFormGroup.control;
+    this.surveyForm = this.parentFormGroup.control;
   }
 
   saveSurvey() {

@@ -1,11 +1,5 @@
-<section id="surveyForm" class="container restrictWidth">
-  <app-survey-basic-information-form *ngIf="!basicInfoGiven"
-                                     [survey]="survey"
-                                     (basicInfoBoolean)="setBasicInfoGiven($event)"></app-survey-basic-information-form>
-  <div *ngIf="basicInfoGiven">
-    <app-add-survey-content [survey]="survey"
-                            (basicInfoBoolean)="setBasicInfoGiven($event)"></app-add-survey-content>
-    <app-survey-submission [survey]="survey"></app-survey-submission>
-  </div>
+<section id="surveyForm" class="container restrictWidth" [formGroup]="surveyForm">
+  <app-add-survey-content [survey]="survey"></app-add-survey-content>
+  <app-survey-submission [survey]="survey"></app-survey-submission>
 </section>
 

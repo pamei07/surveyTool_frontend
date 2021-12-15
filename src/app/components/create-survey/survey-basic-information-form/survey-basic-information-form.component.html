@@ -1,14 +1,10 @@
-<section id="surveyBasics" class="card card-body my-4">
-  <form [formGroup]="surveyForm" (ngSubmit)="setBasicInformationOnSurvey()">
-    <h3 class="mb-3">
-      Erstellen Sie Ihre Umfrage:
-    </h3>
+<section id="surveyBasics" class="card card-body my-3">
+  <form [formGroup]="surveyForm">
     <div id="surveyName" class="row mb-3 px-1">
       <div class="col">
-        <label for="name" class="form-label labelInput">Titel*</label>
+        <label for="name" class="form-label labelInput bolderText">Titel*</label>
         <input id="name" name="name" type="text" class="form-control" required
                formControlName="name">
-
         <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
              class="alert alert-danger p-2 mt-1 mb-0">
           <div *ngIf="name?.errors?.required || name?.errors?.stringIsEmpty">
@@ -22,7 +18,7 @@
     </div>
     <div id="surveyDescription" class="row mb-3 px-1">
       <div class="col">
-        <label for="description" class="form-label labelInput">Beschreibung</label>
+        <label for="description" class="form-label labelInput bolderText">Beschreibung</label>
         <textarea id="description" name="description" class="form-control textArea"
                   formControlName="description" placeholder="max. 3000 Zeichen"></textarea>
         <div *ngIf="(description?.invalid && (description?.dirty || description?.touched))"
@@ -33,44 +29,14 @@
         </div>
       </div>
     </div>
-
-    <div id="surveyDates" class="row mb-2 px-1">
-      <div class="col-sm">
-        <label for="startDate" class="form-label labelInput">Startdatum*</label>
-        <input id="startDate" name="startDate" type="datetime-local" class="form-control" required
-               formControlName="startDate">
-        <div *ngIf="(startDate?.invalid && (startDate?.dirty || startDate?.touched))"
-             class="alert alert-danger p-2 mt-1 mb-0">
-          <div *ngIf="startDate?.errors?.required">
-            Bitte geben Sie ein Startdatum an.
-          </div>
-          <div *ngIf="startDate?.errors?.dateInPast">
-            Das Startdatum muss in der Zukunft liegen.
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm">
-        <label for="endDate" class="form-label labelInput mt-3 mt-sm-0">Enddatum*</label>
-        <input id="endDate" name="endDate" type="datetime-local" class="form-control" required
-               formControlName="endDate">
-        <div *ngIf="(endDate?.invalid && (endDate?.dirty || endDate?.touched))"
-             class="alert alert-danger p-2 mt-1 mb-0">
-          <div *ngIf="endDate?.errors?.required">
-            Bitte geben Sie ein Enddatum an.
-          </div>
-          <div *ngIf="endDate?.errors?.dateInPast">
-            Das Enddatum muss in der Zukunft liegen.
-          </div>
-        </div>
+    <div id="surveyOpenAccess" class="px-3">
+      <div class="form-check">
+        <label for="openAccess" class="form-check-label">
+          Soll diese Umfrage auch öffentlich zugänglich sein (ohne Link)?
+        </label>
+        <input id="openAccess" class="form-check-input" type="checkbox" formControlName="openAccess">
       </div>
     </div>
-    <div class="alert alert-danger p-2 mt-1 mb-2 mx-1" *ngIf="surveyForm.hasError('endDateBeforeStartDate')">
-      Das Startdatum muss vor dem Enddatum liegen.
-    </div>
-    <button type="submit" class="btn btn-primary float-end mt-2 me-2" [disabled]="surveyForm.invalid">
-      Weiter
-    </button>
   </form>
 </section>
 

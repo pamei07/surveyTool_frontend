@@ -1,4 +1,4 @@
-<div class="modal fade" id="confirmSubmission" tabindex="-1" aria-hidden="true" [formGroup]="parentForm">
+<div class="modal fade" id="confirmSubmission" tabindex="-1" aria-hidden="true" [formGroup]="surveyForm">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,15 +6,39 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Sind Sie sicher? Sie können die Umfrage nachträglich nicht mehr verändern.
-      </div>
-      <hr class="my-0">
-      <div class="modal-body">
-        <div class="form-check">
-          <label for="openAccess" class="form-check-label">
-            Soll diese Umfrage auch öffentlich zugänglich sein (ohne Link)?
-          </label>
-          <input id="openAccess" class="form-check-input" type="checkbox" formControlName="openAccess">
+        <div id="surveyDates" class="row mb-2 px-1">
+          <div class="col-sm">
+            <label for="startDate" class="form-label labelInput">Startdatum*</label>
+            <input id="startDate" name="startDate" type="datetime-local" class="form-control" required
+                   formControlName="startDate">
+            <div *ngIf="(startDate?.invalid && (startDate?.dirty || startDate?.touched))"
+                 class="alert alert-danger p-2 mt-1 mb-0">
+              <div *ngIf="startDate?.errors?.required">
+                Bitte geben Sie ein Startdatum an.
+              </div>
+              <div *ngIf="startDate?.errors?.dateInPast">
+                Das Startdatum muss in der Zukunft liegen.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <label for="endDate" class="form-label labelInput mt-3">Enddatum*</label>
+            <input id="endDate" name="endDate" type="datetime-local" class="form-control" required
+                   formControlName="endDate">
+            <div *ngIf="(endDate?.invalid && (endDate?.dirty || endDate?.touched))"
+                 class="alert alert-danger p-2 mt-1 mb-0">
+              <div *ngIf="endDate?.errors?.required">
+                Bitte geben Sie ein Enddatum an.
+              </div>
+              <div *ngIf="endDate?.errors?.dateInPast">
+                Das Enddatum muss in der Zukunft liegen.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-danger p-2 mt-1 mb-2 mx-1" *ngIf="surveyForm.hasError('endDateBeforeStartDate')">
+          Das Startdatum muss vor dem Enddatum liegen.
         </div>
       </div>
       <hr class="my-0">
@@ -30,12 +54,16 @@
           </div>
         </div>
       </div>
+      <hr class="my-0">
+      <div class="modal-body">
+        Sind Sie sicher? Sie können die Umfrage nachträglich nicht mehr verändern.
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
           Abbrechen
         </button>
         <button type="submit" class="btn btn-success" data-bs-dismiss="modal" (click)="saveSurvey()"
-                [disabled]="parentForm.invalid">
+                [disabled]="surveyForm.invalid">
           Ja, speichern.
         </button>
       </div>
