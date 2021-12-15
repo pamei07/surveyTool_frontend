@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../model/survey";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-survey-access-details',
@@ -10,6 +11,6 @@ export class SurveyAccessDetailsComponent {
 
   @Input() survey!: Survey;
 
-  readonly baseUrl: string = 'http://localhost:4200/';
+  readonly baseUrl: string = environment.frontendUrl;
 
 }
