@@ -5,7 +5,6 @@ import {AppComponent} from './app.component';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./components/home/home.component";
 import {SurveyBasicInformationFormComponent} from "./components/create-survey/survey-basic-information-form/survey-basic-information-form.component";
-import {AddSurveyContentComponent} from "./components/create-survey/add-survey-content/add-survey-content.component";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {QuestionGroupAddComponent} from "./components/create-survey/question-group/question-group-add/question-group-add.component";
@@ -61,7 +60,7 @@ import {QuestionGroupPaginatorParticipationComponent} from "./components/answer-
 import {QuestionGroupPaginatorComponent} from "./components/view-results/results-paginator/question-group-paginator/question-group-paginator.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ClipboardModule} from "@angular/cdk/clipboard";
-import { StringValidationDirective } from './directives/string-validation.directive';
+import {StringValidationDirective} from './directives/string-validation.directive';
 
 
 const appRoutes: Routes = [
@@ -81,7 +80,6 @@ const appRoutes: Routes = [
     SurveyAccessDetailsComponent,
     SurveyCreationComponent,
     SurveyBasicInformationFormComponent,
-    AddSurveyContentComponent,
     QuestionGroupListComponent,
     QuestionGroupAddComponent,
     QuestionGroupUpdateComponent,
