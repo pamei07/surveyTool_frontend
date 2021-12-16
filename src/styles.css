@@ -149,6 +149,10 @@ footer {
   width: 30px;
 }
 
+.helperNavButtons {
+  width: 120px !important;
+}
+
 /* CDK Drag & Drop */
 .cursorMover {
   cursor: move;
@@ -240,6 +244,10 @@ footer {
 
 .minMaxInputField {
   width: 50px !important;
+}
+
+#helperModalBody {
+  min-height: 250px;
 }
 
 /* Override Bootstrap CSS */

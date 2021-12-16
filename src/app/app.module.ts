@@ -62,6 +62,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import {StringValidationDirective} from './directives/string-validation.directive';
 import {CreationHelperComponent} from './components/create-survey/helper/creation-helper/creation-helper.component';
+import {HelperModalComponent} from './components/create-survey/helper/helper-modal/helper-modal.component';
 
 
 const appRoutes: Routes = [
@@ -128,7 +129,8 @@ const appRoutes: Routes = [
     QuestionGroupPaginatorParticipationComponent,
     QuestionGroupPaginatorComponent,
     StringValidationDirective,
-    CreationHelperComponent
+    CreationHelperComponent,
+    HelperModalComponent
   ],
   imports: [
     BrowserModule,
