@@ -138,12 +138,12 @@ export class SurveySubmissionComponent implements OnInit {
           if (!checkboxGroup?.multipleSelect && noOfCheckboxes! < 2) {
             this.errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
               "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
-              "\nBei einer Frage mit Auswahlmöglichkeiten müssen mind. 2 Antworten gegeben sein.");
+              "\nBei einer Frage mit Antwortmöglichkeiten müssen mind. 2 Antworten gegeben sein.");
             isComplete = false;
           } else if (checkboxGroup?.multipleSelect && noOfCheckboxes! < checkboxGroup!.maxSelect) {
             this.errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
               "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
-              "\nBei einer Frage mit Auswahlmöglichkeiten müssen mind. 2 Antworten gegeben sein, " +
+              "\nBei einer Frage mit Antwortmöglichkeiten müssen mind. 2 Antworten gegeben sein, " +
               "bzw. mind. so viele Antworten wie bei der Mehrfachauswahl maximal erlaubt sind.");
             isComplete = false;
           }
