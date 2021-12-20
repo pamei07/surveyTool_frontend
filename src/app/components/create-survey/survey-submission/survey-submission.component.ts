@@ -44,6 +44,10 @@ export class SurveySubmissionComponent implements OnInit {
     return this.surveyForm.get('openAccess');
   }
 
+  get anonymousParticipation() {
+    return this.surveyForm.get('anonymousParticipation');
+  }
+
   constructor(private surveyService: SurveyService,
               private userService: UserService,
               private fb: FormBuilder,
@@ -78,6 +82,7 @@ export class SurveySubmissionComponent implements OnInit {
     this.survey.setEndDate(this.endDate?.value);
     this.survey.setUserId(user?.id);
     this.survey.setOpenAccess(this.openAccess?.value);
+    this.survey.setAnonymousParticipation(this.anonymousParticipation?.value);
 
     let newSurvey: Survey;
     let accessId: string;

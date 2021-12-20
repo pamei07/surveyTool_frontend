@@ -7,6 +7,7 @@ export class Survey {
   startDate: string = '';
   endDate: string = '';
   openAccess: boolean | undefined;
+  anonymousParticipation: boolean | undefined;
   accessId: string | undefined;
   participationId: string | undefined;
   questionGroups: QuestionGroup[] = [];
@@ -36,5 +37,9 @@ export class Survey {
 
   setOpenAccess(bool: boolean) {
     this.openAccess = bool;
+  }
+
+  setAnonymousParticipation(bool: boolean) {
+    this.anonymousParticipation = bool;
   }
 }

@@ -12,8 +12,8 @@
         Sind Sie sicher?<br>
         Sie können ihre Antworten nachträglich nicht mehr verändern.
       </div>
-      <hr class="my-0">
-      <div class="modal-body">
+      <hr class="my-0" *ngIf="!survey.anonymousParticipation">
+      <div class="modal-body" *ngIf="!survey.anonymousParticipation">
         <label for="userName" class="form-label">
           Geben Sie Ihren Namen ein (Optional):
         </label>

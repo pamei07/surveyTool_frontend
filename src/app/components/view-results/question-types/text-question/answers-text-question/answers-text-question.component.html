@@ -22,7 +22,7 @@
             <div class="col">
               {{ answer.text }}
               <span class="text-muted float-end mt-2">
-                - {{ answer?.userName }} (user#{{ answer?.userId }})
+                - {{ answer?.userName }} <span *ngIf="answer?.userName !== 'Anonym'">(user#{{ answer?.userId }})</span>
               </span>
             </div>
           </div>

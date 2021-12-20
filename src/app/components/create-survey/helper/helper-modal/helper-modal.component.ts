@@ -23,6 +23,11 @@ export class HelperModalComponent {
       'Die Umfrage wird dort angezeigt bis das Ende der Laufzeit erreicht ist.</p>' +
       '<p>Sie erhalten weiterhin einen Link, mit dem Sie die Umfrage weiterleiten können.</p>',
 
+      '<p>Sollten Sie die Teilnahme an Ihrer Umfrage als <b>ausschließlich anonym</b> einstellen, werden die Teilnehmer:innen ' +
+      'bei Abgabe der Antworten <b>nicht</b> nach dem Namen gefragt.</p>' +
+      '<p>Andernfalls erscheint zum Schluss der Teilnahme ein Eingabefeld, bei dem die Teilnehmer:innen optional Ihren Namen ' +
+      'eingeben können.</p>',
+
       '<p>Nachdem Sie einen Frageblock erstellt haben, können Sie diesen eine <b>Frage hinzufügen.</b></p>' +
       '<p>Sie können dabei zwischen einer Frage mit Freitext und einer mit Antwortmöglichkeiten entscheiden.</p>' +
       '<p>Wenn Sie die Frage als \'Erforderlich\' markieren. Wird der/die Teilnehmer:in dazu aufgefordert, die Frage ' +
@@ -38,10 +43,10 @@ export class HelperModalComponent {
 
       '<p>Die Reihenfolge der Frageblöcke, Fragen und Antwortmöglichkeiten lässt sich mithilfe von <b>Drag & Drop</b> umändern.</p>',
 
-      '<p>Vor dem endgültigen Speichern der Umfrage werden Sie gebeten einen Zeitraum anzugeben, in dem die erstellte ' +
+      '<p>Vor dem endgültigen Speichern der Umfrage werden Sie gebeten einen <b>Zeitraum</b> anzugeben, in dem die erstellte ' +
       'Umfrage zur Teilnahme freigegeben wird. ' +
       'Die Ergebnisse der Umfrage können unabhängig von dem Zeitraum eingesehen werden.</p>' +
-      '<p>Zusätzlich können Sie Ihren Namen als Umfrageersteller:in eintragen. Dieser ist für die Teilnehmer:innen der ' +
+      '<p>Zusätzlich können Sie Ihren <b>Namen</b> als Umfrageersteller:in eintragen. Dieser ist für die Teilnehmer:innen der ' +
       'Umfrage sichtbar.</p>']
 
   goBack() {

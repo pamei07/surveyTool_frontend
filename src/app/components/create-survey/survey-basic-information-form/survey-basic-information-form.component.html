@@ -29,12 +29,21 @@
         </div>
       </div>
     </div>
-    <div id="surveyOpenAccess" class="px-3">
+    <div id="surveyOpenAccess" class="px-3 mb-3">
       <div class="form-check">
         <label for="openAccess" class="form-check-label">
           Soll diese Umfrage auch öffentlich zugänglich sein (ohne Link)?
         </label>
         <input id="openAccess" class="form-check-input" type="checkbox" formControlName="openAccess">
+      </div>
+    </div>
+    <div id="surveyAnonymousParticipation" class="px-3">
+      <div class="form-check">
+        <label for="anonymousParticipation" class="form-check-label">
+          Soll die Teilnahme an dieser Umfrage ausschließlich anonym erfolgen?
+        </label>
+        <input id="anonymousParticipation" class="form-check-input" type="checkbox"
+               formControlName="anonymousParticipation">
       </div>
     </div>
   </form>
