@@ -19,7 +19,8 @@ export class SurveyCreationComponent {
     startDate: ['', [Validators.required, dateInFuture()]],
     endDate: ['', [Validators.required, dateInFuture()]],
     userName: ['', [Validators.maxLength(255)]],
-    openAccess: false
+    openAccess: false,
+    anonymousParticipation: false
   }, {validators: startDateBeforeEndDateValidator()})
 
   constructor(private fb: FormBuilder) {
