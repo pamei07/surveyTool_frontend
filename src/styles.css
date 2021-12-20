@@ -250,6 +250,11 @@ footer {
   min-height: 250px;
 }
 
+.loginLogout {
+  color: #FFFFFF;
+  font-size: 30px;
+}
+
 /* Override Bootstrap CSS */
 .list-group {
   border: 0.08em solid #DFDFDF;

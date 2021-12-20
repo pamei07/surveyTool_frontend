@@ -63,6 +63,8 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
 import {StringValidationDirective} from './directives/string-validation.directive';
 import {CreationHelperComponent} from './components/create-survey/helper/creation-helper/creation-helper.component';
 import {HelperModalComponent} from './components/create-survey/helper/helper-modal/helper-modal.component';
+import {OAuthModule} from "angular-oauth2-oidc";
+import {environment} from "../environments/environment";
 
 
 const appRoutes: Routes = [
@@ -142,7 +144,13 @@ const appRoutes: Routes = [
     NgxChartsModule,
     NgbModule,
     DragDropModule,
-    ClipboardModule
+    ClipboardModule,
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: [environment.baseUrl],
+        sendAccessToken: true
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
