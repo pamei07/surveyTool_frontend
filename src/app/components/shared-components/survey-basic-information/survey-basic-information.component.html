@@ -45,7 +45,11 @@
       <div class="col-sm-2">
         <span class="bolderText">Anonyme Teilnahme:</span>
       </div>
-      <div class="col-sm position-relative">
+      <div class="col-sm d-sm-block d-md-none">
+        <span class="ms-2" *ngIf="survey?.anonymousParticipation === true">Ja</span>
+        <span class="ms-2" *ngIf="survey?.anonymousParticipation === false">Nein</span>
+      </div>
+      <div class="col-sm position-relative d-none d-md-block">
         <span class="ms-2 position-absolute bottom-0" *ngIf="survey?.anonymousParticipation === true">Ja</span>
         <span class="ms-2 position-absolute bottom-0" *ngIf="survey?.anonymousParticipation === false">Nein</span>
       </div>
