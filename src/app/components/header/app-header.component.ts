@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {AuthConfig, NullValidationHandler, OAuthService} from "angular-oauth2-oidc";
-import {environment} from "../../../environments/environment";
+import {Router} from "@angular/router";
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-header',
@@ -9,30 +9,20 @@ import {environment} from "../../../environments/environment";
 
 export class AppHeaderComponent {
 
-  private authConfig: AuthConfig = {
-    issuer: environment.keyCloakUrl + 'auth/realms/Umfragetool',
-    redirectUri: window.location.origin,
-    clientId: 'surveytool-frontend',
-    scope: 'openid profile email offline_access',
-    responseType: 'code',
-    showDebugInformation: true
-  };
+  loggedIn!: boolean;
 
-  constructor(private oauthService: OAuthService) {
-    this.configure();
+  constructor(private router: Router,
+              private keycloak: KeycloakService) {
+    keycloak.isLoggedIn().then(isLoggedIn => this.loggedIn = isLoggedIn);
   }
 
   public login() {
-    this.oauthService.initLoginFlow();
+    this.keycloak.login({
+      redirectUri: window.location.origin + window.location.pathname
+    });
   }
 
   public logoff() {
-    this.oauthService.logOut();
-  }
-
-  private configure() {
-    this.oauthService.configure(this.authConfig);
-    this.oauthService.tokenValidationHandler = new NullValidationHandler();
-    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+    this.keycloak.logout(window.location.origin);
   }
 }

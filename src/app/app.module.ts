@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -65,6 +65,9 @@ import {CreationHelperComponent} from './components/create-survey/helper/creatio
 import {HelperModalComponent} from './components/create-survey/helper/helper-modal/helper-modal.component';
 import {OAuthModule} from "angular-oauth2-oidc";
 import {environment} from "../environments/environment";
+import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
+import {initializer} from 'src/utils/app-init';
+import { ProfileDropdownComponent } from './components/profile/profile-dropdown/profile-dropdown.component';
 
 
 const appRoutes: Routes = [
@@ -132,7 +135,8 @@ const appRoutes: Routes = [
     QuestionGroupPaginatorComponent,
     StringValidationDirective,
     CreationHelperComponent,
-    HelperModalComponent
+    HelperModalComponent,
+    ProfileDropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -145,6 +149,7 @@ const appRoutes: Routes = [
     NgbModule,
     DragDropModule,
     ClipboardModule,
+    KeycloakAngularModule,
     OAuthModule.forRoot({
       resourceServer: {
         allowedUrls: [environment.baseUrl],
@@ -152,7 +157,13 @@ const appRoutes: Routes = [
       }
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializer,
+      deps: [KeycloakService],
+      multi: true,
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule {

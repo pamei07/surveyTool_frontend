@@ -8,10 +8,10 @@
       </a>
     </div>
     <div class="col text-end">
-      <button class="btn btn-default ms-1 text-decoration-none loginLogout" (click)="login()">
+      <button class="btn mx-3 text-decoration-none loginLogout" (click)="login()" *ngIf="!loggedIn">
         Login
       </button>
-      <button class="btn btn-default ms-1 text-decoration-none loginLogout" (click)="logoff()">
+      <button class="btn mx-3 ms-1 text-decoration-none loginLogout" (click)="logoff()" *ngIf="loggedIn">
         Logout
       </button>
     </div>

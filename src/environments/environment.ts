@@ -6,7 +6,11 @@ export const environment = {
   production: false,
   baseUrl: 'http://localhost:8080/',
   frontendUrl: 'http://localhost:4200/',
-  keyCloakUrl: 'http://localhost:8180/'
+  keycloak: {
+    issuer: 'http://localhost:8180/auth/',
+    realm: 'Umfragetool',
+    clientId: 'surveytool-frontend'
+  }
 };
 
 /*
