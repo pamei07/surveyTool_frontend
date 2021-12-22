@@ -31,10 +31,20 @@ body {
 }
 
 /* Styling for header: */
-header {
-  height: 60px;
-  background: #005477;
+@media (min-width: 576px) {
+  header {
+    height: 60px;
+    background: #005477;
+  }
 }
+
+@media (max-width: 576px) {
+  header {
+    height: 120px;
+    background: #005477;
+  }
+}
+
 
 #headerHeading {
   color: #FFFFFF;
