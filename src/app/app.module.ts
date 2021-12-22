@@ -67,9 +67,10 @@ import {OAuthModule} from "angular-oauth2-oidc";
 import {environment} from "../environments/environment";
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {initializer} from 'src/utils/app-init';
-import { ProfileDropdownComponent } from './components/profile/profile-dropdown/profile-dropdown.component';
-import { MyProfileComponent } from './components/profile/my-profile/my-profile.component';
-import { MySurveysComponent } from './components/profile/my-surveys/my-surveys.component';
+import {ProfileDropdownComponent} from './components/profile/profile-dropdown/profile-dropdown.component';
+import {MyProfileComponent} from './components/profile/my-profile/my-profile.component';
+import {MySurveysComponent} from './components/profile/my-surveys/my-surveys.component';
+import {LogoutComponent} from './components/logout/logout.component';
 
 
 const appRoutes: Routes = [
@@ -78,7 +79,8 @@ const appRoutes: Routes = [
   {path: 'surveys/create', component: SurveyCreationComponent},
   {path: 'surveys/participate/:participationId', component: AnswerSurveyComponent},
   {path: 'surveys/:accessId', component: SurveyComponent},
-  {path: 'thanks', component: ThankYouComponent}
+  {path: 'thanks', component: ThankYouComponent},
+  {path: 'logout', component: LogoutComponent}
 ]
 
 @NgModule({
@@ -140,7 +142,8 @@ const appRoutes: Routes = [
     HelperModalComponent,
     ProfileDropdownComponent,
     MyProfileComponent,
-    MySurveysComponent
+    MySurveysComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {KeycloakService} from "keycloak-angular";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-profile-dropdown',
@@ -14,7 +15,7 @@ export class ProfileDropdownComponent {
   }
 
   public logout() {
-    this.keycloak.logout(window.location.origin);
+    this.keycloak.logout(environment.frontendUrl + '/logout');
   }
 
 }
