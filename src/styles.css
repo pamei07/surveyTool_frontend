@@ -153,6 +153,10 @@ footer {
   width: 120px !important;
 }
 
+.profileDropdownWidth {
+  min-width: 220px;
+}
+
 /* CDK Drag & Drop */
 .cursorMover {
   cursor: move;
@@ -252,7 +256,7 @@ footer {
 
 .loginLogout {
   color: #FFFFFF;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 /* Override Bootstrap CSS */
@@ -291,6 +295,11 @@ footer {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+.dropdown-toggle::after {
+  float: right !important;
+  margin-top: 10px;
 }
 
 /* Hide number input arrows: */

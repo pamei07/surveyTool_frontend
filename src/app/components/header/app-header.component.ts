@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Router} from "@angular/router";
 import {KeycloakService} from "keycloak-angular";
 
 @Component({
@@ -11,8 +10,7 @@ export class AppHeaderComponent {
 
   loggedIn!: boolean;
 
-  constructor(private router: Router,
-              private keycloak: KeycloakService) {
+  constructor(private keycloak: KeycloakService) {
     keycloak.isLoggedIn().then(isLoggedIn => this.loggedIn = isLoggedIn);
   }
 

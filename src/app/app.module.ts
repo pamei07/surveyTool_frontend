@@ -68,6 +68,8 @@ import {environment} from "../environments/environment";
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {initializer} from 'src/utils/app-init';
 import { ProfileDropdownComponent } from './components/profile/profile-dropdown/profile-dropdown.component';
+import { MyProfileComponent } from './components/profile/my-profile/my-profile.component';
+import { MySurveysComponent } from './components/profile/my-surveys/my-surveys.component';
 
 
 const appRoutes: Routes = [
@@ -136,7 +138,9 @@ const appRoutes: Routes = [
     StringValidationDirective,
     CreationHelperComponent,
     HelperModalComponent,
-    ProfileDropdownComponent
+    ProfileDropdownComponent,
+    MyProfileComponent,
+    MySurveysComponent
   ],
   imports: [
     BrowserModule,
