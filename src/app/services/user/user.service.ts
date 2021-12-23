@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../model/user";
 import {environment} from "../../../environments/environment";
+import {Keycloak} from "keycloak-angular/lib/core/services/keycloak.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private readonly surveyUrl: string = environment.baseUrl + 'users';
+  private readonly usersUrl: string = environment.baseUrl + 'users';
 
   constructor(private http: HttpClient) {
   }
@@ -23,11 +24,24 @@ export class UserService {
     return user;
   }
 
+  public createUserFromKeycloakUserProfile(userProfile: Keycloak.KeycloakProfile) {
+    let user: User = new User();
+    user.setName(userProfile.username);
+    user.setFirstName(userProfile.firstName);
+    user.setLastName(userProfile.lastName);
+    user.setEmail(userProfile.email);
+    return user;
+  }
+
   public saveUser(user: User) {
-    return this.http.post<User>(this.surveyUrl, user);
+    return this.http.post<User>(this.usersUrl, user);
   }
 
   public findParticipatingUsersBySurveyId(surveyId: number | undefined) {
-    return this.http.get<User[]>(this.surveyUrl + '/surveys/' + surveyId);
+    return this.http.get<User[]>(this.usersUrl + '/surveys/' + surveyId);
+  }
+
+  public findUserByEMail(email: string | undefined) {
+    return this.http.get<User>(this.usersUrl + '?email=' + email);
   }
 }
