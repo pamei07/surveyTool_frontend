@@ -6,17 +6,14 @@ import {KeycloakAuthGuard, KeycloakService} from 'keycloak-angular';
   providedIn: 'root',
 })
 export class AuthGuard extends KeycloakAuthGuard {
-  constructor(
-    protected readonly router: Router,
-    protected readonly keycloak: KeycloakService
-  ) {
+
+  constructor(protected readonly router: Router,
+              protected readonly keycloak: KeycloakService) {
     super(router, keycloak);
   }
 
-  public async isAccessAllowed(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ) {
+  public async isAccessAllowed(route: ActivatedRouteSnapshot,
+                               state: RouterStateSnapshot) {
     // Get the roles required from the route.
     const requiredRoles = route.data.roles;
 
