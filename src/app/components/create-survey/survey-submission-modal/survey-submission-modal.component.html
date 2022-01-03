@@ -41,8 +41,8 @@
           Das Startdatum muss vor dem Enddatum liegen.
         </div>
       </div>
-      <hr class="my-0">
-      <div class="modal-body">
+      <hr class="my-0" *ngIf="!loggedIn">
+      <div class="modal-body" *ngIf="!loggedIn">
         <label for="userName" class="form-label">
           Geben Sie Ihren Namen ein (Optional):
         </label>

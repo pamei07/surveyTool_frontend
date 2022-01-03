@@ -16,6 +16,7 @@
       </div>
     </div>
 
-    <app-survey-submission-modal (postSurvey)="saveSurveyWithUser()"></app-survey-submission-modal>
+    <app-survey-submission-modal [loggedIn]="loggedIn"
+                                 (postSurvey)="saveSurveyWithUser()"></app-survey-submission-modal>
   </form>
 </div>

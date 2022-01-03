@@ -6,6 +6,8 @@ import {QuestionGroup} from "../../../model/question-group";
 import {FormBuilder, FormGroup, FormGroupDirective} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../model/user";
+import {KeycloakService} from "keycloak-angular";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-survey-submission',
@@ -19,6 +21,7 @@ export class SurveySubmissionComponent implements OnInit {
   errorMessages: string[] = [];
   private backendErrorMessage: string = "Beim Speichern der Umfrage ist etwas schiefgelaufen.\n" +
     " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
+  loggedIn: boolean = false;
 
   get name() {
     return this.surveyForm.get('name');
@@ -52,7 +55,11 @@ export class SurveySubmissionComponent implements OnInit {
               private userService: UserService,
               private fb: FormBuilder,
               private router: Router,
-              private parentFormGroup: FormGroupDirective) {
+              private parentFormGroup: FormGroupDirective,
+              private keycloak: KeycloakService) {
+    this.keycloak.isLoggedIn().then(isLoggedIn => {
+      this.loggedIn = isLoggedIn;
+    });
   }
 
   ngOnInit() {
@@ -64,15 +71,34 @@ export class SurveySubmissionComponent implements OnInit {
       return;
     }
 
-    let userName = this.userName?.value;
-    let user = this.userService.createUser(userName);
-    this.userService.saveUser(user).subscribe(
-      (response: User) => {
-        this.saveSurvey(response);
-      }, () => {
-        this.errorMessages = [];
-        this.errorMessages.push(this.backendErrorMessage);
+    if (this.loggedIn) {
+      this.keycloak.loadUserProfile().then(userProfile => {
+        let email = userProfile.email;
+        this.userService.findUserByEMail(email).subscribe(
+          (response: User) => {
+            this.saveSurvey(response);
+          }, (error: HttpErrorResponse) => {
+            console.log(error);
+            let user = this.userService.createUserFromKeycloakUserProfile(userProfile);
+            this.userService.saveUser(user).subscribe(
+              (response: User) => {
+                this.saveSurvey(response);
+              }
+            );
+          }
+        );
       })
+    } else {
+      let userName = this.userName?.value;
+      let user = this.userService.createUser(userName);
+      this.userService.saveUser(user).subscribe(
+        (response: User) => {
+          this.saveSurvey(response);
+        }, () => {
+          this.errorMessages = [];
+          this.errorMessages.push(this.backendErrorMessage);
+        })
+    }
   }
 
   private saveSurvey(user: User) {
