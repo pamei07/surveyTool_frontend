@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 import {SurveyService} from "../../../services/survey/survey.service";
 import {User} from "../../../model/user";
@@ -10,18 +10,21 @@ import {UserService} from "../../../services/user/user.service";
   selector: 'app-my-surveys',
   templateUrl: './my-surveys.component.html'
 })
-export class MySurveysComponent {
+export class MySurveysComponent implements OnInit {
 
   surveys!: Survey[];
 
   constructor(private keycloak: KeycloakService,
               private surveyService: SurveyService,
               private userService: UserService) {
-    keycloak.isLoggedIn().then(isLoggedIn => {
+  }
+
+  ngOnInit() {
+    this.keycloak.isLoggedIn().then(isLoggedIn => {
       if (isLoggedIn) {
-        keycloak.loadUserProfile().then(userProfile => {
+        this.keycloak.loadUserProfile().then(userProfile => {
           let email = userProfile.email;
-          userService.findUserByEMail(email).subscribe(
+          this.userService.findUserByEMail(email).subscribe(
             (response: User) => {
               let userId = response.id;
               this.surveyService.findSurveysByUserId(userId).subscribe((surveys) => {
@@ -29,8 +32,8 @@ export class MySurveysComponent {
               })
             }, (error: HttpErrorResponse) => {
               console.log(error);
-              let user = userService.createUserFromKeycloakUserProfile(userProfile);
-              userService.saveUser(user).subscribe(
+              let user = this.userService.createUserFromKeycloakUserProfile(userProfile);
+              this.userService.saveUser(user).subscribe(
                 (response: User) => {
                   let userId = response.id;
                   this.surveyService.findSurveysByUserId(userId).subscribe((surveys) => {
@@ -44,5 +47,4 @@ export class MySurveysComponent {
       }
     })
   }
-
 }

@@ -1,15 +1,6 @@
-<section id="mySurveys" class="container restrictWidth">
-  <h2 class="mt-4">
+<section id="mySurveys" class="container restrictWidth mt-3">
+  <h3 class="my-3 text-center">
     Meine Umfragen
-  </h2>
-  <div *ngIf="surveys">
-    <div class="card card-body mt-4" *ngFor="let survey of surveys">
-      {{ survey.name }}
-      <a routerLink="/surveys/{{ survey?.accessId }}">
-        <button class="btn btn-outline-primary float-end">
-          Ansehen
-        </button>
-      </a>
-    </div>
-  </div>
+  </h3>
+  <app-survey-paginator [surveys]="surveys" [paginatorType]="'mySurveys'"></app-survey-paginator>
 </section>
