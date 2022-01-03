@@ -47,7 +47,7 @@ import {AnswersCheckboxQuestionPieChartComponent} from "./components/view-result
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AnswersCheckboxQuestionTableComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question-table/answers-checkbox-question-table.component";
-import {OpenSurveysPaginatorComponent} from "./components/open-surveys/open-surveys-paginator/open-surveys-paginator.component";
+import {OpenSurveysComponent} from "./components/open-surveys/open-surveys.component";
 import {SurveyNavigationComponent} from "./components/view-results/survey-navigation/survey-navigation.component";
 import {SurveyComponent} from "./components/view-results/survey/survey.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
@@ -72,11 +72,12 @@ import {MyProfileComponent} from './components/profile/my-profile/my-profile.com
 import {MySurveysComponent} from './components/profile/my-surveys/my-surveys.component';
 import {LogoutComponent} from './components/logout/logout.component';
 import {AuthGuard} from "../utils/auth.guard";
+import {SurveyPaginatorComponent} from './components/shared-components/survey-paginator/survey-paginator.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'surveys', component: OpenSurveysPaginatorComponent},
+  {path: 'surveys', component: OpenSurveysComponent},
   {path: 'surveys/create', component: SurveyCreationComponent},
   {path: 'surveys/participate/:participationId', component: AnswerSurveyComponent},
   {path: 'surveys/:accessId', component: SurveyComponent},
@@ -128,7 +129,7 @@ const appRoutes: Routes = [
     AnswersCheckboxQuestionTableComponent,
     AnswersCheckboxQuestionPieChartComponent,
     CheckboxTextAnswersComponent,
-    OpenSurveysPaginatorComponent,
+    OpenSurveysComponent,
     AppHeaderComponent,
     AppFooterComponent,
     DateValidationDirective,
@@ -146,7 +147,8 @@ const appRoutes: Routes = [
     ProfileDropdownComponent,
     MyProfileComponent,
     MySurveysComponent,
-    LogoutComponent
+    LogoutComponent,
+    SurveyPaginatorComponent
   ],
   imports: [
     BrowserModule,
