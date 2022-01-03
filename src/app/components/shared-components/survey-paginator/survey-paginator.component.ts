@@ -1,28 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {SurveyService} from "../../../services/survey/survey.service";
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
   selector: 'app-survey-paginator',
-  templateUrl: 'open-surveys-paginator.component.html'
+  templateUrl: './survey-paginator.component.html'
 })
+export class SurveyPaginatorComponent {
 
-export class OpenSurveysPaginatorComponent implements OnInit {
-
-  openAccessSurveys!: Survey[];
+  @Input() surveys!: Survey[];
+  // paginatorTypes: 'openAccess', 'mySurveys'
+  @Input() paginatorType!: String;
   sortedByStartDate: boolean = true;
 
   page: number = 1;
   pageSize: number = 5;
-
-  constructor(private surveyService: SurveyService) {
-  }
-
-  ngOnInit() {
-    this.surveyService.findSurveysThatAreOpenAccess().subscribe((surveys) => {
-      this.openAccessSurveys = surveys;
-    })
-  }
 
   currentDateInRange(survey: Survey): boolean {
     // DF => date format
@@ -38,7 +29,7 @@ export class OpenSurveysPaginatorComponent implements OnInit {
       return;
     }
 
-    this.openAccessSurveys.sort((survey1, survey2) => {
+    this.surveys.sort((survey1, survey2) => {
       let endDate1 = Date.parse(survey1.endDate);
       let endDate2 = Date.parse(survey2.endDate);
       if (endDate1 < endDate2) {
@@ -59,7 +50,7 @@ export class OpenSurveysPaginatorComponent implements OnInit {
       return;
     }
 
-    this.openAccessSurveys.sort((survey1, survey2) => {
+    this.surveys.sort((survey1, survey2) => {
       let startDate1 = Date.parse(survey1.startDate);
       let startDate2 = Date.parse(survey2.startDate);
       if (startDate1 < startDate2) {
