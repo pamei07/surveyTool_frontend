@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {Survey} from "../../../model/survey";
-import {SurveyService} from "../../../services/survey/survey.service";
-import {User} from "../../../model/user";
+import {Survey} from "../../../../model/survey";
+import {SurveyService} from "../../../../services/survey/survey.service";
+import {User} from "../../../../model/user";
 import {HttpErrorResponse} from "@angular/common/http";
 import {KeycloakService} from "keycloak-angular";
-import {UserService} from "../../../services/user/user.service";
+import {UserService} from "../../../../services/user/user.service";
 
 @Component({
   selector: 'app-my-surveys',
