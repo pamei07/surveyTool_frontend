@@ -69,7 +69,7 @@ import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {initializer} from 'src/utils/app-init';
 import {ProfileDropdownComponent} from './components/profile/profile-dropdown/profile-dropdown.component';
 import {MyProfileComponent} from './components/profile/my-profile/my-profile.component';
-import {MySurveysComponent} from './components/profile/surveys/my-surveys/my-surveys.component';
+import {MySurveysComponent} from './components/profile/my-surveys/my-surveys.component';
 import {LogoutComponent} from './components/logout/logout.component';
 import {AuthGuard} from "../utils/auth.guard";
 
