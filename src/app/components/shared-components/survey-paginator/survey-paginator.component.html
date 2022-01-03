@@ -7,8 +7,11 @@
         [ngClass]="{'selectedLinkStyle': sortedByStartDate === false}">Enddatum</span>
 </div>
 <div *ngIf="surveys">
-  <div class="alert alert-danger p-2 mt-4" *ngIf="surveys.length === 0">
+  <div class="alert alert-danger p-2 mt-4" *ngIf="surveys.length === 0 && paginatorType === 'openAccess'">
     <span>Es gibt zurzeit leider keine öffentlich zugänglichen Umfragen.</span>
+  </div>
+  <div class="alert alert-danger p-2 mt-4" *ngIf="surveys.length === 0 && paginatorType === 'mySurveys'">
+    <span>Sie haben bisher keine Umfrage erstellt.</span>
   </div>
   <div *ngIf="surveys.length > 0">
     <div class="card card-body mb-3"
