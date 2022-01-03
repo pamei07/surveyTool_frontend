@@ -4,10 +4,10 @@ import {Survey} from "../../../model/survey";
 
 @Component({
   selector: 'app-survey-paginator',
-  templateUrl: 'survey-paginator.component.html'
+  templateUrl: 'open-surveys-paginator.component.html'
 })
 
-export class SurveyPaginatorComponent implements OnInit {
+export class OpenSurveysPaginatorComponent implements OnInit {
 
   openAccessSurveys!: Survey[];
   sortedByStartDate: boolean = true;

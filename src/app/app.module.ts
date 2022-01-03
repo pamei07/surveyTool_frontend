@@ -47,7 +47,7 @@ import {AnswersCheckboxQuestionPieChartComponent} from "./components/view-result
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AnswersCheckboxQuestionTableComponent} from "./components/view-results/question-types/checkbox-question/answers-checkbox-question-table/answers-checkbox-question-table.component";
-import {SurveyPaginatorComponent} from "./components/open-surveys/survey-paginator/survey-paginator.component";
+import {OpenSurveysPaginatorComponent} from "./components/open-surveys/open-surveys-paginator/open-surveys-paginator.component";
 import {SurveyNavigationComponent} from "./components/view-results/survey-navigation/survey-navigation.component";
 import {SurveyComponent} from "./components/view-results/survey/survey.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
@@ -76,7 +76,7 @@ import {AuthGuard} from "../utils/auth.guard";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'surveys', component: SurveyPaginatorComponent},
+  {path: 'surveys', component: OpenSurveysPaginatorComponent},
   {path: 'surveys/create', component: SurveyCreationComponent},
   {path: 'surveys/participate/:participationId', component: AnswerSurveyComponent},
   {path: 'surveys/:accessId', component: SurveyComponent},
@@ -128,7 +128,7 @@ const appRoutes: Routes = [
     AnswersCheckboxQuestionTableComponent,
     AnswersCheckboxQuestionPieChartComponent,
     CheckboxTextAnswersComponent,
-    SurveyPaginatorComponent,
+    OpenSurveysPaginatorComponent,
     AppHeaderComponent,
     AppFooterComponent,
     DateValidationDirective,
