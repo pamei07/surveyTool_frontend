@@ -1,1 +1,15 @@
-<p>my-surveys works!</p>
+<section id="mySurveys" class="container restrictWidth">
+  <h2 class="mt-4">
+    Meine Umfragen
+  </h2>
+  <div *ngIf="surveys">
+    <div class="card card-body mt-4" *ngFor="let survey of surveys">
+      {{ survey.name }}
+      <a routerLink="/surveys/{{ survey?.accessId }}">
+        <button class="btn btn-outline-primary float-end">
+          Ansehen
+        </button>
+      </a>
+    </div>
+  </div>
+</section>

@@ -82,7 +82,8 @@ const appRoutes: Routes = [
   {path: 'surveys/:accessId', component: SurveyComponent},
   {path: 'thanks', component: ThankYouComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'profile', component: MyProfileComponent, canActivate: [AuthGuard], data: {roles: ['app-user']}}
+  {path: 'profile', component: MyProfileComponent, canActivate: [AuthGuard], data: {roles: ['app-user']}},
+  {path: 'profile/surveys', component: MySurveysComponent, canActivate: [AuthGuard], data: {roles: ['app-user']}}
 ]
 
 @NgModule({

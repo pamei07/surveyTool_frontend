@@ -28,4 +28,8 @@ export class SurveyService {
   public findSurveysThatAreOpenAccess() {
     return this.http.get<Survey[]>(this.surveyUrl);
   }
+
+  public findSurveysByUserId(userId: number | undefined) {
+    return this.http.get<Survey[]>(this.surveyUrl + '/users/' + userId);
+  }
 }
