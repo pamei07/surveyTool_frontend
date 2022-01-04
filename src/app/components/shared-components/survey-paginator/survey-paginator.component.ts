@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
   selector: 'app-survey-paginator',
   templateUrl: './survey-paginator.component.html'
 })
-export class SurveyPaginatorComponent implements OnInit {
+export class SurveyPaginatorComponent {
 
   @Input() surveys!: Survey[];
   // paginatorTypes: 'openAccess', 'mySurveys'
@@ -16,9 +16,6 @@ export class SurveyPaginatorComponent implements OnInit {
   page: number = 1;
   pageSize: number = 5;
 
-  ngOnInit() {
-    this.sortByStartDate();
-  }
 
   currentDateInRange(survey: Survey): boolean {
     // DF => date format
