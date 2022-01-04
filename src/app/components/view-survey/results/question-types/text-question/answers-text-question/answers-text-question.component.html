@@ -1,0 +1,47 @@
+<div [attr.id]="'question' + question.id" class="container restrictWidth" *ngIf="answers">
+  <div class="row m-0">
+    <h5 class="col-auto px-0">
+      {{ questionIndex + 1 }}.
+    </h5>
+    <h5 class="col ps-1">
+      {{ question.text }}<span *ngIf="question.required">*</span>
+    </h5>
+  </div>
+  <div class="row ms-2">
+    <span class="col-auto">{{ numberOfUsersAnswering }} Teilnehmer:innen haben diese Frage beantwortet.</span>
+  </div>
+  <div id="answers" class="mt-3 mb-2">
+    <div *ngFor="let answer of answers; index as answerIndex">
+      <div [attr.class]="'card mb-2 ' + 'question' + question.id"
+           [ngClass]="{'collapse collapsableAnswer': answerIndex > 4}">
+        <div class="card-body py-2">
+          <div class="row">
+            <div class="col-auto pe-0">
+              <span class="text-muted">{{ answerIndex + 1 }}.</span>
+            </div>
+            <div class="col">
+              {{ answer.text }}
+              <span class="text-muted float-end mt-2">
+                - {{ answer?.userName }} <span *ngIf="answer?.userName !== 'Anonym'">(user#{{ answer?.userId }})</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="answers.length > 5" (click)="collapseTextAnswers()">
+    <div class="row text-center cursorPointer">
+      <div class="col">
+        <div *ngIf="collapsedAnswers">
+          <span class="linkStyle me-2">Ausklappen ({{ answers.length - 5}})</span>
+          <img class="collapseArrow" src="../../../../../../../assets/svgs/chevron-down.svg" alt="down-arrow">
+        </div>
+        <div *ngIf="!collapsedAnswers">
+          <span class="linkStyle me-2">Einklappen</span>
+          <img class="collapseArrow" src="../../../../../../../assets/svgs/chevron-up.svg" alt="up-arrow">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

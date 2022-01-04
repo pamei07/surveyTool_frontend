@@ -1,0 +1,43 @@
+<div id="answers" class="mt-3 mb-2">
+  <div class="card card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th *ngIf="question.checkboxGroup!.multipleSelect"><span class="blueText">Multiple Select</span></th>
+        <th *ngIf="!question.checkboxGroup!.multipleSelect"><span class="blueText">Single Select</span></th>
+        <th class="text-center"># Stimmen</th>
+        <th class="text-center d-none d-sm-table-cell">% der Teilnehmer:innen</th>
+        <th class="text-center" *ngIf="checkboxesHaveTextAnswers">Text</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let checkbox of question.checkboxGroup!.checkboxes; index as checkboxIndex" class="align-middle">
+        <td [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">{{ checkbox.text }}:</td>
+        <td class="text-center"
+            [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">
+          {{ this.votesForCheckboxes[checkboxIndex] }}
+        </td>
+        <td class="text-center d-none d-sm-table-cell"
+            [ngClass]="{'fw-bold': checkboxIsMostVoted(checkboxIndex)}">
+          {{ this.percentagesForCheckboxes[checkboxIndex] | percent:'.0-1' }}
+        </td>
+        <td *ngIf="checkbox.hasTextField && checkboxesHaveTextAnswers && (votesForCheckboxes[checkboxIndex] > 0)">
+          <div class="w-100 h-100 text-center">
+            <button class="btn btn-primary py-1 pt-0 py-sm-1" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#viewTextAnswers' + checkbox.id">
+              <span class="d-none d-sm-inline">Ansehen</span>
+              <img class="d-inline d-sm-none viewTextAnswers" src="../../../../../../../assets/svgs/eye.svg"
+                   alt="Ansehen">
+
+            </button>
+          </div>
+          <app-checkbox-text-answers [answers]="answers"
+                                     [checkbox]="checkbox"></app-checkbox-text-answers>
+        </td>
+        <td class="text-center" *ngIf="(!checkbox.hasTextField || votesForCheckboxes[checkboxIndex] === 0) &&
+                                        checkboxesHaveTextAnswers"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

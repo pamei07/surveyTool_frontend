@@ -1,0 +1,33 @@
+<div class="container restrictWidth" *ngIf="answers">
+  <div class="row m-0">
+    <h5 class="col-auto px-0">
+      {{ questionIndex + 1 }}.
+    </h5>
+    <h5 class="col ps-1">
+      {{ question.text }}<span *ngIf="question.required">*</span>
+    </h5>
+  </div>
+  <div class="row justify-content-between align-items-top ms-2">
+    <span class="col-auto">{{ numberOfUsersAnswering }} Teilnehmer:innen haben diese Frage beantwortet.</span>
+    <div class="col text-end">
+      <button class="btn btn-primary me-1 p-2 pt-1" title="Tabelle" (click)="setShowTable(true)">
+        <img src="../../../../../../../assets/svgs/table.svg" alt="table">
+      </button>
+      <button class="btn btn-primary me-1 p-2 pt-1" title="Kreisdiagramm" (click)="setShowTable(false)"
+              [disabled]="answers && answers.length === 0">
+        <img src="../../../../../../../assets/svgs/pie-chart.svg" alt="pie-chart">
+      </button>
+    </div>
+
+  </div>
+  <div class="row">
+    <app-answers-checkbox-question-table [question]="question"
+                                         [answers]="answers"
+                                         [numberOfUsersAnswering]="numberOfUsersAnswering"
+                                         [votesForCheckboxes]="votesForCheckboxes"
+                                         *ngIf="answers && showTable"></app-answers-checkbox-question-table>
+    <app-answers-checkbox-question-pie-chart [question]="question"
+                                             [votesForCheckboxes]="votesForCheckboxes"
+                                             *ngIf="answers && !showTable && (answers.length > 0)"></app-answers-checkbox-question-pie-chart>
+  </div>
+</div>

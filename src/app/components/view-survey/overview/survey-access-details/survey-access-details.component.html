@@ -1,0 +1,91 @@
+<section id="surveyAccessDetails">
+  <!--  <div id="accessId" class="container">-->
+  <!--    <div class="row align-items-center fontSize18px">-->
+  <!--      <div class="col-3">-->
+  <!--        <span class="bolderText me-2">Zugangs-ID:</span>-->
+  <!--      </div>-->
+  <!--      <div class="col">-->
+  <!--        <span class="blueText bolderText">{{ survey?.accessId }}</span>-->
+  <!--      </div>-->
+  <!--      <div class="col text-end">-->
+  <!--        <button class="btn btn-secondary rounded-circle p-0 px-1" type="button" placement="top"-->
+  <!--                ngbTooltip="Mit dieser ID können Sie auf der Startseite nach ihrer Umfrage suchen.">-->
+  <!--          <img class="pb-1" src="assets/svgs/info-lg.svg" alt="info">-->
+  <!--        </button>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+  <!--  <hr>-->
+
+  <div id="accessLink" class="container">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <div class="container p-0">
+          <div class="row">
+            <span class="bolderText me-2 fontSize18px">
+              Übersichts-Link:
+            </span>
+          </div>
+          <div class="row">
+            <div class="blueText text-center ms-2">
+              <span class="d-none d-sm-inline">
+                {{ baseUrl }}surveys/{{ survey?.accessId }}
+              </span>
+              <span class="d-inline d-sm-none">
+                .../surveys/{{ survey?.accessId }}
+              </span>
+              <img src="../../../../../assets/svgs/clipboard.svg" alt="Copy to clipboard"
+                   class="clipboardButton cursorPointer ms-2 mb-1"
+                   [cdkCopyToClipboard]="baseUrl + 'surveys/' + survey.accessId"
+                   ngbTooltip="Link kopieren">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col text-end">
+        <button class="btn btn-secondary rounded-circle p-0 px-1" type="button" placement="top"
+                ngbTooltip="Mit diesem Link erreichen Sie direkt die Übersichtsseite und die Ergebnisse ihrer Umfrage.">
+          <img class="pb-1" src="../../../../../assets/svgs/info-lg.svg" alt="info">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div id="participationLink" class="container">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <div class="container p-0">
+          <div class="row">
+            <span class="bolderText me-2 fontSize18px">Teilnahme-Link:</span>
+          </div>
+          <div class="row">
+            <div class="blueText text-center ms-2">
+              <span class="d-none d-sm-inline">
+              {{ baseUrl }}surveys/participate/{{ survey?.participationId }}
+              </span>
+              <span class="d-inline d-sm-none">
+              .../surveys/participate/{{ survey?.participationId }}
+              </span>
+              <img src="../../../../../assets/svgs/clipboard.svg" alt="Copy to clipboard"
+                   class="clipboardButton cursorPointer ms-2 mb-1"
+                   [cdkCopyToClipboard]="baseUrl + 'surveys/participate/' + survey.participationId"
+                   ngbTooltip="Link kopieren">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col text-end">
+        <button class="btn btn-secondary rounded-circle p-0 px-1" type="button" placement="top"
+                ngbTooltip="Mit diesem Link können andere Nutzer an ihrer Umfrage teilnehmen.">
+          <img class="pb-1" src="../../../../../assets/svgs/info-lg.svg" alt="info">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+</section>
