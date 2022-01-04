@@ -1,10 +1,10 @@
 <div class="text-end mx-2 mb-2">
   Sortieren nach:&nbsp;&nbsp;
   <span class="linkStyle cursorPointer" (click)="sortByStartDate()"
-        [ngClass]="{'selectedLinkStyle': sortedByStartDate === true}">Startdatum</span>
+        [ngClass]="{'selectedLinkStyle': sortedBy === 'startDate'}">Startdatum</span>
   <span class="col-auto text-muted p-0">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
   <span class="linkStyle cursorPointer" (click)="sortByEndDate()"
-        [ngClass]="{'selectedLinkStyle': sortedByStartDate === false}">Enddatum</span>
+        [ngClass]="{'selectedLinkStyle': sortedBy === 'endDate'}">Enddatum</span>
 </div>
 <div *ngIf="surveys">
   <div class="alert alert-danger p-2 mt-4" *ngIf="surveys.length === 0 && paginatorType === 'openAccess'">
@@ -30,7 +30,7 @@
           <div class="col-sm-3">
             <span class="bolderText">Zeitraum:</span>
           </div>
-          <div class="col-sm-auto" [ngClass]="{'currentDateNotInRange': currentDateInRange(survey)}">
+          <div class="col-sm-auto" [ngClass]="{'currentDateNotInRange': !currentDateInRange(survey)}">
               <span
                 class="ms-2 ms-sm-0">{{ survey?.startDate | date: 'dd.MM.yyyy' }}  {{ survey?.startDate | date: 'HH:mm' }}
                 Uhr

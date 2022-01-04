@@ -1,31 +1,37 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 
 @Component({
   selector: 'app-survey-paginator',
   templateUrl: './survey-paginator.component.html'
 })
-export class SurveyPaginatorComponent {
+export class SurveyPaginatorComponent implements OnInit {
 
   @Input() surveys!: Survey[];
   // paginatorTypes: 'openAccess', 'mySurveys'
   @Input() paginatorType!: String;
-  sortedByStartDate: boolean = true;
+  // sortedBy: 'startDate', 'endDate'
+  sortedBy!: String;
 
   page: number = 1;
   pageSize: number = 5;
 
+  ngOnInit() {
+    this.sortByStartDate();
+  }
+
   currentDateInRange(survey: Survey): boolean {
     // DF => date format
     let startDateDF = Date.parse(survey.startDate);
+    let endDateDF = Date.parse(survey.endDate);
     let currentDateDF = Date.now();
 
-    return currentDateDF < startDateDF;
+    return currentDateDF > startDateDF && currentDateDF < endDateDF;
   }
 
   sortByEndDate() {
     // Skip sorting if already done
-    if (!this.sortedByStartDate) {
+    if (this.sortedBy === 'endDate') {
       return;
     }
 
@@ -40,13 +46,13 @@ export class SurveyPaginatorComponent {
       }
       return 0;
     })
-    this.sortedByStartDate = false;
+    this.sortedBy = 'endDate';
     this.page = 1;
   }
 
   sortByStartDate() {
     // Skip sorting if already done
-    if (this.sortedByStartDate) {
+    if (this.sortedBy === 'startDate') {
       return;
     }
 
@@ -61,7 +67,7 @@ export class SurveyPaginatorComponent {
       }
       return 0;
     })
-    this.sortedByStartDate = true;
+    this.sortedBy = 'startDate';
     this.page = 1;
   }
 }
