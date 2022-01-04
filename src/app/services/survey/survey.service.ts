@@ -17,6 +17,10 @@ export class SurveyService {
     return this.http.post<Survey>(this.surveyUrl, survey);
   }
 
+  public deleteSurvey(survey: Survey) {
+    return this.http.delete(this.surveyUrl + '/' + survey.id);
+  }
+
   public findSurveyByAccessId(accessId: string | null) {
     return this.http.get<Survey>(this.surveyUrl + '?accessId=' + accessId);
   }
