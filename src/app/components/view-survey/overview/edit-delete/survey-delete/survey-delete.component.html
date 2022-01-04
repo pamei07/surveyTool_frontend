@@ -1,0 +1,41 @@
+<!-- Modal -->
+<div class="modal fade" id="confirmDeletionForm" tabindex="-1" aria-hidden="true" [formGroup]="confirmDeletionForm">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmAnswerSubmissionLabel">
+          Umfrage löschen
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Sind Sie sicher?<br>
+        Sie können Ihre Umfrage nicht mehr wiederherstellen.
+      </div>
+      <hr class="my-0">
+      <div class="modal-body">
+        <label for="userName" class="form-label">
+          Geben Sie den Namen der Umfrage ein:
+        </label>
+        <input id="userName" class="form-control" type="text" formControlName="surveyName">
+        <div *ngIf="surveyName?.invalid && (surveyName?.dirty || surveyName?.touched)">
+          <div class="alert alert-danger p-2 m-0 mt-2" *ngIf="surveyName?.errors?.required">
+            Bitte füllen Sie das Feld aus.
+          </div>
+          <div class="alert alert-danger p-2 m-0 mt-2" *ngIf="surveyName?.hasError('doesNotMatchSurveyName')">
+            Die Eingabe entspricht nicht dem Namen der Umfrage.
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+          Abbrechen
+        </button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteSurvey()"
+                [disabled]="confirmDeletionForm.invalid">
+          Ja, löschen.
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
