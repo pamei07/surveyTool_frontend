@@ -1,4 +1,5 @@
 <section id="surveyOverview" *ngIf="survey">
   <app-survey-basic-information [survey]="survey"></app-survey-basic-information>
   <app-survey-access-details [survey]="survey"></app-survey-access-details>
+  <app-edit-delete-survey [survey]="survey" *ngIf="authorized"></app-edit-delete-survey>
 </section>

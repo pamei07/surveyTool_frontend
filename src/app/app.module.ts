@@ -73,6 +73,7 @@ import {MySurveysComponent} from './components/profile/my-surveys/my-surveys.com
 import {LogoutComponent} from './components/logout/logout.component';
 import {AuthGuard} from "../utils/auth.guard";
 import {SurveyPaginatorComponent} from './components/shared-components/survey-paginator/survey-paginator.component';
+import {EditDeleteSurveyComponent} from './components/view-results/overview/edit-delete-survey/edit-delete-survey.component';
 
 
 const appRoutes: Routes = [
@@ -148,7 +149,8 @@ const appRoutes: Routes = [
     MyProfileComponent,
     MySurveysComponent,
     LogoutComponent,
-    SurveyPaginatorComponent
+    SurveyPaginatorComponent,
+    EditDeleteSurveyComponent
   ],
   imports: [
     BrowserModule,
