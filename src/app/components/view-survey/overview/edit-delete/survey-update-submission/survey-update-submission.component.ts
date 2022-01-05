@@ -18,6 +18,7 @@ export class SurveyUpdateSubmissionComponent implements OnInit {
   errorMessages: string[] = [];
   private backendErrorMessage: string = "Beim Speichern der Umfrage ist etwas schiefgelaufen.\n" +
     " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
+  private authenticationErrorMessage: string = "Ihr Sitzung ist abgelaufen. Bitte loggen Sie sich erneut ein.";
 
   get name() {
     return this.surveyUpdateForm.get('name');
@@ -71,6 +72,8 @@ export class SurveyUpdateSubmissionComponent implements OnInit {
               }
             })
         })
+      } else {
+        this.errorMessages.push(this.authenticationErrorMessage);
       }
     })
   }
