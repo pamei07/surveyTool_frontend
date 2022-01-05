@@ -76,6 +76,9 @@ import {EditDeleteSurveyButtonsComponent} from './components/view-survey/overvie
 import {ParticipantsListComponent} from "./components/view-survey/results/participants-list/participants-list.component";
 import {SurveyDeleteComponent} from './components/view-survey/overview/edit-delete/survey-delete/survey-delete.component';
 import {MatchSurveyNameValidationDirective} from "./directives/match-survey-name-validation.directive";
+import {SurveyUpdateComponent} from './components/view-survey/overview/edit-delete/survey-update/survey-update.component';
+import { SurveyUpdateSubmissionComponent } from './components/view-survey/overview/edit-delete/survey-update-submission/survey-update-submission.component';
+import { SurveyUpdateSubmissionModalComponent } from './components/view-survey/overview/edit-delete/survey-update-submission-modal/survey-update-submission-modal.component';
 
 
 const appRoutes: Routes = [
@@ -83,6 +86,7 @@ const appRoutes: Routes = [
   {path: 'surveys', component: OpenSurveysComponent},
   {path: 'surveys/create', component: SurveyCreationComponent},
   {path: 'surveys/participate/:participationId', component: AnswerSurveyComponent},
+  {path: 'surveys/edit/:accessId', component: SurveyUpdateComponent},
   {path: 'surveys/:accessId', component: SurveyComponent},
   {path: 'thanks', component: ThankYouComponent},
   {path: 'logout', component: LogoutComponent},
@@ -154,7 +158,10 @@ const appRoutes: Routes = [
     SurveyPaginatorComponent,
     EditDeleteSurveyButtonsComponent,
     SurveyDeleteComponent,
-    MatchSurveyNameValidationDirective
+    MatchSurveyNameValidationDirective,
+    SurveyUpdateComponent,
+    SurveyUpdateSubmissionComponent,
+    SurveyUpdateSubmissionModalComponent
   ],
   imports: [
     BrowserModule,

@@ -7,9 +7,11 @@
         Der Zeitraum der Umfrage kann jederzeit verlängert werden.
       </span>
       <div class="col text-sm-end text-center mt-3 mt-sm-0 ps-2 ps-sm-0">
-        <button class="btn btn-primary ">
-          Bearbeiten
-        </button>
+        <a [routerLink]="['/surveys/edit', survey?.accessId]" class="text-decoration-none">
+          <button class="btn btn-primary ">
+            Bearbeiten
+          </button>
+        </a>
       </div>
 
     </div>

@@ -1,0 +1,17 @@
+<div id="errorMessage" class="container restrictWidth" *ngIf="!authorized">
+  <div class="alert alert-danger p-2 mt-4">
+    <span>Sie sind nicht dazu berechtigt, diese Umfrage zu bearbeiten.
+      Bitte wenden Sie sich an den Ersteller dieser Umfrage.</span>
+  </div>
+</div>
+
+<section id="surveyForm" class="container restrictWidth" [formGroup]="surveyUpdateForm" *ngIf="survey && authorized">
+  <app-creation-helper></app-creation-helper>
+  <h2 class="text-center my-3">
+    Umfrage bearbeiten
+  </h2>
+  <app-survey-basic-information-form></app-survey-basic-information-form>
+  <app-question-group-add [survey]="survey"></app-question-group-add>
+  <app-question-group-list [survey]="survey"></app-question-group-list>
+  <app-survey-update-submission [survey]="survey"></app-survey-update-submission>
+</section>
