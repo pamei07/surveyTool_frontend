@@ -55,7 +55,12 @@ export class SurveyUpdateSubmissionComponent implements OnInit {
     console.log(this.survey)
   }
 
-  updateSurvey() {
+  checkIfChangesValid() {
+    this.errorMessages = this.surveyService.checkIfSurveyComplete(this.survey);
+    if (this.errorMessages.length > 0) {
+      return;
+    }
+
     this.keycloakService.isLoggedIn().then(isLoggedIn => {
       if (isLoggedIn) {
         this.keycloakService.loadUserProfile().then(userProfile => {
@@ -70,7 +75,7 @@ export class SurveyUpdateSubmissionComponent implements OnInit {
     })
   }
 
-  saveChanges() {
+  private saveChanges() {
     console.log(this.survey.id)
     this.survey.name = this.name?.value;
     this.survey.description = this.description?.value;

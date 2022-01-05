@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Survey} from "../../model/survey";
 import {environment} from "../../../environments/environment";
+import {QuestionGroup} from "../../model/question-group";
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,53 @@ export class SurveyService {
 
   public findSurveysByUserId(userId: number | undefined) {
     return this.http.get<Survey[]>(this.surveyUrl + '/users/' + userId);
+  }
+
+  public checkIfSurveyComplete(survey: Survey): string[] {
+    let errorMessages: string[] = [];
+    return this.checkIfQuestionGroupsComplete(survey, errorMessages);
+  }
+
+  private checkIfQuestionGroupsComplete(survey: Survey, errorMessages: string[]): string[] {
+    if (survey.questionGroups.length === 0) {
+      errorMessages.push('Die Umfrage enthält keine Frageblöcke!');
+    } else {
+      survey.questionGroups.forEach((questionGroup, questionGroupIndex) => {
+        if (questionGroup.questions.length === 0) {
+          errorMessages.push('Der Frageblock \'' + questionGroup.title + '\' [' + (questionGroupIndex + 1)
+            + '] enthält keine Fragen!')
+        } else {
+          errorMessages = this.checkIfQuestionsComplete(questionGroup, questionGroupIndex, errorMessages)
+        }
+      })
+    }
+    return errorMessages;
+  }
+
+  private checkIfQuestionsComplete(questionGroup: QuestionGroup, questionGroupIndex: number, errorMessages: string[]): string[] {
+    questionGroup.questions.forEach((question, questionIndex) => {
+      if (question.hasCheckbox) {
+        let checkboxGroup = question.checkboxGroup;
+        let noOfCheckboxes = checkboxGroup?.checkboxes.length;
+
+        if (noOfCheckboxes === 0) {
+          errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
+            "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
+            "\nDiese Frage enthält noch keine Antwortmöglichkeiten.");
+        } else {
+          if (!checkboxGroup?.multipleSelect && noOfCheckboxes! < 2) {
+            errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
+              "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
+              "\nBei einer Frage mit Antwortmöglichkeiten müssen mind. 2 Antworten gegeben sein.");
+          } else if (checkboxGroup?.multipleSelect && noOfCheckboxes! < checkboxGroup!.maxSelect) {
+            errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
+              "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
+              "\nBei einer Frage mit Antwortmöglichkeiten müssen mind. 2 Antworten gegeben sein, " +
+              "bzw. mind. so viele Antworten wie bei der Mehrfachauswahl maximal erlaubt sind.");
+          }
+        }
+      }
+    })
+    return errorMessages;
   }
 }

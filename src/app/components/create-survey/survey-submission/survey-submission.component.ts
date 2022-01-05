@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../model/survey";
 import {SurveyService} from "../../../services/survey/survey.service";
 import {Router} from "@angular/router";
-import {QuestionGroup} from "../../../model/question-group";
 import {FormBuilder, FormGroup, FormGroupDirective} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../model/user";
@@ -67,7 +66,8 @@ export class SurveySubmissionComponent implements OnInit {
   }
 
   saveSurveyWithUser() {
-    if (!this.checkIfSurveyComplete(this.survey)) {
+    this.errorMessages = this.surveyService.checkIfSurveyComplete(this.survey);
+    if (this.errorMessages.length > 0) {
       return;
     }
 
@@ -124,65 +124,5 @@ export class SurveySubmissionComponent implements OnInit {
         this.errorMessages = [];
         this.errorMessages.push(this.backendErrorMessage);
       });
-  }
-
-  private checkIfSurveyComplete(survey: Survey): boolean {
-    this.errorMessages = [];
-    return this.checkIfQuestionGroupsComplete(survey);
-  }
-
-  private checkIfQuestionGroupsComplete(survey: Survey): boolean {
-    let isComplete = true;
-    if (survey.questionGroups.length === 0) {
-      this.errorMessages.push('Die Umfrage enthält keine Frageblöcke!');
-      isComplete = false;
-    } else {
-      survey.questionGroups.forEach((questionGroup, questionGroupIndex) => {
-        if (questionGroup.questions.length === 0) {
-          this.errorMessages.push('Der Frageblock \'' + questionGroup.title + '\' [' + (questionGroupIndex + 1)
-            + '] enthält keine Fragen!')
-          isComplete = false;
-        } else {
-          if (!this.checkIfQuestionsComplete(questionGroup, questionGroupIndex)) {
-            isComplete = false;
-          }
-        }
-      })
-    }
-    return isComplete;
-  }
-
-
-  private checkIfQuestionsComplete(questionGroup: QuestionGroup, questionGroupIndex: number): boolean {
-    let isComplete = true;
-    questionGroup.questions.forEach((question, questionIndex) => {
-      if (question.hasCheckbox) {
-        let checkboxGroup = question.checkboxGroup;
-        let noOfCheckboxes = checkboxGroup?.checkboxes.length;
-
-        if (noOfCheckboxes === 0) {
-          this.errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
-            "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
-            "\nDiese Frage enthält noch keine Antwortmöglichkeiten.");
-          isComplete = false;
-        } else {
-          if (!checkboxGroup?.multipleSelect && noOfCheckboxes! < 2) {
-            this.errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
-              "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
-              "\nBei einer Frage mit Antwortmöglichkeiten müssen mind. 2 Antworten gegeben sein.");
-            isComplete = false;
-          } else if (checkboxGroup?.multipleSelect && noOfCheckboxes! < checkboxGroup!.maxSelect) {
-            this.errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
-              "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
-              "\nBei einer Frage mit Antwortmöglichkeiten müssen mind. 2 Antworten gegeben sein, " +
-              "bzw. mind. so viele Antworten wie bei der Mehrfachauswahl maximal erlaubt sind.");
-            isComplete = false;
-          }
-        }
-
-      }
-    })
-
-    return isComplete;
   }
 }
