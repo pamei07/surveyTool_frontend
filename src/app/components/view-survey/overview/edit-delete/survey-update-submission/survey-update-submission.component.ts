@@ -6,6 +6,8 @@ import {Router} from "@angular/router";
 import {KeycloakService} from "keycloak-angular";
 import {User} from "../../../../../model/user";
 import {UserService} from "../../../../../services/user/user.service";
+import {AnswerService} from "../../../../../services/answer/answer.service";
+import {Answer} from "../../../../../model/answer";
 
 @Component({
   selector: 'app-survey-update-submission',
@@ -19,6 +21,8 @@ export class SurveyUpdateSubmissionComponent implements OnInit {
   private backendErrorMessage: string = "Beim Speichern der Umfrage ist etwas schiefgelaufen.\n" +
     " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
   private authenticationErrorMessage: string = "Ihr Sitzung ist abgelaufen. Bitte loggen Sie sich erneut ein.";
+  private alreadyAnsweredErrorMessage: string = "Es wurde bereits an dieser Umfrage teilgenommen. " +
+    "Sie können diese Umfrage daher nicht mehr bearbeiten.";
 
   get name() {
     return this.surveyUpdateForm.get('name');
@@ -48,7 +52,8 @@ export class SurveyUpdateSubmissionComponent implements OnInit {
               private router: Router,
               private keycloakService: KeycloakService,
               private surveyService: SurveyService,
-              private userService: UserService) {
+              private userService: UserService,
+              private answerService: AnswerService) {
   }
 
   ngOnInit() {
@@ -90,16 +95,25 @@ export class SurveyUpdateSubmissionComponent implements OnInit {
     let updatedSurvey: Survey;
     let accessId: string;
 
-    this.surveyService.updateSurvey(this.survey).subscribe(
-      (response: Survey) => {
-        updatedSurvey = response;
-        accessId = <string>updatedSurvey.accessId;
-        console.log(updatedSurvey);
+    this.answerService.findAnswersBySurveyId(this.survey.id).subscribe(
+      (response: Answer[]) => {
+        if (response.length > 0) {
+          this.errorMessages = [];
+          this.errorMessages.push(this.alreadyAnsweredErrorMessage);
+        } else {
+          this.surveyService.updateSurvey(this.survey).subscribe(
+            (response: Survey) => {
+              updatedSurvey = response;
+              accessId = <string>updatedSurvey.accessId;
+              console.log(updatedSurvey);
 
-        this.router.navigate(["surveys", accessId]);
-      }, () => {
-        this.errorMessages = [];
-        this.errorMessages.push(this.backendErrorMessage);
-      });
+              this.router.navigate(["surveys", accessId]);
+            }, () => {
+              this.errorMessages = [];
+              this.errorMessages.push(this.backendErrorMessage);
+            });
+        }
+      }
+    )
   }
 }
