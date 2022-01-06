@@ -30,4 +30,8 @@ export class EditDeleteSurveyButtonsComponent implements OnInit {
   navigateToEditPage() {
     this.router.navigate(["surveys/edit", this.survey.accessId]);
   }
+
+  navigateToEditEndDatePage() {
+    this.router.navigate(["surveys/edit-date", this.survey.accessId]);
+  }
 }

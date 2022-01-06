@@ -77,8 +77,9 @@ import {ParticipantsListComponent} from "./components/view-survey/results/partic
 import {SurveyDeleteComponent} from './components/view-survey/overview/edit-delete/survey-delete/survey-delete.component';
 import {MatchSurveyNameValidationDirective} from "./directives/match-survey-name-validation.directive";
 import {SurveyUpdateComponent} from './components/view-survey/overview/edit-delete/survey-update/survey-update.component';
-import { SurveyUpdateSubmissionComponent } from './components/view-survey/overview/edit-delete/survey-update-submission/survey-update-submission.component';
-import { SurveyUpdateSubmissionModalComponent } from './components/view-survey/overview/edit-delete/survey-update-submission-modal/survey-update-submission-modal.component';
+import {SurveyUpdateSubmissionComponent} from './components/view-survey/overview/edit-delete/survey-update-submission/survey-update-submission.component';
+import {SurveyUpdateSubmissionModalComponent} from './components/view-survey/overview/edit-delete/survey-update-submission-modal/survey-update-submission-modal.component';
+import {EditEndDateComponent} from './components/view-survey/overview/edit-delete/edit-end-date/edit-end-date.component';
 
 
 const appRoutes: Routes = [
@@ -86,7 +87,18 @@ const appRoutes: Routes = [
   {path: 'surveys', component: OpenSurveysComponent},
   {path: 'surveys/create', component: SurveyCreationComponent},
   {path: 'surveys/participate/:participationId', component: AnswerSurveyComponent},
-  {path: 'surveys/edit/:accessId', component: SurveyUpdateComponent},
+  {
+    path: 'surveys/edit/:accessId',
+    component: SurveyUpdateComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ['app-user']}
+  },
+  {
+    path: 'surveys/edit-date/:accessId',
+    component: EditEndDateComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ['app-user']}
+  },
   {path: 'surveys/:accessId', component: SurveyComponent},
   {path: 'thanks', component: ThankYouComponent},
   {path: 'logout', component: LogoutComponent},
@@ -161,7 +173,8 @@ const appRoutes: Routes = [
     MatchSurveyNameValidationDirective,
     SurveyUpdateComponent,
     SurveyUpdateSubmissionComponent,
-    SurveyUpdateSubmissionModalComponent
+    SurveyUpdateSubmissionModalComponent,
+    EditEndDateComponent
   ],
   imports: [
     BrowserModule,

@@ -167,6 +167,12 @@ footer {
   min-width: 220px;
 }
 
+@media (min-width: 600px) {
+  .editSurveyButtonRow {
+    max-width: 600px;
+  }
+}
+
 /* CDK Drag & Drop */
 .cursorMover {
   cursor: move;

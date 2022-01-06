@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Survey} from "../../model/survey";
 import {environment} from "../../../environments/environment";
 import {QuestionGroup} from "../../model/question-group";
+import {SurveyEndDateOnly} from "../../model/survey-end-date-only";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class SurveyService {
 
   public updateSurvey(survey: Survey) {
     return this.http.put<Survey>(this.surveyUrl, survey);
+  }
+
+  public patchEndDate(surveyEndDateOnly: SurveyEndDateOnly) {
+    return this.http.patch<Survey>(this.surveyUrl, surveyEndDateOnly);
   }
 
   public findSurveyByAccessId(accessId: string | null) {

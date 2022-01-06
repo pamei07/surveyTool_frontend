@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Survey} from "../../../../../model/survey";
 import {KeycloakService} from "keycloak-angular";
@@ -13,7 +13,7 @@ import {User} from "../../../../../model/user";
   selector: 'app-survey-update',
   templateUrl: './survey-update.component.html'
 })
-export class SurveyUpdateComponent {
+export class SurveyUpdateComponent implements OnInit {
 
   survey!: Survey;
   accessId!: string | null;
@@ -33,6 +33,9 @@ export class SurveyUpdateComponent {
               private keycloakService: KeycloakService,
               private surveyService: SurveyService,
               private userService: UserService) {
+  }
+
+  ngOnInit() {
     this.accessId = this.activatedRoute!.snapshot.paramMap.get('accessId');
     this.keycloakService.isLoggedIn().then(isLoggedIn => {
       if (isLoggedIn) {
@@ -59,5 +62,4 @@ export class SurveyUpdateComponent {
       }
     })
   }
-
 }
