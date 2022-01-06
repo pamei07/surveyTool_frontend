@@ -10,13 +10,12 @@
     <div class="row">
       <div>
         <button type="button" class="btn btn-success mt-2 mb-4 float-end"
-                data-bs-toggle="modal" data-bs-target="#confirmUpdateSubmission">
+                data-bs-toggle="modal" data-bs-target="#confirmSubmission">
           Änderungen Speichern
         </button>
       </div>
     </div>
 
-    <app-survey-update-submission-modal
-      (updateSurveyEmitter)="checkIfChangesValid()"></app-survey-update-submission-modal>
+    <app-survey-submission-modal (postSurvey)="checkIfChangesValid()" [loggedIn]="true"></app-survey-submission-modal>
   </form>
 </div>

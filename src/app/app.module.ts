@@ -78,7 +78,6 @@ import {SurveyDeleteComponent} from './components/view-survey/overview/edit-dele
 import {MatchSurveyNameValidationDirective} from "./directives/match-survey-name-validation.directive";
 import {SurveyUpdateComponent} from './components/view-survey/overview/edit-delete/survey-update/survey-update.component';
 import {SurveyUpdateSubmissionComponent} from './components/view-survey/overview/edit-delete/survey-update-submission/survey-update-submission.component';
-import {SurveyUpdateSubmissionModalComponent} from './components/view-survey/overview/edit-delete/survey-update-submission-modal/survey-update-submission-modal.component';
 import {EditEndDateComponent} from './components/view-survey/overview/edit-delete/edit-end-date/edit-end-date.component';
 
 
@@ -173,7 +172,6 @@ const appRoutes: Routes = [
     MatchSurveyNameValidationDirective,
     SurveyUpdateComponent,
     SurveyUpdateSubmissionComponent,
-    SurveyUpdateSubmissionModalComponent,
     EditEndDateComponent
   ],
   imports: [
