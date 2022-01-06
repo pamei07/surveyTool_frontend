@@ -38,8 +38,8 @@ export class SurveySubmissionComponent implements OnInit {
     return this.surveyForm.get('endDate');
   }
 
-  get userName() {
-    return this.surveyForm.get('userName');
+  get creatorName() {
+    return this.surveyForm.get('creatorName');
   }
 
   get openAccess() {
@@ -76,39 +76,39 @@ export class SurveySubmissionComponent implements OnInit {
         let email = userProfile.email;
         this.userService.findUserByEMail(email).subscribe(
           (response: User) => {
-            this.saveSurvey(response);
+            this.survey.userId = response.id;
+            this.saveSurvey();
           }, (error: HttpErrorResponse) => {
             console.log(error);
             let user = this.userService.createUserFromKeycloakUserProfile(userProfile);
             this.userService.saveUser(user).subscribe(
               (response: User) => {
-                this.saveSurvey(response);
+                this.survey.userId = response.id;
+                this.saveSurvey();
               }
             );
           }
         );
       })
     } else {
-      let userName = this.userName?.value;
-      let user = this.userService.createUser(userName);
-      this.userService.saveUser(user).subscribe(
-        (response: User) => {
-          this.saveSurvey(response);
-        }, () => {
-          this.errorMessages = [];
-          this.errorMessages.push(this.backendErrorMessage);
-        })
+      this.saveSurvey();
     }
   }
 
-  private saveSurvey(user: User) {
+  private saveSurvey() {
     this.survey.setName(this.name?.value);
     this.survey.setDescription(this.description?.value);
     this.survey.setStartDate(this.startDate?.value);
     this.survey.setEndDate(this.endDate?.value);
-    this.survey.setUserId(user?.id);
     this.survey.setOpenAccess(this.openAccess?.value);
     this.survey.setAnonymousParticipation(this.anonymousParticipation?.value);
+
+    let creatorNameValue = this.creatorName?.value;
+    if (creatorNameValue?.trim() !== '') {
+      this.survey.setCreatorName(creatorNameValue);
+    } else {
+      this.survey.setCreatorName('Anonym');
+    }
 
     let newSurvey: Survey;
     let accessId: string;

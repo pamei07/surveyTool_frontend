@@ -24,6 +24,7 @@ export class SurveyUpdateComponent implements OnInit {
     description: ['', [Validators.maxLength(3000)]],
     startDate: ['', [Validators.required, dateInFuture()]],
     endDate: ['', [Validators.required, dateInFuture()]],
+    creatorName: ['', [Validators.maxLength(255)]],
     openAccess: false,
     anonymousParticipation: false
   }, {validators: startDateBeforeEndDateValidator()})
@@ -52,6 +53,7 @@ export class SurveyUpdateComponent implements OnInit {
                       description: this.survey.description,
                       startDate: this.survey.startDate,
                       endDate: this.survey.endDate,
+                      creatorName: this.survey.creatorName,
                       openAccess: this.survey.openAccess,
                       anonymousParticipation: this.survey.anonymousParticipation
                     });

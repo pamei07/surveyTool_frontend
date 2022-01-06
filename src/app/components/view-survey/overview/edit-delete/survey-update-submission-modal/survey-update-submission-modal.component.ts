@@ -10,6 +10,10 @@ export class SurveyUpdateSubmissionModalComponent implements OnInit {
   @Output() updateSurveyEmitter = new EventEmitter;
   surveyUpdateForm!: FormGroup;
 
+  get creatorName() {
+    return this.surveyUpdateForm.get('creatorName');
+  }
+
   get startDate() {
     return this.surveyUpdateForm.get('startDate');
   }

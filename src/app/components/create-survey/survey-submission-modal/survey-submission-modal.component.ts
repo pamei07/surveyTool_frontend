@@ -8,13 +8,12 @@ import {FormGroup, FormGroupDirective} from "@angular/forms";
 
 export class SurveySubmissionModalComponent implements OnInit {
 
-  // TODO: Allow logged in users to enter custom name as survey creator
   @Input() loggedIn!: boolean;
   @Output() postSurvey = new EventEmitter;
   surveyForm!: FormGroup;
 
-  get userName() {
-    return this.surveyForm.get('userName');
+  get creatorName() {
+    return this.surveyForm.get('creatorName');
   }
 
   get startDate() {

@@ -18,7 +18,7 @@ export class SurveyCreationComponent {
     description: ['', [Validators.maxLength(3000)]],
     startDate: ['', [Validators.required, dateInFuture()]],
     endDate: ['', [Validators.required, dateInFuture()]],
-    userName: ['', [Validators.maxLength(255)]],
+    creatorName: ['', [Validators.maxLength(255)]],
     openAccess: false,
     anonymousParticipation: false
   }, {validators: startDateBeforeEndDateValidator()})

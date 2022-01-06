@@ -23,6 +23,10 @@ export class Survey {
     this.description = description;
   }
 
+  setCreatorName(creatorName: string) {
+    this.creatorName = creatorName;
+  }
+
   setStartDate(startDate: string) {
     this.startDate = startDate;
   }

@@ -40,6 +40,10 @@ export class SurveyUpdateSubmissionComponent implements OnInit {
     return this.surveyUpdateForm.get('endDate');
   }
 
+  get creatorName() {
+    return this.surveyUpdateForm.get('creatorName');
+  }
+
   get openAccess() {
     return this.surveyUpdateForm.get('openAccess');
   }
@@ -91,6 +95,13 @@ export class SurveyUpdateSubmissionComponent implements OnInit {
     this.survey.endDate = this.endDate?.value;
     this.survey.openAccess = this.openAccess?.value;
     this.survey.anonymousParticipation = this.anonymousParticipation?.value;
+
+    let creatorNameValue = this.creatorName?.value;
+    if (creatorNameValue?.trim() !== '') {
+      this.survey.creatorName = creatorNameValue;
+    } else {
+      this.survey.creatorName = 'Anonym';
+    }
 
     let updatedSurvey: Survey;
     let accessId: string;

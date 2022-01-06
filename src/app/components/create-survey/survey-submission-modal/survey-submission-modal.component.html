@@ -41,15 +41,15 @@
           Das Startdatum muss vor dem Enddatum liegen.
         </div>
       </div>
-      <hr class="my-0" *ngIf="!loggedIn">
-      <div class="modal-body" *ngIf="!loggedIn">
-        <label for="userName" class="form-label">
+      <hr class="my-0">
+      <div class="modal-body">
+        <label for="creatorName" class="form-label">
           Geben Sie Ihren Namen ein (Optional):
         </label>
-        <input id="userName" class="form-control" type="text" formControlName="userName">
-        <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)"
+        <input id="creatorName" class="form-control" type="text" formControlName="creatorName">
+        <div *ngIf="creatorName?.invalid && (creatorName?.dirty || creatorName?.touched)"
              class="alert alert-danger p-2 m-0 mt-2">
-          <div *ngIf="userName?.errors?.maxlength">
+          <div *ngIf="creatorName?.errors?.maxlength">
             Der angegebene Name darf nicht länger als 255 Zeichen sein.
           </div>
         </div>
