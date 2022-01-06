@@ -13,7 +13,7 @@ export class Survey {
   questionGroups: QuestionGroup[] = [];
 
   userId: number | undefined;
-  userName: string | undefined;
+  creatorName: string | undefined;
 
   setName(name: string) {
     this.name = name;
