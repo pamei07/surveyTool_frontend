@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Survey} from "../../../../model/survey";
-import {User} from "../../../../model/user";
 import {UserService} from "../../../../services/user/user.service";
+import {AnswerService} from "../../../../services/answer/answer.service";
+import {KeyValue} from "@angular/common";
 
 @Component({
   selector: 'app-participants-list',
@@ -11,11 +12,16 @@ import {UserService} from "../../../../services/user/user.service";
 export class ParticipantsListComponent implements OnInit {
 
   @Input() survey!: Survey;
-  participants!: User[];
-  filteredAndSortedParticipants!: User[];
+  participants!: Map<string | undefined, string | undefined>;
+  filteredAndSortedParticipants!: Map<string | undefined, string | undefined>;
   overallNoOfParticipants!: number;
 
-  constructor(private userService: UserService) {
+  valueAscOrder = (a: KeyValue<string | undefined, string | undefined>, b: KeyValue<string | undefined, string | undefined>): number => {
+    // @ts-ignore
+    return a.value.localeCompare(b.value);
+  }
+
+  constructor(private userService: UserService, private answerService: AnswerService) {
   }
 
   ngOnInit() {
@@ -23,35 +29,29 @@ export class ParticipantsListComponent implements OnInit {
   }
 
   private fetchAndSetParticipants() {
-    this.userService.findParticipatingUsersBySurveyId(this.survey.id).subscribe((users) => {
-      this.participants = users;
-      this.filterAndSortParticipants(this.participants);
-      this.overallNoOfParticipants = this.participants.length;
-    });
-  }
-
-  private filterAndSortParticipants(participants: User[]) {
-    let filteredParticipants = this.removeAnonymousUsers(participants);
-    this.filteredAndSortedParticipants = this.sortParticipants(filteredParticipants);
-  }
-
-  private removeAnonymousUsers(participants: User[]) {
-    return participants.filter(user => user.name != 'Anonym');
-  }
-
-  private sortParticipants(participants: User[]) {
-    return participants.sort((user1, user2) => {
-      let name1 = user1.name?.toUpperCase();
-      let name2 = user2.name?.toUpperCase();
-      // @ts-ignore
-      if (name1 < name2) {
-        return -1;
-      }
-      // @ts-ignore
-      if (name1 > name2) {
-        return 1;
-      }
-      return 0;
+    this.answerService.findAnswersBySurveyId(this.survey.id).subscribe((answers) => {
+      let participants = new Map<string | undefined, string | undefined>();
+      answers.forEach(answer => {
+        let participantId = answer.participantId;
+        let participantName = answer.participantName;
+        if (!participants.has(participantId)) {
+          participants.set(participantId, participantName);
+        }
+      })
+      this.participants = participants;
+      this.filteredAndSortedParticipants = this.removeAnonymousUsers(this.participants);
+      console.log(this.filteredAndSortedParticipants)
+      this.overallNoOfParticipants = this.participants.size;
     })
+  }
+
+  private removeAnonymousUsers(participants: Map<string | undefined, string | undefined>) {
+    let filteredParticipants = new Map<string | undefined, string | undefined>();
+    for (let [id, name] of participants) {
+      if (name != 'Anonym') {
+        filteredParticipants.set(id, name);
+      }
+    }
+    return filteredParticipants;
   }
 }

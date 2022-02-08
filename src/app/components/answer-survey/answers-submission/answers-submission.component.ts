@@ -63,15 +63,7 @@ export class AnswersSubmissionComponent implements OnInit {
             })
         })
       } else {
-        let participantName = this.participantName?.value;
-        let user = this.userService.createUser(participantName);
-        this.userService.saveUser(user).subscribe(
-          (response: User) => {
-            this.user = response;
-            this.saveAnswers();
-          }, () => {
-            this.backendError();
-          });
+        this.saveAnswers();
       }
     })
   }

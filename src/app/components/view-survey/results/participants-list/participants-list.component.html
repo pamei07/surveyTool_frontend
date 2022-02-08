@@ -1,7 +1,7 @@
 <span class="cursorPointer text-muted" data-bs-toggle="modal"
       [attr.data-bs-target]="'#viewParticipants' + survey.id"
       *ngIf="participants">
-  Anzahl der Teilnehmer:innen : <span class="linkStyle">{{ participants.length }}</span>
+  Anzahl der Teilnehmer:innen : <span class="linkStyle">{{ participants.size }}</span>
 </span>
 
 <!--Modal with list of participants:-->
@@ -13,48 +13,49 @@
         <h5 class="modal-title">Liste der Teilnehmer:innen</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body text-start" *ngIf="filteredAndSortedParticipants.length !== 0">
+      <div class="modal-body text-start" *ngIf="filteredAndSortedParticipants.size !== 0">
         <ul class="list-group">
-          <li class="list-group-item" *ngFor="let participant of filteredAndSortedParticipants; index as index">
-            <span class="text-muted">{{ index + 1}}.&nbsp;&nbsp;</span><span> {{ participant.name }}</span>&nbsp;
-            <span class="text-muted float-end">(#{{ participant.id }})</span>
+          <li class="list-group-item"
+              *ngFor="let participant of filteredAndSortedParticipants | keyvalue: valueAscOrder; index as index">
+            <span class="text-muted">{{ index + 1}}.&nbsp;&nbsp;</span><span> {{ participant.value }}</span>&nbsp;
+            <span class="text-muted float-end">(#{{ participant.key }})</span>
           </li>
         </ul>
-        <div class="text-center mt-3" *ngIf="(overallNoOfParticipants - filteredAndSortedParticipants.length) !== 0">
+        <div class="text-center mt-3" *ngIf="(overallNoOfParticipants - filteredAndSortedParticipants.size) !== 0">
           <span>
             Sowie
             <span class="fw-bold">
-              {{ overallNoOfParticipants - filteredAndSortedParticipants.length}}
+              {{ overallNoOfParticipants - filteredAndSortedParticipants.size}}
             </span>
-            <span *ngIf="(overallNoOfParticipants - filteredAndSortedParticipants.length) === 1">
+            <span *ngIf="(overallNoOfParticipants - filteredAndSortedParticipants.size) === 1">
               anonyme Teilnehmer:in.
             </span>
-            <span *ngIf="(overallNoOfParticipants - filteredAndSortedParticipants.length) > 1">
+            <span *ngIf="(overallNoOfParticipants - filteredAndSortedParticipants.size) > 1">
               weitere anonyme Teilnehmer:innen.
             </span>
           </span>
         </div>
       </div>
 
-      <div class="modal-body" *ngIf="filteredAndSortedParticipants.length === 0 &&
-                                     (overallNoOfParticipants - filteredAndSortedParticipants.length) !== 0">
+      <div class="modal-body" *ngIf="filteredAndSortedParticipants.size === 0 &&
+                                     (overallNoOfParticipants - filteredAndSortedParticipants.size) !== 0">
         <div class="text-center">
           <span>
             <span class="fw-bold">
-              {{ overallNoOfParticipants - filteredAndSortedParticipants.length}}
+              {{ overallNoOfParticipants - filteredAndSortedParticipants.size}}
             </span>
-            <span *ngIf="(overallNoOfParticipants - filteredAndSortedParticipants.length) === 1">
+            <span *ngIf="(overallNoOfParticipants - filteredAndSortedParticipants.size) === 1">
               anonyme Teilnehmer:in.
             </span>
-            <span *ngIf="(overallNoOfParticipants - filteredAndSortedParticipants.length) > 1">
+            <span *ngIf="(overallNoOfParticipants - filteredAndSortedParticipants.size) > 1">
               anonyme Teilnehmer:innen.
             </span>
           </span>
         </div>
       </div>
 
-      <div class="modal-body" *ngIf="filteredAndSortedParticipants.length === 0 &&
-                                     (overallNoOfParticipants - filteredAndSortedParticipants.length) === 0">
+      <div class="modal-body" *ngIf="filteredAndSortedParticipants.size === 0 &&
+                                     (overallNoOfParticipants - filteredAndSortedParticipants.size) === 0">
         <div class="text-center">
           <span>
             Es hat bisher noch niemand an dieser Umfrage teilgenommen.

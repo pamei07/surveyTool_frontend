@@ -2,6 +2,7 @@ export class Answer {
   id: number | undefined;
   text: string | undefined;
   participantName: string | undefined;
+  participantId: string | undefined;
 
   userId: number | undefined;
 
