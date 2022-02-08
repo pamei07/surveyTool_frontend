@@ -8,6 +8,8 @@ import {UserService} from "../../../services/user/user.service";
 import {AnswerService} from "../../../services/answer/answer.service";
 import {Router} from "@angular/router";
 import {Survey} from "../../../model/survey";
+import {KeycloakService} from "keycloak-angular";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-answers-submission',
@@ -18,11 +20,12 @@ export class AnswersSubmissionComponent implements OnInit {
 
   @Input() survey!: Survey;
   @Output() backendErrorEventEmitter = new EventEmitter;
+  user!: User;
   answerForm!: FormGroup;
   answerArray: Answer[] = [];
 
-  get userName() {
-    return this.answerForm.get('userName');
+  get participantName() {
+    return this.answerForm.get('participantName');
   }
 
   get questionGroupsFormArray() {
@@ -32,7 +35,8 @@ export class AnswersSubmissionComponent implements OnInit {
   constructor(private router: Router,
               private parentFormGroup: FormGroupDirective,
               private userService: UserService,
-              private answerService: AnswerService) {
+              private answerService: AnswerService,
+              private keycloakService: KeycloakService) {
   }
 
   ngOnInit() {
@@ -40,14 +44,28 @@ export class AnswersSubmissionComponent implements OnInit {
   }
 
   saveAnswersWithUser() {
-    let userName = this.userName?.value;
-    let user = this.userService.createUser(userName);
-    this.userService.saveUser(user).subscribe(
-      (response: User) => {
-        this.saveAnswers(response);
-      }, () => {
-        this.backendError();
-      });
+    this.keycloakService.isLoggedIn().then(isLoggedIn => {
+      if (isLoggedIn) {
+        this.keycloakService.loadUserProfile().then(userProfile => {
+          this.userService.findUserByEMail(userProfile.email).subscribe(
+            (response: User) => {
+              this.user = response;
+              this.saveAnswers();
+            }, (error: HttpErrorResponse) => {
+              console.log(error);
+              let user = this.userService.createUserFromKeycloakUserProfile(userProfile);
+              this.userService.saveUser(user).subscribe(
+                (response: User) => {
+                  this.user = response;
+                  this.saveAnswers();
+                }
+              );
+            })
+        })
+      } else {
+        this.saveAnswers();
+      }
+    })
   }
 
   /**
@@ -59,21 +77,21 @@ export class AnswersSubmissionComponent implements OnInit {
    * 3. For text questions:
    *    --> Create an Answer object only if a text field is not empty
    */
-  private saveAnswers(user: User) {
+  private saveAnswers() {
     this.questionGroupsFormArray.controls.forEach((answersToQuestionGroup, questionGroupIndex) => {
       answersToQuestionGroup.value.forEach((answerToQuestion: any, questionIndex: number) => {
         if (answerToQuestion instanceof Array) {
           answerToQuestion.forEach((checkbox: any, checkboxIndex: number) => {
             if (checkbox.checked == true) {
-              this.pushAnswerToMultipleSelectQuestion(user, questionGroupIndex, questionIndex, checkbox, checkboxIndex);
+              this.pushAnswerToMultipleSelectQuestion(questionGroupIndex, questionIndex, checkbox, checkboxIndex);
             }
           })
         } else if (typeof answerToQuestion !== 'string') {
           if (answerToQuestion.checkboxId !== '') {
-            this.pushAnswerToSingleSelectQuestion(user, answerToQuestion, questionGroupIndex, questionIndex);
+            this.pushAnswerToSingleSelectQuestion(answerToQuestion, questionGroupIndex, questionIndex);
           }
         } else if (answerToQuestion.trim() !== '') { // Skip text answers that only contain whitespace
-          this.pushAnswerToTextQuestion(user, answerToQuestion, questionGroupIndex, questionIndex);
+          this.pushAnswerToTextQuestion(answerToQuestion, questionGroupIndex, questionIndex);
         }
       })
     });
@@ -87,13 +105,11 @@ export class AnswersSubmissionComponent implements OnInit {
       });
   }
 
-  private pushAnswerToMultipleSelectQuestion(user: User,
-                                             questionGroupIndex: number,
+  private pushAnswerToMultipleSelectQuestion(questionGroupIndex: number,
                                              questionIndex: number,
                                              checkbox: any,
                                              checkboxIndex: number) {
-    let answer = new Answer();
-    answer.setUserId(user.id);
+    let answer = this.createAnswerWithUserInformation();
 
     if (checkbox.text !== '') {
       answer.setText(checkbox.text);
@@ -114,12 +130,10 @@ export class AnswersSubmissionComponent implements OnInit {
     this.answerArray.push(answer);
   }
 
-  private pushAnswerToSingleSelectQuestion(user: User,
-                                           answerToQuestion: any,
+  private pushAnswerToSingleSelectQuestion(answerToQuestion: any,
                                            questionGroupIndex: number,
                                            questionIndex: number) {
-    let answer = new Answer();
-    answer.setUserId(user.id);
+    let answer = this.createAnswerWithUserInformation();
 
     if (answerToQuestion.text !== '') {
       answer.setText(answerToQuestion.text);
@@ -140,12 +154,11 @@ export class AnswersSubmissionComponent implements OnInit {
     this.answerArray.push(answer);
   }
 
-  private pushAnswerToTextQuestion(user: User,
-                                   answerToQuestion: string,
+  private pushAnswerToTextQuestion(answerToQuestion: string,
                                    questionGroupIndex: number,
                                    questionIndex: number) {
-    let answer = new Answer();
-    answer.setUserId(user.id);
+    let answer = this.createAnswerWithUserInformation();
+
     answer.setText(answerToQuestion);
 
     let currentQuestion: Question = this.survey
@@ -154,6 +167,21 @@ export class AnswersSubmissionComponent implements OnInit {
     answer.setQuestionId(currentQuestion.id);
 
     this.answerArray.push(answer);
+  }
+
+  private createAnswerWithUserInformation() {
+    let answer = new Answer();
+    if (this.user !== undefined) {
+      answer.setUserId(this.user.id);
+    }
+
+    let participantsName = this.participantName?.value;
+    if (participantsName.trim() !== '') {
+      answer.setParticipantName(participantsName);
+    } else {
+      answer.setParticipantName('Anonym');
+    }
+    return answer;
   }
 
   private backendError() {

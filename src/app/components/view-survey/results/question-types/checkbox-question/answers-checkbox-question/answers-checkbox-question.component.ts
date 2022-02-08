@@ -40,14 +40,14 @@ export class AnswersCheckboxQuestionComponent implements OnInit {
   }
 
   private calculateNumberOfUsersAnswering(answers: Answer[]) {
-    let userIds: number[] = [];
+    let participantIds: (string | undefined)[] = [];
     for (let answer of answers) {
-      let userIdPostingAnswer = <number>answer.userId;
-      if (!userIds.some(userId => userId === userIdPostingAnswer)) {
-        userIds.push(userIdPostingAnswer);
+      let participantIdPostingAnswer = answer.participantId;
+      if (!participantIds.some(participantId => participantId === participantIdPostingAnswer)) {
+        participantIds.push(participantIdPostingAnswer);
       }
     }
-    this.numberOfUsersAnswering = userIds.length;
+    this.numberOfUsersAnswering = participantIds.length;
   }
 
   setShowTable(bool: boolean) {

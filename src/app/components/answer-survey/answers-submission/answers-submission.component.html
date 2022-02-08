@@ -14,11 +14,11 @@
       </div>
       <hr class="my-0" *ngIf="!survey.anonymousParticipation">
       <div class="modal-body" *ngIf="!survey.anonymousParticipation">
-        <label for="userName" class="form-label">
+        <label for="participantName" class="form-label">
           Geben Sie Ihren Namen ein (Optional):
         </label>
-        <input id="userName" class="form-control" type="text" formControlName="userName">
-        <div class="alert alert-danger p-2 m-0 mt-2" *ngIf="userName?.errors?.maxlength">
+        <input id="participantName" class="form-control" type="text" formControlName="participantName">
+        <div class="alert alert-danger p-2 m-0 mt-2" *ngIf="participantName?.errors?.maxlength">
           Der angegebene Name darf nicht länger als 255 Zeichen sein.
         </div>
       </div>

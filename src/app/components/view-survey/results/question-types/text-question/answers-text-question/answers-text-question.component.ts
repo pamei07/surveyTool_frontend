@@ -26,12 +26,12 @@ export class AnswersTextQuestionComponent implements OnInit {
   }
 
   private calculateNumberOfUsersAnswering(answers: Answer[]) {
-    let userIds: number[] = [];
+    let participantIds: (string | undefined)[] = [];
     for (let answer of answers) {
-      let userId = <number>answer.userId;
-      userIds.push(userId);
+      let participantId = answer.participantId;
+      participantIds.push(participantId);
     }
-    this.numberOfUsersAnswering = userIds.length;
+    this.numberOfUsersAnswering = participantIds.length;
   }
 
   collapseTextAnswers() {

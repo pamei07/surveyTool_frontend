@@ -1,9 +1,10 @@
 export class Answer {
   id: number | undefined;
   text: string | undefined;
+  participantName: string | undefined;
+  participantId: string | undefined;
 
   userId: number | undefined;
-  userName: string | undefined;
 
   questionId: number | undefined;
   checkboxId: number | undefined;
@@ -22,5 +23,9 @@ export class Answer {
 
   setUserId(userId: number | undefined) {
     this.userId = userId;
+  }
+
+  setParticipantName(participantName: string) {
+    this.participantName = participantName;
   }
 }

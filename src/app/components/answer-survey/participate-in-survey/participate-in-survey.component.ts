@@ -19,7 +19,7 @@ export class ParticipateInSurveyComponent implements OnInit {
     " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
 
   answerForm = this.fb.group({
-    userName: ['', [Validators.maxLength(255)]],
+    participantName: ['', [Validators.maxLength(255)]],
     questionGroupsFormArray: this.fb.array([])
   });
 
