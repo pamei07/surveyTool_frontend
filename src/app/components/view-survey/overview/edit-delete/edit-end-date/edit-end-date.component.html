@@ -47,3 +47,9 @@
   </div>
 
 </section>
+
+<div class="container restrictWidth" *ngIf="errorMessages.length !== 0">
+  <div class="errorMessage alert alert-danger p-2 my-2 mx-1 d-block" *ngFor="let errorMessage of errorMessages">
+    {{ errorMessage }}
+  </div>
+</div>

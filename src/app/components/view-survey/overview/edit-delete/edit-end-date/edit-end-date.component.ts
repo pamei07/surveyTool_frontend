@@ -19,6 +19,9 @@ export class EditEndDateComponent implements OnInit {
   accessId!: string | null;
   authorized!: boolean;
   updateEndDateForm!: FormGroup;
+  errorMessages: string[] = [];
+  private backendErrorMessage: string = "Beim Speichern der Umfrage ist etwas schiefgelaufen.\n" +
+    " Bitte überpüfen Sie Ihre Angaben und versuchen Sie es erneut.";
 
   get endDate() {
     return this.updateEndDateForm.get('endDate');
@@ -76,6 +79,9 @@ export class EditEndDateComponent implements OnInit {
                         console.log(updatedSurvey);
 
                         this.router.navigate(["surveys", accessId]);
+                      }, () => {
+                        this.errorMessages = [];
+                        this.errorMessages.push(this.backendErrorMessage);
                       });
                   }
                 })
