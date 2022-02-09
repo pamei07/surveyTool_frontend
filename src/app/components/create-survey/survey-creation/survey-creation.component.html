@@ -1,4 +1,7 @@
 <section id="surveyForm" class="container restrictWidth" [formGroup]="surveyForm">
+  <div class="d-flex justify-content-center mb-3" *ngIf="!loggedIn">
+    <app-info-logged-in class="w-75 mt-3"></app-info-logged-in>
+  </div>
   <app-creation-helper></app-creation-helper>
   <h2 class="text-center my-3">
     Umfrage erstellen

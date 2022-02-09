@@ -79,6 +79,7 @@ import {MatchSurveyNameValidationDirective} from "./directives/match-survey-name
 import {SurveyUpdateComponent} from './components/view-survey/overview/edit-delete/survey-update/survey-update.component';
 import {SurveyUpdateSubmissionComponent} from './components/view-survey/overview/edit-delete/survey-update-submission/survey-update-submission.component';
 import {EditEndDateComponent} from './components/view-survey/overview/edit-delete/edit-end-date/edit-end-date.component';
+import { InfoLoggedInComponent } from './components/create-survey/helper/info-logged-in/info-logged-in.component';
 
 
 const appRoutes: Routes = [
@@ -172,7 +173,8 @@ const appRoutes: Routes = [
     MatchSurveyNameValidationDirective,
     SurveyUpdateComponent,
     SurveyUpdateSubmissionComponent,
-    EditEndDateComponent
+    EditEndDateComponent,
+    InfoLoggedInComponent
   ],
   imports: [
     BrowserModule,
