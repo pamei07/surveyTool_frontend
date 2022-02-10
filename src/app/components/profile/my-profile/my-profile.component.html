@@ -1,54 +1,56 @@
-<section id="profile" class="container restrictWidth">
-  <h2 class="mt-4">
-    Mein Profil
-  </h2>
-  <div class="container fontSize18px">
-    <div class="row mb-2">
-      <div class="col">
-        <span class="username bolderText">
-          Benutzername:
-        </span>
+<section id="profile" class="container restrictWidth mt-3 mt-sm-5 d-flex justify-content-center">
+  <div id="myProfileCard" class="card">
+    <h2 class="card-header blueText">
+      Mein Profil
+    </h2>
+    <div class="container fontSize18px card-body">
+      <div class="row mb-3">
+        <div class="col ms-1">
+          <span class="username bolderText">
+            Benutzername:
+          </span>
+        </div>
+        <div class="col-sm ms-3 ms-sm-0">
+          <span>
+            {{ username }}
+          </span>
+        </div>
       </div>
-      <div class="col">
-        <span>
-          {{ username }}
-        </span>
+      <div class="row mb-3">
+        <div class="col ms-1">
+          <span class="username bolderText">
+            E-Mail Adresse:
+          </span>
+        </div>
+        <div class="col-sm ms-3 ms-sm-0">
+          <span>
+            {{ email }}
+          </span>
+        </div>
       </div>
-    </div>
-    <div class="row mb-2">
-      <div class="col">
-        <span class="username bolderText">
-          E-Mail Adresse:
-        </span>
+      <div class="row mb-3">
+        <div class="col ms-1">
+          <span class="username bolderText">
+            Vorname:
+          </span>
+        </div>
+        <div class="col-sm ms-3 ms-sm-0">
+          <span>
+            {{ firstName }}
+          </span>
+        </div>
       </div>
-      <div class="col">
-        <span>
-          {{ email }}
-        </span>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <div class="col">
-        <span class="username bolderText">
-          Vorname:
-        </span>
-      </div>
-      <div class="col">
-        <span>
-          {{ firstName }}
-        </span>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <div class="col">
-        <span class="username bolderText">
-          Name:
-        </span>
-      </div>
-      <div class="col">
-        <span>
-          {{ lastName }}
-        </span>
+      <div class="row">
+        <div class="col ms-1">
+          <span class="username bolderText">
+            Name:
+          </span>
+        </div>
+        <div class="col-sm ms-3 ms-sm-0">
+          <span>
+            {{ lastName }}
+          </span>
+        </div>
       </div>
     </div>
   </div>

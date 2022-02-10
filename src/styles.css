@@ -275,6 +275,11 @@ footer {
   font-size: 20px;
 }
 
+#myProfileCard {
+  width: 550px;
+}
+
+
 /* Override Bootstrap CSS */
 .list-group {
   border: 0.08em solid #DFDFDF;
