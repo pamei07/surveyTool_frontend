@@ -76,16 +76,16 @@ export class SurveyService {
 
         if (noOfCheckboxes === 0) {
           errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
-            "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
+            "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]." +
             "\nDiese Frage enthält noch keine Antwortmöglichkeiten.");
         } else {
           if (!checkboxGroup?.multipleSelect && noOfCheckboxes! < 2) {
             errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
-              "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
+              "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]." +
               "\nBei einer Frage mit Antwortmöglichkeiten müssen mind. 2 Antworten gegeben sein.");
           } else if (checkboxGroup?.multipleSelect && noOfCheckboxes! < checkboxGroup!.maxSelect) {
             errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
-              "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]" +
+              "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]." +
               "\nBei einer Frage mit Antwortmöglichkeiten müssen mind. 2 Antworten gegeben sein, " +
               "bzw. mind. so viele Antworten wie bei der Mehrfachauswahl maximal erlaubt sind.");
           }
