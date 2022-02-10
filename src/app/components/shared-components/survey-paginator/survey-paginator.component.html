@@ -1,4 +1,5 @@
-<div class="text-end mx-2 mb-2">
+<app-spinner *ngIf="!surveys"></app-spinner>
+<div class="text-end mx-2 mb-2" *ngIf="surveys">
   Sortieren nach:&nbsp;&nbsp;
   <span class="linkStyle cursorPointer" (click)="sortByStartDate()"
         [ngClass]="{'selectedLinkStyle': sortedBy === 'startDate'}">Startdatum</span>

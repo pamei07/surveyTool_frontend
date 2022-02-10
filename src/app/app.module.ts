@@ -80,6 +80,7 @@ import {SurveyUpdateComponent} from './components/view-survey/overview/edit-dele
 import {SurveyUpdateSubmissionComponent} from './components/view-survey/overview/edit-delete/survey-update-submission/survey-update-submission.component';
 import {EditEndDateComponent} from './components/view-survey/overview/edit-delete/edit-end-date/edit-end-date.component';
 import { InfoLoggedInComponent } from './components/create-survey/helper/info-logged-in/info-logged-in.component';
+import { SpinnerComponent } from './components/shared-components/spinner/spinner.component';
 
 
 const appRoutes: Routes = [
@@ -174,7 +175,8 @@ const appRoutes: Routes = [
     SurveyUpdateComponent,
     SurveyUpdateSubmissionComponent,
     EditEndDateComponent,
-    InfoLoggedInComponent
+    InfoLoggedInComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

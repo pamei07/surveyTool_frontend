@@ -1,12 +1,15 @@
 <section id="surveyOverview" *ngIf="!surveyNotFound">
   <h2 class="my-3 text-center">
-    Übersicht
+    Teilnahme - Übersicht
   </h2>
-  <app-survey-basic-information [survey]="survey"></app-survey-basic-information>
-  <div class="d-flex justify-content-center mt-3 mb-4">
-    <button class="btn btn-primary participateButton" (click)="participate()" [disabled]="!withinTimeFrame">
-      Teilnehmen
-    </button>
+  <app-spinner *ngIf="!survey"></app-spinner>
+  <div *ngIf="survey">
+    <app-survey-basic-information [survey]="survey"></app-survey-basic-information>
+    <div class="d-flex justify-content-center mt-3 mb-4">
+      <button class="btn btn-primary participateButton" (click)="participate()" [disabled]="!withinTimeFrame">
+        Teilnehmen
+      </button>
+    </div>
   </div>
 </section>
 <section id="errorMessages" class="alert alert-danger p-2 mt-4 mx-5" *ngIf="surveyNotFound || !withinTimeFrame">

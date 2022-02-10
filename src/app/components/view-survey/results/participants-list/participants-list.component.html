@@ -1,3 +1,7 @@
+<!-- To make the transition from the survey overview to the results smoother -->
+<span class="cursorPointer text-muted" *ngIf="!participants">
+  Anzahl der Teilnehmer:innen : &nbsp;&nbsp;&nbsp;
+</span>
 <span class="cursorPointer text-muted" data-bs-toggle="modal"
       [attr.data-bs-target]="'#viewParticipants' + survey.id"
       *ngIf="participants">
