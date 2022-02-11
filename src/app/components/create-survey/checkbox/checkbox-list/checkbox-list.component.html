@@ -13,15 +13,27 @@
       *ngIf="noOfCheckboxes > 0">
     <li class="list-group-item draggableListItem" cdkDrag
         *ngFor="let checkbox of checkboxes; index as indexCheckbox;">
-      <span> {{ checkbox.text }} </span>
-      <div class="float-end">
-        <span *ngIf="checkbox.hasTextField" class="badge bg-secondary m-0 me-2">
-            Textfeld
-        </span>
-        <app-checkbox-delete [survey]="survey"
-                             [indexQuestionGroup]="indexQuestionGroup"
-                             [indexQuestion]="indexQuestion"
-                             [indexCheckbox]="indexCheckbox"></app-checkbox-delete>
+      <div class="container p-0">
+        <div class="row justify-content-between">
+          <div class="col">
+            <span> {{ checkbox.text }} </span>
+          </div>
+          <div class="col text-end">
+            <app-checkbox-delete [survey]="survey"
+                                 [indexQuestionGroup]="indexQuestionGroup"
+                                 [indexQuestion]="indexQuestion"
+                                 [indexCheckbox]="indexCheckbox"></app-checkbox-delete>
+          </div>
+        </div>
+        <div class="row text-muted" *ngIf="checkbox.hasTextField">
+          <div>
+            <span>
+              <span class="fw-bold">Mit Textfeld</span> -
+            </span>
+            <span *ngIf="!checkbox.placeholder">Kein Platzhalter angegeben</span>
+            <span *ngIf="checkbox.placeholder"> Platzhalter:<br>{{ checkbox.placeholder }}</span>
+          </div>
+        </div>
       </div>
     </li>
   </ul>

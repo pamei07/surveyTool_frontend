@@ -17,7 +17,8 @@ export class CheckboxAddComponent {
 
   checkboxForm = this.fb.group({
     text: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]],
-    hasTextField: false
+    hasTextField: false,
+    placeholder: ['', [Validators.maxLength(255)]]
   })
 
   initialFormValues = this.checkboxForm.value;
@@ -33,6 +34,9 @@ export class CheckboxAddComponent {
     let checkbox = new Checkbox();
     checkbox.text = this.checkboxForm.value.text;
     checkbox.hasTextField = this.checkboxForm.value.hasTextField;
+    if (checkbox.hasTextField && this.checkboxForm.value.placeholder.trim() !== "") {
+      checkbox.placeholder = this.checkboxForm.value.placeholder;
+    }
 
     this.survey
       .questionGroups![this.indexQuestionGroup]

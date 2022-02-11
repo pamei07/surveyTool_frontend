@@ -19,8 +19,7 @@
                      (click)="disableEnableInput(checkbox)">
             </div>
             <div class="col">
-              <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id"
-                     class="form-check-labels">
+              <label [attr.for]="'checkbox' + checkbox.id + 'Question' + question.id" class="form-check-labels">
                 {{ checkbox.text }}<span *ngIf="checkbox.hasTextField">:</span>
               </label>
             </div>
@@ -28,6 +27,7 @@
           <div class="row ms-5 me-3 mb-1" *ngIf="checkbox.hasTextField">
             <textarea [attr.id]="'checkbox' + checkbox.id + 'text'" class="form-control shortTextarea"
                       formControlName="text"
+                      [attr.placeholder]="checkbox.placeholder ? checkbox.placeholder : 'max. 1500 Zeichen'"
                       [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id"></textarea>
           </div>
         </div>

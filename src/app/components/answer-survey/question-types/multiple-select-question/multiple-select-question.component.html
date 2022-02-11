@@ -38,6 +38,7 @@
           </div>
           <div class="row ms-5 me-3 mb-1" *ngIf="checkbox.hasTextField">
             <textarea class="form-control shortTextarea" formControlName="text"
+                      [attr.placeholder]="checkbox.placeholder ? checkbox.placeholder : 'max. 1500 Zeichen'"
                       [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id"></textarea>
           </div>
           <div *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.invalid"

@@ -4,5 +4,6 @@ export class Checkbox {
   id: number | undefined;
   text: string | undefined;
   hasTextField: boolean | undefined;
+  placeholder: string | undefined;
   answers: Answer[] = [];
 }
