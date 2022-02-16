@@ -37,10 +37,6 @@ export class UserService {
     return this.http.post<User>(this.usersUrl, user);
   }
 
-  public findParticipatingUsersBySurveyId(surveyId: number | undefined) {
-    return this.http.get<User[]>(this.usersUrl + '/surveys/' + surveyId);
-  }
-
   public findUserByEMail(email: string | undefined) {
     return this.http.get<User>(this.usersUrl + '?email=' + email);
   }
