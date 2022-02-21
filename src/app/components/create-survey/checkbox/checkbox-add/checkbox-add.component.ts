@@ -47,4 +47,9 @@ export class CheckboxAddComponent {
     this.checkboxForm.reset(this.initialFormValues);
   }
 
+  collapsePlaceholderBarWhenOpen(indexQuestionGroup: number, indexQuestion: number) {
+    if (document.getElementById('checkboxPlaceholder' + indexQuestionGroup + 'Question' + indexQuestion)!.classList.contains('show')) {
+      document.getElementById('checkboxPlaceholder' + indexQuestionGroup + 'Question' + indexQuestion)!.classList.remove('show');
+    }
+  }
 }
