@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormGroup, FormGroupDirective} from "@angular/forms";
-import {Survey} from "../../../model/survey";
 
 @Component({
   selector: 'app-survey-basic-information-form',
@@ -9,7 +8,6 @@ import {Survey} from "../../../model/survey";
 
 export class SurveyBasicInformationFormComponent implements OnInit {
 
-  @Input() survey!: Survey;
   @Output() basicInfoBoolean = new EventEmitter<boolean>();
   surveyForm!: FormGroup;
 
