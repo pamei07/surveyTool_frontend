@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "heroku-postbuild": "ng build --prod && npm install -g http-server-spa",
+    "heroku-postbuild": "bash build.sh && npm install -g http-server-spa",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "start": "http-server-spa dist/angularclient index.html $PORT",
-    "start-dev": "ng serve"
+    "start-local": "ng serve"
   },
   "private": true,
   "dependencies": {
