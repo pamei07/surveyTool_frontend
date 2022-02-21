@@ -20,8 +20,12 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
         });
         resolve(resolve);
       } catch (error) {
+        console.error(error)
         reject(error);
       }
+    }).catch(() => {
+      // If catch block is not reached => reinstall keycloak-js dependency (might fix it?)
+      console.error("Keycloak failed to initialize.")
     });
   };
 }
