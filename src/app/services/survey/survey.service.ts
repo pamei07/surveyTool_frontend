@@ -70,7 +70,7 @@ export class SurveyService {
 
   private checkIfQuestionsComplete(questionGroup: QuestionGroup, questionGroupIndex: number, errorMessages: string[]): string[] {
     questionGroup.questions.forEach((question, questionIndex) => {
-      if (question.hasCheckbox) {
+      if (question.questionType === 'MULTIPLE_CHOICE') {
         let checkboxGroup = question.checkboxGroup;
         let noOfCheckboxes = checkboxGroup?.checkboxes.length;
 

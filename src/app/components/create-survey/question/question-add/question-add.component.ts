@@ -8,6 +8,7 @@ import {
   maxSelectGreaterThanEqualsMinSelectValidator
 } from "../../../../directives/min-max-select-validation.directive";
 import {stringNotEmpty} from "../../../../directives/string-validation.directive";
+import {QuestionType} from "../../../../model/questionType";
 
 @Component({
   selector: 'app-question-add',
@@ -56,9 +57,13 @@ export class QuestionAddComponent {
     let question = new Question();
     question.text = this.questionForm.value.text;
     question.required = this.questionForm.value.required;
-    question.hasCheckbox = this.questionForm.value.hasCheckbox;
+    if (this.questionForm.value.hasCheckbox === true) {
+      question.questionType = QuestionType.MULTIPLE_CHOICE;
+    } else {
+      question.questionType = QuestionType.TEXT;
+    }
 
-    if (question.hasCheckbox) {
+    if (question.questionType === 'MULTIPLE_CHOICE') {
       let checkboxGroup = new CheckboxGroup();
       checkboxGroup.multipleSelect = this.questionForm.value.checkboxGroup.multipleSelect;
       if (!this.minSelect?.disabled && !this.maxSelect?.disabled) {

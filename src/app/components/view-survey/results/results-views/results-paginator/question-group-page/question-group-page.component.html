@@ -4,9 +4,9 @@
 <div>
   <div class="mb-4" *ngFor="let question of questionGroup.questions; index as questionIndex">
     <app-answers-text-question [question]="question" [questionIndex]="questionIndex"
-                               *ngIf="!question.hasCheckbox"></app-answers-text-question>
+                               *ngIf="question.questionType === 'TEXT'"></app-answers-text-question>
     <app-answers-checkbox-question [question]="question" [questionIndex]="questionIndex"
-                                   *ngIf="question.hasCheckbox"></app-answers-checkbox-question>
+                                   *ngIf="question.questionType === 'MULTIPLE_CHOICE'"></app-answers-checkbox-question>
   </div>
   <div class="container text-end">
     <button id="buttonToQuestionGroupHeading" class="btn btn-outline-primary scrollToTopButton py-1 px-2 me-2"

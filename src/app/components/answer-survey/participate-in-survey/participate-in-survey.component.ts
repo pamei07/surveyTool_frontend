@@ -106,7 +106,7 @@ export class ParticipateInSurveyComponent implements OnInit {
   }
 
   private addQuestionToForm(question: Question, questionIndex: number, questionsFormArray: FormArray) {
-    if (question.hasCheckbox) {
+    if (question.questionType === 'MULTIPLE_CHOICE') {
       if (question.checkboxGroup!.multipleSelect) {
         this.addMultipleSelectQuestion(question, questionIndex, questionsFormArray);
       } else {

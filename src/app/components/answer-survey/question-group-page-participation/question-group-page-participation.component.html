@@ -4,17 +4,19 @@
   </h3>
 
   <div *ngFor="let question of questionGroup.questions; index as questionIndex" class="mb-3">
-    <app-text-question *ngIf="!question.hasCheckbox"
+    <app-text-question *ngIf="question.questionType === 'TEXT'"
                        [questionGroupIndex]="questionGroupIndex"
                        [question]="question"
                        [questionIndex]="questionIndex"></app-text-question>
-    <app-single-select-question *ngIf="question.hasCheckbox && !question.checkboxGroup!.multipleSelect"
-                                [questionGroupIndex]="questionGroupIndex"
-                                [question]="question"
-                                [questionIndex]="questionIndex"></app-single-select-question>
-    <app-multiple-select-question *ngIf="question.hasCheckbox && question.checkboxGroup!.multipleSelect"
-                                  [questionGroupIndex]="questionGroupIndex"
-                                  [question]="question"
-                                  [questionIndex]="questionIndex"></app-multiple-select-question>
+    <app-single-select-question
+      *ngIf="question.questionType === 'MULTIPLE_CHOICE' && !question.checkboxGroup!.multipleSelect"
+      [questionGroupIndex]="questionGroupIndex"
+      [question]="question"
+      [questionIndex]="questionIndex"></app-single-select-question>
+    <app-multiple-select-question
+      *ngIf="question.questionType === 'MULTIPLE_CHOICE' && question.checkboxGroup!.multipleSelect"
+      [questionGroupIndex]="questionGroupIndex"
+      [question]="question"
+      [questionIndex]="questionIndex"></app-multiple-select-question>
   </div>
 </div>

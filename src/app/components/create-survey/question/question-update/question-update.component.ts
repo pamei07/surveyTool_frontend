@@ -56,7 +56,7 @@ export class QuestionUpdateComponent implements OnInit {
       required: questionToUpdate.required,
     })
 
-    if (questionToUpdate.hasCheckbox) {
+    if (questionToUpdate.questionType === 'MULTIPLE_CHOICE') {
       this.updateForm.patchValue({
         checkboxGroup: {
           multipleSelect: questionToUpdate.checkboxGroup!.multipleSelect,
@@ -77,7 +77,7 @@ export class QuestionUpdateComponent implements OnInit {
     questionToUpdate.text = this.updateForm.value.text;
     questionToUpdate.required = this.updateForm.value.required;
 
-    if (questionToUpdate.hasCheckbox) {
+    if (questionToUpdate.questionType === 'MULTIPLE_CHOICE') {
       let checkboxGroupToUpdate = questionToUpdate.checkboxGroup!;
       checkboxGroupToUpdate.multipleSelect = this.updateForm.value.checkboxGroup.multipleSelect;
       if (!this.minSelect?.disabled && !this.maxSelect?.disabled) {

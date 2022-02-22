@@ -35,7 +35,8 @@
                    type="checkbox" formControlName="required">
           </div>
         </div>
-        <div *ngIf="survey.questionGroups[indexQuestionGroup].questions[indexQuestion].hasCheckbox">
+        <div
+          *ngIf="survey.questionGroups[indexQuestionGroup].questions[indexQuestion].questionType === 'MULTIPLE_CHOICE'">
           <hr class="mt-1">
           <div class="container">
             <div class="row mb-2 align-items-center" formGroupName="checkboxGroup">

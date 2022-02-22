@@ -53,16 +53,16 @@
                   <span *ngIf="!question.required">Nein</span>
                 </div>
                 <div class="row ms-0">
-                  <span *ngIf="question.hasCheckbox">Auswahl</span>
-                  <span *ngIf="!question.hasCheckbox">Freitext</span>
+                  <span *ngIf="question!.questionType === 'TEXT'">Freitext</span>
+                  <span *ngIf="question!.questionType === 'MULTIPLE_CHOICE'">Auswahl</span>
                 </div>
               </div>
             </div>
 
-            <hr class="my-2 mx-3" *ngIf="question!.hasCheckbox">
+            <hr class="my-2 mx-3" *ngIf="question!.questionType === 'MULTIPLE_CHOICE'">
 
             <div class="row">
-              <div *ngIf="question!.hasCheckbox">
+              <div *ngIf="question!.questionType === 'MULTIPLE_CHOICE'">
                 <div class="container mb-1">
                   <div *ngIf="question.checkboxGroup!.multipleSelect"
                        class="row justify-content-evenly">
