@@ -24,7 +24,6 @@ export class QuestionAddComponent {
   questionForm = this.fb.group({
     text: ['', [Validators.required, Validators.maxLength(500), stringNotEmpty()]],
     required: false,
-    hasCheckbox: false,
     checkboxGroup: this.fb.group({
       multipleSelect: false,
       minSelect: [{value: '0', disabled: true}, [Validators.required, Validators.min(0)]],
