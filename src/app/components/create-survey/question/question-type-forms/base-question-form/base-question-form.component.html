@@ -1,7 +1,7 @@
 <div [formGroup]="questionForm">
   <div class="row">
     <div class="col">
-      <label for="question" class="form-label">Fragetext*</label>
+      <label for="question" class="form-label">Fragetext: *</label>
       <textarea id="question" class="form-control shortTextarea" name="text" formControlName="text"
                 required></textarea>
       <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
@@ -14,11 +14,11 @@
         </div>
       </div>
     </div>
-    <div id="requiredQuestionField" class="col-sm-2 mt-2 mt-sm-0 justify-content-center">
+    <div id="requiredQuestionField" class="col-sm-2 mt-3 mt-sm-0 justify-content-center">
       <label [attr.for]="'required' + indexQuestionGroup" class="form-check-label">
         Erforderlich?&nbsp;&nbsp;
       </label>
-      <input [attr.id]="'required' + indexQuestionGroup" class="form-check-input ms-0 ms-sm-2 mt-sm-3 p-2"
+      <input [attr.id]="'required' + indexQuestionGroup" class="form-check-input ms-0 ms-sm-2 mt-sm-3 p-0 p-sm-2"
              name="required" value="true" type="checkbox" formControlName="required">
     </div>
   </div>
