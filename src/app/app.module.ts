@@ -84,6 +84,8 @@ import {SpinnerComponent} from './components/shared-components/spinner/spinner.c
 import {TextQuestionFormComponent} from "./components/create-survey/question/question-forms/question-creation-forms/text-question-form/text-question-form.component";
 import {MultipleChoiceQuestionFormComponent} from "./components/create-survey/question/question-forms/question-creation-forms/multiple-choice-question-form/multiple-choice-question-form.component";
 import {BaseQuestionFormComponent} from './components/create-survey/question/question-forms/question-creation-forms/base-question-form/base-question-form.component';
+import { BaseQuestionUpdateFormComponent } from './components/create-survey/question/question-forms/question-update-forms/base-question-update-form/base-question-update-form.component';
+import { MultipleChoiceQuestionUpdateFormComponent } from './components/create-survey/question/question-forms/question-update-forms/multiple-choice-question-update-form/multiple-choice-question-update-form.component';
 
 
 const appRoutes: Routes = [
@@ -182,7 +184,9 @@ const appRoutes: Routes = [
     SpinnerComponent,
     TextQuestionFormComponent,
     MultipleChoiceQuestionFormComponent,
-    BaseQuestionFormComponent
+    BaseQuestionFormComponent,
+    BaseQuestionUpdateFormComponent,
+    MultipleChoiceQuestionUpdateFormComponent
   ],
   imports: [
     BrowserModule,

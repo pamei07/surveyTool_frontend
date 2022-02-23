@@ -9,101 +9,14 @@
       </div>
       <form [formGroup]="updateForm"
             (ngSubmit)="updateQuestion(indexQuestion)">
-        <div class="modal-body">
-          <label [attr.for]="'groupQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
-                 class="form-label">
-            Fragentext:
-          </label>
-          <textarea [attr.id]="'groupQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
-                    class="form-control shortTextarea" name="title" formControlName="text" required></textarea>
-          <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
-               class="alert alert-danger p-2 mt-1 mb-?0">
-            <div class="errorMessage" *ngIf="text?.errors?.required || text?.errors?.stringIsEmpty">
-              Eine Frage benötigt einen Fragentext.
-            </div>
-            <div class="errorMessage" *ngIf="text?.errors?.maxlength">
-              Der Fragentext darf nicht länger als 500 Zeichen sein.
-            </div>
-          </div>
-          <div class="mt-3 ms-2">
-            <label [attr.for]="'requiredQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
-                   class="form-check-label">
-              Erforderlich?&nbsp;&nbsp;
-            </label>
-            <input [attr.id]="'requiredQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
-                   class="form-check-input" name="required"
-                   type="checkbox" formControlName="required">
-          </div>
-        </div>
-        <div
-          *ngIf="survey.questionGroups[indexQuestionGroup].questions[indexQuestion].questionType === 'MULTIPLE_CHOICE'">
-          <hr class="mt-1">
-          <div class="container">
-            <div class="row mb-2 align-items-center" formGroupName="checkboxGroup">
-              <div class="col-sm">
-                <label [attr.for]="'multipleSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
-                       class="form-check-label">
-                  Mehrfachauswahl?&nbsp;&nbsp;
-                </label>
-                <input [attr.id]="'multipleSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
-                       class="form-check-input" name="multipleSelect" type="checkbox"
-                       formControlName="multipleSelect"
-                       (change)="enableDisableMinMaxInput()">
-              </div>
-              <div class="col-sm-auto mx-sm-2 mb-1 mb-sm-0">
-                <div class="container row p-0 m-0 align-items-center justify-content-between justify-content-sm-start">
-                  <label [attr.for]="'minSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
-                         class="form-label col-auto ps-0 m-0">
-                    Min.:
-                  </label>
-                  <input [attr.id]="'minSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
-                         class="form-control minMaxInputField text-end py-1" name="minSelect" type="number" min="0"
-                         formControlName="minSelect">
-                </div>
-              </div>
-              <div class="col-sm-auto mx-sm-2">
-                <div class="container row p-0 m-0 align-items-center justify-content-between justify-content-sm-start">
-                  <label [attr.for]="'maxSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
-                         class="form-label col-auto ps-0 m-0">
-                    Max.:
-                  </label>
-                  <input [attr.id]="'maxSelectQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
-                         class="form-control minMaxInputField text-end py-1" name="maxSelect" type="number" min="2"
-                         formControlName="maxSelect">
-                </div>
-              </div>
-            </div>
-
-            <div class="row mt-0">
-              <div *ngIf="minSelect?.invalid && (minSelect?.dirty || minSelect?.touched)"
-                   class="alert alert-danger p-2 mb-1">
-                <div *ngIf="minSelect?.errors?.required">
-                  Das Minimum muss angegeben werden.
-                </div>
-                <div *ngIf="minSelect?.errors?.min">
-                  Das Minimum muss mind. 0 sein.
-                </div>
-              </div>
-              <div *ngIf="maxSelect?.invalid && (maxSelect?.dirty || maxSelect?.touched)"
-                   class="alert alert-danger p-2 mb-1">
-                <div *ngIf="maxSelect?.errors?.required">
-                  Das Maximum muss angegeben werden.
-                </div>
-                <div *ngIf="maxSelect?.errors?.min">
-                  Das Maximum muss mind. 2 sein.
-                </div>
-              </div>
-              <div class="alert alert-danger p-2 mb-1"
-                   *ngIf="updateForm.hasError('maxSelectLessThanMinSelect')">
-                Das Maximum muss größer als / gleich dem Minimum sein.
-              </div>
-              <div class="alert alert-danger p-2 mb-1"
-                   *ngIf="updateForm.hasError('requiredButMinZeroCheckboxes')">
-                Wenn die Frage als erforderlich gekennzeichnet ist, muss das Minimum bei mind. 1 liegen.
-              </div>
-            </div>
-          </div>
-        </div>
+        <app-base-question-update-form [survey]="survey"
+                                       [indexQuestionGroup]="indexQuestionGroup"
+                                       [indexQuestion]="indexQuestion"></app-base-question-update-form>
+        <app-multiple-choice-question-update-form
+          *ngIf="survey.questionGroups[indexQuestionGroup].questions[indexQuestion].questionType === 'MULTIPLE_CHOICE'"
+          [survey]="survey"
+          [indexQuestionGroup]="indexQuestionGroup"
+          [indexQuestion]="indexQuestion"></app-multiple-choice-question-update-form>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="updateForm.invalid">
             Änderungen Speichern

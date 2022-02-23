@@ -1,0 +1,27 @@
+<div class="modal-body" [formGroup]="updateForm">
+  <label [attr.for]="'groupQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+         class="form-label">
+    Fragentext:
+  </label>
+  <textarea [attr.id]="'groupQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+            class="form-control shortTextarea" name="title" formControlName="text" required></textarea>
+  <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
+       class="alert alert-danger p-2 mt-1 mb-?0">
+    <div class="errorMessage" *ngIf="text?.errors?.required || text?.errors?.stringIsEmpty">
+      Eine Frage benötigt einen Fragentext.
+    </div>
+    <div class="errorMessage" *ngIf="text?.errors?.maxlength">
+      Der Fragentext darf nicht länger als 500 Zeichen sein.
+    </div>
+  </div>
+
+  <div class="mt-3 ms-2">
+    <label [attr.for]="'requiredQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+           class="form-check-label">
+      Erforderlich?&nbsp;&nbsp;
+    </label>
+    <input [attr.id]="'requiredQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+           class="form-check-input" name="required"
+           type="checkbox" formControlName="required">
+  </div>
+</div>
