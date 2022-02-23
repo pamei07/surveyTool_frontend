@@ -81,9 +81,9 @@ import {SurveyUpdateSubmissionComponent} from './components/view-survey/overview
 import {EditEndDateComponent} from './components/view-survey/overview/edit-delete/edit-end-date/edit-end-date.component';
 import {InfoLoggedInComponent} from './components/create-survey/helper/info-logged-in/info-logged-in.component';
 import {SpinnerComponent} from './components/shared-components/spinner/spinner.component';
-import {TextQuestionFormComponent} from "./components/create-survey/question/question-type-forms/text-question-form/text-question-form.component";
-import {MultipleChoiceQuestionFormComponent} from "./components/create-survey/question/question-type-forms/multiple-choice-question-form/multiple-choice-question-form.component";
-import { BaseQuestionFormComponent } from './components/create-survey/question/question-type-forms/base-question-form/base-question-form.component';
+import {TextQuestionFormComponent} from "./components/create-survey/question/question-forms/question-creation-forms/text-question-form/text-question-form.component";
+import {MultipleChoiceQuestionFormComponent} from "./components/create-survey/question/question-forms/question-creation-forms/multiple-choice-question-form/multiple-choice-question-form.component";
+import {BaseQuestionFormComponent} from './components/create-survey/question/question-forms/question-creation-forms/base-question-form/base-question-form.component';
 
 
 const appRoutes: Routes = [

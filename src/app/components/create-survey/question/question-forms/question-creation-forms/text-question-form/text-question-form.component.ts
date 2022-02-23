@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormGroupDirective} from "@angular/forms";
-import {Survey} from "../../../../../model/survey";
+import {Survey} from "../../../../../../model/survey";
 
 @Component({
   selector: 'app-text-question-form',
