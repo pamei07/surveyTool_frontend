@@ -279,6 +279,11 @@ footer {
   width: 550px;
 }
 
+@media (min-width: 576px) {
+  #requiredQuestionField {
+    border-left: #BCBCBC 1px solid;
+  }
+}
 
 /* Override Bootstrap CSS */
 .list-group {

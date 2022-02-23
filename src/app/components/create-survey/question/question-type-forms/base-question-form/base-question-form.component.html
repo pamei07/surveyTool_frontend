@@ -1,5 +1,5 @@
 <div [formGroup]="questionForm">
-  <div class="row mb-3">
+  <div class="row">
     <div class="col">
       <label for="question" class="form-label">Fragetext*</label>
       <textarea id="question" class="form-control shortTextarea" name="text" formControlName="text"
@@ -14,16 +14,12 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row mb-3 justify-content-evenly">
-    <div class="col-sm-3">
+    <div id="requiredQuestionField" class="col-sm-2 mt-2 mt-sm-0 justify-content-center">
       <label [attr.for]="'required' + indexQuestionGroup" class="form-check-label">
         Erforderlich?&nbsp;&nbsp;
       </label>
-      <input [attr.id]="'required' + indexQuestionGroup"
-             class="form-check-input float-sm-none float-start me-2 me-sm-0"
-             name="required" value="true"
-             type="checkbox" formControlName="required">
+      <input [attr.id]="'required' + indexQuestionGroup" class="form-check-input ms-0 ms-sm-2 mt-sm-3 p-2"
+             name="required" value="true" type="checkbox" formControlName="required">
     </div>
   </div>
 </div>
