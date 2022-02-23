@@ -1,9 +1,9 @@
 <div [formGroup]="questionForm">
   <div class="row">
     <div class="col">
-      <label for="question" class="form-label">Fragetext: *</label>
-      <textarea id="question" class="form-control shortTextarea" name="text" formControlName="text"
-                required></textarea>
+      <label [attr.for]="'questionText' + indexQuestionGroup" class="form-label">Fragetext: *</label>
+      <textarea [attr.id]="'questionText' + indexQuestionGroup" class="form-control shortTextarea" name="text"
+                formControlName="text" required></textarea>
       <div *ngIf="text?.invalid && (text?.dirty || text?.touched)"
            class="alert alert-danger p-2 mt-1 mb-0">
         <div class="errorMessage" *ngIf="text?.errors?.required || text?.errors?.stringIsEmpty">
