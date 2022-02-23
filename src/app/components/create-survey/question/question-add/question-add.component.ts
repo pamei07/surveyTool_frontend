@@ -8,7 +8,7 @@ import {
   maxSelectGreaterThanEqualsMinSelectValidator
 } from "../../../../directives/min-max-select-validation.directive";
 import {stringNotEmpty} from "../../../../directives/string-validation.directive";
-import {QuestionType} from "../../../../model/questionType";
+import {QuestionType} from "../../../../model/question-type";
 
 @Component({
   selector: 'app-question-add',
