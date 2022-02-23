@@ -1,9 +1,8 @@
 <div class="input-group mb-3 px-2">
   <select class="form-select" [(ngModel)]="selectedQuestionType">
     <option disabled selected hidden>Fragetyp auswählen...</option>
-    <option [ngValue]="''">---</option>
-    <option [ngValue]="'TEXT'">Freitext</option>
-    <option [ngValue]="'MULTIPLE_CHOICE'">Auswahl (Multiple Choice)</option>
+    <option *ngFor="let questionType of questionTypes | keyvalue"
+            [ngValue]="questionType.value">{{ questionType.key }}</option>
   </select>
   <div class="input-group-append">
     <button class="btn btn-primary" type="button" (click)="addNewQuestion()"

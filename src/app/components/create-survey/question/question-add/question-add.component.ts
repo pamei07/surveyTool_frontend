@@ -20,6 +20,11 @@ export class QuestionAddComponent {
   @Input() survey!: Survey;
   @Input() indexQuestionGroup!: number;
   selectedQuestionType: string = 'Fragetyp auswählen...';
+  questionTypes: Map<string, string> = new Map<string, string>([
+    ['---', ''],
+    ['Freitext', 'TEXT'],
+    ['Auswahl (Multiple Choice)', 'MULTIPLE_CHOICE']
+  ])
 
   questionForm = this.fb.group({
     text: ['', [Validators.required, Validators.maxLength(500), stringNotEmpty()]],
