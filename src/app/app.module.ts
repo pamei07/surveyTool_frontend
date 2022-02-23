@@ -79,8 +79,11 @@ import {MatchSurveyNameValidationDirective} from "./directives/match-survey-name
 import {SurveyUpdateComponent} from './components/view-survey/overview/edit-delete/survey-update/survey-update.component';
 import {SurveyUpdateSubmissionComponent} from './components/view-survey/overview/edit-delete/survey-update-submission/survey-update-submission.component';
 import {EditEndDateComponent} from './components/view-survey/overview/edit-delete/edit-end-date/edit-end-date.component';
-import { InfoLoggedInComponent } from './components/create-survey/helper/info-logged-in/info-logged-in.component';
-import { SpinnerComponent } from './components/shared-components/spinner/spinner.component';
+import {InfoLoggedInComponent} from './components/create-survey/helper/info-logged-in/info-logged-in.component';
+import {SpinnerComponent} from './components/shared-components/spinner/spinner.component';
+import {TextQuestionFormComponent} from "./components/create-survey/question/question-type-forms/text-question-form/text-question-form.component";
+import {MultipleChoiceQuestionFormComponent} from "./components/create-survey/question/question-type-forms/multiple-choice-question-form/multiple-choice-question-form.component";
+import { BaseQuestionFormComponent } from './components/create-survey/question/question-type-forms/base-question-form/base-question-form.component';
 
 
 const appRoutes: Routes = [
@@ -176,7 +179,10 @@ const appRoutes: Routes = [
     SurveyUpdateSubmissionComponent,
     EditEndDateComponent,
     InfoLoggedInComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    TextQuestionFormComponent,
+    MultipleChoiceQuestionFormComponent,
+    BaseQuestionFormComponent
   ],
   imports: [
     BrowserModule,

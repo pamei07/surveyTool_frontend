@@ -19,6 +19,7 @@ export class QuestionAddComponent {
 
   @Input() survey!: Survey;
   @Input() indexQuestionGroup!: number;
+  selectedQuestionType: string = 'Fragetyp auswählen...';
 
   questionForm = this.fb.group({
     text: ['', [Validators.required, Validators.maxLength(500), stringNotEmpty()]],
@@ -49,7 +50,8 @@ export class QuestionAddComponent {
   }
 
   addNewQuestion() {
-    if (this.questionForm.invalid) {
+    if (this.text?.errors || this.selectedQuestionType === '' ||
+      (this.selectedQuestionType === 'MULTIPLE_CHOICE' && this.checkIfCheckboxGroupFormValid())) {
       console.log('Form invalid!');
       return;
     }
@@ -57,7 +59,7 @@ export class QuestionAddComponent {
     let question = new Question();
     question.text = this.questionForm.value.text;
     question.required = this.questionForm.value.required;
-    if (this.questionForm.value.hasCheckbox === true) {
+    if (this.selectedQuestionType === 'MULTIPLE_CHOICE') {
       question.questionType = QuestionType.MULTIPLE_CHOICE;
     } else {
       question.questionType = QuestionType.TEXT;
@@ -99,9 +101,9 @@ export class QuestionAddComponent {
     }
   }
 
-  collapseMultipleSelectContainerWhenOpen(indexQuestionGroup: number) {
-    if (document.getElementById("checkboxGroupForm" + indexQuestionGroup)!.classList.contains('show')) {
-      document.getElementById('checkboxGroupForm' + indexQuestionGroup)!.classList.remove('show');
-    }
+  checkIfCheckboxGroupFormValid() {
+    return this.minSelect?.errors || this.maxSelect?.errors ||
+      this.questionForm.hasError('requiredButMinZeroCheckboxes') ||
+      this.questionForm.hasError('maxSelectLessThanMinSelect');
   }
 }
