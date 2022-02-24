@@ -36,8 +36,8 @@ export class QuestionAddComponent {
       maxSelect: [{value: '2', disabled: true}, [Validators.required, Validators.min(2)]]
     }),
     rankingGroup: this.fb.group({
-      leastRated_note: ['', [Validators.maxLength(500)]],
-      highestRated_note: ['', [Validators.maxLength(500)]]
+      leastRated_label: ['', [Validators.required, Validators.maxLength(500), stringNotEmpty()]],
+      highestRated_label: ['', [Validators.required, Validators.maxLength(500), stringNotEmpty()]]
     })
   }, {validators: [maxSelectGreaterThanEqualsMinSelectValidator(), atLeastOneCheckboxIfQuestionRequired()]})
 
@@ -55,12 +55,19 @@ export class QuestionAddComponent {
     return this.questionForm.get('checkboxGroup')?.get('maxSelect');
   }
 
+  get leastRated_label() {
+    return this.questionForm.get('rankingGroup')?.get('leastRated_label');
+  }
+
+  get highestRated_label() {
+    return this.questionForm.get('rankingGroup')?.get('highestRated_label');
+  }
+
   constructor(private fb: FormBuilder) {
   }
 
   addNewQuestion() {
-    if (this.text?.errors || this.selectedQuestionType === '' ||
-      (this.selectedQuestionType === 'MULTIPLE_CHOICE' && this.checkIfCheckboxGroupFormValid())) {
+    if (this.checkIfFormValid()) {
       console.log('Form invalid!');
       return;
     }
@@ -110,9 +117,19 @@ export class QuestionAddComponent {
     }
   }
 
+  checkIfFormValid() {
+    return this.text?.errors || this.selectedQuestionType === '' ||
+      (this.selectedQuestionType === 'MULTIPLE_CHOICE' && this.checkIfCheckboxGroupFormValid()) ||
+      (this.selectedQuestionType === 'RANKING' && this.checkIfRatingGroupFormValid());
+  }
+
   checkIfCheckboxGroupFormValid() {
     return this.minSelect?.errors || this.maxSelect?.errors ||
       this.questionForm.hasError('requiredButMinZeroCheckboxes') ||
       this.questionForm.hasError('maxSelectLessThanMinSelect');
+  }
+
+  checkIfRatingGroupFormValid() {
+    return this.leastRated_label?.errors || this.highestRated_label?.errors;
   }
 }
