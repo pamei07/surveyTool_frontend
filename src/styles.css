@@ -285,6 +285,22 @@ footer {
   }
 }
 
+.inputGroupTextInCardCard {
+  background-color: #F9F9F9 !important;
+}
+
+@media (min-width: 576px) {
+  .ratingLabelFormLabel {
+    width: 183px;
+  }
+}
+
+@media (max-width: 575px) {
+  .ratingLabelFormLabel {
+    width: 63px;
+  }
+}
+
 /* Override Bootstrap CSS */
 .list-group {
   border: 0.08em solid #DFDFDF;

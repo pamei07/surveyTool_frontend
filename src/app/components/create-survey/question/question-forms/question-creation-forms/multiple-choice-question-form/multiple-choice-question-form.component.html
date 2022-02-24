@@ -3,8 +3,7 @@
     <div class="card card-body innerCard">
       <app-base-question-form [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></app-base-question-form>
       <hr>
-      <div class="mx-2"
-           [attr.id]="'checkboxGroupForm' + indexQuestionGroup">
+      <div [attr.id]="'checkboxGroupForm' + indexQuestionGroup">
         <div formGroupName="checkboxGroup">
           <div class="row align-items-center">
             <div class="col-sm mb-2 mb-sm-0">
