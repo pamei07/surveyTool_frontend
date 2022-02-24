@@ -1,0 +1,35 @@
+<hr class="my-2 mx-3" *ngIf="question!.questionType === 'MULTIPLE_CHOICE'">
+
+<div class="row">
+  <div *ngIf="question!.questionType === 'MULTIPLE_CHOICE'">
+    <div class="container mb-1">
+      <div *ngIf="question.checkboxGroup!.multipleSelect"
+           class="row justify-content-evenly">
+        <span class="col-sm-auto">Mehrfachauswahl: Ja</span>
+        <span class="col-sm-auto ms-2 ms-sm-0 d-none d-sm-inline">
+                      Min.: {{ question.checkboxGroup!.minSelect }}
+                    </span>
+        <span class="col-sm-auto ms-2 ms-sm-0 d-none d-sm-inline">
+                      Max.: {{ question.checkboxGroup!.maxSelect }}
+                    </span>
+        <span class="col-sm-auto ms-2 ms-sm-0 d-sm-none">
+                      Minimum: &nbsp;{{ question.checkboxGroup!.minSelect }}
+                    </span>
+        <span class="col-sm-auto ms-2 ms-sm-0 d-sm-none">
+                      Maximal: &nbsp;&nbsp;&nbsp;{{ question.checkboxGroup!.maxSelect }}
+                    </span>
+      </div>
+      <div *ngIf="!question.checkboxGroup!.multipleSelect"
+           class="d-flex justify-content-evenly w-100">
+        <span>Mehrfachauswahl: Nein</span>
+      </div>
+    </div>
+  </div>
+
+  <app-checkbox-list [survey]="survey"
+                     [indexQuestionGroup]="indexQuestionGroup"
+                     [indexQuestion]="indexQuestion"></app-checkbox-list>
+  <app-checkbox-add [survey]="survey"
+                    [indexQuestionGroup]="indexQuestionGroup"
+                    [indexQuestion]="indexQuestion"></app-checkbox-add>
+</div>

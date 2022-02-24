@@ -87,6 +87,7 @@ import {BaseQuestionFormComponent} from './components/create-survey/question/que
 import { BaseQuestionUpdateFormComponent } from './components/create-survey/question/question-forms/question-update-forms/base-question-update-form/base-question-update-form.component';
 import { MultipleChoiceQuestionUpdateFormComponent } from './components/create-survey/question/question-forms/question-update-forms/multiple-choice-question-update-form/multiple-choice-question-update-form.component';
 import { RankingQuestionFormComponent } from './components/create-survey/question/question-forms/question-creation-forms/ranking-question-form/ranking-question-form.component';
+import { MultipleChoiceListItemComponent } from './components/create-survey/question/question-list-items/multiple-choice-list-item/multiple-choice-list-item.component';
 
 
 const appRoutes: Routes = [
@@ -188,7 +189,8 @@ const appRoutes: Routes = [
     BaseQuestionFormComponent,
     BaseQuestionUpdateFormComponent,
     MultipleChoiceQuestionUpdateFormComponent,
-    RankingQuestionFormComponent
+    RankingQuestionFormComponent,
+    MultipleChoiceListItemComponent
   ],
   imports: [
     BrowserModule,
