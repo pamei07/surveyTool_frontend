@@ -9,6 +9,7 @@ import {
 } from "../../../../directives/min-max-select-validation.directive";
 import {stringNotEmpty} from "../../../../directives/string-validation.directive";
 import {QuestionType} from "../../../../model/question-type";
+import {RankingGroup} from "../../../../model/ranking-group";
 
 @Component({
   selector: 'app-question-add',
@@ -76,28 +77,16 @@ export class QuestionAddComponent {
     question.text = this.questionForm.value.text;
     question.required = this.questionForm.value.required;
     if (this.selectedQuestionType === 'MULTIPLE_CHOICE') {
-      question.questionType = QuestionType.MULTIPLE_CHOICE;
+      this.processMultipleChoiceQuestion(question);
+    } else if (this.selectedQuestionType === 'RANKING') {
+      this.processRankingQuestion(question);
     } else {
       question.questionType = QuestionType.TEXT;
     }
 
-    if (question.questionType === 'MULTIPLE_CHOICE') {
-      let checkboxGroup = new CheckboxGroup();
-      checkboxGroup.multipleSelect = this.questionForm.value.checkboxGroup.multipleSelect;
-      if (!this.minSelect?.disabled && !this.maxSelect?.disabled) {
-        checkboxGroup.minSelect = this.minSelect?.value;
-        checkboxGroup.maxSelect = this.maxSelect?.value;
-      } else {
-        checkboxGroup.minSelect = 0;
-        checkboxGroup.maxSelect = 2;
-      }
-
-      question.checkboxGroup = checkboxGroup;
-    }
-
     this.survey.questionGroups![this.indexQuestionGroup].questions!.push(question);
 
-    // If minSelect/maxSelect have been enabled => disable them
+    // If minSelect/maxSelect of checkboxGroup have been enabled => disable them
     if (this.minSelect?.enabled && this.maxSelect?.enabled) {
       this.enableDisableMinMaxInput();
     }
@@ -105,6 +94,32 @@ export class QuestionAddComponent {
     // Reset to initial values so that unchecked checkboxes do not result in null
     this.questionForm.reset(this.initialFormValues);
     this.questionForm.patchValue({checkboxGroup: {minSelect: 0, maxSelect: 2}});
+  }
+
+  private processMultipleChoiceQuestion(question: Question) {
+    question.questionType = QuestionType.MULTIPLE_CHOICE;
+
+    let checkboxGroup = new CheckboxGroup();
+    checkboxGroup.multipleSelect = this.questionForm.value.checkboxGroup.multipleSelect;
+    if (!this.minSelect?.disabled && !this.maxSelect?.disabled) {
+      checkboxGroup.minSelect = this.minSelect?.value;
+      checkboxGroup.maxSelect = this.maxSelect?.value;
+    } else {
+      checkboxGroup.minSelect = 0;
+      checkboxGroup.maxSelect = 2;
+    }
+
+    question.checkboxGroup = checkboxGroup;
+  }
+
+  private processRankingQuestion(question: Question) {
+    question.questionType = QuestionType.RANKING;
+
+    let rankingGroup = new RankingGroup();
+    rankingGroup.leastRated_label = this.leastRated_label?.value;
+    rankingGroup.highestRated_label = this.highestRated_label?.value;
+
+    question.rankingGroup = rankingGroup;
   }
 
   enableDisableMinMaxInput() {
