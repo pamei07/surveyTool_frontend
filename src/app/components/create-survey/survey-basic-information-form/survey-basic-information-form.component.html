@@ -4,7 +4,7 @@
       <div class="col">
         <label for="name" class="form-label labelInput bolderText">Titel*</label>
         <input id="name" name="name" type="text" class="form-control" required
-               formControlName="name">
+               formControlName="name" placeholder="max. 500 Zeichen">
         <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
              class="alert alert-danger p-2 mt-1 mb-0">
           <div *ngIf="name?.errors?.required || name?.errors?.stringIsEmpty">
