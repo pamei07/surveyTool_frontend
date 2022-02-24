@@ -1,0 +1,11 @@
+<form id="addQuestionToGroup" [formGroup]="questionForm">
+  <div class="mt-2 mx-2">
+    <div class="card card-body innerCard">
+      <app-base-question-form [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></app-base-question-form>
+      <hr>
+      <div class="mx-2" [attr.id]="'rankingForm' + indexQuestionGroup">
+
+      </div>
+    </div>
+  </div>
+</form>

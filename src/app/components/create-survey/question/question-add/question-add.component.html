@@ -20,4 +20,5 @@
   <app-multiple-choice-question-form *ngIf="selectedQuestionType === 'MULTIPLE_CHOICE'"
                                      [survey]="survey"
                                      [indexQuestionGroup]="indexQuestionGroup"></app-multiple-choice-question-form>
+  <app-ranking-question-form *ngIf="selectedQuestionType === 'RANKING'"></app-ranking-question-form>
 </div>

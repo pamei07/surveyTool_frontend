@@ -23,7 +23,8 @@ export class QuestionAddComponent {
   questionTypes: Map<string, string> = new Map<string, string>([
     ['---', ''],
     ['Freitext', 'TEXT'],
-    ['Auswahl (Multiple Choice)', 'MULTIPLE_CHOICE']
+    ['Auswahl (Multiple Choice)', 'MULTIPLE_CHOICE'],
+    ['Ranking', 'RANKING']
   ])
 
   questionForm = this.fb.group({
