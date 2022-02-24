@@ -16,9 +16,12 @@
 
 <div [formGroup]="questionForm">
   <app-text-question-form *ngIf="selectedQuestionType === 'TEXT'"
-                          [survey]="survey" [indexQuestionGroup]="indexQuestionGroup"></app-text-question-form>
+                          [survey]="survey"
+                          [indexQuestionGroup]="indexQuestionGroup"></app-text-question-form>
   <app-multiple-choice-question-form *ngIf="selectedQuestionType === 'MULTIPLE_CHOICE'"
                                      [survey]="survey"
                                      [indexQuestionGroup]="indexQuestionGroup"></app-multiple-choice-question-form>
-  <app-ranking-question-form *ngIf="selectedQuestionType === 'RANKING'"></app-ranking-question-form>
+  <app-ranking-question-form *ngIf="selectedQuestionType === 'RANKING'"
+                             [survey]="survey"
+                             [indexQuestionGroup]="indexQuestionGroup"></app-ranking-question-form>
 </div>
