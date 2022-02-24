@@ -34,6 +34,10 @@ export class QuestionAddComponent {
       multipleSelect: false,
       minSelect: [{value: '0', disabled: true}, [Validators.required, Validators.min(0)]],
       maxSelect: [{value: '2', disabled: true}, [Validators.required, Validators.min(2)]]
+    }),
+    rankingGroup: this.fb.group({
+      leastRated_note: '',
+      highestRated_note: ''
     })
   }, {validators: [maxSelectGreaterThanEqualsMinSelectValidator(), atLeastOneCheckboxIfQuestionRequired()]})
 
