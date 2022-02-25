@@ -65,6 +65,12 @@
                                            [survey]="survey"
                                            [indexQuestionGroup]="indexQuestionGroup"
                                            [indexQuestion]="indexQuestion"></app-multiple-choice-list-item>
+
+            <app-ranking-list-item *ngIf="question.questionType === 'RANKING'"
+                                   [question]="question"
+                                   [survey]="survey"
+                                   [indexQuestionGroup]="indexQuestionGroup"
+                                   [indexQuestion]="indexQuestion"></app-ranking-list-item>
           </div>
         </div>
       </div>

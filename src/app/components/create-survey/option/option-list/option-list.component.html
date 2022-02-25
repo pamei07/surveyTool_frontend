@@ -1,0 +1,37 @@
+<div id="noCheckboxes" class="row"
+     *ngIf="rankingGroup">
+  <div class="d-flex text-center justify-content-center"
+       *ngIf="noOfOptions === 0">
+    <p class="alert alert-secondary m-0 w-75">
+      Keine Antwortmöglichkeiten gegeben.
+    </p>
+  </div>
+</div>
+
+<div id="listOfCheckboxes" *ngIf="rankingGroup">
+  <div class="ms-4 my-2">
+    <span class="text-muted">Höchste Bewertung: </span><span>{{ rankingGroup.highestRated_label }}</span>
+  </div>
+  <ul class="list-group mb-1 mx-4 p-0 cursorMover draggableList" cdkDropList (cdkDropListDropped)="drop($event)"
+      *ngIf="noOfOptions > 0">
+    <li class="list-group-item draggableListItem" cdkDrag
+        *ngFor="let option of options; index as indexOption;">
+      <div class="container p-0">
+        <div class="row justify-content-between">
+          <div class="col">
+            <span> {{ option.text }} </span>
+          </div>
+          <div class="col text-end">
+            <app-option-delete [survey]="survey"
+                               [indexQuestionGroup]="indexQuestionGroup"
+                               [indexQuestion]="indexQuestion"
+                               [indexOption]="indexOption"></app-option-delete>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="ms-4 my-2">
+    <span class="text-muted">Niedrigste Bewertung: </span><span>{{ rankingGroup.leastRated_label }}</span>
+  </div>
+</div>
