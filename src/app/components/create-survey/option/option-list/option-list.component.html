@@ -9,7 +9,7 @@
 </div>
 
 <div id="listOfCheckboxes" *ngIf="rankingGroup">
-  <ul class="list-group mb-1 mx-4 p-0 cursorMover draggableList" cdkDropList (cdkDropListDropped)="drop($event)"
+  <ul class="list-group mx-4 p-0 cursorMover draggableList" cdkDropList (cdkDropListDropped)="drop($event)"
       *ngIf="noOfOptions > 0">
     <li class="list-group-item draggableListItem" cdkDrag
         *ngFor="let option of options; index as indexOption;">
