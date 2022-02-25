@@ -1,6 +1,7 @@
 <form [formGroup]="updateForm">
   <hr class="mt-1">
-  <div [attr.id]="'rankingForm' + indexQuestionGroup" class="container px-3 mb-3" formGroupName="rankingGroup">
+  <div [attr.id]="'rankingFormQuestion' + indexQuestion + 'Group' + indexQuestionGroup" class="container px-3 mb-3"
+       formGroupName="rankingGroup">
     <div class="row">
       <div class="col">
         <span>
@@ -11,13 +12,14 @@
     <div class="row mx-0 mx-sm-1 mt-2">
       <div class="input-group px-1">
         <div class="input-group-prepend">
-          <label [attr.for]="'highestRated_label' + indexQuestionGroup"
+          <label [attr.for]="'highestRated_labelQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                  class="input-group-text inputGroupTextInCardCard ratingLabelFormLabel">
             <span class="d-none d-sm-inline">Höchste Bewertung:</span>
             <span class="d-inline d-sm-none">Max.:</span>
           </label>
         </div>
-        <input [attr.id]="'highestRated_label' + indexQuestionGroup" type="text" class="form-control"
+        <input [attr.id]="'highestRated_labelQuestion' + indexQuestion + 'Group' + indexQuestionGroup" type="text"
+               class="form-control"
                formControlName="highestRated_label" placeholder="z.B.: '10', 'sehr wichtig' oder 'interessant'">
       </div>
       <div class="px-1">
@@ -32,13 +34,14 @@
     <div class="row mx-0 mx-sm-1 mt-2">
       <div class="input-group px-1">
         <div class="input-group-prepend">
-          <label [attr.for]="'leastRated_label' + indexQuestionGroup"
+          <label [attr.for]="'leastRated_labelQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                  class="input-group-text inputGroupTextInCardCard ratingLabelFormLabel">
             <span class="d-none d-sm-inline">Niedrigste Bewertung:</span>
             <span class="d-inline d-sm-none">Min.:</span>
           </label>
         </div>
-        <input [attr.id]="'leastRated_label' + indexQuestionGroup" type="text" class="form-control"
+        <input [attr.id]="'leastRated_labelQuestion' + indexQuestion + 'Group' + indexQuestionGroup" type="text"
+               class="form-control"
                formControlName="leastRated_label" placeholder="z.B.: '1', 'nicht wichtig' oder 'uninteressant'">
       </div>
       <div class="px-1">
