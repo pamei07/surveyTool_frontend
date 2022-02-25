@@ -28,8 +28,8 @@ export class QuestionUpdateComponent implements OnInit {
       maxSelect: [{value: '2', disabled: true}, [Validators.required, Validators.min(2)]]
     }),
     rankingGroup: this.fb.group({
-      leastRated_label: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]],
-      highestRated_label: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]]
+      lowestRated: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]],
+      highestRated: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]]
     })
   }, {validators: [maxSelectGreaterThanEqualsMinSelectValidator(), atLeastOneCheckboxIfQuestionRequired()]})
 
@@ -45,12 +45,12 @@ export class QuestionUpdateComponent implements OnInit {
     return this.updateForm.get('checkboxGroup')?.get('maxSelect');
   }
 
-  get leastRated_label() {
-    return this.updateForm.get('rankingGroup')?.get('leastRated_label');
+  get lowestRated() {
+    return this.updateForm.get('rankingGroup')?.get('lowestRated');
   }
 
-  get highestRated_label() {
-    return this.updateForm.get('rankingGroup')?.get('highestRated_label');
+  get highestRated() {
+    return this.updateForm.get('rankingGroup')?.get('highestRated');
   }
 
   constructor(private fb: FormBuilder) {
@@ -89,8 +89,8 @@ export class QuestionUpdateComponent implements OnInit {
   private patchRankingUpdateForm(questionToUpdate: Question) {
     this.updateForm.patchValue({
       rankingGroup: {
-        leastRated_label: questionToUpdate.rankingGroup?.leastRated_label,
-        highestRated_label: questionToUpdate.rankingGroup?.highestRated_label
+        lowestRated: questionToUpdate.rankingGroup?.lowestRated,
+        highestRated: questionToUpdate.rankingGroup?.highestRated
       }
     })
   }
@@ -130,8 +130,8 @@ export class QuestionUpdateComponent implements OnInit {
 
   private processUpdateOfRankingQuestion(questionToUpdate: Question) {
     let rankingGroupToUpdate = questionToUpdate.rankingGroup!;
-    rankingGroupToUpdate.leastRated_label = this.leastRated_label?.value;
-    rankingGroupToUpdate.highestRated_label = this.highestRated_label?.value;
+    rankingGroupToUpdate.lowestRated = this.lowestRated?.value;
+    rankingGroupToUpdate.highestRated = this.highestRated?.value;
 
     questionToUpdate.rankingGroup = rankingGroupToUpdate;
   }

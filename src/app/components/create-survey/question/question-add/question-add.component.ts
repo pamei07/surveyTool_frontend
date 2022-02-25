@@ -37,8 +37,8 @@ export class QuestionAddComponent {
       maxSelect: [{value: '2', disabled: true}, [Validators.required, Validators.min(2)]]
     }),
     rankingGroup: this.fb.group({
-      leastRated_label: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]],
-      highestRated_label: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]]
+      lowestRated: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]],
+      highestRated: ['', [Validators.required, Validators.maxLength(255), stringNotEmpty()]]
     })
   }, {validators: [maxSelectGreaterThanEqualsMinSelectValidator(), atLeastOneCheckboxIfQuestionRequired()]})
 
@@ -56,12 +56,12 @@ export class QuestionAddComponent {
     return this.questionForm.get('checkboxGroup')?.get('maxSelect');
   }
 
-  get leastRated_label() {
-    return this.questionForm.get('rankingGroup')?.get('leastRated_label');
+  get lowestRated() {
+    return this.questionForm.get('rankingGroup')?.get('lowestRated');
   }
 
-  get highestRated_label() {
-    return this.questionForm.get('rankingGroup')?.get('highestRated_label');
+  get highestRated() {
+    return this.questionForm.get('rankingGroup')?.get('highestRated');
   }
 
   constructor(private fb: FormBuilder) {
@@ -116,8 +116,8 @@ export class QuestionAddComponent {
     question.questionType = QuestionType.RANKING;
 
     let rankingGroup = new RankingGroup();
-    rankingGroup.leastRated_label = this.leastRated_label?.value;
-    rankingGroup.highestRated_label = this.highestRated_label?.value;
+    rankingGroup.lowestRated = this.lowestRated?.value;
+    rankingGroup.highestRated = this.highestRated?.value;
 
     question.rankingGroup = rankingGroup;
   }
@@ -145,6 +145,6 @@ export class QuestionAddComponent {
   }
 
   checkIfRatingGroupFormValid() {
-    return this.leastRated_label?.errors || this.highestRated_label?.errors;
+    return this.lowestRated?.errors || this.highestRated?.errors;
   }
 }

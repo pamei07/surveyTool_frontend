@@ -12,12 +12,12 @@ export class RankingQuestionFormComponent implements OnInit {
   @Input() indexQuestionGroup!: number;
   questionForm!: FormGroup;
 
-  get leastRated_label() {
-    return this.questionForm.get('rankingGroup')?.get('leastRated_label');
+  get lowestRated() {
+    return this.questionForm.get('rankingGroup')?.get('lowestRated');
   }
 
-  get highestRated_label() {
-    return this.questionForm.get('rankingGroup')?.get('highestRated_label');
+  get highestRated() {
+    return this.questionForm.get('rankingGroup')?.get('highestRated');
   }
 
   constructor(private parentFormGroup: FormGroupDirective) {

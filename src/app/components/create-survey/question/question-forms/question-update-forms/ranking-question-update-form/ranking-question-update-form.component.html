@@ -12,23 +12,23 @@
     <div class="row mx-0 mx-sm-1 mt-2">
       <div class="input-group px-1">
         <div class="input-group-prepend">
-          <label [attr.for]="'highestRated_labelQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+          <label [attr.for]="'highestRatedQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                  class="input-group-text inputGroupTextInCardCard ratingLabelFormLabel">
             <span class="d-none d-sm-inline">Höchste Bewertung:</span>
             <span class="d-inline d-sm-none">Max.:</span>
           </label>
         </div>
-        <input [attr.id]="'highestRated_labelQuestion' + indexQuestion + 'Group' + indexQuestionGroup" type="text"
+        <input [attr.id]="'highestRatedQuestion' + indexQuestion + 'Group' + indexQuestionGroup" type="text"
                class="form-control"
-               formControlName="highestRated_label" placeholder="z.B.: '10', 'sehr wichtig' oder 'interessant'">
+               formControlName="highestRated" placeholder="z.B.: '10', 'sehr wichtig' oder 'interessant'">
       </div>
       <div class="px-1">
-        <div *ngIf="highestRated_label?.invalid && (highestRated_label?.dirty || highestRated_label?.touched)"
+        <div *ngIf="highestRated?.invalid && (highestRated?.dirty || highestRated?.touched)"
              class="alert alert-danger p-2 mt-2 mb-0">
-          <div *ngIf="highestRated_label?.errors?.required">
+          <div *ngIf="highestRated?.errors?.required">
             Das Label für die höchste Bewertung muss angegeben werden.
           </div>
-          <div *ngIf="highestRated_label?.errors?.maxlength">
+          <div *ngIf="highestRated?.errors?.maxlength">
             Das Label darf nicht länger als 255 Zeichen sein.
           </div>
         </div>
@@ -37,23 +37,23 @@
     <div class="row mx-0 mx-sm-1 mt-2">
       <div class="input-group px-1">
         <div class="input-group-prepend">
-          <label [attr.for]="'leastRated_labelQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
+          <label [attr.for]="'lowestRatedQuestion' + indexQuestion + 'Group' + indexQuestionGroup"
                  class="input-group-text inputGroupTextInCardCard ratingLabelFormLabel">
             <span class="d-none d-sm-inline">Niedrigste Bewertung:</span>
             <span class="d-inline d-sm-none">Min.:</span>
           </label>
         </div>
-        <input [attr.id]="'leastRated_labelQuestion' + indexQuestion + 'Group' + indexQuestionGroup" type="text"
+        <input [attr.id]="'lowestRatedQuestion' + indexQuestion + 'Group' + indexQuestionGroup" type="text"
                class="form-control"
-               formControlName="leastRated_label" placeholder="z.B.: '1', 'nicht wichtig' oder 'uninteressant'">
+               formControlName="lowestRated" placeholder="z.B.: '1', 'nicht wichtig' oder 'uninteressant'">
       </div>
       <div class="px-1">
-        <div *ngIf="leastRated_label?.invalid && (leastRated_label?.dirty || leastRated_label?.touched)"
+        <div *ngIf="lowestRated?.invalid && (lowestRated?.dirty || lowestRated?.touched)"
              class="alert alert-danger p-2 mt-2 mb-0">
-          <div *ngIf="leastRated_label?.errors?.required">
+          <div *ngIf="lowestRated?.errors?.required">
             Das Label für die niedrigste Bewertung muss angegeben werden.
           </div>
-          <div *ngIf="leastRated_label?.errors?.maxlength">
+          <div *ngIf="lowestRated?.errors?.maxlength">
             Das Label darf nicht länger als 255 Zeichen sein.
           </div>
         </div>
