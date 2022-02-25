@@ -14,27 +14,6 @@
         <div class="row mx-0 mx-sm-1 mt-2">
           <div class="input-group px-1">
             <div class="input-group-prepend">
-              <label [attr.for]="'leastRated_label' + indexQuestionGroup"
-                     class="input-group-text inputGroupTextInCardCard ratingLabelFormLabel">
-                <span class="d-none d-sm-inline">Niedrigste Bewertung:</span>
-                <span class="d-inline d-sm-none">Min.:</span>
-              </label>
-            </div>
-            <input [attr.id]="'leastRated_label' + indexQuestionGroup" type="text" class="form-control"
-                   formControlName="leastRated_label" placeholder="z.B.: '1', 'nicht wichtig' oder 'uninteressant'">
-          </div>
-          <div class="px-1">
-            <div *ngIf="leastRated_label?.invalid && (leastRated_label?.dirty || leastRated_label?.touched)"
-                 class="alert alert-danger p-2 mt-2 mb-0">
-              <div *ngIf="leastRated_label?.errors?.required">
-                Das Label für die niedrigste Bewertung muss angegeben werden.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row mx-0 mx-sm-1 mt-2">
-          <div class="input-group px-1">
-            <div class="input-group-prepend">
               <label [attr.for]="'highestRated_label' + indexQuestionGroup"
                      class="input-group-text inputGroupTextInCardCard ratingLabelFormLabel">
                 <span class="d-none d-sm-inline">Höchste Bewertung:</span>
@@ -49,6 +28,27 @@
                  class="alert alert-danger p-2 mt-2 mb-0">
               <div *ngIf="highestRated_label?.errors?.required">
                 Das Label für die höchste Bewertung muss angegeben werden.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mx-0 mx-sm-1 mt-2">
+          <div class="input-group px-1">
+            <div class="input-group-prepend">
+              <label [attr.for]="'leastRated_label' + indexQuestionGroup"
+                     class="input-group-text inputGroupTextInCardCard ratingLabelFormLabel">
+                <span class="d-none d-sm-inline">Niedrigste Bewertung:</span>
+                <span class="d-inline d-sm-none">Min.:</span>
+              </label>
+            </div>
+            <input [attr.id]="'leastRated_label' + indexQuestionGroup" type="text" class="form-control"
+                   formControlName="leastRated_label" placeholder="z.B.: '1', 'nicht wichtig' oder 'uninteressant'">
+          </div>
+          <div class="px-1">
+            <div *ngIf="leastRated_label?.invalid && (leastRated_label?.dirty || leastRated_label?.touched)"
+                 class="alert alert-danger p-2 mt-2 mb-0">
+              <div *ngIf="leastRated_label?.errors?.required">
+                Das Label für die niedrigste Bewertung muss angegeben werden.
               </div>
             </div>
           </div>

@@ -92,6 +92,7 @@ import { RankingListItemComponent } from './components/create-survey/question/qu
 import { OptionAddComponent } from './components/create-survey/option/option-add/option-add.component';
 import { OptionDeleteComponent } from './components/create-survey/option/option-delete/option-delete.component';
 import { OptionListComponent } from './components/create-survey/option/option-list/option-list.component';
+import { RankingQuestionUpdateFormComponent } from './components/create-survey/question/question-forms/question-update-forms/ranking-question-update-form/ranking-question-update-form.component';
 
 
 const appRoutes: Routes = [
@@ -198,7 +199,8 @@ const appRoutes: Routes = [
     RankingListItemComponent,
     OptionAddComponent,
     OptionDeleteComponent,
-    OptionListComponent
+    OptionListComponent,
+    RankingQuestionUpdateFormComponent
   ],
   imports: [
     BrowserModule,

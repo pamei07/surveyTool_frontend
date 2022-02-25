@@ -6,6 +6,7 @@ import {
   maxSelectGreaterThanEqualsMinSelectValidator
 } from "../../../../directives/min-max-select-validation.directive";
 import {stringNotEmpty} from "../../../../directives/string-validation.directive";
+import {Question} from "../../../../model/question";
 
 @Component({
   selector: 'app-question-update',
@@ -25,6 +26,10 @@ export class QuestionUpdateComponent implements OnInit {
       multipleSelect: false,
       minSelect: [{value: '0', disabled: true}, [Validators.required, Validators.min(0)]],
       maxSelect: [{value: '2', disabled: true}, [Validators.required, Validators.min(2)]]
+    }),
+    rankingGroup: this.fb.group({
+      leastRated_label: ['', [Validators.required, Validators.maxLength(500), stringNotEmpty()]],
+      highestRated_label: ['', [Validators.required, Validators.maxLength(500), stringNotEmpty()]]
     })
   }, {validators: [maxSelectGreaterThanEqualsMinSelectValidator(), atLeastOneCheckboxIfQuestionRequired()]})
 
@@ -38,6 +43,14 @@ export class QuestionUpdateComponent implements OnInit {
 
   get maxSelect() {
     return this.updateForm.get('checkboxGroup')?.get('maxSelect');
+  }
+
+  get leastRated_label() {
+    return this.updateForm.get('rankingGroup')?.get('leastRated_label');
+  }
+
+  get highestRated_label() {
+    return this.updateForm.get('rankingGroup')?.get('highestRated_label');
   }
 
   constructor(private fb: FormBuilder) {
@@ -57,14 +70,29 @@ export class QuestionUpdateComponent implements OnInit {
     })
 
     if (questionToUpdate.questionType === 'MULTIPLE_CHOICE') {
-      this.updateForm.patchValue({
-        checkboxGroup: {
-          multipleSelect: questionToUpdate.checkboxGroup!.multipleSelect,
-          minSelect: questionToUpdate.checkboxGroup!.minSelect,
-          maxSelect: questionToUpdate.checkboxGroup!.maxSelect
-        }
-      })
+      this.patchMultipleChoiceUpdateForm(questionToUpdate);
+    } else if (questionToUpdate.questionType === 'RANKING') {
+      this.patchRankingUpdateForm(questionToUpdate);
     }
+  }
+
+  private patchMultipleChoiceUpdateForm(questionToUpdate: Question) {
+    this.updateForm.patchValue({
+      checkboxGroup: {
+        multipleSelect: questionToUpdate.checkboxGroup!.multipleSelect,
+        minSelect: questionToUpdate.checkboxGroup!.minSelect,
+        maxSelect: questionToUpdate.checkboxGroup!.maxSelect
+      }
+    })
+  }
+
+  private patchRankingUpdateForm(questionToUpdate: Question) {
+    this.updateForm.patchValue({
+      rankingGroup: {
+        leastRated_label: questionToUpdate.rankingGroup?.leastRated_label,
+        highestRated_label: questionToUpdate.rankingGroup?.highestRated_label
+      }
+    })
   }
 
   updateQuestion(indexQuestion: number) {
@@ -78,20 +106,34 @@ export class QuestionUpdateComponent implements OnInit {
     questionToUpdate.required = this.updateForm.value.required;
 
     if (questionToUpdate.questionType === 'MULTIPLE_CHOICE') {
-      let checkboxGroupToUpdate = questionToUpdate.checkboxGroup!;
-      checkboxGroupToUpdate.multipleSelect = this.updateForm.value.checkboxGroup.multipleSelect;
-      if (!this.minSelect?.disabled && !this.maxSelect?.disabled) {
-        checkboxGroupToUpdate.minSelect = this.minSelect?.value;
-        checkboxGroupToUpdate.maxSelect = this.maxSelect?.value;
-      } else {
-        checkboxGroupToUpdate.minSelect = 0;
-        checkboxGroupToUpdate.maxSelect = 2;
-      }
-
-      questionToUpdate.checkboxGroup = checkboxGroupToUpdate;
+      this.processUpdateOfMultipleChoiceQuestion(questionToUpdate);
+    } else if (questionToUpdate.questionType === 'RANKING') {
+      this.processUpdateOfRankingQuestion(questionToUpdate);
     }
 
     this.survey.questionGroups![this.indexQuestionGroup].questions![indexQuestion] = questionToUpdate;
+  }
+
+  private processUpdateOfMultipleChoiceQuestion(questionToUpdate: Question) {
+    let checkboxGroupToUpdate = questionToUpdate.checkboxGroup!;
+    checkboxGroupToUpdate.multipleSelect = this.updateForm.value.checkboxGroup.multipleSelect;
+    if (!this.minSelect?.disabled && !this.maxSelect?.disabled) {
+      checkboxGroupToUpdate.minSelect = this.minSelect?.value;
+      checkboxGroupToUpdate.maxSelect = this.maxSelect?.value;
+    } else {
+      checkboxGroupToUpdate.minSelect = 0;
+      checkboxGroupToUpdate.maxSelect = 2;
+    }
+
+    questionToUpdate.checkboxGroup = checkboxGroupToUpdate;
+  }
+
+  private processUpdateOfRankingQuestion(questionToUpdate: Question) {
+    let rankingGroupToUpdate = questionToUpdate.rankingGroup!;
+    rankingGroupToUpdate.leastRated_label = this.leastRated_label?.value;
+    rankingGroupToUpdate.highestRated_label = this.highestRated_label?.value;
+
+    questionToUpdate.rankingGroup = rankingGroupToUpdate;
   }
 
   enableDisableMinMaxInput() {
