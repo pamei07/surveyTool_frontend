@@ -3,13 +3,17 @@
 <div class="row">
 
   <div class="ms-4 my-2">
-    <span class="text-muted">Höchste Bewertung: </span><span>{{ rankingGroup!.highestRated_label }}</span>
+    <span class="text-muted">Höchste Bewertung: </span>
+    <br class="d-inline d-sm-none">
+    <span>{{ rankingGroup!.highestRated_label }}</span>
   </div>
   <app-option-list [survey]="survey"
                    [indexQuestionGroup]="indexQuestionGroup"
                    [indexQuestion]="indexQuestion"></app-option-list>
   <div class="ms-4 mt-2">
-    <span class="text-muted">Niedrigste Bewertung: </span><span>{{ rankingGroup!.leastRated_label }}</span>
+    <span class="text-muted">Niedrigste Bewertung: </span>
+    <br class="d-inline d-sm-none">
+    <span>{{ rankingGroup!.leastRated_label }}</span>
   </div>
   <app-option-add [survey]="survey"
                   [indexQuestionGroup]="indexQuestionGroup"
