@@ -83,12 +83,21 @@ export class SurveyService {
             errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
               "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]." +
               "\nBei einer Frage mit Antwortmöglichkeiten müssen mind. 2 Antworten gegeben sein.");
-          } else if (checkboxGroup?.multipleSelect && noOfCheckboxes! < checkboxGroup!.maxSelect) {
+          } else if (checkboxGroup?.multipleSelect && noOfCheckboxes! < checkboxGroup.maxSelect) {
             errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
               "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]." +
               "\nBei einer Frage mit Antwortmöglichkeiten müssen mind. 2 Antworten gegeben sein, " +
               "bzw. mind. so viele Antworten wie bei der Mehrfachauswahl maximal erlaubt sind.");
           }
+        }
+      } else if (question.questionType === 'RANKING') {
+        let rankingGroup = question.rankingGroup;
+        let noOfOptions = rankingGroup?.options.length;
+
+        if (noOfOptions === undefined || noOfOptions < 2) {
+          errorMessages.push("Frageblock: '" + questionGroup.title + "', Frage: '" + question.text +
+            "' [" + (questionGroupIndex + 1) + ", " + (questionIndex + 1) + "]." +
+            "\nEine Rankingfrage muss mindestens zwei Optionen beinhalten.")
         }
       }
     })
