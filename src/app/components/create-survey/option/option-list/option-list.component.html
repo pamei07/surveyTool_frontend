@@ -9,9 +9,6 @@
 </div>
 
 <div id="listOfCheckboxes" *ngIf="rankingGroup">
-  <div class="ms-4 my-2">
-    <span class="text-muted">Höchste Bewertung: </span><span>{{ rankingGroup.highestRated_label }}</span>
-  </div>
   <ul class="list-group mb-1 mx-4 p-0 cursorMover draggableList" cdkDropList (cdkDropListDropped)="drop($event)"
       *ngIf="noOfOptions > 0">
     <li class="list-group-item draggableListItem" cdkDrag
@@ -31,7 +28,4 @@
       </div>
     </li>
   </ul>
-  <div class="ms-4 my-2">
-    <span class="text-muted">Niedrigste Bewertung: </span><span>{{ rankingGroup.leastRated_label }}</span>
-  </div>
 </div>

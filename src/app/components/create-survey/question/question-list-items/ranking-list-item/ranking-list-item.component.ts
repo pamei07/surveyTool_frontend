@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from "../../../../../model/survey";
 import {Question} from "../../../../../model/question";
 
@@ -6,17 +6,15 @@ import {Question} from "../../../../../model/question";
   selector: 'app-ranking-list-item',
   templateUrl: './ranking-list-item.component.html'
 })
-export class RankingListItemComponent implements OnInit {
+export class RankingListItemComponent {
 
   @Input() survey!: Survey;
   @Input() question!: Question;
   @Input() indexQuestionGroup!: number;
   @Input() indexQuestion!: number;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
+  get rankingGroup() {
+    return this.survey.questionGroups[this.indexQuestionGroup].questions[this.indexQuestion].rankingGroup;
   }
 
 }
