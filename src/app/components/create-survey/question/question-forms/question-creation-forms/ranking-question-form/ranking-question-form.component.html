@@ -29,6 +29,9 @@
               <div *ngIf="highestRated_label?.errors?.required">
                 Das Label für die höchste Bewertung muss angegeben werden.
               </div>
+              <div *ngIf="highestRated_label?.errors?.maxlength">
+                Das Label darf nicht länger als 255 Zeichen sein.
+              </div>
             </div>
           </div>
         </div>
@@ -49,6 +52,9 @@
                  class="alert alert-danger p-2 mt-2 mb-0">
               <div *ngIf="leastRated_label?.errors?.required">
                 Das Label für die niedrigste Bewertung muss angegeben werden.
+              </div>
+              <div *ngIf="leastRated_label?.errors?.maxlength">
+                Das Label darf nicht länger als 255 Zeichen sein.
               </div>
             </div>
           </div>
