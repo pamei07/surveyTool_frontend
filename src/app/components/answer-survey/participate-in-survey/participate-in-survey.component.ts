@@ -5,6 +5,7 @@ import {FormArray, FormBuilder, Validators} from "@angular/forms";
 import {Question} from "../../../model/question";
 import {noOfCheckboxesCheckedInMinMaxRange} from "../../../directives/min-max-select-validation.directive";
 import {stringNotEmpty} from "../../../directives/string-validation.directive";
+import {rankingConfirmedDoneIfRequired} from "../../../directives/ranking-validation.directive";
 
 @Component({
   selector: 'app-participate-in-survey',
@@ -63,6 +64,19 @@ export class ParticipateInSurveyComponent implements OnInit {
    *                       2: FormGroup (if question with checkboxes but not multipleSelect)
    *                           - 'checkboxId'
    *                           - 'text'
+   *                       3: FormGroup (if rankingquestion)
+   *                           - 'confirmed'
+   *                           - 'rankings' (FormArray)
+   *                               0: FormGroup (First option)
+   *                                   - 'optionId'
+   *                                   - 'rank'
+   *                               1: FormGroup (Second option)
+   *                                   - 'optionId'
+   *                                   - 'rank'
+   *                               ...
+   *                               X: FormGroup (Xth option)
+   *                                   - 'optionId'
+   *                                   - 'rank'
    *                       ...
    *                       m: FormControl/FormGroup/FormArray
    *                    1: FormArray (Second questionGroup)
@@ -85,7 +99,9 @@ export class ParticipateInSurveyComponent implements OnInit {
    *    3. For plain text questions:
    *       --> a FormControl capturing the text input
    *    4. For ranking questions:
-   *       -->
+   *       --> a FormGroup containing an attribute named 'confirmed' to show if a ranking question has been actually answered
+   *           and not just skipped + a FormArray 'ranking' containing a FormGroup for each option in the ranking question.
+   *           Each of those FormGroups contain 2 attributes: 'optionId', 'rank' to assign the position of an option in the ranking
    */
   insertInputFields() {
     if (this.questionGroups === undefined) {
@@ -97,7 +113,7 @@ export class ParticipateInSurveyComponent implements OnInit {
       this.questionGroupsFormArray.push(this.fb.array([]));
       let questionsFormArray = this.questionGroupsFormArray.at(questionGroupIndex) as FormArray;
 
-      questionGroup.questions!.forEach((question, questionIndex) => {
+      questionGroup.questions.forEach((question, questionIndex) => {
         this.addQuestionToForm(question, questionIndex, questionsFormArray);
       })
     })
@@ -147,7 +163,7 @@ export class ParticipateInSurveyComponent implements OnInit {
     questionsFormArray.push(this.fb.group({
       confirmed: false,
       rankings: this.fb.array([])
-    }))
+    }, {validators: [rankingConfirmedDoneIfRequired(question)]}))
 
     let rankingOptionsFormArray = questionsFormArray.at(questionIndex).get('rankings') as FormArray;
 

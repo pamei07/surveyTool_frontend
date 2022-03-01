@@ -9,7 +9,10 @@
       </label>
 
       <div class="row ms-5 my-2 ps-2 bolderText">
-        {{ question.rankingGroup!.highestRated }}
+        <div class="ps-1">
+          <img src="assets/svgs/caret-up.svg" alt="High rating">
+          {{ question.rankingGroup!.highestRated }}
+        </div>
       </div>
 
       <div class="row">
@@ -30,18 +33,42 @@
           </ul>
         </div>
 
-        <div class="col align-self-end justify-content-end mb-1">
-          <button class="btn btn-outline-primary" *ngIf="disabled" (click)="enableDisableRankingGroup()">
+        <div class="col align-self-end mb-1">
+          <button class="btn btn-outline-primary rankingEnableDisableButton" *ngIf="disabled"
+                  (click)="enableDisableRankingGroup()">
             Entsperren
           </button>
-          <button class="btn btn-primary" *ngIf="!disabled" (click)="enableDisableRankingGroup()">
+          <button class="btn btn-primary rankingEnableDisableButton" *ngIf="!disabled"
+                  (click)="enableDisableRankingGroup()">
             Bestätigen
           </button>
+          <div class="d-inline success ms-3" *ngIf="confirmed!.value === true && disabled === true">
+            <img src="../../../../../assets/svgs/check2-circle-green.svg" alt="Changes confirmed">
+            <span>
+            Bestätigt!
+            </span>
+          </div>
+          <div class="d-inline text-muted ms-3" *ngIf="confirmed!.value === true && disabled === false">
+            <img src="../../../../../assets/svgs/check2-circle-grey.svg" alt="Changes confirmed">
+            <span>
+            Bestätigt!
+            </span>
+          </div>
         </div>
       </div>
 
       <div class="row ms-5 mt-2 ps-2 bolderText">
-        {{ question.rankingGroup!.lowestRated }}
+        <div class="ps-1">
+          <img src="assets/svgs/caret-down.svg" alt="Low rating">
+          {{ question.rankingGroup!.lowestRated }}
+        </div>
+      </div>
+
+      <div class="row mt-3 ms-5 me-3">
+        <div class="alert alert-danger"
+             *ngIf="questionForm!.hasError('requiredButNotDone')">
+          Diese Rankingfrage muss bearbeitet werden.
+        </div>
       </div>
     </div>
   </div>

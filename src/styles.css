@@ -305,6 +305,14 @@ footer {
   background-color: #E9ECEF;
 }
 
+.success {
+  color: #00983D;
+}
+
+.rankingEnableDisableButton {
+  width: 102px;
+}
+
 /* Override Bootstrap CSS */
 .list-group {
   border: 0.08em solid #DFDFDF;

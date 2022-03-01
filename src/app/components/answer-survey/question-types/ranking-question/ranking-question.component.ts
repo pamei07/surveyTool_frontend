@@ -20,6 +20,13 @@ export class RankingQuestionComponent implements OnInit {
     return this.question.rankingGroup!.options;
   }
 
+  get questionForm() {
+    return this.parentForm
+      .get('questionGroupsFormArray')
+      ?.get(this.questionGroupIndex.toString())
+      ?.get(this.questionIndex.toString());
+  }
+
   get rankings() {
     return this.parentForm
       .get('questionGroupsFormArray')
@@ -57,7 +64,7 @@ export class RankingQuestionComponent implements OnInit {
         newRankings.set(option.id, index + 1);
       })
 
-      this.rankings?.value.forEach((rankItemForm: any, index: number) => {
+      this.rankings?.value.forEach((rankItemForm: any) => {
         rankItemForm.rank = newRankings.get(rankItemForm.optionId);
         console.log(rankItemForm.rank)
       })
