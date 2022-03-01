@@ -18,5 +18,10 @@
       [questionGroupIndex]="questionGroupIndex"
       [question]="question"
       [questionIndex]="questionIndex"></app-multiple-select-question>
+    <app-ranking-question
+      *ngIf="question.questionType === 'RANKING'"
+      [questionGroupIndex]="questionGroupIndex"
+      [question]="question"
+      [questionIndex]="questionIndex"></app-ranking-question>
   </div>
 </div>

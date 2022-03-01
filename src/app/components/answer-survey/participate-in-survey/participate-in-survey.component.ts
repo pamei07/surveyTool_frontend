@@ -23,10 +23,6 @@ export class ParticipateInSurveyComponent implements OnInit {
     questionGroupsFormArray: this.fb.array([])
   });
 
-  get userName() {
-    return this.answerForm.get('userName');
-  }
-
   get questionGroupsFormArray() {
     return this.answerForm.get('questionGroupsFormArray') as FormArray;
   }
@@ -88,6 +84,8 @@ export class ParticipateInSurveyComponent implements OnInit {
    *       --> a FormGroup containing the checkboxId of the checkbox checked and a text if submitted
    *    3. For plain text questions:
    *       --> a FormControl capturing the text input
+   *    4. For ranking questions:
+   *       -->
    */
   insertInputFields() {
     if (this.questionGroups === undefined) {
@@ -112,6 +110,8 @@ export class ParticipateInSurveyComponent implements OnInit {
       } else {
         this.addSingleSelectQuestion(question, questionsFormArray);
       }
+    } else if (question.questionType === 'RANKING') {
+      this.addRankingQuestion(question, questionIndex, questionsFormArray);
     } else {
       this.addTextQuestion(question, questionsFormArray);
     }
@@ -141,6 +141,22 @@ export class ParticipateInSurveyComponent implements OnInit {
         text: [{value: '', disabled: true}, [Validators.required, Validators.maxLength(1500), stringNotEmpty()]]
       }))
     }
+  }
+
+  private addRankingQuestion(question: Question, questionIndex: number, questionsFormArray: FormArray) {
+    questionsFormArray.push(this.fb.group({
+      confirmed: false,
+      rankings: this.fb.array([])
+    }))
+
+    let rankingOptionsFormArray = questionsFormArray.at(questionIndex).get('rankings') as FormArray;
+
+    question.rankingGroup?.options.forEach((option, index) => {
+      rankingOptionsFormArray.push(this.fb.group({
+        optionId: option.id,
+        rank: index + 1
+      }))
+    })
   }
 
   private addTextQuestion(question: Question, questionsFormArray: FormArray) {

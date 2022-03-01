@@ -301,6 +301,10 @@ footer {
   }
 }
 
+.disabledListItem {
+  background-color: #E9ECEF;
+}
+
 /* Override Bootstrap CSS */
 .list-group {
   border: 0.08em solid #DFDFDF;

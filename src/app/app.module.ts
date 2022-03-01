@@ -93,6 +93,7 @@ import { OptionAddComponent } from './components/create-survey/option/option-add
 import { OptionDeleteComponent } from './components/create-survey/option/option-delete/option-delete.component';
 import { OptionListComponent } from './components/create-survey/option/option-list/option-list.component';
 import { RankingQuestionUpdateFormComponent } from './components/create-survey/question/question-forms/question-update-forms/ranking-question-update-form/ranking-question-update-form.component';
+import { RankingQuestionComponent } from './components/answer-survey/question-types/ranking-question/ranking-question.component';
 
 
 const appRoutes: Routes = [
@@ -200,7 +201,8 @@ const appRoutes: Routes = [
     OptionAddComponent,
     OptionDeleteComponent,
     OptionListComponent,
-    RankingQuestionUpdateFormComponent
+    RankingQuestionUpdateFormComponent,
+    RankingQuestionComponent
   ],
   imports: [
     BrowserModule,

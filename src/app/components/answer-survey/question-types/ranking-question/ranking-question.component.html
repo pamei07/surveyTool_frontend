@@ -1,0 +1,48 @@
+<div [formGroup]="parentForm">
+  <div formArrayName="questionGroupsFormArray">
+    <div formArrayName="{{questionGroupIndex}}">
+      <label [attr.for]="'question' + question.id" class="form-label row ms-2 mb-1">
+        <span class="col-auto px-0 bolderText">{{ questionIndex + 1 }}.</span>
+        <span class="col ps-1">
+          {{ question.text }}<span *ngIf="question.required">*</span>
+        </span>
+      </label>
+
+      <div class="row ms-5 my-2 ps-2 bolderText">
+        {{ question.rankingGroup!.highestRated }}
+      </div>
+
+      <div class="row">
+        <div class="col-8" formArrayName="{{ questionIndex }}">
+          <ul class="list-group ms-5 p-0 draggableList" cdkDropList [cdkDropListDisabled]="disabled"
+              [ngClass]="{'cursorMover': !disabled, 'disabledListItem': disabled}">
+            <li class="list-group-item draggableListItem" cdkDrag [ngClass]="{'disabledListItem text-muted': disabled}"
+                (cdkDragDropped)="drop($event)"
+                *ngFor="let option of options; index as indexOption;">
+              <div class="container p-0">
+                <div class="row justify-content-between">
+                  <div class="col">
+                    <span> {{ option.text }} </span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col align-self-end justify-content-end mb-1">
+          <button class="btn btn-outline-primary" *ngIf="disabled" (click)="enableDisableRankingGroup()">
+            Entsperren
+          </button>
+          <button class="btn btn-primary" *ngIf="!disabled" (click)="enableDisableRankingGroup()">
+            Bestätigen
+          </button>
+        </div>
+      </div>
+
+      <div class="row ms-5 mt-2 ps-2 bolderText">
+        {{ question.rankingGroup!.lowestRated }}
+      </div>
+    </div>
+  </div>
+</div>
