@@ -86,12 +86,14 @@ export class AnswersSubmissionComponent implements OnInit {
               this.pushAnswerToMultipleSelectQuestion(questionGroupIndex, questionIndex, checkbox, checkboxIndex);
             }
           })
-        } else if (typeof answerToQuestion !== 'string') {
-          if (answerToQuestion.checkboxId !== '') {
+        } else {
+          if (answerToQuestion.checkboxId !== undefined && answerToQuestion.checkboxId !== '') {
             this.pushAnswerToSingleSelectQuestion(answerToQuestion, questionGroupIndex, questionIndex);
+          } else if (answerToQuestion.confirmed !== undefined && answerToQuestion.confirmed === true) {
+            this.pushAnswerToRankingQuestion(answerToQuestion, questionGroupIndex, questionIndex);
+          } else if (typeof answerToQuestion === 'string' && answerToQuestion.trim() !== '') { // Skip text answers that only contain whitespace
+            this.pushAnswerToTextQuestion(answerToQuestion, questionGroupIndex, questionIndex);
           }
-        } else if (answerToQuestion.trim() !== '') { // Skip text answers that only contain whitespace
-          this.pushAnswerToTextQuestion(answerToQuestion, questionGroupIndex, questionIndex);
         }
       })
     });
@@ -116,15 +118,15 @@ export class AnswersSubmissionComponent implements OnInit {
     }
 
     let currentQuestion: Question = this.survey
-      .questionGroups![questionGroupIndex]
-      .questions![questionIndex];
+      .questionGroups[questionGroupIndex]
+      .questions[questionIndex];
     answer.setQuestionId(currentQuestion.id);
 
     let currentCheckbox: Checkbox = this.survey
-      .questionGroups![questionGroupIndex]
-      .questions![questionIndex]
+      .questionGroups[questionGroupIndex]
+      .questions[questionIndex]
       .checkboxGroup!
-      .checkboxes![checkboxIndex];
+      .checkboxes[checkboxIndex];
     answer.setCheckboxId(currentCheckbox.id);
 
     this.answerArray.push(answer);
@@ -140,18 +142,33 @@ export class AnswersSubmissionComponent implements OnInit {
     }
 
     let currentQuestion: Question = this.survey
-      .questionGroups![questionGroupIndex]
-      .questions![questionIndex];
+      .questionGroups[questionGroupIndex]
+      .questions[questionIndex];
     answer.setQuestionId(currentQuestion.id);
 
     let currentCheckbox: Checkbox = this.survey
-      .questionGroups![questionGroupIndex]
-      .questions![questionIndex]
+      .questionGroups[questionGroupIndex]
+      .questions[questionIndex]
       .checkboxGroup!
-      .checkboxes![answerToQuestion.checkboxId];
+      .checkboxes[answerToQuestion.checkboxId];
     answer.setCheckboxId(currentCheckbox.id);
 
     this.answerArray.push(answer);
+  }
+
+  private pushAnswerToRankingQuestion(answerToQuestion: any, questionGroupIndex: number, questionIndex: number) {
+    let currentQuestion: Question = this.survey
+      .questionGroups[questionGroupIndex]
+      .questions[questionIndex];
+
+    answerToQuestion.rankings.forEach((ranking: any) => {
+      let answer = this.createAnswerWithUserInformation();
+      answer.setQuestionId(currentQuestion.id);
+
+      answer.setOptionId(ranking.optionId);
+      answer.setRank(ranking.rank);
+      this.answerArray.push(answer);
+    })
   }
 
   private pushAnswerToTextQuestion(answerToQuestion: string,
@@ -162,8 +179,8 @@ export class AnswersSubmissionComponent implements OnInit {
     answer.setText(answerToQuestion);
 
     let currentQuestion: Question = this.survey
-      .questionGroups![questionGroupIndex]
-      .questions![questionIndex];
+      .questionGroups[questionGroupIndex]
+      .questions[questionIndex];
     answer.setQuestionId(currentQuestion.id);
 
     this.answerArray.push(answer);
