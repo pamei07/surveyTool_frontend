@@ -15,11 +15,12 @@ export class AnswersRankingQuestionComponent implements OnInit {
   @Input() questionIndex!: number;
   answers!: Answer[];
   numberOfUsersAnswering: number = 0;
+  chartHeight = 350;
 
   // Data for the bar chart:
   series: ApexAxisChartSeries = [];
   chart: ApexChart = {
-    height: 350,
+    height: this.chartHeight,
     type: 'bar',
     stacked: true,
     stackType: 'normal'
@@ -84,6 +85,16 @@ export class AnswersRankingQuestionComponent implements OnInit {
         this.numberOfUsersAnswering = data.reduce((a, b) => a + b, 0);
       }
     })
+
+    if (this.series.length >= 10) {
+      this.chartHeight = 500;
+      this.chart = {
+        height: this.chartHeight,
+        type: 'bar',
+        stacked: true,
+        stackType: 'normal'
+      };
+    }
   }
 
   private setYAxisCategories(noOfOptions: number) {
@@ -101,14 +112,14 @@ export class AnswersRankingQuestionComponent implements OnInit {
   changeStackType() {
     if (this.chart.stackType === '100%') {
       this.chart = {
-        height: 350,
+        height: this.chartHeight,
         type: 'bar',
         stacked: true,
         stackType: 'normal'
       };
     } else if (this.chart.stackType === 'normal') {
       this.chart = {
-        height: 350,
+        height: this.chartHeight,
         type: 'bar',
         stacked: true,
         stackType: '100%'
