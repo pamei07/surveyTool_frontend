@@ -4,12 +4,12 @@
   <div class="container mb-1">
     <div *ngIf="question.checkboxGroup!.multipleSelect"
          class="row justify-content-evenly">
-      <span class="col-sm-auto">Mehrfachauswahl: Ja</span>
+      <span class="col-sm-auto ms-3 ms-sm-0">Mehrfachauswahl: Ja</span>
       <span class="col-sm-auto ms-2 ms-sm-0 d-none d-sm-inline">Min.: {{ question.checkboxGroup!.minSelect }}</span>
       <span class="col-sm-auto ms-2 ms-sm-0 d-none d-sm-inline">Max.: {{ question.checkboxGroup!.maxSelect }}</span>
-      <span class="col-sm-auto ms-2 ms-sm-0 d-sm-none">Minimum: &nbsp;{{ question.checkboxGroup!.minSelect }}</span>
+      <span class="col-sm-auto ms-4 ms-sm-0 d-sm-none">Minimum: &nbsp;{{ question.checkboxGroup!.minSelect }}</span>
       <span
-        class="col-sm-auto ms-2 ms-sm-0 d-sm-none">Maximal: &nbsp;&nbsp;&nbsp;{{ question.checkboxGroup!.maxSelect }}</span>
+        class="col-sm-auto ms-4 ms-sm-0 d-sm-none">Maximal: &nbsp;&nbsp;&nbsp;{{ question.checkboxGroup!.maxSelect }}</span>
     </div>
     <div *ngIf="!question.checkboxGroup!.multipleSelect"
          class="d-flex justify-content-evenly w-100">
