@@ -53,11 +53,15 @@ export class QuestionUpdateComponent implements OnInit {
     return this.updateForm.get('rankingGroup')?.get('highestRated');
   }
 
+  get question() {
+    return this.survey.questionGroups[this.indexQuestionGroup].questions[this.indexQuestion];
+  }
+
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    let questionToUpdate = this.survey.questionGroups![this.indexQuestionGroup].questions![this.indexQuestion];
+    let questionToUpdate = this.question;
 
     // If checkboxGroup.multipleSelect == true -> enable input fields on init
     if (questionToUpdate.checkboxGroup?.multipleSelect) {
@@ -96,12 +100,12 @@ export class QuestionUpdateComponent implements OnInit {
   }
 
   updateQuestion(indexQuestion: number) {
-    if (this.updateForm.invalid) {
+    if (this.checkIfFormValid()) {
       console.log('Form invalid!');
       return;
     }
 
-    let questionToUpdate = this.survey.questionGroups![this.indexQuestionGroup].questions![indexQuestion];
+    let questionToUpdate = this.question;
     questionToUpdate.text = this.updateForm.value.text;
     questionToUpdate.required = this.updateForm.value.required;
 
@@ -111,7 +115,7 @@ export class QuestionUpdateComponent implements OnInit {
       this.processUpdateOfRankingQuestion(questionToUpdate);
     }
 
-    this.survey.questionGroups![this.indexQuestionGroup].questions![indexQuestion] = questionToUpdate;
+    this.survey.questionGroups[this.indexQuestionGroup].questions[indexQuestion] = questionToUpdate;
   }
 
   private processUpdateOfMultipleChoiceQuestion(questionToUpdate: Question) {
@@ -144,5 +148,21 @@ export class QuestionUpdateComponent implements OnInit {
       this.minSelect?.enable();
       this.maxSelect?.enable();
     }
+  }
+
+  checkIfFormValid() {
+    return this.text?.errors ||
+      (this.question.questionType === 'MULTIPLE_CHOICE' && this.checkIfCheckboxGroupFormValid()) ||
+      (this.question.questionType === 'RANKING' && this.checkIfRatingGroupFormValid());
+  }
+
+  checkIfCheckboxGroupFormValid() {
+    return this.minSelect?.errors || this.maxSelect?.errors ||
+      this.updateForm.hasError('requiredButMinZeroCheckboxes') ||
+      this.updateForm.hasError('maxSelectLessThanMinSelect');
+  }
+
+  checkIfRatingGroupFormValid() {
+    return this.lowestRated?.errors || this.highestRated?.errors;
   }
 }

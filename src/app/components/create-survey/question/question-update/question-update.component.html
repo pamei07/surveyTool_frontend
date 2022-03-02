@@ -23,7 +23,7 @@
           [indexQuestionGroup]="indexQuestionGroup"
           [indexQuestion]="indexQuestion"></app-ranking-question-update-form>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="updateForm.invalid">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="checkIfFormValid()">
             Änderungen Speichern
           </button>
         </div>
