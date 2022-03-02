@@ -4,13 +4,6 @@
     <option *ngFor="let questionType of questionTypes | keyvalue"
             [ngValue]="questionType.value">{{ questionType.key }}</option>
   </select>
-  <div class="input-group-append">
-    <button class="btn btn-primary" type="button" (click)="addNewQuestion()"
-            [disabled]="checkIfFormValid()">
-      <span class="d-none d-sm-inline">Frage hinzufügen</span>
-      <span class="d-inline d-sm-none">+</span>
-    </button>
-  </div>
 </div>
 
 <div [formGroup]="questionForm">
@@ -23,4 +16,12 @@
   <app-ranking-question-form *ngIf="selectedQuestionType === 'RANKING'"
                              [survey]="survey"
                              [indexQuestionGroup]="indexQuestionGroup"></app-ranking-question-form>
+</div>
+
+<div class="float-end mt-3 me-2"
+     *ngIf="selectedQuestionType !== 'Fragetyp auswählen...' && selectedQuestionType !== ''">
+  <button class="btn btn-primary" type="button" (click)="addNewQuestion()"
+          [disabled]="checkIfFormValid()">
+    <span>Frage hinzufügen</span>
+  </button>
 </div>
