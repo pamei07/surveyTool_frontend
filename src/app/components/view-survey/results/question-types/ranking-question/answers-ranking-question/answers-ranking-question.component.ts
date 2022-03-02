@@ -58,7 +58,6 @@ export class AnswersRankingQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.question);
     this.answerService.findAnswersByQuestionId(this.question.id).subscribe(answers => {
       this.answers = answers;
 
@@ -85,7 +84,6 @@ export class AnswersRankingQuestionComponent implements OnInit {
         this.numberOfUsersAnswering = data.reduce((a, b) => a + b, 0);
       }
     })
-    console.log(this.series);
   }
 
   private setYAxisCategories(noOfOptions: number) {
@@ -98,8 +96,6 @@ export class AnswersRankingQuestionComponent implements OnInit {
       = this.rankingGroup?.highestRated + " - " + this.xAxis.categories[0];
     this.xAxis.categories[noOfOptions - 1]
       = this.rankingGroup?.lowestRated + " - " + this.xAxis.categories[noOfOptions - 1];
-
-    console.log(this.xAxis.categories);
   }
 
   changeStackType() {
