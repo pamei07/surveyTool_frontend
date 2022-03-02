@@ -88,13 +88,15 @@ import {BaseQuestionUpdateFormComponent} from './components/create-survey/questi
 import {MultipleChoiceQuestionUpdateFormComponent} from './components/create-survey/question/question-forms/question-update-forms/multiple-choice-question-update-form/multiple-choice-question-update-form.component';
 import {RankingQuestionFormComponent} from './components/create-survey/question/question-forms/question-creation-forms/ranking-question-form/ranking-question-form.component';
 import {MultipleChoiceListItemComponent} from './components/create-survey/question/question-list-items/multiple-choice-list-item/multiple-choice-list-item.component';
-import { RankingListItemComponent } from './components/create-survey/question/question-list-items/ranking-list-item/ranking-list-item.component';
-import { OptionAddComponent } from './components/create-survey/option/option-add/option-add.component';
-import { OptionDeleteComponent } from './components/create-survey/option/option-delete/option-delete.component';
-import { OptionListComponent } from './components/create-survey/option/option-list/option-list.component';
-import { RankingQuestionUpdateFormComponent } from './components/create-survey/question/question-forms/question-update-forms/ranking-question-update-form/ranking-question-update-form.component';
-import { RankingQuestionComponent } from './components/answer-survey/question-types/ranking-question/ranking-question.component';
-import { RankingValidationDirective } from './directives/ranking-validation.directive';
+import {RankingListItemComponent} from './components/create-survey/question/question-list-items/ranking-list-item/ranking-list-item.component';
+import {OptionAddComponent} from './components/create-survey/option/option-add/option-add.component';
+import {OptionDeleteComponent} from './components/create-survey/option/option-delete/option-delete.component';
+import {OptionListComponent} from './components/create-survey/option/option-list/option-list.component';
+import {RankingQuestionUpdateFormComponent} from './components/create-survey/question/question-forms/question-update-forms/ranking-question-update-form/ranking-question-update-form.component';
+import {RankingQuestionComponent} from './components/answer-survey/question-types/ranking-question/ranking-question.component';
+import {RankingValidationDirective} from './directives/ranking-validation.directive';
+import {AnswersRankingQuestionComponent} from './components/view-survey/results/question-types/ranking-question/answers-ranking-question/answers-ranking-question.component';
+import {NgApexchartsModule} from "ng-apexcharts";
 
 
 const appRoutes: Routes = [
@@ -204,7 +206,8 @@ const appRoutes: Routes = [
     OptionListComponent,
     RankingQuestionUpdateFormComponent,
     RankingQuestionComponent,
-    RankingValidationDirective
+    RankingValidationDirective,
+    AnswersRankingQuestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -223,7 +226,8 @@ const appRoutes: Routes = [
         allowedUrls: [environment.baseUrl],
         sendAccessToken: true
       }
-    })
+    }),
+    NgApexchartsModule
   ],
   providers: [
     {

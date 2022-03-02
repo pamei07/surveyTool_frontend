@@ -72,6 +72,10 @@ footer {
   font-size: 18px;
 }
 
+.fontSize12px {
+  font-size: 12px;
+}
+
 .bolderText {
   font-weight: 500;
 }

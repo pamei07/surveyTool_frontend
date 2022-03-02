@@ -1,0 +1,26 @@
+<div [attr.id]="'question' + question.id" class="container restrictWidth" *ngIf="answers">
+  <div class="row m-0">
+    <h5 class="col-auto px-0">
+      {{ questionIndex + 1 }}.
+    </h5>
+    <h5 class="col ps-1">
+      {{ question.text }}<span *ngIf="question.required">*</span>
+    </h5>
+  </div>
+  <div class="row ms-2">
+    <span class="col-auto">{{ numberOfUsersAnswering }} Teilnehmer:innen haben diese Frage beantwortet.</span>
+  </div>
+  <apx-chart [series]="series"
+             [chart]="chart"
+             [plotOptions]="plotOptions"
+             [xaxis]="xAxis"
+             [tooltip]="tooltip">
+  </apx-chart>
+  <div class="row justify-content-end">
+    <div class="col-auto">
+      <button class="btn btn-primary fontSize12px" (click)="changeStackType()">
+        Diagrammtyp ändern
+      </button>
+    </div>
+  </div>
+</div>
