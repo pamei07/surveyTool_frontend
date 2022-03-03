@@ -7,9 +7,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div id="helperModalBody" class="modal-body">
-        <div *ngFor="let helpPage of helpPages; index as index">
-          <div [innerHTML]="helpPage" [style.display]="index > (page - 1) || index < (page - 1) ? 'none' : null"></div>
-        </div>
+        <div [innerHTML]="helpPages[page - 1]"></div>
       </div>
       <div class="modal-footer">
         <div class="container row justify-content-center p-0 m-0">

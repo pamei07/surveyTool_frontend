@@ -29,17 +29,23 @@ export class HelperModalComponent {
       'eingeben können.</p>',
 
       '<p>Nachdem Sie einen Frageblock erstellt haben, können Sie diesen eine <b>Frage hinzufügen.</b></p>' +
-      '<p>Sie können dabei zwischen einer Frage mit Freitext und einer mit Antwortmöglichkeiten entscheiden.</p>' +
+      '<p>Mithilfe des Drop-Down-Menüs \'Fragetyp auswählen\' können Sie sich für einen bestimmten Fragetyp entscheiden.</p>' +
       '<p>Wenn Sie die Frage als \'Erforderlich\' markieren. Wird der/die Teilnehmer:in dazu aufgefordert, die Frage ' +
       'zu beantworten.</p>',
 
-      '<p>Falls Sie eine Frage mit Antwortmöglichkeiten erstellen, können Sie darüber hinaus zwischen <b>Single- ' +
+      '<p>Falls Sie eine Auswahlfrage erstellen, können Sie darüber hinaus zwischen <b>Single- ' +
       'und Multiple Choice</b> entscheiden (siehe \'Mehrfachauswahl\').</p>' +
       '<p>Bei einer Multiple-Choice-Frage können Sie mit den Feldern \'Minimum\' und \'Maximum\' entscheiden, ' +
       'wie viele Antwortmöglichkeiten der/die Teilnehmer:in beim Beantworten auswählen soll/kann.</p>',
 
       '<p>Wenn Sie eine Antwortmöglichkeit mit einem <b>Textfeld</b> versehen, wird der/die Teilnehmer:in bei Auswahl ' +
-      'dieser Möglichkeit dazu aufgefordert, dieses Textfeld auszufüllen.</p>',
+      'dieser Möglichkeit dazu aufgefordert, dieses Textfeld auszufüllen.</p>' +
+      '<p>Des weiteren können Sie einem Textfeld einen <b>Platzhaltertext</b> hinzufügen, wie z.B. \'Warum?\' / \'Warum nicht?\'. ' +
+      'Dieser wird durch die Eingabe des/der Teilnehmer:in überschrieben.</p>',
+
+      '<p>Bei einer <b>Rankingfrage</b> wird der/die Teilnehmer:in dazu aufgefordert die von Ihnen gestellten Auswahlmöglichkeiten ' +
+      'nach bestimmten Kriterien zu sortieren.</p>' +
+      '<p>Mit den Textlabeln können Sie dabei die Skala darstellen, an der sich der/die Teilnehmer:in orientieren kann.</p>',
 
       '<p>Die Reihenfolge der Frageblöcke, Fragen und Antwortmöglichkeiten lässt sich mithilfe von <b>Drag & Drop</b> umändern.</p>',
 
