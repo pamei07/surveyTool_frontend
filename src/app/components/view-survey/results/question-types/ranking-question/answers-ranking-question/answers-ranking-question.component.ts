@@ -33,6 +33,23 @@ export class AnswersRankingQuestionComponent implements OnInit {
   xAxis = {
     categories: ['0']
   }
+  colors = [
+    "#2c5fff",
+    "#E51717FF",
+    "#ffe000",
+    "#6ae04e",
+    "#ff7600",
+    "#ab09ee",
+    "#00eaff",
+    "#3bdaaa",
+    "#fa26d4",
+    "#81461e",
+    "#60811e",
+    "#ee6464",
+    "#d884f1",
+    "#968b8d",
+    "#dcfc65"
+  ]
   tooltip = {
     y: {
       formatter: function (value: any) {
