@@ -62,7 +62,7 @@ export class AnswersRankingQuestionComponent implements OnInit {
     },
     x: {
       formatter: function (value: any) {
-        let split = value.split('')
+        let split = value.split(' ');
         return 'Rang ' + split[split.length - 1];
       }
     }
