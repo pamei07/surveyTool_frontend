@@ -31,7 +31,7 @@
                       [attr.name]="'checkbox' + checkbox.id + 'Question' + question.id"></textarea>
           </div>
         </div>
-        <div class="alert alert-danger p-2 my-2 ms-5 me-3" *ngIf="text?.invalid || checkboxId?.errors?.required">
+        <div class="alert alert-danger p-2 my-2 mx-3 ms-sm-5" *ngIf="text?.invalid || checkboxId?.errors?.required">
           <div *ngIf="text?.invalid">
             <span
               *ngIf="text?.errors?.required || text?.errors?.stringIsEmpty">Das Textfeld muss ausgefüllt sein.</span>

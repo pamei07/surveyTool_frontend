@@ -8,12 +8,12 @@
         </span>
       </label>
 
-      <div class="ms-5 me-3 mb-1">
+      <div class="mx-3 ms-sm-5 mb-1">
         <textarea class="form-control" [attr.id]="'question' + question.id"
                   formControlName="{{ questionIndex }}" placeholder="max. 1500 Zeichen"></textarea>
       </div>
 
-      <div *ngIf="text?.invalid" class="alert alert-danger p-2 my-2 ms-5 me-3">
+      <div *ngIf="text?.invalid" class="alert alert-danger p-2 my-2 mx-3 ms-sm-5">
         <span *ngIf="text?.errors?.required || text?.errors?.stringIsEmpty">Diese Frage muss beantwortet werden.</span>
         <span *ngIf="text?.errors?.maxlength">Ihre Antwort darf nicht länger als 1500 Zeichen sein.</span>
       </div>

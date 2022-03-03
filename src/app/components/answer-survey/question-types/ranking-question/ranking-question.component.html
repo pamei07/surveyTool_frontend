@@ -8,7 +8,7 @@
         </span>
       </label>
 
-      <div class="row ms-5 my-2 ps-2 bolderText">
+      <div class="row ms-2 ms-sm-5 my-2 ps-2 bolderText">
         <div class="ps-1">
           <img src="assets/svgs/caret-up.svg" alt="High rating">
           {{ question.rankingGroup!.highestRated }}
@@ -16,8 +16,8 @@
       </div>
 
       <div class="row">
-        <div class="col-8" formArrayName="{{ questionIndex }}">
-          <ul class="list-group ms-5 p-0 draggableList" cdkDropList [cdkDropListDisabled]="disabled"
+        <div class="col-sm-8" formArrayName="{{ questionIndex }}">
+          <ul class="list-group mx-3 ms-sm-5 me-sm-0 p-0 draggableList" cdkDropList [cdkDropListDisabled]="disabled"
               [ngClass]="{'cursorMover': !disabled, 'disabledListItem': disabled}">
             <li class="list-group-item draggableListItem" cdkDrag [ngClass]="{'disabledListItem text-muted': disabled}"
                 (cdkDragDropped)="drop($event)"
@@ -33,7 +33,7 @@
           </ul>
         </div>
 
-        <div class="col align-self-end mb-1">
+        <div class="col align-self-end mb-1 d-none d-sm-inline">
           <button class="btn btn-outline-primary rankingEnableDisableButton" *ngIf="disabled"
                   (click)="enableDisableRankingGroup()">
             Entsperren
@@ -57,16 +57,42 @@
         </div>
       </div>
 
-      <div class="row ms-5 mt-2 ps-2 bolderText">
+      <div class="row ms-2 ms-sm-5 mt-2 ps-2 bolderText">
         <div class="ps-1">
           <img src="assets/svgs/caret-down.svg" alt="Low rating">
           {{ question.rankingGroup!.lowestRated }}
         </div>
       </div>
 
-      <div class="row mt-3 ms-5 me-3">
-        <div class="alert alert-danger"
-             *ngIf="questionForm!.hasError('requiredButNotDone')">
+      <div class="row d-sm-none justify-content-end m-0 p-0">
+        <div class="col-auto mt-3">
+          <div class="success" *ngIf="confirmed!.value === true && disabled === true">
+            <img src="../../../../../assets/svgs/check2-circle-green.svg" alt="Changes confirmed">
+            <span>
+            Bestätigt!
+            </span>
+          </div>
+          <div class="text-muted" *ngIf="confirmed!.value === true && disabled === false">
+            <img src="../../../../../assets/svgs/check2-circle-grey.svg" alt="Changes confirmed">
+            <span>
+            Bestätigt!
+            </span>
+          </div>
+        </div>
+        <div class="col-auto mt-2 me-3">
+          <button class="btn btn-outline-primary rankingEnableDisableButton" *ngIf="disabled"
+                  (click)="enableDisableRankingGroup()">
+            Entsperren
+          </button>
+          <button class="btn btn-primary rankingEnableDisableButton" *ngIf="!disabled"
+                  (click)="enableDisableRankingGroup()">
+            Bestätigen
+          </button>
+        </div>
+      </div>
+
+      <div class="row mt-3 ms-3 ms-sm-5 me-3" *ngIf="questionForm!.hasError('requiredButNotDone')">
+        <div class="alert alert-danger mb-2">
           Diese Rankingfrage muss bearbeitet werden.
         </div>
       </div>

@@ -48,7 +48,7 @@
             <span *ngIf="getTextFieldByCheckboxIndex(checkboxIndex)?.errors?.maxlength">Ihre Antwort darf nicht länger als 1500 Zeichen sein.</span>
           </div>
         </div>
-        <div class="alert alert-danger p-2 my-2 ms-5 me-3"
+        <div class="alert alert-danger p-2 my-2 mx-3 ms-sm-5"
              *ngIf="checkboxArray?.hasError('noOfCheckedBoxesNotInRange') && question.required">
           <span *ngIf="minSelect < maxSelect && minSelect !== 0">
             Sie müssen zwischen {{ minSelect }} und {{ maxSelect }} Antwortmöglichkeiten auswählen.
@@ -57,7 +57,7 @@
             Sie müssen genau {{ minSelect }} Antwortmöglichkeiten auswählen.
           </span>
         </div>
-        <div class="alert alert-danger p-2 my-2 ms-5 me-3"
+        <div class="alert alert-danger p-2 my-2 mx-3 ms-sm-5"
              *ngIf="checkboxArray?.hasError('noOfCheckedBoxesNotInRange') && !question.required">
           <span *ngIf="minSelect < maxSelect && minSelect !== 0">
             Sie können nur zwischen {{ minSelect }} und {{ maxSelect }} Antwortmöglichkeiten auswählen.
