@@ -7,6 +7,7 @@ export const environment = {
   baseUrl: 'http://localhost:8080/',
   frontendUrl: 'http://localhost:4200/',
   keycloak: {
+    active: false,
     issuer: 'http://localhost:8180/auth/',
     realm: 'Umfragetool',
     clientId: 'surveytool-frontend'
